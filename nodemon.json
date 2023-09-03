@@ -1,0 +1,6 @@
+{
+  "watch": ["pages", "components", "lib", "stores"],
+  "ext": "js,jsx,ts,tsx,json",
+  "ignore": ["node_modules", ".next"],
+  "exec": "yarn dev"
+}

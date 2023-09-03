@@ -5,14 +5,21 @@ import * as $ from "./index.styled";
 import useWardrobeStore from "@/stores/wardrobeStore";
 
 import Stand from "@/components/modules/stand";
+import Module1 from "@/components/modules/module1";
 import Module2 from "@/components/modules/module2";
+import InputSelect from "@/components/modules/inputSelect";
 
 const index = () => {
-  const { height, setViewportSize, mm } = useWardrobeStore((state) => ({
-    height: state.height,
-    setViewportSize: state.setViewportSize,
-    mm: state.mm,
-  }));
+  const { section1, section2, section3, width, height, setViewportSize, mm } =
+    useWardrobeStore((state) => ({
+      width: state.width,
+      height: state.height,
+      setViewportSize: state.setViewportSize,
+      mm: state.mm,
+      section1: state.section1,
+      section2: state.section2,
+      section3: state.section3,
+    }));
 
   useEffect(() => {
     setViewportSize({
@@ -43,15 +50,20 @@ const index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <$.Main>
-        <$.Wardrobe $height={mm * height}>
+        <$.Wardrobe $width={mm * width} $height={mm * height}>
           <Stand />
-          <Module2 />
+          {section1 === 1 ? <Module1 /> : <Module2 />}
           <Stand />
-          <Module2 />
+          {section2 === 1 ? <Module1 /> : <Module2 />}
           <Stand />
-          <Module2 />
+          {section3 === 1 ? <Module1 /> : <Module2 />}
           <Stand />
         </$.Wardrobe>
+        <$.Inputs>
+          <InputSelect id={1} />
+          <InputSelect id={2} />
+          <InputSelect id={3} />
+        </$.Inputs>
       </$.Main>
     </>
   );

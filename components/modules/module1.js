@@ -1,10 +1,10 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./module2.styled";
+import * as $ from "./module1.styled";
 
 import Shelf from "./shelf";
 import Space from "./space";
 
-const Module2 = () => {
+const Module1 = () => {
   const { thickness, moduleWidth, moduleHeight, mm } = useWardrobeStore(
     (state) => ({
       thickness: state.thickness,
@@ -14,10 +14,10 @@ const Module2 = () => {
     })
   );
 
-  const spaceSize = (moduleHeight - 6 * thickness) / 6;
+  const spaceSize = (moduleHeight - 5 * thickness) / 5;
 
   return (
-    <$.Module2>
+    <$.Module1>
       <Shelf width={mm * moduleWidth} height={mm * thickness} />
       <Space
         width={mm * moduleWidth}
@@ -48,14 +48,8 @@ const Module2 = () => {
         height={mm * spaceSize}
         size={{ width: moduleWidth, height: spaceSize }}
       />
-      <Shelf width={mm * moduleWidth} height={mm * thickness} />
-      <Space
-        width={mm * moduleWidth}
-        height={mm * spaceSize}
-        size={{ width: moduleWidth, height: spaceSize }}
-      />
-    </$.Module2>
+    </$.Module1>
   );
 };
 
-export default Module2;
+export default Module1;

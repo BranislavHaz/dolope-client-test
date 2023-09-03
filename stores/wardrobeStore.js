@@ -12,6 +12,10 @@ const useWardrobeStore = create(
     moduleHeight: 2300,
     viewportSize: { width: 0, height: 0 },
     mm: 0,
+    section1: 0,
+    section2: 0,
+    section3: 0,
+    section4: 0,
 
     calculateMM: () => {
       const { viewportSize, width, height } = get();
@@ -38,6 +42,11 @@ const useWardrobeStore = create(
     setViewportSize: (viewport) => {
       set({ viewportSize: viewport }), get().updateMM();
     },
+
+    setSection1: (section1) => set({ section1 }),
+    setSection2: (section2) => set({ section2 }),
+    setSection3: (section3) => set({ section3 }),
+    setSection4: (section4) => set({ section4 }),
   }))
 );
 

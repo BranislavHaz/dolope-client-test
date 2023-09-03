@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./stand.styles";
+import * as $ from "./stand.styled";
 
 const Stand = () => {
   const { thickness, moduleHeight, mm } = useWardrobeStore((state) => ({
