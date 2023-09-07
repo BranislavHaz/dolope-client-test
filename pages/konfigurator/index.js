@@ -4,22 +4,30 @@ import Head from "next/head";
 import * as $ from "./index.styled";
 import useWardrobeStore from "@/stores/wardrobeStore";
 
-import Stand from "@/components/modules/stand";
+import Stand from "@/components/elements/stand";
 import Module1 from "@/components/modules/module1";
 import Module2 from "@/components/modules/module2";
+import Module3 from "@/components/modules/module3";
+import Module4 from "@/components/modules/Module4";
 import InputSelect from "@/components/modules/inputSelect";
 
+const MODULE_MAP = {
+  1: Module1,
+  2: Module2,
+  3: Module3,
+  4: Module4,
+};
+
 const index = () => {
-  const { section1, section2, section3, width, height, setViewportSize, mm } =
-    useWardrobeStore((state) => ({
+  const { sections, width, height, setViewportSize, mm } = useWardrobeStore(
+    (state) => ({
       width: state.width,
       height: state.height,
       setViewportSize: state.setViewportSize,
       mm: state.mm,
-      section1: state.section1,
-      section2: state.section2,
-      section3: state.section3,
-    }));
+      sections: state.sections,
+    })
+  );
 
   useEffect(() => {
     setViewportSize({
@@ -41,6 +49,17 @@ const index = () => {
     };
   }, []);
 
+  const getModule = (sectionId) => {
+    const moduleId = sections[sectionId];
+    const FristModul = MODULE_MAP[1];
+    const Modul = MODULE_MAP[moduleId];
+
+    if (moduleId === 0) {
+      return <FristModul />;
+    }
+    return <Modul />;
+  };
+
   return (
     <>
       <Head>
@@ -49,22 +68,28 @@ const index = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <$.Main>
-        <$.Wardrobe $width={mm * width} $height={mm * height}>
-          <Stand />
-          {section1 === 1 ? <Module1 /> : <Module2 />}
-          <Stand />
-          {section2 === 1 ? <Module1 /> : <Module2 />}
-          <Stand />
-          {section3 === 1 ? <Module1 /> : <Module2 />}
-          <Stand />
-        </$.Wardrobe>
-        <$.Inputs>
-          <InputSelect id={1} />
-          <InputSelect id={2} />
-          <InputSelect id={3} />
-        </$.Inputs>
-      </$.Main>
+      <>
+        <$.Main>
+          <$.Wardrobe
+            $width={mm * width}
+            $height={mm * height}
+            key={Math.random()}
+          >
+            <Stand />
+            {getModule(1)}
+            <Stand />
+            {getModule(2)}
+            <Stand />
+            {getModule(3)}
+            <Stand />
+          </$.Wardrobe>
+        </$.Main>
+      </>
+      <$.Inputs>
+        <InputSelect id={1} />
+        <InputSelect id={2} />
+        <InputSelect id={3} />
+      </$.Inputs>
     </>
   );
 };

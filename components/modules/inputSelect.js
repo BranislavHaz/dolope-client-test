@@ -2,26 +2,13 @@ import React from "react";
 import useWardrobeStore from "@/stores/wardrobeStore";
 
 const InputSelect = ({ id }) => {
-  const { setSection1, setSection2, setSection3, setSection4 } =
-    useWardrobeStore((state) => ({
-      setSection1: state.setSection1,
-      setSection2: state.setSection2,
-      setSection3: state.setSection3,
-      setSection4: state.setSection4,
-    }));
-
-  const sectionSetters = {
-    section1: setSection1,
-    section2: setSection2,
-    section3: setSection3,
-    section4: setSection4,
-  };
+  const { setSections } = useWardrobeStore((state) => ({
+    setSections: state.setSections,
+  }));
 
   const handleSelectChange = (e) => {
     const selectedValue = parseInt(e.target.value);
-    if (sectionSetters["section" + id]) {
-      sectionSetters["section" + id](selectedValue);
-    }
+    setSections(id, selectedValue);
   };
 
   return (
@@ -35,6 +22,8 @@ const InputSelect = ({ id }) => {
         <option value="0">--Prosím, vyberte si možnosť--</option>
         <option value="1">Modul 1</option>
         <option value="2">Modul 2</option>
+        <option value="3">Modul 3</option>
+        <option value="4">Modul 4</option>
       </select>
     </label>
   );

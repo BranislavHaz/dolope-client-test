@@ -12,17 +12,32 @@ const useWardrobeStore = create(
     moduleHeight: 2300,
     viewportSize: { width: 0, height: 0 },
     mm: 0,
-    section1: 0,
-    section2: 0,
-    section3: 0,
-    section4: 0,
+    hangerHeight: 30,
+    hangerSpace: 60,
+    sections: {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+    },
+    drawers: {
+      thickness: 18,
+      grooveWidth: 50,
+      frontHeight: 170,
+      gripGap: 30,
+      frontGap: 4,
+
+      drawerSingleHeight: 250,
+    },
 
     calculateMM: () => {
       const { viewportSize, width, height } = get();
       if (viewportSize.width > viewportSize.height) {
-        return viewportSize.height / 2 / height;
+        const value = viewportSize.height / 2 / height;
+        return Math.round(value * 100) / 100;
       } else {
-        return viewportSize.width / 1.3 / width;
+        const value = viewportSize.width / 1.3 / width;
+        return Math.round(value * 100) / 100;
       }
     },
     updateMM: () => {
@@ -43,10 +58,13 @@ const useWardrobeStore = create(
       set({ viewportSize: viewport }), get().updateMM();
     },
 
-    setSection1: (section1) => set({ section1 }),
-    setSection2: (section2) => set({ section2 }),
-    setSection3: (section3) => set({ section3 }),
-    setSection4: (section4) => set({ section4 }),
+    setSections: (id, sectionValue) =>
+      set((state) => ({
+        sections: {
+          ...state.sections,
+          [id]: sectionValue,
+        },
+      })),
   }))
 );
 

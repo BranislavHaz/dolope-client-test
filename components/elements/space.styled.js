@@ -7,6 +7,5 @@ export const Space = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.3em;
   font-size: 0.7em;
 `;
