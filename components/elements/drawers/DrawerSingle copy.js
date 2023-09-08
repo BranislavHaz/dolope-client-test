@@ -8,9 +8,8 @@ const DrawerSingle = () => {
     drawers: state.drawers,
   }));
 
-  const frontWidthReal =
+  const frontWidth =
     moduleWidth - 2 * drawers.grooveWidth - 2 * drawers.frontGap;
-  const frontWidth = moduleWidth - 2 * drawers.grooveWidth;
 
   return (
     <$.DrawerSingle
@@ -18,24 +17,39 @@ const DrawerSingle = () => {
       $frontWidth={mm * frontWidth}
       $frontHeight={mm * drawers.frontHeight}
       $grooveWidth={mm * drawers.grooveWidth}
+      $frontGap={mm * drawers.frontGap}
       $gripGap={mm * drawers.gripGap}
     >
       {/* Prvý row */}
-      <$.DrawerSideLeft />
+      <$.DrawerSide />
       <$.DrawerTop />
-      <$.DrawerSideRight />
+      <$.DrawerTop />
+      <$.DrawerTop />
+      <$.DrawerSide />
       {/* Druhý row */}
-      <$.DrawerSideLeft />
+      <$.DrawerSide />
+      <$.DrawerFrontGap />
       <$.DrawerGripGap />
-      <$.DrawerSideRight />
+      <$.DrawerFrontGap />
+      <$.DrawerSide />
       {/* Tretí row */}
-      <$.DrawerSideLeft />
+      <$.DrawerSide />
+      <$.DrawerFrontGap />
       <$.DrawerFront />
-      <$.DrawerSideRight />
+      <$.DrawerFrontGap />
+      <$.DrawerSide />
       {/* Štvrtý row */}
-      <$.DrawerSideLeft />
+      <$.DrawerSide />
+      <$.DrawerFrontGap />
+      <$.DrawerFrontGap />
+      <$.DrawerFrontGap />
+      <$.DrawerSide />
+      {/* Piatý row */}
+      <$.DrawerSide />
       <$.DrawerBottom />
-      <$.DrawerSideRight />
+      <$.DrawerBottom />
+      <$.DrawerBottom />
+      <$.DrawerSide />
     </$.DrawerSingle>
   );
 };

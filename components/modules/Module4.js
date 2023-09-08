@@ -6,11 +6,14 @@ import Space from "../elements/space";
 import DrawerSingle from "../elements/drawers/DrawerSingle";
 
 const Module4 = () => {
-  const { thickness, moduleHeight, drawers } = useWardrobeStore((state) => ({
-    thickness: state.thickness,
-    moduleHeight: state.moduleHeight,
-    drawers: state.drawers,
-  }));
+  const { thickness, moduleHeight, mm, drawers } = useWardrobeStore(
+    (state) => ({
+      thickness: state.thickness,
+      moduleHeight: state.moduleHeight,
+      mm: state.mm,
+      drawers: state.drawers,
+    })
+  );
 
   const spaceSize1 = 300;
   const spaceSize2 =

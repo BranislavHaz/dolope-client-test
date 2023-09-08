@@ -5,11 +5,13 @@ import * as $ from "./index.styled";
 import useWardrobeStore from "@/stores/wardrobeStore";
 
 import Stand from "@/components/elements/stand";
+import ModuleEmpty from "@/components/modules/ModuleEmpty";
 import Module1 from "@/components/modules/module1";
 import Module2 from "@/components/modules/module2";
 import Module3 from "@/components/modules/module3";
 import Module4 from "@/components/modules/Module4";
 import InputSelect from "@/components/modules/inputSelect";
+import InputSectionNumber from "@/components/modules/InputSectionsNumber";
 
 const MODULE_MAP = {
   1: Module1,
@@ -19,15 +21,15 @@ const MODULE_MAP = {
 };
 
 const index = () => {
-  const { sections, width, height, setViewportSize, mm } = useWardrobeStore(
-    (state) => ({
+  const { sectionsNumber, sections, width, height, setViewportSize, mm } =
+    useWardrobeStore((state) => ({
+      sectionsNumber: state.sectionsNumber,
       width: state.width,
       height: state.height,
       setViewportSize: state.setViewportSize,
       mm: state.mm,
       sections: state.sections,
-    })
-  );
+    }));
 
   useEffect(() => {
     setViewportSize({
@@ -51,13 +53,20 @@ const index = () => {
 
   const getModule = (sectionId) => {
     const moduleId = sections[sectionId];
-    const FristModul = MODULE_MAP[1];
     const Modul = MODULE_MAP[moduleId];
 
     if (moduleId === 0) {
-      return <FristModul />;
+      return <ModuleEmpty />;
     }
     return <Modul />;
+  };
+
+  const getSections = () => {
+    const sectionsArray = [];
+    for (let i = 1; i <= sectionsNumber; i++) {
+      sectionsArray.push(getModule(i), <Stand key={i} />);
+    }
+    return sectionsArray;
   };
 
   return (
@@ -76,12 +85,7 @@ const index = () => {
             key={Math.random()}
           >
             <Stand />
-            {getModule(1)}
-            <Stand />
-            {getModule(2)}
-            <Stand />
-            {getModule(3)}
-            <Stand />
+            {getSections()}
           </$.Wardrobe>
         </$.Main>
       </>
@@ -90,6 +94,7 @@ const index = () => {
         <InputSelect id={2} />
         <InputSelect id={3} />
       </$.Inputs>
+      <InputSectionNumber />
     </>
   );
 };

@@ -2,52 +2,44 @@ import { styled } from "styled-components";
 
 export const DrawerTop = styled.div`
   grid-area: "DrawerTop";
-  background-color: yellow;
+  border-bottom: 1px solid #000;
 `;
 export const DrawerBottom = styled.div`
   grid-area: "DrawerBottom";
-  background-color: green;
+  border-top: 1px solid #000;
 `;
-export const DrawerSide = styled.div`
+export const DrawerSideLeft = styled.div`
   grid-area: "DrawerSide";
-  background-color: aqua;
+  border-right: 1px solid #000;
+`;
+export const DrawerSideRight = styled.div`
+  grid-area: "DrawerSide";
+  border-left: 1px solid #000;
 `;
 export const DrawerGroove = styled.div`
   grid-area: "DrawerGroove";
-  background-color: bisque;
 `;
 export const DrawerFront = styled.div`
   grid-area: "DrawerFront";
-  background-color: black;
+  border-top: 1px solid #000;
 `;
 export const DrawerGripGap = styled.div`
   grid-area: "DrawerGripGap";
-  background-color: blueviolet;
-`;
-export const DrawerFrontGap = styled.div`
-  grid-area: "DrawerFrontGap";
-  background-color: red;
+  background-color: #fff;
 `;
 
 export const DrawerSingle = styled.div`
   display: grid;
+  background-color: #eb5e8d;
 
-  ${({
-    $thicknessDTD,
-    $frontWidth,
-    $frontHeight,
-    $grooveWidth,
-    $frontGap,
-    $gripGap,
-  }) => `
-  grid-template-columns: ${$grooveWidth}px ${$frontGap}px ${$frontWidth}px ${$frontGap}px ${$grooveWidth}px;
-  grid-template-rows: ${$thicknessDTD}px ${$gripGap}px ${$frontHeight}px ${$frontGap}px ${$thicknessDTD}px;
+  ${({ $thicknessDTD, $frontWidth, $frontHeight, $grooveWidth, $gripGap }) => `
+  grid-template-columns: ${$grooveWidth}px ${$frontWidth}px ${$grooveWidth}px;
+  grid-template-rows: ${$thicknessDTD}px ${$gripGap}px ${$frontHeight}px ${$thicknessDTD}px;
 `}
 
   grid-template-areas:
-    "DrawerSide DrawerTop DrawerTop DrawerTop DrawerSide"
-    "DrawerSide DrawerFrontGap DrawerGripGap DrawerFrontGap DrawerSide"
-    "DrawerSide DrawerFrontGap DrawerFront DrawerFrontGap DrawerSide"
-    "DrawerSide DrawerFrontGap DrawerFrontGap DrawerFrontGap DrawerSide"
-    "DrawerSide DrawerBottom DrawerBottom DrawerBottom DrawerSide";
+    "DrawerSideLeft DrawerTop DrawerSideRight"
+    "DrawerSideLeft DrawerGripGap DrawerSideRight"
+    "DrawerSideLeft DrawerFront DrawerSideRight"
+    "DrawerSideLeft DrawerBottom DrawerSideRight";
 `;

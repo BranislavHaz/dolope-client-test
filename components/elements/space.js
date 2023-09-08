@@ -9,7 +9,8 @@ const Space = ({ height, isVisible = true }) => {
 
   return (
     <$.Space $width={mm * moduleWidth} $height={mm * height}>
-      {isVisible && `${Math.floor(moduleWidth)} x ${Math.floor(height)} mm`}
+      {isVisible && <$.Line />}
+      {isVisible && <$.HeightText>{Math.floor(height) / 10} cm</$.HeightText>}
     </$.Space>
   );
 };

@@ -7,7 +7,7 @@ const useWardrobeStore = create(
     height: 2603,
     depth: 600,
     thickness: 18,
-    modules: 3,
+    sectionsNumber: 3,
     moduleWidth: 931,
     moduleHeight: 2300,
     viewportSize: { width: 0, height: 0 },
@@ -27,7 +27,13 @@ const useWardrobeStore = create(
       gripGap: 30,
       frontGap: 4,
 
-      drawerSingleHeight: 250,
+      drawerSingleHeight: 236,
+    },
+
+    calculateModuleWidth: (sectionsNumberValue = get().sectionsNumber) => {
+      const { width, thickness } = get();
+      const standsThickness = (sectionsNumberValue + 1) * thickness;
+      return (width - standsThickness) / sectionsNumberValue;
     },
 
     calculateMM: () => {
@@ -45,14 +51,18 @@ const useWardrobeStore = create(
       set({ mm: mmValue });
     },
 
-    setWidth: (width) => {
-      set({ width }), get().updateMM();
+    setWidth: (widthValue) => {
+      const newModuleWidth = get().calculateModuleWidth();
+      set({ width: widthValue, moduleWidth: newModuleWidth }), get().updateMM();
     },
     setHeight: (height) => {
       set({ height }), get().updateMM();
     },
     setDepth: (depth) => set({ depth }),
-    setModules: (modules) => set({ modules }),
+    setSectionsNumber: (sectionsNumberValue) => {
+      const newModuleWidth = get().calculateModuleWidth(sectionsNumberValue);
+      set({ sectionsNumber: sectionsNumberValue, moduleWidth: newModuleWidth });
+    },
     setModuleWidth: (moduleWidth) => set({ moduleWidth }),
     setViewportSize: (viewport) => {
       set({ viewportSize: viewport }), get().updateMM();
