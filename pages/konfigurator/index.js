@@ -16,7 +16,7 @@ import Module7 from "@/components/modules/Module7";
 import InputSelect from "@/components/modules/inputSelect";
 import InputSectionNumber from "@/components/modules/InputSectionsNumber";
 
-const MODULE_MAP = {
+const modulesMap = {
   1: Module1,
   2: Module2,
   3: Module3,
@@ -27,24 +27,25 @@ const MODULE_MAP = {
 };
 
 const index = () => {
-  const { sectionsNumber, sections, width, height, setViewportSize, px } =
-    useWardrobeStore((state) => ({
-      sectionsNumber: state.sectionsNumber,
+  const { sections, width, height, setViewport, viewport } = useWardrobeStore(
+    (state) => ({
       width: state.width,
       height: state.height,
-      setViewportSize: state.setViewportSize,
-      px: state.px,
+      setViewport: state.setViewport,
+      viewport: state.viewport,
       sections: state.sections,
-    }));
+    })
+  );
+  const { px } = viewport;
 
   useEffect(() => {
-    setViewportSize({
+    setViewport({
       width: window.innerWidth,
       height: window.innerHeight,
     });
 
     const handleResize = () => {
-      setViewportSize({
+      setViewport({
         width: window.innerWidth,
         height: window.innerHeight,
       });
@@ -58,18 +59,18 @@ const index = () => {
   }, []);
 
   const getModule = (sectionId) => {
-    const moduleId = sections[sectionId];
-    const Modul = MODULE_MAP[moduleId];
+    const moduleId = sections.typeOfSections[sectionId];
+    const Modul = modulesMap[moduleId];
 
     if (moduleId === 0) {
-      return <ModuleEmpty key={sectionId} />;
+      return <ModuleEmpty key={Math.random()} />;
     }
-    return <Modul key={sectionId} />;
+    return <Modul key={Math.random()} />;
   };
 
   const getSections = () => {
     const sectionsArray = [];
-    for (let i = 1; i <= sectionsNumber; i++) {
+    for (let i = 1; i <= sections.count; i++) {
       sectionsArray.push(getModule(i), <Stand key={i} />);
     }
     return sectionsArray;
@@ -85,11 +86,7 @@ const index = () => {
       </Head>
       <>
         <$.Main>
-          <$.Wardrobe
-            $width={px * width}
-            $height={px * height}
-            key={Math.random()}
-          >
+          <$.Wardrobe $width={px * width} $height={px * height}>
             <Stand />
             {getSections()}
           </$.Wardrobe>

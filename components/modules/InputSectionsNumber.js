@@ -1,12 +1,12 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
 
 const InputSectionNumber = () => {
-  const { setSectionsNumber } = useWardrobeStore((state) => ({
-    setSectionsNumber: state.setSectionsNumber,
+  const { setSectionsCount } = useWardrobeStore((state) => ({
+    setSectionsCount: state.setSectionsCount,
   }));
 
   const handleSelectChange = (e) => {
-    setSectionsNumber(+e.target.value);
+    setSectionsCount(+e.target.value);
   };
 
   return (

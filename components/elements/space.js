@@ -2,13 +2,15 @@ import useWardrobeStore from "@/stores/wardrobeStore";
 import * as $ from "./space.styled";
 
 const Space = ({ height, isVisible = true }) => {
-  const { moduleWidth, px } = useWardrobeStore((state) => ({
-    moduleWidth: state.moduleWidth,
-    px: state.px,
+  const { sections, viewport } = useWardrobeStore((state) => ({
+    sections: state.sections,
+    viewport: state.viewport,
   }));
 
+  const { px } = viewport;
+
   return (
-    <$.Space $width={px * moduleWidth} $height={px * height}>
+    <$.Space $width={px * sections.width} $height={px * height}>
       {isVisible && <$.Line />}
       {isVisible && <$.HeightText>{Math.floor(height) / 10} cm</$.HeightText>}
     </$.Space>

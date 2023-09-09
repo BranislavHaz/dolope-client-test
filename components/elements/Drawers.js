@@ -1,26 +1,29 @@
+import React from "react";
 import useWardrobeStore from "@/stores/wardrobeStore";
 import * as $ from "./Drawers.styled";
 
 const Drawers = ({ numOfDrawers }) => {
-  const { moduleWidth, px, drawer } = useWardrobeStore((state) => ({
-    moduleWidth: state.moduleWidth,
-    px: state.px,
-    drawer: state.drawer,
+  const { sections, viewport, drawers } = useWardrobeStore((state) => ({
+    sections: state.sections,
+    viewport: state.viewport,
+    drawers: state.drawers,
   }));
 
-  const frontWidthReal =
-    moduleWidth - 2 * drawer.grooveWidth - 2 * drawer.frontGap;
-  const frontWidth = moduleWidth - 2 * drawer.grooveWidth;
+  const { px } = viewport;
 
-  const getDrawerComponents = () => (
-    <>
+  const frontWidthReal =
+    sections.width - 2 * drawers.grooveWidth - 2 * drawers.frontGap;
+  const frontWidth = sections.width - 2 * drawers.grooveWidth;
+
+  const getDrawerComponents = (key) => (
+    <React.Fragment key={key}>
       <$.DrawerSideLeft />
       <$.DrawerGripGap />
       <$.DrawerSideRight />
       <$.DrawerSideLeft />
       <$.DrawerFront />
       <$.DrawerSideRight />
-    </>
+    </React.Fragment>
   );
 
   const drawersStyledMap = {
@@ -34,17 +37,18 @@ const Drawers = ({ numOfDrawers }) => {
     const drawersArray = [];
 
     for (let i = 1; i <= numOfDrawers; i++) {
-      drawersArray.push(getDrawerComponents());
+      drawersArray.push(getDrawerComponents(i));
     }
 
     const DrawerContainer = drawersStyledMap[numOfDrawers];
+
     return (
       <DrawerContainer
-        $thicknessDTD={px * drawer.thickness}
+        $thicknessDTD={px * drawers.thickness}
         $frontWidth={px * frontWidth}
-        $frontHeight={px * drawer.frontHeight}
-        $grooveWidth={px * drawer.grooveWidth}
-        $gripGap={px * drawer.gripGap}
+        $frontHeight={px * drawers.frontHeight}
+        $grooveWidth={px * drawers.grooveWidth}
+        $gripGap={px * drawers.gripGap}
       >
         <$.DrawerSideLeft />
         <$.DrawerTop />
