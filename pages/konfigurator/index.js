@@ -4,16 +4,16 @@ import Head from "next/head";
 import * as $ from "./index.styled";
 import useWardrobeStore from "@/stores/wardrobeStore";
 
-import Stand from "@/components/elements/stand";
+import Stand from "@/components/elements/Stand";
 import ModuleEmpty from "@/components/modules/ModuleEmpty";
-import Module1 from "@/components/modules/module1";
-import Module2 from "@/components/modules/module2";
-import Module3 from "@/components/modules/module3";
+import Module1 from "@/components/modules/Module1";
+import Module2 from "@/components/modules/Module2";
+import Module3 from "@/components/modules/Module3";
 import Module4 from "@/components/modules/Module4";
 import Module5 from "@/components/modules/Module5";
 import Module6 from "@/components/modules/Module6";
 import Module7 from "@/components/modules/Module7";
-import InputSelect from "@/components/modules/inputSelect";
+import InputSelect from "@/components/modules/InputSelect";
 import InputSectionNumber from "@/components/modules/InputSectionsNumber";
 
 const modulesMap = {
@@ -27,10 +27,9 @@ const modulesMap = {
 };
 
 const index = () => {
-  const { sections, width, height, setViewport, viewport } = useWardrobeStore(
+  const { sections, wardrobe, setViewport, viewport } = useWardrobeStore(
     (state) => ({
-      width: state.width,
-      height: state.height,
+      wardrobe: state.wardrobe,
       setViewport: state.setViewport,
       viewport: state.viewport,
       sections: state.sections,
@@ -86,7 +85,10 @@ const index = () => {
       </Head>
       <>
         <$.Main>
-          <$.Wardrobe $width={px * width} $height={px * height}>
+          <$.Wardrobe
+            $width={px * wardrobe.width}
+            $height={px * wardrobe.height}
+          >
             <Stand />
             {getSections()}
           </$.Wardrobe>

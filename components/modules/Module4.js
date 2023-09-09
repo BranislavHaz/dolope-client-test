@@ -1,20 +1,23 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
 import * as $ from "./Module.styled";
 
-import Shelf from "../elements/shelf";
-import Space from "../elements/space";
+import Shelf from "../elements/Shelf";
+import Space from "../elements/Space";
 import Drawers from "../elements/Drawers";
 
 const Module4 = () => {
-  const { thickness, sections, drawers } = useWardrobeStore((state) => ({
-    thickness: state.thickness,
+  const { wardrobe, sections, drawers } = useWardrobeStore((state) => ({
+    wardrobe: state.wardrobe,
     sections: state.sections,
     drawers: state.drawers,
   }));
 
   const spaceSize1 = 300;
   const spaceSize2 =
-    sections.height - 4 * thickness - spaceSize1 - drawers.heightDrawerCount[1];
+    sections.height -
+    4 * wardrobe.thickness -
+    spaceSize1 -
+    drawers.heightOfDrawers[1];
 
   return (
     <$.Module>

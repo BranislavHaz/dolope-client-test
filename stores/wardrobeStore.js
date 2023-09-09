@@ -3,11 +3,13 @@ import { devtools } from "zustand/middleware";
 
 const useWardrobeStore = create(
   devtools((set, get) => ({
-    width: 2865,
-    height: 2603,
-    depth: 600,
-    thickness: 18,
     viewport: { width: 0, height: 0, px: 0.1 },
+    wardrobe: {
+      width: 2865,
+      height: 2603,
+      depth: 600,
+      thickness: 18,
+    },
     sections: {
       width: 931,
       height: 2300,
@@ -26,7 +28,7 @@ const useWardrobeStore = create(
       frontHeight: 170,
       gripGap: 30,
       frontGap: 4,
-      heightDrawerCount: {
+      heightOfDrawers: {
         1: 236,
         2: 436,
         3: 636,
@@ -34,61 +36,78 @@ const useWardrobeStore = create(
       },
     },
 
-    calcSectionsWidth: (sectionsNum = get().sections.count) => {
-      const { width, thickness } = get();
-      const standsThickness = (sectionsNum + 1) * thickness;
-      return (width - standsThickness) / sectionsNum;
-    },
-
+    /* VIEWPORT */
+    // Helpers function for set viewport size
     calcViewportPX: () => {
-      const { viewport, width, height } = get();
+      const { viewport, wardrobe } = get();
+
       if (viewport.width > viewport.height) {
-        const value = viewport.height / 2 / height;
+        const value = viewport.height / 2 / wardrobe.height;
+
         return Math.round(value * 100) / 100;
       } else {
-        const value = viewport.width / 1.3 / width;
+        const value = viewport.width / 1.3 / wardrobe.width;
+
         return Math.round(value * 100) / 100;
       }
     },
+
     updateViewportPX: () => {
       const pxValue = get().calcViewportPX();
-      set({
+
+      set((state) => ({
         viewport: {
-          ...get().viewport,
+          ...state.viewport,
           px: pxValue,
         },
-      });
+      }));
     },
 
+    // Set viewport
+    setViewport: (viewport) => {
+      set({ viewport: viewport });
+      get().updateViewportPX();
+    },
+
+    /* WARDROBE */
+    // Set wardrobe width
     setWidth: (widthValue) => {
       const newModuleWidth = get().calcSectionsWidth();
-      set({
-        width: widthValue,
+
+      set((state) => ({
+        wardrobe: { ...state.wardrobe, width: widthValue },
         sections: {
-          ...get().sections,
+          ...state.sections,
           width: newModuleWidth,
         },
-      }),
-        get().updateViewportPX();
+      }));
+      get().updateViewportPX();
     },
-    setHeight: (height) => {
-      set({ height }), get().updateViewportPX();
+
+    /* SECTIONS */
+    // Helpers function for sections
+    calcSectionsWidth: (sectionsNum = get().sections.count) => {
+      const { wardrobe } = get();
+      const standsThickness = (sectionsNum + 1) * wardrobe.thickness;
+
+      return (wardrobe.width - standsThickness) / sectionsNum;
     },
+
+    // Set sections count
     setSectionsCount: (sectionsCount) => {
       const newModuleWidth = get().calcSectionsWidth(sectionsCount);
-      set({
+
+      set((state) => ({
         sections: {
-          ...get().sections,
+          ...state.sections,
           width: newModuleWidth,
           count: sectionsCount,
         },
-      });
-    },
-    setViewport: (viewport) => {
-      set({ viewport: viewport }), get().updateViewportPX();
+      }));
     },
 
-    setSections: (id, sectionType) =>
+    // Set sections type
+    setSectionsType: (id, sectionType) =>
       set((state) => ({
         sections: {
           ...state.sections,

@@ -2,13 +2,13 @@ import React from "react";
 import useWardrobeStore from "@/stores/wardrobeStore";
 
 const InputSelect = ({ id }) => {
-  const { setSections } = useWardrobeStore((state) => ({
-    setSections: state.setSections,
+  const { setSectionsType } = useWardrobeStore((state) => ({
+    setSectionsType: state.setSectionsType,
   }));
 
   const handleSelectChange = (e) => {
     const selectedValue = parseInt(e.target.value);
-    setSections(id, selectedValue);
+    setSectionsType(id, selectedValue);
   };
 
   return (

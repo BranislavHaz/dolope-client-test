@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./hanger.styled";
+import * as $ from "./Hanger.styled";
 
 const Hanger = () => {
   const { sections, hangers, viewport } = useWardrobeStore((state) => ({

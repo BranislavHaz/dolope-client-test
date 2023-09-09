@@ -1,16 +1,18 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./shelf.styled";
+import * as $ from "./Shelf.styled";
 
 const Shelf = () => {
-  const { thickness, sections, viewport } = useWardrobeStore((state) => ({
-    thickness: state.thickness,
+  const { wardrobe, sections, viewport } = useWardrobeStore((state) => ({
+    wardrobe: state.wardrobe,
     sections: state.sections,
     viewport: state.viewport,
   }));
 
   const { px } = viewport;
 
-  return <$.Shelf $width={px * sections.width} $height={px * thickness} />;
+  return (
+    <$.Shelf $width={px * sections.width} $height={px * wardrobe.thickness} />
+  );
 };
 
 export default Shelf;
