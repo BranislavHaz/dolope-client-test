@@ -10,6 +10,9 @@ import Module1 from "@/components/modules/module1";
 import Module2 from "@/components/modules/module2";
 import Module3 from "@/components/modules/module3";
 import Module4 from "@/components/modules/Module4";
+import Module5 from "@/components/modules/Module5";
+import Module6 from "@/components/modules/Module6";
+import Module7 from "@/components/modules/Module7";
 import InputSelect from "@/components/modules/inputSelect";
 import InputSectionNumber from "@/components/modules/InputSectionsNumber";
 
@@ -18,16 +21,19 @@ const MODULE_MAP = {
   2: Module2,
   3: Module3,
   4: Module4,
+  5: Module5,
+  6: Module6,
+  7: Module7,
 };
 
 const index = () => {
-  const { sectionsNumber, sections, width, height, setViewportSize, mm } =
+  const { sectionsNumber, sections, width, height, setViewportSize, px } =
     useWardrobeStore((state) => ({
       sectionsNumber: state.sectionsNumber,
       width: state.width,
       height: state.height,
       setViewportSize: state.setViewportSize,
-      mm: state.mm,
+      px: state.px,
       sections: state.sections,
     }));
 
@@ -56,9 +62,9 @@ const index = () => {
     const Modul = MODULE_MAP[moduleId];
 
     if (moduleId === 0) {
-      return <ModuleEmpty />;
+      return <ModuleEmpty key={sectionId} />;
     }
-    return <Modul />;
+    return <Modul key={sectionId} />;
   };
 
   const getSections = () => {
@@ -80,8 +86,8 @@ const index = () => {
       <>
         <$.Main>
           <$.Wardrobe
-            $width={mm * width}
-            $height={mm * height}
+            $width={px * width}
+            $height={px * height}
             key={Math.random()}
           >
             <Stand />

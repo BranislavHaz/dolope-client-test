@@ -11,23 +11,26 @@ const useWardrobeStore = create(
     moduleWidth: 931,
     moduleHeight: 2300,
     viewportSize: { width: 0, height: 0 },
-    mm: 0,
-    hangerHeight: 30,
-    hangerSpace: 60,
+    px: 0.1,
     sections: {
       1: 0,
       2: 0,
       3: 0,
       4: 0,
     },
-    drawers: {
+    hanger: { height: 30, topSpace: 60 },
+    drawer: {
       thickness: 18,
       grooveWidth: 50,
       frontHeight: 170,
       gripGap: 30,
       frontGap: 4,
-
-      drawerSingleHeight: 236,
+      heightDrawerCount: {
+        1: 236,
+        2: 436,
+        3: 636,
+        4: 836,
+      },
     },
 
     calculateModuleWidth: (sectionsNumberValue = get().sectionsNumber) => {
@@ -36,7 +39,7 @@ const useWardrobeStore = create(
       return (width - standsThickness) / sectionsNumberValue;
     },
 
-    calculateMM: () => {
+    calculatePX: () => {
       const { viewportSize, width, height } = get();
       if (viewportSize.width > viewportSize.height) {
         const value = viewportSize.height / 2 / height;
@@ -46,17 +49,17 @@ const useWardrobeStore = create(
         return Math.round(value * 100) / 100;
       }
     },
-    updateMM: () => {
-      const mmValue = get().calculateMM();
-      set({ mm: mmValue });
+    updatePX: () => {
+      const pxValue = get().calculatePX();
+      set({ px: pxValue });
     },
 
     setWidth: (widthValue) => {
       const newModuleWidth = get().calculateModuleWidth();
-      set({ width: widthValue, moduleWidth: newModuleWidth }), get().updateMM();
+      set({ width: widthValue, moduleWidth: newModuleWidth }), get().updatePX();
     },
     setHeight: (height) => {
-      set({ height }), get().updateMM();
+      set({ height }), get().updatePX();
     },
     setDepth: (depth) => set({ depth }),
     setSectionsNumber: (sectionsNumberValue) => {
@@ -65,7 +68,7 @@ const useWardrobeStore = create(
     },
     setModuleWidth: (moduleWidth) => set({ moduleWidth }),
     setViewportSize: (viewport) => {
-      set({ viewportSize: viewport }), get().updateMM();
+      set({ viewportSize: viewport }), get().updatePX();
     },
 
     setSections: (id, sectionValue) =>

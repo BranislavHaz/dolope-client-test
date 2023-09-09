@@ -2,16 +2,16 @@ import useWardrobeStore from "@/stores/wardrobeStore";
 import * as $ from "./hanger.styled";
 
 const Hanger = () => {
-  const { moduleWidth, hangerHeight, mm } = useWardrobeStore((state) => ({
+  const { moduleWidth, hanger, px } = useWardrobeStore((state) => ({
     moduleWidth: state.moduleWidth,
-    hangerHeight: state.hangerHeight,
-    mm: state.mm,
+    hanger: state.hanger,
+    px: state.px,
   }));
 
   return (
     <$.Hanger
-      $width={mm * moduleWidth}
-      $height={Math.ceil(mm * hangerHeight * 10) / 10}
+      $width={px * moduleWidth}
+      $height={Math.ceil(px * hanger.height * 10) / 10}
     />
   );
 };

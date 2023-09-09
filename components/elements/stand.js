@@ -2,13 +2,13 @@ import useWardrobeStore from "@/stores/wardrobeStore";
 import * as $ from "./stand.styled";
 
 const Stand = () => {
-  const { thickness, moduleHeight, mm } = useWardrobeStore((state) => ({
+  const { thickness, moduleHeight, px } = useWardrobeStore((state) => ({
     thickness: state.thickness,
     moduleHeight: state.moduleHeight,
-    mm: state.mm,
+    px: state.px,
   }));
 
-  return <$.Stand $width={mm * thickness} $height={mm * moduleHeight} />;
+  return <$.Stand $width={px * thickness} $height={px * moduleHeight} />;
 };
 
 export default Stand;

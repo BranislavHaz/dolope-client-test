@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./module2.styled";
+import * as $ from "./Module.styled";
 
 import Shelf from "../elements/shelf";
 import Space from "../elements/space";
@@ -13,7 +13,7 @@ const Module2 = () => {
   const spaceSize = (moduleHeight - 6 * thickness) / 6;
 
   return (
-    <$.Module2>
+    <$.Module>
       <Shelf />
       <Space height={spaceSize} />
       <Shelf />
@@ -26,7 +26,7 @@ const Module2 = () => {
       <Space height={spaceSize} />
       <Shelf />
       <Space height={spaceSize} />
-    </$.Module2>
+    </$.Module>
   );
 };
 
