@@ -1,17 +1,20 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
 import * as $ from "./Stand.styled";
 
-const Stand = () => {
-  const { wardrobe, sections, viewport } = useWardrobeStore((state) => ({
+const Stand = ({ location }) => {
+  const { wardrobe, viewport } = useWardrobeStore((state) => ({
     wardrobe: state.wardrobe,
-    sections: state.sections,
     viewport: state.viewport,
   }));
 
-  const { px } = viewport;
+  //const { px } = viewport;
 
   return (
-    <$.Stand $width={px * wardrobe.thickness} $height={px * sections.height} />
+    <$.Stand
+      $width={viewport.px * viewport.thickness}
+      $height={viewport.px * wardrobe.corpus.height}
+      $location={location}
+    />
   );
 };
 

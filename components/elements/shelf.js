@@ -11,7 +11,7 @@ const Shelf = () => {
   const { px } = viewport;
 
   return (
-    <$.Shelf $width={px * sections.width} $height={px * wardrobe.thickness} />
+    <$.Shelf $width={px * sections.width} $height={px * viewport.thickness} />
   );
 };
 

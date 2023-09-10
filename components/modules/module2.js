@@ -5,12 +5,12 @@ import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 
 const Module2 = () => {
-  const { wardrobe, sections } = useWardrobeStore((state) => ({
+  const { wardrobe, viewport } = useWardrobeStore((state) => ({
     wardrobe: state.wardrobe,
-    sections: state.sections,
+    viewport: state.viewport,
   }));
 
-  const spaceSize = (sections.height - 6 * wardrobe.thickness) / 6;
+  const spaceSize = (wardrobe.corpus.height - 6 * viewport.thickness) / 6;
 
   return (
     <$.Module>

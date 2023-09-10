@@ -1,7 +1,6 @@
-import React from "react";
 import useWardrobeStore from "@/stores/wardrobeStore";
 
-const InputSelect = ({ id }) => {
+const InputSectionModule = ({ id }) => {
   const { setSectionsType } = useWardrobeStore((state) => ({
     setSectionsType: state.setSectionsType,
   }));
@@ -34,4 +33,4 @@ const InputSelect = ({ id }) => {
   );
 };
 
-export default InputSelect;
+export default InputSectionModule;

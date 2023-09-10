@@ -44,7 +44,7 @@ const Drawers = ({ numOfDrawers }) => {
 
     return (
       <DrawerContainer
-        $thicknessDTD={px * drawers.thickness}
+        $thicknessDTD={px * viewport.thickness}
         $frontWidth={px * frontWidth}
         $frontHeight={px * drawers.frontHeight}
         $grooveWidth={px * drawers.grooveWidth}

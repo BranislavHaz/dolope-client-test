@@ -4,44 +4,25 @@ import Head from "next/head";
 import * as $ from "./index.styled";
 import useWardrobeStore from "@/stores/wardrobeStore";
 
-import Stand from "@/components/elements/Stand";
-import ModuleEmpty from "@/components/modules/ModuleEmpty";
-import Module1 from "@/components/modules/Module1";
-import Module2 from "@/components/modules/Module2";
-import Module3 from "@/components/modules/Module3";
-import Module4 from "@/components/modules/Module4";
-import Module5 from "@/components/modules/Module5";
-import Module6 from "@/components/modules/Module6";
-import Module7 from "@/components/modules/Module7";
-import InputSelect from "@/components/modules/InputSelect";
-import InputSectionNumber from "@/components/modules/InputSectionsNumber";
+import Wardrobe from "@/components/elements/Wardrobe";
+import InputSectionModule from "@/components/inputs/InputSectionModule";
+import InputSectionsCount from "@/components/inputs/InputSectionsCount";
+import InputWardrobeType from "@/components/inputs/InputWardrobeType";
+import InputWardrobeSize from "@/components/inputs/InputWardrobeSize";
 
-const modulesMap = {
-  1: Module1,
-  2: Module2,
-  3: Module3,
-  4: Module4,
-  5: Module5,
-  6: Module6,
-  7: Module7,
-};
-
-const index = () => {
-  const { sections, wardrobe, setViewport, viewport } = useWardrobeStore(
-    (state) => ({
-      wardrobe: state.wardrobe,
-      setViewport: state.setViewport,
-      viewport: state.viewport,
-      sections: state.sections,
-    })
-  );
-  const { px } = viewport;
+const Index = () => {
+  const { setViewport } = useWardrobeStore((state) => ({
+    setViewport: state.setViewport,
+  }));
 
   useEffect(() => {
-    setViewport({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
+    setViewport(
+      {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
+      [setViewport]
+    );
 
     const handleResize = () => {
       setViewport({
@@ -57,24 +38,6 @@ const index = () => {
     };
   }, []);
 
-  const getModule = (sectionId) => {
-    const moduleId = sections.typeOfSections[sectionId];
-    const Modul = modulesMap[moduleId];
-
-    if (moduleId === 0) {
-      return <ModuleEmpty key={Math.random()} />;
-    }
-    return <Modul key={Math.random()} />;
-  };
-
-  const getSections = () => {
-    const sectionsArray = [];
-    for (let i = 1; i <= sections.count; i++) {
-      sectionsArray.push(getModule(i), <Stand key={i} />);
-    }
-    return sectionsArray;
-  };
-
   return (
     <>
       <Head>
@@ -85,23 +48,19 @@ const index = () => {
       </Head>
       <>
         <$.Main>
-          <$.Wardrobe
-            $width={px * wardrobe.width}
-            $height={px * wardrobe.height}
-          >
-            <Stand />
-            {getSections()}
-          </$.Wardrobe>
+          <Wardrobe />
         </$.Main>
       </>
+      <InputWardrobeType />
+      <InputWardrobeSize />
       <$.Inputs>
-        <InputSelect id={1} />
-        <InputSelect id={2} />
-        <InputSelect id={3} />
+        <InputSectionModule id={1} />
+        <InputSectionModule id={2} />
+        <InputSectionModule id={3} />
       </$.Inputs>
-      <InputSectionNumber />
+      <InputSectionsCount />
     </>
   );
 };
 
-export default index;
+export default Index;
