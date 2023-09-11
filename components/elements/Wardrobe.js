@@ -37,11 +37,11 @@ const Wardrobe = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [setViewport]);
+  }, []);
 
   const { px } = viewport;
   const countOfStands = sections.count + 1;
-  const countOfSideWalls = wardrobe.sideWallsCover.count;
+  const countOfSideWalls = wardrobe?.sideWallsCover?.count || 0;
 
   const wardrobeWidth =
     sections.count * sections.width +

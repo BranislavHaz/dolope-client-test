@@ -1,8 +1,16 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
+import { immer } from "zustand/middleware/immer";
+
+import { calcViewportPX, calcCorpusWidth } from "@/utils/helpersStore";
+
+const createStore = (createStoreFn) => {
+  const devtoolsEnhancer = devtools(createStoreFn);
+  return immer(devtoolsEnhancer);
+};
 
 const useWardrobeStore = create(
-  devtools((set, get) => ({
+  createStore((set, get) => ({
     viewport: { width: 0, height: 0, px: 0.1, thickness: 34 },
     wardrobe: {
       width: 2865,
@@ -18,7 +26,7 @@ const useWardrobeStore = create(
       sideWallsCover: {
         left: false,
         right: false,
-        coutn: 0,
+        count: 0,
       },
       sideWallsStop: { left: true, right: true, count: 1 },
     },
@@ -53,41 +61,21 @@ const useWardrobeStore = create(
     },
 
     /* VIEWPORT */
-    // Helpers function for set viewport size
-    calcViewportPX: () => {
-      const { viewport, wardrobe } = get();
-
-      if (viewport.width > viewport.height) {
-        const value = viewport.height / 2 / wardrobe.height;
-
-        return Math.round(value * 100) / 100;
-      } else {
-        const value = viewport.width / 1.3 / wardrobe.width;
-
-        return Math.round(value * 100) / 100;
-      }
-    },
+    // Helper function for set viewport size
 
     updateViewportPX: () => {
-      const pxValue = get().calcViewportPX();
-
-      set((state) => ({
-        viewport: {
-          ...state.viewport,
-          px: pxValue,
-        },
-      }));
+      set((state) => {
+        state.viewport.px = calcViewportPX(state.viewport, state.wardrobe);
+      });
     },
 
     // Set viewport
     setViewport: (updatedViewport) => {
-      set((state) => ({
-        viewport: {
-          ...state.viewport,
-          ...updatedViewport,
-        },
-      }));
-      get().updateViewportPX();
+      set((state) => {
+        state.viewport.width = updatedViewport.width;
+        state.viewport.height = updatedViewport.height;
+        state.viewport.px = calcViewportPX(updatedViewport, state.wardrobe);
+      });
     },
 
     /* SECTIONS */
@@ -103,103 +91,62 @@ const useWardrobeStore = create(
     setSectionsCount: (sectionsCount) => {
       const newModuleWidth = get().calcSectionsWidth(sectionsCount);
 
-      set((state) => ({
-        sections: {
-          ...state.sections,
-          width: newModuleWidth,
-          count: sectionsCount,
-        },
-      }));
+      set((state) => {
+        state.sections.width = newModuleWidth;
+        state.sections.count = sectionsCount;
+      });
     },
 
     // Set sections type
     setSectionsType: (id, sectionType) =>
-      set((state) => ({
-        sections: {
-          ...state.sections,
-          typeOfSections: {
-            ...state.sections.typeOfSections,
-            [id]: sectionType,
-          },
-        },
-      })),
+      set((state) => {
+        state.sections.typeOfSections[id] = sectionType;
+      }),
 
     /* WARDROBE */
     // Set wardrobe width
     setWardrobeWidth: (widthValue) => {
-      const newWidth = +widthValue;
-
-      const getCorpusWidth = () => {
-        const wardrobe = get().wardrobe;
-
-        if (wardrobe.type === 2 || wardrobe.type === 3) {
-          return newWidth - wardrobe.thickness;
-        } else if (wardrobe.type === 4) {
-          return newWidth - 2 * wardrobe.thickness;
-        } else {
-          return newWidth;
-        }
-      };
-
-      set((state) => ({
-        wardrobe: {
-          ...state.wardrobe,
-          width: newWidth,
-          corpus: { ...state.wardrobe.corpus, width: getCorpusWidth() },
-        },
-      }));
-
-      const newSectionsWidth = get().calcSectionsWidth();
-
-      set((state) => ({
-        sections: {
-          ...state.sections,
-          width: newSectionsWidth,
-        },
-      }));
-
+      set((state) => {
+        state.wardrobe.width = widthValue;
+        state.wardrobe.corpus.width = calcCorpusWidth(
+          widthValue,
+          state.wardrobe
+        );
+      });
+      set((state) => {
+        state.sections.width = state.calcSectionsWidth();
+      });
       get().updateViewportPX();
     },
 
     // Set wardrobe height
     setWardrobeHeight: (heightValue) => {
-      set((state) => ({
-        wardrobe: {
-          ...state.wardrobe,
-          height: heightValue,
-        },
-      }));
+      set((state) => {
+        state.wardrobe.height = heightValue;
+      });
+      get().updateViewportPX();
     },
 
     // Set wardrobe depth
     setWardrobeDepth: (depthValue) => {
-      set((state) => ({
-        wardrobe: {
-          ...state.wardrobe,
-          depth: depthValue,
-        },
-      }));
+      set((state) => {
+        state.wardrobe.depth = depthValue;
+      });
     },
 
     // Set wardrobe type
     setWardrobeType: (valueOfType) => {
-      set((state) => ({
-        wardrobe: {
-          ...state.wardrobe,
-          type: valueOfType,
-        },
-      }));
+      set((state) => {
+        state.wardrobe.type = valueOfType;
+      });
     },
 
     // Set wardrobe side walls
     setWardrobeSideWalls: ({ sideWallsCover, sideWallsStop }) => {
-      set((state) => ({
-        wardrobe: {
-          ...state.wardrobe,
-          sideWallsCover,
-          sideWallsStop,
-        },
-      }));
+      set((state) => {
+        state.wardrobe.sideWallsCover = sideWallsCover;
+        state.wardrobe.sideWallsStop = sideWallsStop;
+      });
     },
   }))
 );
