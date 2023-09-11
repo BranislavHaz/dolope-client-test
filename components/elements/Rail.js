@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./Rail.styled";
+import * as $ from "@/styles/components/elements/Rail.styled";
 
 const Rail = ({ type }) => {
   const { viewport, wardrobe, rails } = useWardrobeStore((state) => ({

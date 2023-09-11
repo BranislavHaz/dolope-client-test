@@ -1,5 +1,5 @@
 import Head from "next/head";
-import * as $ from "./index.styled";
+import * as $ from "@/styles/index.styled";
 
 const Home = () => {
   return (

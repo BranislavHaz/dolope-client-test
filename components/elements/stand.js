@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./Stand.styled";
+import * as $ from "@/styles/components/elements/Stand.styled";
 
 const Stand = ({ location }) => {
   const { wardrobe, viewport } = useWardrobeStore((state) => ({

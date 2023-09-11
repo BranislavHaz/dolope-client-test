@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./ModuleEmpty.styled";
+import * as $ from "@/styles/components/modules/ModuleEmpty.styled";
 
 import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";

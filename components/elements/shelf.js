@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./Shelf.styled";
+import * as $ from "@/styles/components/elements/Shelf.styled";
 
 const Shelf = () => {
   const { wardrobe, sections, viewport } = useWardrobeStore((state) => ({

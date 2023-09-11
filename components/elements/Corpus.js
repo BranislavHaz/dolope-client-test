@@ -1,6 +1,6 @@
 import React from "react";
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./Corpus.styled";
+import * as $ from "@/styles/components/elements/Corpus.styled";
 
 import Stand from "@/components/elements/Stand";
 import ModuleEmpty from "@/components/modules/ModuleEmpty";

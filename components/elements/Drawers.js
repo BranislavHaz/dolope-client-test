@@ -1,6 +1,6 @@
 import React from "react";
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./Drawers.styled";
+import * as $ from "@/styles/components/elements/Drawers.styled";
 
 const Drawers = ({ numOfDrawers }) => {
   const { sections, viewport, drawers } = useWardrobeStore((state) => ({

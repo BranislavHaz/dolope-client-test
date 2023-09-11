@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./Side.styled";
+import * as $ from "@/styles/components/elements/Side.styled";
 
 const Side = ({ location }) => {
   const { wardrobe, viewport } = useWardrobeStore((state) => ({

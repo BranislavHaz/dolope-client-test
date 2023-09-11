@@ -1,5 +1,5 @@
 import useWardrobeStore from "@/stores/wardrobeStore";
-import * as $ from "./Space.styled";
+import * as $ from "@/styles/components/elements/Space.styled";
 
 const Space = ({ height, isVisible = true }) => {
   const { sections, viewport } = useWardrobeStore((state) => ({

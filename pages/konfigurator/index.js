@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import Head from "next/head";
 
-import * as $ from "./index.styled";
-import useWardrobeStore from "@/stores/wardrobeStore";
+import * as $ from "@/styles/pages/konfigurator/index.styled";
 
 import Wardrobe from "@/components/elements/Wardrobe";
 import InputSectionModule from "@/components/inputs/InputSectionModule";
@@ -11,33 +9,6 @@ import InputWardrobeType from "@/components/inputs/InputWardrobeType";
 import InputWardrobeSize from "@/components/inputs/InputWardrobeSize";
 
 const Index = () => {
-  const { setViewport } = useWardrobeStore((state) => ({
-    setViewport: state.setViewport,
-  }));
-
-  useEffect(() => {
-    setViewport(
-      {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      },
-      [setViewport]
-    );
-
-    const handleResize = () => {
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <>
       <Head>

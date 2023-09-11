@@ -161,6 +161,26 @@ const useWardrobeStore = create(
       get().updateViewportPX();
     },
 
+    // Set wardrobe height
+    setWardrobeHeight: (heightValue) => {
+      set((state) => ({
+        wardrobe: {
+          ...state.wardrobe,
+          height: heightValue,
+        },
+      }));
+    },
+
+    // Set wardrobe depth
+    setWardrobeDepth: (depthValue) => {
+      set((state) => ({
+        wardrobe: {
+          ...state.wardrobe,
+          depth: depthValue,
+        },
+      }));
+    },
+
     // Set wardrobe type
     setWardrobeType: (valueOfType) => {
       set((state) => ({

@@ -1,4 +1,4 @@
-import { GlobalStyles } from "./_app.styles";
+import { GlobalStyles } from "@/styles/_app.styles";
 
 const App = ({ Component, pageProps }) => {
   return (
