@@ -2,7 +2,10 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-import { calcViewportPX, calcCorpusWidth } from "@/utils/helpersStore";
+import {
+  calcViewportPX,
+  calcCorpusAndSectionsWidth,
+} from "@/utils/helpersStore";
 
 const createStore = (createStoreFn) => {
   const devtoolsEnhancer = devtools(createStoreFn);
@@ -79,21 +82,19 @@ const useWardrobeStore = create(
     },
 
     /* SECTIONS */
-    // Helpers function for sections
-    calcSectionsWidth: (sectionsNum = get().sections.count) => {
-      const { wardrobe } = get();
-      const standsThickness = (sectionsNum + 1) * wardrobe.thickness;
-
-      return (wardrobe.corpus.width - standsThickness) / sectionsNum;
-    },
-
     // Set sections count
     setSectionsCount: (sectionsCount) => {
-      const newModuleWidth = get().calcSectionsWidth(sectionsCount);
-
       set((state) => {
-        state.sections.width = newModuleWidth;
         state.sections.count = sectionsCount;
+      });
+      set((state) => {
+        const { corpusWidth, sectionsWidth } = calcCorpusAndSectionsWidth(
+          state.sections,
+          state.wardrobe
+        );
+
+        state.wardrobe.corpus.width = corpusWidth;
+        state.sections.width = sectionsWidth;
       });
     },
 
@@ -108,13 +109,16 @@ const useWardrobeStore = create(
     setWardrobeWidth: (widthValue) => {
       set((state) => {
         state.wardrobe.width = widthValue;
-        state.wardrobe.corpus.width = calcCorpusWidth(
-          widthValue,
+      });
+
+      set((state) => {
+        const { corpusWidth, sectionsWidth } = calcCorpusAndSectionsWidth(
+          state.sections,
           state.wardrobe
         );
-      });
-      set((state) => {
-        state.sections.width = state.calcSectionsWidth();
+
+        state.wardrobe.corpus.width = corpusWidth;
+        state.sections.width = sectionsWidth;
       });
       get().updateViewportPX();
     },
@@ -138,6 +142,16 @@ const useWardrobeStore = create(
     setWardrobeType: (valueOfType) => {
       set((state) => {
         state.wardrobe.type = valueOfType;
+      });
+
+      set((state) => {
+        const { corpusWidth, sectionsWidth } = calcCorpusAndSectionsWidth(
+          state.sections,
+          state.wardrobe
+        );
+
+        state.wardrobe.corpus.width = corpusWidth;
+        state.sections.width = sectionsWidth;
       });
     },
 

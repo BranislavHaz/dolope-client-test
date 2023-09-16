@@ -8,12 +8,35 @@ export const calcViewportPX = (viewport, wardrobe) => {
   }
 };
 
-export const calcCorpusWidth = (newWidth, wardrobe) => {
-  if (wardrobe.type === 2 || wardrobe.type === 3) {
-    return newWidth - wardrobe.thickness;
-  } else if (wardrobe.type === 4) {
-    return newWidth - 2 * wardrobe.thickness;
+export const calcCorpusAndSectionsWidth = (sections, wardrobe) => {
+  const minCorpusWidthReserve = 8;
+
+  const getCorpusAndSectionsWidth = (numOfStands, isBetweenWalls = false) => {
+    const standsThickness = numOfStands * wardrobe.thickness;
+    let roughSectionWidth;
+
+    if (isBetweenWalls) {
+      const maxAvailableSpaceForSections =
+        wardrobe.width - standsThickness - minCorpusWidthReserve;
+      roughSectionWidth = Math.floor(
+        maxAvailableSpaceForSections / sections.count
+      );
+    } else {
+      const availableSpace = wardrobe.width - standsThickness;
+      roughSectionWidth = Math.floor(availableSpace / sections.count);
+    }
+
+    return {
+      corpusWidth: roughSectionWidth * sections.count + standsThickness,
+      sectionsWidth: roughSectionWidth,
+    };
+  };
+
+  if (wardrobe.type === 1) {
+    return getCorpusAndSectionsWidth(sections.count + 1, true);
+  } else if (wardrobe.type === 2 || wardrobe.type === 3) {
+    return getCorpusAndSectionsWidth(sections.count + 2);
   } else {
-    return newWidth;
+    return getCorpusAndSectionsWidth(sections.count + 3);
   }
 };
