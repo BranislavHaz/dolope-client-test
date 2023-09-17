@@ -2,10 +2,9 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-import {
-  calcViewportPX,
-  calcCorpusAndSectionsWidth,
-} from "@/utils/helpersStore";
+import { calcViewportPX } from "@/utils/calcViewportPX";
+import { calcCorpusAndSectionsWidth } from "@/utils/calcCorpusAndSectionsWidth";
+import { calcAreaParts } from "@/utils/calcAreaParts";
 
 const createStore = (createStoreFn) => {
   const devtoolsEnhancer = devtools(createStoreFn);
@@ -24,14 +23,14 @@ const useWardrobeStore = create(
       corpus: {
         width: 2865,
         height: 2300,
-        depth: 600,
+        depth: 500,
       },
       sideWallsCover: {
         left: false,
         right: false,
         count: 0,
       },
-      sideWallsStop: { left: true, right: true, count: 1 },
+      sideWallsStop: { width: 100, left: true, right: true, count: 1 },
     },
     rails: {
       heightTop: 40,
@@ -51,16 +50,26 @@ const useWardrobeStore = create(
     hangers: { height: 30, topSpace: 60 },
     drawers: {
       thickness: 18,
+      thicknessBottom: 10,
+      sinkingBottom: 10,
       grooveWidth: 50,
       frontHeight: 170,
+      sideHeight: 140,
       gripGap: 30,
       frontGap: 4,
+      dimensionsFromManual: {
+        sideBoxToInsideDrawer: 24.5,
+        bottomSideDrawerToBottomDrawer: 12,
+        backBoxToBackDrawer: 10,
+      },
       heightOfDrawers: {
         1: 268,
         2: 468,
         3: 668,
         4: 868,
       },
+      slideReserve: 10,
+      slideSizes: [250, 300, 350, 400, 450, 500, 550],
     },
 
     /* VIEWPORT */
@@ -120,6 +129,10 @@ const useWardrobeStore = create(
         state.wardrobe.corpus.width = corpusWidth;
         state.sections.width = sectionsWidth;
       });
+
+      set((state) => {
+        calcAreaParts(state);
+      });
       get().updateViewportPX();
     },
 
@@ -159,7 +172,10 @@ const useWardrobeStore = create(
     setWardrobeSideWalls: ({ sideWallsCover, sideWallsStop }) => {
       set((state) => {
         state.wardrobe.sideWallsCover = sideWallsCover;
-        state.wardrobe.sideWallsStop = sideWallsStop;
+        state.wardrobe.sideWallsStop = {
+          ...sideWallsStop,
+          width: state.wardrobe.sideWallsStop.width,
+        };
       });
     },
   }))
