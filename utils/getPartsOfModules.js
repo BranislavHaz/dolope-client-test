@@ -1,7 +1,4 @@
 import { partsOfModules } from "@/constants/partsOfModules";
-import { calcAreaParts } from "./calcAreaParts";
-import { calcAreaDrawers } from "./calcAreaDrawers";
-import { calcAreaDrawersBox } from "./calcAreaDrawersBox";
 
 const getTypeOfModules = (sections) => {
   const arrOfSectionsType = [];
@@ -13,18 +10,18 @@ const getTypeOfModules = (sections) => {
   return arrOfSectionsType;
 };
 
-const getPartsOfModules = (arrOfSectionsType) => {
+const getPartsFromModules = (arrOfSectionsType) => {
   const parts = {
-    shelfs: 0,
-    shelfsExcenter: 0,
+    countOfShelfs: 0,
+    countOfShelfsExcenter: 0,
     countOfDrawers: 0,
     arrOfDrawers: [],
   };
 
   arrOfSectionsType.forEach((type) => {
     if (partsOfModules[type]) {
-      parts.shelfs += partsOfModules[type].shelfs;
-      parts.shelfsExcenter += partsOfModules[type].shelfsExcenter;
+      parts.countOfShelfs += partsOfModules[type].shelfs;
+      parts.countOfShelfsExcenter += partsOfModules[type].shelfsExcenter;
       parts.countOfDrawers += partsOfModules[type].drawers;
       parts.arrOfDrawers.push(partsOfModules[type].drawers);
     }
@@ -33,4 +30,7 @@ const getPartsOfModules = (arrOfSectionsType) => {
   return parts;
 };
 
-export const calcAllParts = (state) => {};
+export const getPartsOfModules = (state) => {
+  const typeOfModules = getTypeOfModules(state.sections);
+  return getPartsFromModules(typeOfModules);
+};

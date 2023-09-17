@@ -15,8 +15,9 @@ const calcLengthSlideDrawer = (state) => {
   return null;
 };
 
-export const calcAreaDrawers = (state, countOfDrawers) => {
+export const calcAreaDrawers = (state, partsOfModules) => {
   const { sections, drawers } = state;
+  const { countOfDrawers } = partsOfModules;
   const lengthSlideDrawer = calcLengthSlideDrawer(state);
 
   // Čelo zásuvky * 1
@@ -52,22 +53,34 @@ export const calcAreaDrawers = (state, countOfDrawers) => {
     drawers.thickness -
     drawers.dimensionsFromManual.backBoxToBackDrawer;
 
-  const fullAreaDrawers =
+  const drawersM2 =
     ((frontWidth * frontHeight +
       2 * (frontAndBackWidth * frontAndBackHeight) +
       2 * (sideWidth * sideHeight)) *
       countOfDrawers) /
     1000000;
 
-  const fullAreaDrawersBottom =
+  const drawersBottomM2 =
     (bottomWidth * bottomHeight * countOfDrawers) / 1000000;
 
   return {
-    front: `${frontWidth}x${frontHeight}`,
-    frontAndBack: `${frontAndBackWidth}x${frontAndBackHeight}`,
-    side: `${sideWidth}x${sideHeight}`,
-    bottom: `${bottomWidth}x${bottomHeight}`,
-    drawersM2: fullAreaDrawers,
-    drawersBottomM2: fullAreaDrawersBottom,
+    area: {
+      drawers: drawersM2,
+      drawersBottom: drawersBottomM2,
+    },
+    parts: {
+      front: { width: frontWidth, height: frontHeight, count: countOfDrawers },
+      frontAndBack: {
+        width: frontAndBackWidth,
+        height: frontAndBackHeight,
+        count: countOfDrawers * 2,
+      },
+      side: { width: sideWidth, height: sideHeight, count: countOfDrawers * 2 },
+      bottom: {
+        width: bottomWidth,
+        height: bottomHeight,
+        count: countOfDrawers,
+      },
+    },
   };
 };

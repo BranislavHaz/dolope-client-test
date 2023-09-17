@@ -25,5 +25,27 @@ export const calcAreaStandsAndSideWalls = (state) => {
     ? (wardrobe.height * wardrobe.depth * numOfSideWallsCover) / 1000000
     : 0;
 
-  return { standsM2, sideWallsStopM2, sideWallsCoverM2 };
+  return {
+    area: {
+      stands: standsM2,
+      sideWalls: sideWallsStopM2 + sideWallsCoverM2,
+    },
+    parts: {
+      stands: {
+        width: wardrobe.corpus.height,
+        height: wardrobe.corpus.depth,
+        count: numOfStands,
+      },
+      sideWallStop: {
+        width: wardrobe.height,
+        height: wardrobe.sideWallsStop.width,
+        count: numOfSideWallsStop,
+      },
+      sideWallsCover: {
+        width: wardrobe.height,
+        height: wardrobe.depth,
+        count: numOfSideWallsCover,
+      },
+    },
+  };
 };

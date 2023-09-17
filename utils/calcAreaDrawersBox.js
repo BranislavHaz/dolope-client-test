@@ -1,6 +1,8 @@
-export const calcAreaDrawersBox = (state, arrOfDrawers) => {
+export const calcAreaDrawersBox = (state, partsOfModules) => {
   const { wardrobe, sections, drawers } = state;
+  const { arrOfDrawers } = partsOfModules;
   let m2 = 0;
+  let parts = [];
 
   for (let i = 0; i <= arrOfDrawers.length - 1; i++) {
     const countOfDrawers = arrOfDrawers[i];
@@ -31,10 +33,31 @@ export const calcAreaDrawersBox = (state, arrOfDrawers) => {
         1000000;
 
       m2 += fullArea;
+
+      parts.push({
+        groove: {
+          width: grooveWidth,
+          height: grooveHeight,
+          count: 2,
+        },
+        sideBox: {
+          width: sideBoxWidth,
+          height: sideBoxHeight,
+          count: 2,
+        },
+        topAndBottomBox: {
+          width: topAndBottomBoxWidth,
+          height: topAndBottomBoxHeight,
+          count: 2,
+        },
+      });
     }
   }
 
   return {
-    m2,
+    area: {
+      drawersBox: m2,
+    },
+    parts: { drawersBox: parts },
   };
 };
