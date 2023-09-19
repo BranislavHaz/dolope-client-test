@@ -8,18 +8,17 @@ const calcNumOfSideWallsParts = (wardrobe) => {
 };
 
 export const calcAreaStandsAndSideWalls = (state) => {
-  const { wardrobe, sections } = state;
+  const { wardrobe, sideWalls, corpus, sections } = state;
 
   const numOfStands = sections.count + 1;
   const { numOfSideWallsStop, numOfSideWallsCover } =
     calcNumOfSideWallsParts(wardrobe);
 
   const standsM2 = numOfStands
-    ? (wardrobe.corpus.height * wardrobe.corpus.depth * numOfStands) / 1000000
+    ? (corpus.height * corpus.depth * numOfStands) / 1000000
     : 0;
   const sideWallsStopM2 = numOfSideWallsStop
-    ? (wardrobe.height * wardrobe.sideWallsStop.width * numOfSideWallsStop) /
-      1000000
+    ? (wardrobe.height * sideWalls.stop.width * numOfSideWallsStop) / 1000000
     : 0;
   const sideWallsCoverM2 = numOfSideWallsCover
     ? (wardrobe.height * wardrobe.depth * numOfSideWallsCover) / 1000000
@@ -32,13 +31,13 @@ export const calcAreaStandsAndSideWalls = (state) => {
     },
     parts: {
       stands: {
-        width: wardrobe.corpus.height,
-        height: wardrobe.corpus.depth,
+        width: corpus.height,
+        height: corpus.depth,
         count: numOfStands,
       },
       sideWallStop: {
         width: wardrobe.height,
-        height: wardrobe.sideWallsStop.width,
+        height: sideWalls.stop.width,
         count: numOfSideWallsStop,
       },
       sideWallsCover: {

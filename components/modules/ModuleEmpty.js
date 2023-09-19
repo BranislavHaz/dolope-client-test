@@ -1,18 +1,18 @@
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/modules/ModuleEmpty.styled";
 
 import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 
 const ModuleEmpty = () => {
-  const { wardrobe, sections, viewport } = useWardrobeStore((state) => ({
-    wardrobe: state.wardrobe,
+  const { corpus, sections, viewport } = useMainStore((state) => ({
+    corpus: state.corpus,
     sections: state.sections,
     viewport: state.viewport,
   }));
 
   const { px } = viewport;
-  const spaceSize = wardrobe.corpus.height - 2 * viewport.thickness;
+  const spaceSize = corpus.height - 2 * viewport.thickness;
 
   return (
     <$.ModuleEmpty $width={px * sections.width}>

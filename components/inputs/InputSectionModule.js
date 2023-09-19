@@ -1,7 +1,7 @@
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 
 const InputSectionModule = ({ id }) => {
-  const { setSectionsType } = useWardrobeStore((state) => ({
+  const { setSectionsType } = useMainStore((state) => ({
     setSectionsType: state.setSectionsType,
   }));
 

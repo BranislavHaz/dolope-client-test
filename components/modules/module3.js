@@ -1,4 +1,4 @@
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/modules/Module.styled";
 
 import Shelf from "../elements/Shelf";
@@ -6,8 +6,8 @@ import Space from "../elements/Space";
 import Hanger from "../elements/Hanger";
 
 const Module3 = () => {
-  const { wardrobe, hangers, viewport } = useWardrobeStore((state) => ({
-    wardrobe: state.wardrobe,
+  const { corpus, hangers, viewport } = useMainStore((state) => ({
+    corpus: state.corpus,
     hangers: state.hangers,
     viewport: state.viewport,
   }));
@@ -15,7 +15,7 @@ const Module3 = () => {
   const spaceSize1 = 300;
   const spaceSize2 = hangers.topSpace;
   const spaceSize3 =
-    wardrobe.corpus.height -
+    corpus.height -
     3 * viewport.thickness -
     spaceSize1 -
     spaceSize2 -

@@ -1,5 +1,5 @@
-export const calcCorpusAndSectionsWidth = (sections, wardrobe) => {
-  const minCorpusWidthReserve = 8;
+export const calcCorpusAndSectionsWidth = (state) => {
+  const { wardrobe, corpus, sections } = state;
 
   const getCorpusAndSectionsWidth = (numOfStands, isBetweenWalls = false) => {
     const standsThickness = numOfStands * wardrobe.thickness;
@@ -7,7 +7,7 @@ export const calcCorpusAndSectionsWidth = (sections, wardrobe) => {
 
     if (isBetweenWalls) {
       const maxAvailableSpaceForSections =
-        wardrobe.width - standsThickness - minCorpusWidthReserve;
+        wardrobe.width - standsThickness - corpus.minWidthReserve;
       roughSectionWidth = Math.floor(
         maxAvailableSpaceForSections / sections.count
       );

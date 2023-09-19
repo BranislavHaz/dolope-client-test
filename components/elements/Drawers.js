@@ -1,9 +1,9 @@
 import React from "react";
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Drawers.styled";
 
 const Drawers = ({ numOfDrawers }) => {
-  const { sections, viewport, drawers } = useWardrobeStore((state) => ({
+  const { sections, viewport, drawers } = useMainStore((state) => ({
     sections: state.sections,
     viewport: state.viewport,
     drawers: state.drawers,

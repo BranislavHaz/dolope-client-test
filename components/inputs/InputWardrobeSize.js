@@ -1,9 +1,9 @@
 import React from "react";
 import useDebounce from "@/hooks/useDebounce";
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 
 const InputWardrobeSize = () => {
-  const { setWardrobeWidth, setWardrobeHeight } = useWardrobeStore((state) => ({
+  const { setWardrobeWidth, setWardrobeHeight } = useMainStore((state) => ({
     setWardrobeWidth: state.setWardrobeWidth,
     setWardrobeHeight: state.setWardrobeHeight,
   }));

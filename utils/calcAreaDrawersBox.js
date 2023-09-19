@@ -1,5 +1,5 @@
 export const calcAreaDrawersBox = (state, partsOfModules) => {
-  const { wardrobe, sections, drawers } = state;
+  const { wardrobe, corpus, sections, drawers } = state;
   const { arrOfDrawers } = partsOfModules;
   let m2 = 0;
   let parts = [];
@@ -20,11 +20,11 @@ export const calcAreaDrawersBox = (state, partsOfModules) => {
 
       // Boky zásuvkového boxu
       const sideBoxWidth = widthGrooveAndSide;
-      const sideBoxHeight = wardrobe.corpus.depth - wardrobe.thickness;
+      const sideBoxHeight = corpus.depth - wardrobe.thickness;
 
       // Dno a vrch zásuvkového boxu
       const topAndBottomBoxWidth = sections.width - 2 * drawers.grooveWidth;
-      const topAndBottomBoxHeight = wardrobe.corpus.depth;
+      const topAndBottomBoxHeight = corpus.depth;
 
       const fullArea =
         (2 * (grooveWidth * grooveHeight) +

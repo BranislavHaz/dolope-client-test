@@ -1,10 +1,11 @@
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Rail.styled";
 
 const Rail = ({ type }) => {
-  const { viewport, wardrobe, rails } = useWardrobeStore((state) => ({
+  const { viewport, wardrobe, corpus, rails } = useMainStore((state) => ({
     viewport: state.viewport,
     wardrobe: state.wardrobe,
+    corpus: state.corpus,
     rails: state.rails,
   }));
   const { px } = viewport;
@@ -15,7 +16,7 @@ const Rail = ({ type }) => {
     } else if (wardrobe.type === 2 || wardrobe.type === 3) {
       return wardrobe.width - viewport.thickness;
     } else {
-      return wardrobe.corpus.width;
+      return corpus.width;
     }
   };
 

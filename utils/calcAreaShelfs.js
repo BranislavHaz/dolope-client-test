@@ -1,10 +1,10 @@
 export const calcAreaShelfs = (state, partsOfModules) => {
-  const { wardrobe, sections } = state;
+  const { corpus, sections } = state;
   const { countOfShelfs, countOfShelfsExcenter } = partsOfModules;
 
   const shelfsWidth = sections.width - 1;
   const shelfsExcenterWidth = sections.width;
-  const height = wardrobe.corpus.depth;
+  const height = corpus.depth;
 
   const shelfsM2 = (shelfsWidth * height * countOfShelfs) / 1000000;
   const shelfsExcenterM2 =

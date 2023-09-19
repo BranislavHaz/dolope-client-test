@@ -1,5 +1,5 @@
 import React from "react";
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Corpus.styled";
 
 import Stand from "@/components/elements/Stand";
@@ -23,7 +23,7 @@ const modulesMap = {
 };
 
 const Corpus = () => {
-  const { sections } = useWardrobeStore((state) => ({
+  const { sections } = useMainStore((state) => ({
     sections: state.sections,
   }));
 

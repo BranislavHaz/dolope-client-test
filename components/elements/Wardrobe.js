@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Wardrobe.styled";
 
 import Corpus from "@/components/elements/Corpus";
@@ -7,9 +7,10 @@ import Rail from "@/components/elements/Rail";
 import Side from "@/components/elements/Side";
 
 const Wardrobe = () => {
-  const { sections, wardrobe, viewport, setViewport } = useWardrobeStore(
+  const { wardrobe, sideWalls, viewport, setViewport, sections } = useMainStore(
     (state) => ({
       wardrobe: state.wardrobe,
+      sideWalls: state.sideWalls,
       viewport: state.viewport,
       setViewport: state.setViewport,
       sections: state.sections,
@@ -41,7 +42,7 @@ const Wardrobe = () => {
 
   const { px } = viewport;
   const countOfStands = sections.count + 1;
-  const countOfSideWalls = wardrobe?.sideWallsCover?.count || 0;
+  const countOfSideWalls = sideWalls?.cover?.count || 0;
 
   const wardrobeWidth =
     sections.count * sections.width +

@@ -1,7 +1,7 @@
-import useWardrobeStore from "@/stores/wardrobeStore";
+import useMainStore from "@/stores/useMainStore";
 
 const InputSectionsCount = () => {
-  const { setSectionsCount } = useWardrobeStore((state) => ({
+  const { setSectionsCount } = useMainStore((state) => ({
     setSectionsCount: state.setSectionsCount,
   }));
 

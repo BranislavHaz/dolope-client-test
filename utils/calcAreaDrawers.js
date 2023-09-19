@@ -1,8 +1,6 @@
 const calcLengthSlideDrawer = (state) => {
   const availableSpace =
-    state.wardrobe.corpus.depth -
-    state.drawers.slideReserve -
-    state.drawers.thickness;
+    state.corpus.depth - state.drawers.slideReserve - state.drawers.thickness;
 
   const slideSizes = state.drawers.slideSizes;
 
