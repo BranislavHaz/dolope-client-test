@@ -40,6 +40,7 @@ const createWardrobeSlice = (set, get) => ({
       false,
       "wardrobe/setWardrobeDepth"
     );
+    get().updateCorpusDepth("wardrobe");
   },
 
   setWardrobeType: (valueOfType) => {

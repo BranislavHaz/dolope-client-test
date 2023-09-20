@@ -18,6 +18,16 @@ const createCorpusSlice = (set, get) => ({
       `${nameOfAction}/updateCorpusWidth`
     );
   },
+
+  updateCorpusDepth: (nameOfAction) => {
+    set(
+      (state) => {
+        state.corpus.depth = state.wardrobe.depth - 100;
+      },
+      false,
+      `${nameOfAction}/updateCorpusDepth`
+    );
+  },
 });
 
 export default createCorpusSlice;

@@ -3,10 +3,12 @@ import useDebounce from "@/hooks/useDebounce";
 import useMainStore from "@/stores/useMainStore";
 
 const InputWardrobeSize = () => {
-  const { setWardrobeWidth, setWardrobeHeight } = useMainStore((state) => ({
-    setWardrobeWidth: state.setWardrobeWidth,
-    setWardrobeHeight: state.setWardrobeHeight,
-  }));
+  const { setWardrobeWidth, setWardrobeHeight, setWardrobeDepth } =
+    useMainStore((state) => ({
+      setWardrobeWidth: state.setWardrobeWidth,
+      setWardrobeHeight: state.setWardrobeHeight,
+      setWardrobeDepth: state.setWardrobeDepth,
+    }));
 
   const onChangeWidth = useDebounce((e) => {
     setWardrobeWidth(Number(e.target.value * 10));
@@ -14,6 +16,10 @@ const InputWardrobeSize = () => {
 
   const onChangeHeight = useDebounce((e) => {
     setWardrobeHeight(Number(e.target.value * 10));
+  }, 500);
+
+  const onChangeDepth = useDebounce((e) => {
+    setWardrobeDepth(Number(e.target.value * 10));
   }, 500);
 
   return (
@@ -32,7 +38,7 @@ const InputWardrobeSize = () => {
       </label>
       <label htmlFor="wardrobe-depth">
         Zadajte hĺbku priestoru (cm):
-        <input type="number" id="wardrobe-depth" />
+        <input type="number" id="wardrobe-depth" onChange={onChangeDepth} />
       </label>
     </>
   );
