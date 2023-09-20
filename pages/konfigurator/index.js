@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Head from "next/head";
 
 import * as $ from "@/styles/pages/konfigurator/index.styled";
@@ -8,7 +9,25 @@ import InputSectionsCount from "@/components/inputs/InputSectionsCount";
 import InputWardrobeType from "@/components/inputs/InputWardrobeType";
 import InputWardrobeSize from "@/components/inputs/InputWardrobeSize";
 
-const Index = () => {
+import useMainStore from "@/stores/useMainStore";
+import { fetchProducts } from "@/utils/fetchProducts";
+
+export async function getStaticProps() {
+  const products = await fetchProducts();
+  return { props: { products } };
+}
+
+const Index = ({ products }) => {
+  const { setProductsApi, dtd10 } = useMainStore((state) => ({
+    setProductsApi: state.setProductsApi,
+    dtd10: state.dtd10,
+  }));
+
+  useEffect(() => {
+    console.log(products);
+    setProductsApi(products);
+  }, [products]);
+
   return (
     <>
       <Head>
