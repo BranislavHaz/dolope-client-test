@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Wardrobe.styled";
 
+import Doors from "@/components/elements/Doors";
 import Corpus from "@/components/elements/Corpus";
 import Rail from "@/components/elements/Rail";
 import Side from "@/components/elements/Side";
@@ -51,6 +52,7 @@ const Wardrobe = () => {
   return (
     <$.Wardrobe $width={px * wardrobeWidth} $height={px * wardrobe.height}>
       <Side location="left" />
+      <Doors />
       <Rail type="top" />
       <Corpus />
       <Rail type="bottom" />

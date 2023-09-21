@@ -10,6 +10,7 @@ import createSideWallsSlice from "./createSideWallsSlice";
 import createSectionsSlice from "./createSectionsSlice";
 import createHangersSlice from "./createHangersSlice";
 import createDrawersSlice from "./createDrawersSlice";
+import createDoorsSlice from "./createDoorsSlice";
 
 import createAreaPartsSlice from "./createAreaPartsSlice";
 
@@ -30,6 +31,8 @@ const useMainStore = create(
     ...createSectionsSlice(...a),
     ...createHangersSlice(...a),
     ...createDrawersSlice(...a),
+
+    ...createDoorsSlice(...a),
 
     ...createAreaPartsSlice(...a),
 

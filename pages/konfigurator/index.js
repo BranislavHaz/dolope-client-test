@@ -8,6 +8,7 @@ import InputSectionModule from "@/components/inputs/InputSectionModule";
 import InputSectionsCount from "@/components/inputs/InputSectionsCount";
 import InputWardrobeType from "@/components/inputs/InputWardrobeType";
 import InputWardrobeSize from "@/components/inputs/InputWardrobeSize";
+import InputDoorsCount from "@/components/inputs/InputDoorsCount";
 
 import useMainStore from "@/stores/useMainStore";
 import { fetchProducts } from "@/utils/fetchProducts";
@@ -49,6 +50,7 @@ const Index = ({ products }) => {
         <InputSectionModule id={3} />
       </$.Inputs>
       <InputSectionsCount />
+      <InputDoorsCount />
     </>
   );
 };
