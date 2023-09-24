@@ -1,4 +1,5 @@
 import { calcDoorsSize } from "@/utils/calcDoorsSize";
+import { getTypesOfProfiles } from "@/utils/getTypesOfProfiles";
 
 const createDoorsSlice = (set, get) => ({
   doors: {
@@ -11,14 +12,32 @@ const createDoorsSlice = (set, get) => ({
       horizontalProfile: "narrow",
       wheels: "asymmetric",
     },
-    typeOfDoors: {
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0,
-      5: 0,
-      6: 0,
-    },
+    typeOfDoors: [
+      {
+        id: "door1",
+        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
+      },
+      {
+        id: "door2",
+        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
+      },
+      {
+        id: "door3",
+        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
+      },
+      {
+        id: "door4",
+        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
+      },
+      {
+        id: "door5",
+        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
+      },
+      {
+        id: "door6",
+        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
+      },
+    ],
 
     dimensionsFromManual: {
       doorOverhang: {
@@ -38,13 +57,22 @@ const createDoorsSlice = (set, get) => ({
     },
   },
 
+  updateTypesOfProfiles: () => {
+    set(
+      (state) => {
+        console.log(getTypesOfProfiles(state));
+      },
+      false,
+      "doors/updateTypesOfProfiles"
+    );
+  },
+
   updateDoorsSize: () => {
     set(
       (state) => {
-        /* state.doors.width;
-        state.doors.height; */
-        const { width } = calcDoorsSize(state);
+        const { width, height } = calcDoorsSize(state);
         state.doors.width = width;
+        state.doors.height = height;
       },
       false,
       "doors/updateDoorsSize"
@@ -60,6 +88,7 @@ const createDoorsSlice = (set, get) => ({
       "doors/setDoorsCount"
     );
     get().updateDoorsSize();
+    get().updateTypesOfProfiles();
   },
 });
 

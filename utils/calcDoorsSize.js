@@ -7,6 +7,7 @@ export const calcDoorsSize = (state) => {
   const widthOfDoors = Math.ceil(
     (clearWidth + (countOfDoors - 1) * doorOverhang) / countOfDoors
   );
+  const heightOfDoors = wardrobe.height - 44;
 
-  return { width: widthOfDoors };
+  return { width: widthOfDoors, height: heightOfDoors };
 };

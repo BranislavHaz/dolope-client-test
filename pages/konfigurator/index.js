@@ -12,6 +12,7 @@ import InputDoorsCount from "@/components/inputs/InputDoorsCount";
 
 import useMainStore from "@/stores/useMainStore";
 import { fetchProducts } from "@/utils/fetchProducts";
+import { getTypesOfProfiles } from "@/utils/getTypesOfProfiles";
 
 export async function getStaticProps() {
   const products = await fetchProducts();
@@ -19,15 +20,16 @@ export async function getStaticProps() {
 }
 
 const Index = ({ products }) => {
-  const { setProductsApi, dtd10 } = useMainStore((state) => ({
+  const { setProductsApi, productsAPI } = useMainStore((state) => ({
     setProductsApi: state.setProductsApi,
-    dtd10: state.dtd10,
+    productsAPI: state.productsAPI,
   }));
 
   useEffect(() => {
-    console.log(products);
     setProductsApi(products);
   }, [products]);
+
+  //console.log(getTypesOfProfiles(productsAPI.slidingDoor));
 
   return (
     <>
