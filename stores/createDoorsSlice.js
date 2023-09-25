@@ -1,17 +1,18 @@
 import { calcDoorsSize } from "@/utils/calcDoorsSize";
-import { getTypesOfProfiles } from "@/utils/getTypesOfProfiles";
+import { getTypesOfProfiles } from "@/utils/getAvailableProfiles/getTypesOfProfiles";
 
 const createDoorsSlice = (set, get) => ({
   doors: {
     width: 0,
     height: 2603,
     count: 0,
-    typeOfProfiles: {
+    selectedProfile: {
       color: "silver",
       handle: "london",
-      horizontalProfile: "narrow",
       wheels: "asymmetric",
     },
+
+    availableProfiles: [],
     typeOfDoors: [
       {
         id: "door1",
@@ -57,13 +58,13 @@ const createDoorsSlice = (set, get) => ({
     },
   },
 
-  updateTypesOfProfiles: () => {
+  updateAvailableProfiles: () => {
     set(
       (state) => {
-        console.log(getTypesOfProfiles(state));
+        state.doors.availableProfiles = getTypesOfProfiles(state);
       },
       false,
-      "doors/updateTypesOfProfiles"
+      "doors/updateAvailableProfiles"
     );
   },
 
@@ -88,7 +89,17 @@ const createDoorsSlice = (set, get) => ({
       "doors/setDoorsCount"
     );
     get().updateDoorsSize();
-    get().updateTypesOfProfiles();
+    get().updateAvailableProfiles();
+  },
+
+  setSelectedProfile: (profile) => {
+    set(
+      (state) => {
+        state.doors.selectedProfile = profile;
+      },
+      false,
+      "doors/setSelectedProfile"
+    );
   },
 });
 

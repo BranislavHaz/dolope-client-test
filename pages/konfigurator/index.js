@@ -9,10 +9,10 @@ import InputSectionsCount from "@/components/inputs/InputSectionsCount";
 import InputWardrobeType from "@/components/inputs/InputWardrobeType";
 import InputWardrobeSize from "@/components/inputs/InputWardrobeSize";
 import InputDoorsCount from "@/components/inputs/InputDoorsCount";
+import InputProfilesType from "@/components/inputs/InputProfilesType";
 
 import useMainStore from "@/stores/useMainStore";
 import { fetchProducts } from "@/utils/fetchProducts";
-import { getTypesOfProfiles } from "@/utils/getTypesOfProfiles";
 
 export async function getStaticProps() {
   const products = await fetchProducts();
@@ -28,8 +28,6 @@ const Index = ({ products }) => {
   useEffect(() => {
     setProductsApi(products);
   }, [products]);
-
-  //console.log(getTypesOfProfiles(productsAPI.slidingDoor));
 
   return (
     <>
@@ -53,6 +51,7 @@ const Index = ({ products }) => {
       </$.Inputs>
       <InputSectionsCount />
       <InputDoorsCount />
+      <InputProfilesType />
     </>
   );
 };

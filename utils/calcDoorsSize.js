@@ -3,7 +3,7 @@ export const calcDoorsSize = (state) => {
   const countOfDoors = doors.count;
   const clearWidth = wardrobe.width - 2 * wardrobe.thickness;
   const doorOverhang =
-    doors.dimensionsFromManual.doorOverhang[doors.typeOfProfiles.handle];
+    doors.dimensionsFromManual.doorOverhang[doors.selectedProfile.handle];
   const widthOfDoors = Math.ceil(
     (clearWidth + (countOfDoors - 1) * doorOverhang) / countOfDoors
   );
