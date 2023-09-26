@@ -1,6 +1,6 @@
 import { getGlobalAvailableColors } from "./getGlobalAvailableColors";
 
-export const getTotalAvailableColors = (state, typesConfig) => {
+export const getTotalAvailableColors = (state, typesProfilesConfig) => {
   let allColorsAvailable = {
     silver: true,
     champagne: true,
@@ -8,7 +8,7 @@ export const getTotalAvailableColors = (state, typesConfig) => {
     black: true,
   };
 
-  const colorsAvailable = getGlobalAvailableColors(state, typesConfig);
+  const colorsAvailable = getGlobalAvailableColors(state, typesProfilesConfig);
 
   colorsAvailable.forEach((colorObj) => {
     // Prechádza každým typom

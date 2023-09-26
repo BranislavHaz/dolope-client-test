@@ -6,15 +6,18 @@ export const getTypesOfProfiles = (state) => {
   const { wardrobe, doors } = state;
   const clearDoorsWidth = wardrobe.width - 2 * wardrobe.thickness;
 
-  const typesConfig = [
-    { type: "topGuideProfiles", minSize: clearDoorsWidth },
-    { type: "bottomGuideProfiles", minSize: clearDoorsWidth },
-    { type: "topHorizontProfiles", minSize: doors.width },
-    { type: "bottomHorizontProfiles", minSize: doors.width },
-    { type: "hProfiles", minSize: doors.width },
+  const typesProfilesConfig = [
+    { profileType: "topGuideProfiles", minSize: clearDoorsWidth },
+    { profileType: "bottomGuideProfiles", minSize: clearDoorsWidth },
+    { profileType: "topHorizontProfiles", minSize: doors.width },
+    { profileType: "bottomHorizontProfiles", minSize: doors.width },
+    { profileType: "hProfiles", minSize: doors.width },
   ];
 
-  const allColorsAvailable = getTotalAvailableColors(state, typesConfig);
+  const allColorsAvailable = getTotalAvailableColors(
+    state,
+    typesProfilesConfig
+  );
   const handlesWithColors = getHandlesWithAvailableColors(
     state,
     allColorsAvailable

@@ -1,10 +1,8 @@
-import { colorProfilesMapping } from "@/constants/colorProfilesMapping";
-
-export const getGlobalAvailableColors = (state, configurations) => {
+export const getGlobalAvailableColors = (state, typesProfilesConfig) => {
   const colorsAvailable = [];
 
-  configurations.forEach(({ type, minSize }) => {
-    const products = state.productsAPI.slidingDoor[type];
+  typesProfilesConfig.forEach(({ profileType, minSize }) => {
+    const products = state.productsAPI.slidingDoor[profileType];
 
     const colorsCount = {
       silver: 0,
@@ -14,16 +12,13 @@ export const getGlobalAvailableColors = (state, configurations) => {
     };
 
     products.forEach((product) => {
-      if (
-        product.length * 1000 >= minSize &&
-        colorProfilesMapping[product.color]
-      ) {
-        colorsCount[colorProfilesMapping[product.color]]++;
+      if (product.length * 1000 >= minSize && product.color) {
+        colorsCount[product.color]++;
       }
     });
 
     colorsAvailable.push({
-      [type]: {
+      [profileType]: {
         silver: colorsCount.silver > 0,
         champagne: colorsCount.champagne > 0,
         white: colorsCount.white > 0,

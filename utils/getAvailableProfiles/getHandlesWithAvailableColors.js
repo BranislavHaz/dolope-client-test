@@ -1,5 +1,3 @@
-import { colorProfilesMapping } from "@/constants/colorProfilesMapping";
-
 export const getHandlesWithAvailableColors = (state, allColorsAvailable) => {
   const handles = state.productsAPI.slidingDoor.handles;
   const clearDoorsHeight = state.wardrobe.height - 44;
@@ -29,9 +27,8 @@ export const getHandlesWithAvailableColors = (state, allColorsAvailable) => {
     const colors = new Set(); // Množina farieb dostupných pre dané madlo
 
     filteredHandles.forEach((handle) => {
-      const mappedColor = colorProfilesMapping[handle.color];
-      if (mappedColor && allColorsAvailable[mappedColor]) {
-        colors.add(mappedColor);
+      if (handle.color && allColorsAvailable[handle.color]) {
+        colors.add(handle.color);
       }
     });
 

@@ -1,9 +1,9 @@
 import useMainStore from "@/stores/useMainStore";
 
 const colorMapping = {
-  silver: "strieborný",
-  black: "čierny",
-  white: "biely",
+  silver: "strieborna",
+  black: "čierna",
+  white: "biela",
   champagne: "šampaň",
 };
 
@@ -42,7 +42,7 @@ const InputProfilesType = () => {
             key={type}
             value={JSON.stringify({
               handle: profile.name,
-              color: colorMapping[color],
+              color: color,
             })}
           >
             {type}
