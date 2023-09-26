@@ -1,6 +1,6 @@
 import { getGlobalAvailableColors } from "./getGlobalAvailableColors";
 
-export const getTotalAvailableColors = (state, typesProfilesConfig) => {
+export const getAllColorsAvailable = (state, typesProfilesConfig) => {
   let allColorsAvailable = {
     silver: true,
     champagne: true,

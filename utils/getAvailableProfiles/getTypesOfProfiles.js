@@ -1,4 +1,4 @@
-import { getTotalAvailableColors } from "./getTotalAvailableColors";
+import { getAllColorsAvailable } from "./getAllColorsAvailable";
 import { filterHandlesByWheelAvailability } from "./filterHandlesByWheelAvailability";
 import { getHandlesWithAvailableColors } from "./getHandlesWithAvailableColors";
 
@@ -14,10 +14,7 @@ export const getTypesOfProfiles = (state) => {
     { profileType: "hProfiles", minSize: doors.width },
   ];
 
-  const allColorsAvailable = getTotalAvailableColors(
-    state,
-    typesProfilesConfig
-  );
+  const allColorsAvailable = getAllColorsAvailable(state, typesProfilesConfig);
   const handlesWithColors = getHandlesWithAvailableColors(
     state,
     allColorsAvailable
