@@ -13,6 +13,7 @@ import Module6 from "@/components/modules/Module6";
 import Module7 from "@/components/modules/Module7";
 
 const modulesMap = {
+  0: ModuleEmpty,
   1: Module1,
   2: Module2,
   3: Module3,
@@ -30,10 +31,6 @@ const Corpus = () => {
   const getModule = (sectionId) => {
     const moduleId = sections.typeOfSections[sectionId];
     const Modul = modulesMap[moduleId];
-
-    if (moduleId === 0) {
-      return <ModuleEmpty key={Math.random()} />;
-    }
     return <Modul key={Math.random()} />;
   };
 
