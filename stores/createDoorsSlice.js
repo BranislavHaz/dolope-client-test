@@ -13,32 +13,14 @@ const createDoorsSlice = (set, get) => ({
     },
 
     availableProfiles: [],
-    typeOfDoors: [
-      {
-        id: "door1",
-        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
-      },
-      {
-        id: "door2",
-        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
-      },
-      {
-        id: "door3",
-        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
-      },
-      {
-        id: "door4",
-        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
-      },
-      {
-        id: "door5",
-        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
-      },
-      {
-        id: "door6",
-        sections: [{ idMaterial: undefined, width: 0, height: 0 }],
-      },
-    ],
+    typeOfDoors: {
+      door1: { type: 4, sections: [] },
+      door2: { type: 0, sections: [] },
+      door3: { type: 5, sections: [] },
+      door4: { type: 0, sections: [] },
+      door5: { type: 0, sections: [] },
+      door6: { type: 0, sections: [] },
+    },
 
     dimensionsFromManual: {
       doorOverhang: {
@@ -54,6 +36,10 @@ const createDoorsSlice = (set, get) => ({
         paris: 51,
         wien: 17,
         zurich: 46,
+      },
+      hProfile: {
+        height: 24,
+        heightReserve: 2,
       },
     },
   },

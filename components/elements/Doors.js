@@ -1,6 +1,9 @@
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Doors.styled";
 
+import Handle from "./Handle";
+import Door from "./Door";
+
 const Doors = () => {
   const { viewport, wardrobe, sections, doors } = useMainStore((state) => ({
     viewport: state.viewport,
@@ -37,18 +40,19 @@ const Doors = () => {
   return (
     <$.Doors $positionLeft={px * viewport.thickness}>
       {Array.from({ length: doors.count }, (_, index) => (
-        <$.Door
-          $width={px * getDoorWidth()}
-          $height={px * wardrobe.height}
-          $overhang={px * viewport.thickness}
+        <Door
+          width={px * getDoorWidth()}
+          height={px * doors.height}
+          overhang={px * viewport.thickness}
+          id={index + 1}
           key={index}
         >
-          <$.Handle $width={px * viewport.thickness} $isFirst={index === 0} />
-          <$.Handle
-            $width={px * viewport.thickness}
-            $isLast={index === doors.count - 1}
+          <Handle width={px * viewport.thickness} isFirst={index === 0} />
+          <Handle
+            width={px * viewport.thickness}
+            isLast={index === doors.count - 1}
           />
-        </$.Door>
+        </Door>
       ))}
     </$.Doors>
   );
