@@ -1,5 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/modules/ModuleEmpty.styled";
+import * as $ from "@/styles/components/modules/Module.styled";
 
 import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
@@ -15,11 +15,11 @@ const ModuleEmpty = () => {
   const spaceSize = corpus.height - 2 * viewport.thickness;
 
   return (
-    <$.ModuleEmpty $width={px * sections.width}>
+    <$.Module $isEmpty={true} $width={px * sections.width}>
       <Shelf />
       <Space height={spaceSize} />
       <Shelf />
-    </$.ModuleEmpty>
+    </$.Module>
   );
 };
 
