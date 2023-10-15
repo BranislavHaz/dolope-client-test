@@ -3,10 +3,13 @@ import Head from "next/head";
 
 import * as $ from "@/styles/pages/konfigurator/index.styled";
 
-import Header from "@/layouts/configurator/Header";
-import Steps from "@/layouts/configurator/Steps";
-import Footer from "@/layouts/configurator/Footer";
 import Wardrobe from "@/components/elements/Wardrobe";
+import InputSectionModule from "@/components/inputs/InputSectionModule";
+import InputSectionsCount from "@/components/inputs/InputSectionsCount";
+import InputWardrobeType from "@/components/inputs/InputWardrobeType";
+import InputWardrobeSize from "@/components/inputs/InputWardrobeSize";
+import InputDoorsCount from "@/components/inputs/InputDoorsCount";
+import InputProfilesType from "@/components/inputs/InputProfilesType";
 
 import useMainStore from "@/stores/useMainStore";
 import { fetchProducts } from "@/utils/fetchProducts";
@@ -17,8 +20,9 @@ export async function getStaticProps() {
 }
 
 const Index = ({ products }) => {
-  const { setProductsApi } = useMainStore((state) => ({
+  const { setProductsApi, productsAPI } = useMainStore((state) => ({
     setProductsApi: state.setProductsApi,
+    productsAPI: state.productsAPI,
   }));
 
   useEffect(() => {
@@ -33,13 +37,21 @@ const Index = ({ products }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Header />
-      <Steps />
-      <$.Main>
-        <Wardrobe />
-      </$.Main>
-      <Footer />
+      <>
+        <$.Main>
+          <Wardrobe />
+        </$.Main>
+      </>
+      <InputWardrobeType />
+      <InputWardrobeSize />
+      <$.Inputs>
+        <InputSectionModule id={1} />
+        <InputSectionModule id={2} />
+        <InputSectionModule id={3} />
+      </$.Inputs>
+      <InputSectionsCount />
+      <InputDoorsCount />
+      <InputProfilesType />
     </>
   );
 };

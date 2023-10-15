@@ -1,10 +1,12 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const Main = styled.main`
   width: 100%;
-  background-color: #bada55;
+  height: var(--m-wardrobe-height);
+  background-color: var(--background-color);
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const Inputs = styled.div`
