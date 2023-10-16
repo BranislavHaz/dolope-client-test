@@ -9,9 +9,9 @@ export const GlobalStyles = createGlobalStyle`
     // Mobile layout
     --m-header-height: 5vh;
     --m-steps-height: 5vh;
-    --m-wardrobe-height: 40vh;
-    --m-settings-height: 30vh;
-    --m-footer-height: 5vh;
+    --m-wardrobe-view-height: 43vh;
+    --m-wardrobe-config-height: 40vh;
+    --m-footer-height: 7vh;
   }
 
 html,

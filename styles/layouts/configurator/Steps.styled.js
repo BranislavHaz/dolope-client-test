@@ -12,7 +12,7 @@ export const Steps = styled.div`
 export const Line = styled.hr``;
 
 export const StepsIcons = styled.div`
-  width: 80%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,7 +22,7 @@ export const StepsIcons = styled.div`
     width: 80%;
     position: absolute;
     margin: 0;
-    top: 0.75em;
+    top: 1em;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 0.05em dashed var(--non-active-color);
@@ -45,18 +45,18 @@ export const Icon = styled.div`
   z-index: 2;
 
   ${Step} {
-    width: 1.5em;
-    height: 1.5em;
+    width: 2em;
+    height: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    ${(props) => props.$isActive && "border: 1px solid var(--main-color)"};
+    ${(props) => props.$isActive && "border: 0.1em solid var(--main-color)"};
   }
 
   ${Number} {
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.6em;
+    height: 1.6em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +64,7 @@ export const Icon = styled.div`
     background-color: ${(props) =>
       props.$isActive ? "var(--main-color)" : "var(--non-active-color)"};
     color: var(--background-color);
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 
   ${Text} {

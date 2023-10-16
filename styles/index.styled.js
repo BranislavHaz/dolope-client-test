@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
 
 export const Main = styled.main`
-  background-color: #bada55;
+  background-color: var(--background-color);
 `;

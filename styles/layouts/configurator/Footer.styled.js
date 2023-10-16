@@ -12,13 +12,13 @@ export const Footer = styled.footer`
   padding: 0 1em;
   font-size: 0.8em;
   text-transform: uppercase;
-  box-shadow: 0 13px 8px 11px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px -3px 17px rgba(0, 0, 0, 0.08);
   z-index: 1;
 `;
 
 export const BackButton = styled.div`
   width: 30%;
-  height: 2.5em;
+  height: 3em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +36,7 @@ export const BackButton = styled.div`
 
 export const NextButton = styled.div`
   width: 30%;
-  height: 2.5em;
+  height: 3em;
   display: flex;
   justify-content: center;
   align-items: center;

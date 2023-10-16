@@ -5,8 +5,10 @@ import * as $ from "@/styles/pages/konfigurator/index.styled";
 
 import Header from "@/layouts/configurator/Header";
 import Steps from "@/layouts/configurator/Steps";
+import WardrobeView from "@/layouts/configurator/WardrobeView";
+import WardrobeConfig from "@/layouts/configurator/WardrobeConfig";
 import Footer from "@/layouts/configurator/Footer";
-import Wardrobe from "@/components/elements/Wardrobe";
+//import Wardrobe from "@/components/elements/Wardrobe";
 
 import useMainStore from "@/stores/useMainStore";
 import { fetchProducts } from "@/utils/fetchProducts";
@@ -36,9 +38,8 @@ const Index = ({ products }) => {
 
       <Header />
       <Steps />
-      <$.Main>
-        <Wardrobe />
-      </$.Main>
+      <WardrobeView />
+      <WardrobeConfig />
       <Footer />
     </>
   );
