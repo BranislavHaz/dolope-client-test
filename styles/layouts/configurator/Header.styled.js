@@ -11,6 +11,11 @@ export const Header = styled.header`
 
 export const Logo = styled.div`
   font-family: "Quicksand", sans-serif;
-  font-size: 1.6em;
+  font-size: 1.7em;
   font-weight: 500;
+`;
+
+export const Dot = styled.span`
+  font-size: 2em;
+  color: var(--main-color);
 `;

@@ -7,7 +7,7 @@ import Corpus from "@/components/elements/Corpus";
 import Rail from "@/components/elements/Rail";
 import Side from "@/components/elements/Side";
 
-const Wardrobe = () => {
+const Wardrobe = ({ scaleFactor }) => {
   const { wardrobe, sideWalls, viewport, setViewport, sections } = useMainStore(
     (state) => ({
       wardrobe: state.wardrobe,
@@ -50,7 +50,11 @@ const Wardrobe = () => {
     (countOfStands + countOfSideWalls) * viewport.thickness;
 
   return (
-    <$.Wardrobe $width={px * wardrobeWidth} $height={px * wardrobe.height}>
+    <$.Wardrobe
+      $width={px * wardrobeWidth}
+      $height={px * wardrobe.height}
+      $scaleFactor={scaleFactor}
+    >
       <Side location="left" />
       <Doors />
       <Rail type="top" />

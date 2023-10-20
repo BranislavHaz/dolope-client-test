@@ -3,7 +3,9 @@ import * as $ from "@/styles/layouts/configurator/Header.styled";
 const Header = () => {
   return (
     <$.Header>
-      <$.Logo>dolope</$.Logo>
+      <$.Logo>
+        dolope<$.Dot>.</$.Dot>
+      </$.Logo>
     </$.Header>
   );
 };

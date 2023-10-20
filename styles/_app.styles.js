@@ -3,14 +3,13 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 :root {
     --background-color: #EAEAEC;
-    --main-color: #E4563D;
+    --main-color: #F1B90D;
     --non-active-color: #C4C4C4;
 
     // Mobile layout
-    --m-header-height: 5vh;
-    --m-steps-height: 5vh;
-    --m-wardrobe-view-height: 43vh;
-    --m-wardrobe-config-height: 40vh;
+    --m-header-height: 8vh;
+    --m-wardrobe-view-height: 42vh;
+    --m-wardrobe-config-height: 50vh;
     --m-footer-height: 7vh;
   }
 
