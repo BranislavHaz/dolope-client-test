@@ -4,7 +4,7 @@ export const Footer = styled.footer`
   width: 100%;
   height: var(--m-footer-height);
   display: flex;
-  position: absolute;
+  position: sticky;
   left: 0;
   bottom: 0;
   justify-content: space-between;
@@ -12,6 +12,7 @@ export const Footer = styled.footer`
   padding: 0 1em;
   font-size: 0.8em;
   text-transform: uppercase;
+  background-color: #fff;
   box-shadow: 0px -3px 17px rgba(0, 0, 0, 0.08);
   z-index: 1;
 `;

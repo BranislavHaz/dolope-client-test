@@ -1,11 +1,18 @@
 export const calcViewportPX = (state) => {
   const { viewport, wardrobe } = state;
 
-  if (viewport.width > viewport.height) {
-    const value = viewport.height / 2 / wardrobe.height;
-    return Math.round(value * 100) / 100;
-  } else {
-    const value = viewport.width / 1.6 / wardrobe.width;
-    return Math.round(value * 100) / 100;
-  }
+  const wrapperWidth = viewport.width;
+  const wrapperHeight = viewport.height * 0.42;
+  const wardrobeWidth = wardrobe.width;
+  const wardrobeHeight = wardrobe.height;
+
+  const maxWidth = wrapperWidth * 0.85;
+  const maxHeight = wrapperHeight * 0.85;
+
+  const width = maxWidth / wardrobeWidth;
+  const height = maxHeight / wardrobeHeight;
+
+  const pxNum = Math.min(width, height);
+
+  return Math.round(pxNum * 100) / 100;
 };
