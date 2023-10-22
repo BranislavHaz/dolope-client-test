@@ -12,25 +12,7 @@ export const WardrobeConfig = styled.div`
 
 export const ContentWrapper = styled.div`
   width: 90%;
+  height: auto;
+  padding-bottom: 1em;
   margin-top: 1em;
-`;
-
-export const Images2Row = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1em;
-`;
-
-export const ImageWrap = styled.div`
-  padding: 0.6em;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const AboutText = styled.div`
-  font-size: 0.8em;
-  padding-bottom: 0.5em;
-  text-align: center;
 `;

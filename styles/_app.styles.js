@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     // Mobile layout
     --m-header-height: 8vh;
     --m-wardrobe-view-height: 42vh;
-    --m-wardrobe-config-height: 50vh;
+    --m-wardrobe-config-height: 43vh;
     --m-footer-height: 7vh;
   }
 

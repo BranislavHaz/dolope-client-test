@@ -14,7 +14,39 @@ const createSideWallsSlice = (set, get) => ({
     },
   },
 
-  setSideWalls: ({ sideWallsCover, sideWallsStop }) => {
+  updateSideWalls: () => {
+    const typeOfWardrobe = get().wardrobe.type;
+    const width = get().sideWalls.stop.width;
+
+    set((state) => {
+      switch (typeOfWardrobe) {
+        case 1:
+          state.sideWalls.cover = { left: false, right: false, count: 0 };
+          state.sideWalls.stop = { width, left: true, right: true, count: 2 };
+          break;
+
+        case 2:
+          state.sideWalls.cover = { left: false, right: true, count: 1 };
+          state.sideWalls.stop = { width, left: true, right: false, count: 1 };
+          break;
+
+        case 3:
+          state.sideWalls.cover = { left: true, right: false, count: 1 };
+          state.sideWalls.stop = { width, left: false, right: true, count: 1 };
+          break;
+
+        case 4:
+          state.sideWalls.cover = { left: true, right: true, count: 2 };
+          state.sideWalls.stop = { width, left: false, right: false, count: 0 };
+          break;
+
+        default:
+          break;
+      }
+    });
+  },
+
+  /*  setSideWalls: ({ sideWallsCover, sideWallsStop }) => {
     set(
       (state) => {
         state.sideWalls.cover = sideWallsCover;
@@ -26,7 +58,7 @@ const createSideWallsSlice = (set, get) => ({
       false,
       "sideWalls/setSideWalls"
     );
-  },
+  }, */
 });
 
 export default createSideWallsSlice;

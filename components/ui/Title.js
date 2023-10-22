@@ -1,4 +1,4 @@
-import * as $ from "@/styles/components/configuratorUI/ui.styled";
+import * as $ from "@/styles/components/ui/Title.styled";
 
 const Title = ({ children }) => {
   return <$.Title>{children}</$.Title>;

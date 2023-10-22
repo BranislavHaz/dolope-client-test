@@ -53,6 +53,7 @@ const createWardrobeSlice = (set, get) => ({
     );
     get().updateCorpusWidth("wardrobe");
     get().updateSectionsWidth("wardrobe");
+    get().updateSideWalls();
   },
 });
 
