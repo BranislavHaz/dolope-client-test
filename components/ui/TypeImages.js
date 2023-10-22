@@ -1,16 +1,19 @@
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/ui/Images2Row.styled";
+import * as $ from "@/styles/components/ui/TypeImages.styled";
 
-const Images2Row = ({ type, images }) => {
-  const { setWardrobeType } = useMainStore((state) => ({
+import { typeOfWardrobeImg } from "@/constants/imagesConf";
+
+const TypeImages = () => {
+  const { wardrobe, setWardrobeType } = useMainStore((state) => ({
+    wardrobe: state.wardrobe,
     setWardrobeType: state.setWardrobeType,
   }));
 
-  const getActionForType = (typeOfImages, value) => {
+  const setType = (type) => {
     return () => {
-      if (typeOfImages === "typeOfWardrobe") {
-        setWardrobeType(value);
+      if (type !== wardrobe.type) {
+        setWardrobeType(type);
       }
     };
   };
@@ -21,7 +24,11 @@ const Images2Row = ({ type, images }) => {
 
       if (id && text && image.src) {
         return (
-          <$.ImageWrap key={index} onClick={getActionForType(type, id)}>
+          <$.ImageWrap
+            key={index}
+            onClick={setType(id)}
+            $isActive={wardrobe.type === id}
+          >
             <$.ImageText>{text}</$.ImageText>
             <Image
               src={image.src}
@@ -35,7 +42,7 @@ const Images2Row = ({ type, images }) => {
     });
   };
 
-  return <$.Images2Row>{getImages(images)}</$.Images2Row>;
+  return <$.TypeImages>{getImages(typeOfWardrobeImg)}</$.TypeImages>;
 };
 
-export default Images2Row;
+export default TypeImages;

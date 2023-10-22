@@ -4,6 +4,7 @@ export const GlobalStyles = createGlobalStyle`
 :root {
     --background-color: #EAEAEC;
     --main-color: #F1B90D;
+    --main-color-active: rgba(241, 185, 13, 0.14);
     --non-active-color: #C4C4C4;
 
     // Mobile layout
