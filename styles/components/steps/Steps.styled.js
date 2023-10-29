@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
+export const StepWrapper = styled.div`
+  padding-bottom: 1.5em;
+`;
+
 export const Title = styled.h2`
   position: relative;
-  margin: 0 0 1em 0;
+  margin: 0 0 2em 0;
   padding-left: 0.35em;
   font-size: 1em;
   font-weight: 200;

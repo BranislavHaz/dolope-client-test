@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TypeImages = styled.div`
+export const TypeStep = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
@@ -14,6 +14,7 @@ export const ImageWrap = styled.div`
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   background-color: ${(props) =>
     props.$isActive ? "var(--main-color-active)" : "#fff"};
 

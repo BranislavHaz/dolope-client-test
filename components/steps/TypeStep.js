@@ -1,10 +1,10 @@
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/ui/TypeImages.styled";
+import * as $ from "@/styles/components/steps/TypeStep.styled";
 
 import { typeOfWardrobeImg } from "@/constants/imagesConf";
 
-const TypeImages = () => {
+const TypeStep = () => {
   const { wardrobe, setWardrobeType } = useMainStore((state) => ({
     wardrobe: state.wardrobe,
     setWardrobeType: state.setWardrobeType,
@@ -42,7 +42,7 @@ const TypeImages = () => {
     });
   };
 
-  return <$.TypeImages>{getImages(typeOfWardrobeImg)}</$.TypeImages>;
+  return <$.TypeStep>{getImages(typeOfWardrobeImg)}</$.TypeStep>;
 };
 
-export default TypeImages;
+export default TypeStep;

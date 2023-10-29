@@ -4,7 +4,7 @@ export const Footer = styled.footer`
   width: 100%;
   height: var(--m-footer-height);
   display: flex;
-  position: sticky;
+  position: fixed;
   left: 0;
   bottom: 0;
   justify-content: space-between;
@@ -41,11 +41,15 @@ export const NextButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--main-color);
+  border: 1px solid;
   border-radius: 9px;
-  background-color: var(--main-color);
-  color: #fff;
   font-size: 0.8em;
+  background-color: ${(props) =>
+    props.$isActive ? "var(--main-color)" : "var(--main-color-non-active)"};
+  border-color: ${(props) =>
+    props.$isActive ? "var(--main-color)" : "var(--main-color-non-active)"};
+  color: ${(props) => (props.$isActive ? "#fff" : "#000")};
+  cursor: ${(props) => (props.$isActive ? "pointer" : "not-allowed")};
 
   &::after {
     content: ">";

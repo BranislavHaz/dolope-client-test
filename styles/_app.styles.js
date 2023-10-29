@@ -5,7 +5,9 @@ export const GlobalStyles = createGlobalStyle`
     --background-color: #EAEAEC;
     --main-color: #F1B90D;
     --main-color-active: rgba(241, 185, 13, 0.14);
+    --main-color-non-active: rgba(241, 185, 13, 0.30);
     --non-active-color: #C4C4C4;
+    --warning-color: #f75e5e;
 
     // Mobile layout
     --m-header-height: 8vh;

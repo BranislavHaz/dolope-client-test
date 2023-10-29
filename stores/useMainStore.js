@@ -16,6 +16,8 @@ import createAreaPartsSlice from "./createAreaPartsSlice";
 
 import createProductsApiSlice from "./createProductsApiSlice";
 
+import createStepsSlice from "./createStepsSlice";
+
 const createStore = (createStoreFn) => {
   const devtoolsEnhancer = devtools(createStoreFn);
   return immer(devtoolsEnhancer);
@@ -37,6 +39,8 @@ const useMainStore = create(
     ...createAreaPartsSlice(...a),
 
     ...createProductsApiSlice(...a),
+
+    ...createStepsSlice(...a),
   }))
 );
 
