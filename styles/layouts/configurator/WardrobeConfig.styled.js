@@ -14,5 +14,4 @@ export const ContentWrapper = styled.div`
   width: 90%;
   height: auto;
   padding-bottom: 1em;
-  margin-top: 1em;
 `;

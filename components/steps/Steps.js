@@ -3,16 +3,15 @@ import * as $ from "@/styles/components/steps/Steps.styled";
 
 import DimensionsStep from "./DimensionsStep";
 import TypeStep from "./TypeStep";
+import CountSectionDoorStep from "./CountSectionDoorStep";
 
 const steps = {
-  1: {
-    title: "Rozměry skříně",
-    component: DimensionsStep,
-  },
-  2: {
-    title: "Typ skříně",
-    component: TypeStep,
-  },
+  1: [
+    { title: "Rozměry skříně", component: DimensionsStep },
+    { title: "Typ skříně", component: TypeStep },
+    { title: "Počet sekcí a dveří", component: CountSectionDoorStep },
+  ],
+  2: [{ title: "Typ skříně", component: TypeStep }],
 };
 
 const Steps = () => {
@@ -20,12 +19,16 @@ const Steps = () => {
     currentStep: state.currentStep,
   }));
 
-  const CurrentStepComponent = steps[currentStep.id].component;
+  const currentSteps = steps[currentStep.id];
 
   return (
     <$.StepWrapper>
-      <$.Title>{steps[currentStep.id].title}</$.Title>
-      <CurrentStepComponent />
+      {currentSteps.map((step, index) => (
+        <div key={index}>
+          <$.Title>{step.title}</$.Title>
+          <step.component />
+        </div>
+      ))}
     </$.StepWrapper>
   );
 };

@@ -2,7 +2,7 @@ export const calcViewportPX = (state) => {
   const { viewport, wardrobe } = state;
 
   const wrapperWidth = viewport.width;
-  const wrapperHeight = viewport.height * 0.42;
+  const wrapperHeight = viewport.height * 0.32;
   const wardrobeWidth = wardrobe.width;
   const wardrobeHeight = wardrobe.height;
 

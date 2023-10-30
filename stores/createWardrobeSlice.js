@@ -4,7 +4,7 @@ const createWardrobeSlice = (set, get) => ({
     height: 2603,
     depth: 600,
     thickness: 18,
-    type: 1,
+    type: 0,
   },
 
   setWardrobeWidth: (widthValue) => {
@@ -29,6 +29,7 @@ const createWardrobeSlice = (set, get) => ({
       false,
       "wardrobe/setWardrobeHeight"
     );
+    get().updateCorpusHeight("wardrobe");
     get().updateViewportPX("wardrobe");
   },
 
@@ -53,7 +54,7 @@ const createWardrobeSlice = (set, get) => ({
     );
     get().updateCorpusWidth("wardrobe");
     get().updateSectionsWidth("wardrobe");
-    get().updateSideWalls();
+    get().updateSideWalls("wardrobe");
   },
 });
 

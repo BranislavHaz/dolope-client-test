@@ -5,15 +5,23 @@ import * as $ from "@/styles/components/steps/TypeStep.styled";
 import { typeOfWardrobeImg } from "@/constants/imagesConf";
 
 const TypeStep = () => {
-  const { wardrobe, setWardrobeType } = useMainStore((state) => ({
-    wardrobe: state.wardrobe,
-    setWardrobeType: state.setWardrobeType,
-  }));
+  const { wardrobe, setWardrobeType, setCurrentStepIsFilled } = useMainStore(
+    (state) => ({
+      wardrobe: state.wardrobe,
+      setWardrobeType: state.setWardrobeType,
+      setCurrentStepIsFilled: state.setCurrentStepIsFilled,
+    })
+  );
 
   const setType = (type) => {
     return () => {
       if (type !== wardrobe.type) {
         setWardrobeType(type);
+      }
+      if (type > 0) {
+        setCurrentStepIsFilled(true, "type");
+      } else {
+        setCurrentStepIsFilled(false, "type");
       }
     };
   };

@@ -8,13 +8,29 @@ const Footer = () => {
   }));
 
   const handleClickNext = () => {
-    currentStep.isFilled && setCurrentStepId(currentStep.id + 1);
+    if (currentStep.id === 1) {
+      Object.values(currentStep.isFilledFirstStep).every(
+        (value) => value === true
+      ) && setCurrentStepId(currentStep.id + 1);
+    } else {
+      currentStep.isFilled && setCurrentStepId(currentStep.id + 1);
+    }
+  };
+
+  const chceckIfIsActive = () => {
+    if (currentStep.id === 1) {
+      return Object.values(currentStep.isFilledFirstStep).every(
+        (value) => value === true
+      );
+    } else {
+      return currentStep.isFilled;
+    }
   };
 
   return (
     <$.Footer>
       <$.BackButton>zpět</$.BackButton>
-      <$.NextButton $isActive={currentStep.isFilled} onClick={handleClickNext}>
+      <$.NextButton $isActive={chceckIfIsActive()} onClick={handleClickNext}>
         pokračovat
       </$.NextButton>
     </$.Footer>

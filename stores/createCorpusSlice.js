@@ -5,6 +5,7 @@ const createCorpusSlice = (set, get) => ({
     width: 2865,
     height: 2300,
     depth: 500,
+    topShelfHeight: 20,
     minWidthReserve: 8,
   },
 
@@ -19,6 +20,17 @@ const createCorpusSlice = (set, get) => ({
     );
   },
 
+  updateCorpusHeight: (nameOfAction) => {
+    set(
+      (state) => {
+        state.corpus.height =
+          state.wardrobe.height - state.corpus.topShelfHeight;
+      },
+      false,
+      `${nameOfAction}/updateCorpusHeight`
+    );
+  },
+
   updateCorpusDepth: (nameOfAction) => {
     set(
       (state) => {
@@ -27,6 +39,17 @@ const createCorpusSlice = (set, get) => ({
       false,
       `${nameOfAction}/updateCorpusDepth`
     );
+  },
+
+  setTopShelfHeight: (height) => {
+    set(
+      (state) => {
+        state.corpus.topShelfHeight = height;
+      },
+      false,
+      "corpus/setTopShelfHeight"
+    );
+    get().updateCorpusHeight("corpus");
   },
 });
 

@@ -10,6 +10,8 @@ const createSectionsSlice = (set, get) => ({
       3: 0,
       4: 0,
     },
+    minWidth: 450,
+    maxWidth: 1000,
   },
 
   updateSectionsWidth: (nameOfAction) => {
