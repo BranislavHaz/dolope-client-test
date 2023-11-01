@@ -16,6 +16,6 @@ export const Logo = styled.div`
 `;
 
 export const Dot = styled.span`
-  font-size: 2em;
+  font-size: 1em;
   color: var(--main-color);
 `;

@@ -44,13 +44,11 @@ const generateOptionsOfDoors = (state, countOfSections) => {
   const profilesWeight = 10;
   const maxLoadOfDoor = 50;
   const { wardrobe } = state;
+  const doorsArr = [];
 
-  if (countOfSections % 2 === 1) {
-    return false;
-  } else {
+  if (countOfSections % 2 !== 1) {
     const m2SectionArea =
       ((wardrobe.width / countOfSections) * wardrobe.height) / 1000000;
-    const doorsArr = [];
 
     if (m2SectionArea * m2WeightInKG * 2 + profilesWeight < maxLoadOfDoor) {
       doorsArr.push(
@@ -62,15 +60,15 @@ const generateOptionsOfDoors = (state, countOfSections) => {
         </option>
       );
     }
-
-    doorsArr.push(
-      <option key={2} value={countOfSections}>
-        {`${countOfSections}. (${calcDoorWidth(state, countOfSections)} cm)`}
-      </option>
-    );
-
-    return doorsArr;
   }
+
+  doorsArr.push(
+    <option key={2} value={countOfSections}>
+      {`${countOfSections}. (${calcDoorWidth(state, countOfSections)} cm)`}
+    </option>
+  );
+
+  return doorsArr;
 };
 
 const CountSectionDoorStep = () => {
@@ -83,30 +81,33 @@ const CountSectionDoorStep = () => {
       setDoorsCount: state.setDoorsCount,
     }));
 
-  const handleInputChange = (e, handleChange) => {
+  const handleInputChange = (e, handleChange, setFieldValue) => {
     setFieldsChanged(true);
     handleChange(e);
+    if (e.target.name === "sections") {
+      setFieldValue("doors", 0);
+    }
   };
 
   return (
     <Formik
       initialValues={{
-        sections: "",
-        doors: "",
+        sections: 0,
+        doors: 0,
       }}
       validationSchema={CountSchema}
       validateOnMount
       onSubmit={() => {}}
     >
-      {({ isValid, values, handleChange, errors, touched }) => {
+      {({ isValid, values, handleChange, errors, touched, setFieldValue }) => {
         useEffect(() => {
           if (fieldsChanged) {
             setCurrentStepIsFilled(isValid, "countSectionDoor");
           }
 
           if (isValid) {
-            values.sections && setSectionsCount(+values.sections);
-            values.doors && setDoorsCount(+values.doors);
+            values.sections && setSectionsCount(Number(values.sections));
+            values.doors && setDoorsCount(Number(values.doors));
           }
         }, [fieldsChanged, isValid, values]);
 
@@ -118,13 +119,15 @@ const CountSectionDoorStep = () => {
                   as="select"
                   id="sections"
                   name="sections"
-                  onChange={(e) => handleInputChange(e, handleChange)}
-                  value={values.sections}
+                  onChange={(e) =>
+                    handleInputChange(e, handleChange, setFieldValue)
+                  }
+                  value={Number(values.sections)}
                 >
                   <option value={0}>- Vyberte si ze seznamu -</option>
                   {generateOptionsOfSections(state)}
                 </Field>
-                <label htmlFor="sections">Počet sekcí</label>
+                <label htmlFor="sections">Počet sekcí (šířka)</label>
                 <ErrorMessage name="sections" component="span" />
               </$.InputWrapper>
               <$.InputWrapper $isValid={!(errors.doors && touched.doors)}>
@@ -133,12 +136,12 @@ const CountSectionDoorStep = () => {
                   id="doors"
                   name="doors"
                   onChange={(e) => handleInputChange(e, handleChange)}
-                  value={values.doors}
+                  value={Number(values.doors)}
                 >
                   <option value={0}>- Vyberte si ze seznamu -</option>
-                  {generateOptionsOfDoors(state, values.sections)}
+                  {generateOptionsOfDoors(state, Number(values.sections))}
                 </Field>
-                <label htmlFor="doors">Počet posuvných dveří</label>
+                <label htmlFor="doors">Počet dveří (šířka)</label>
                 <ErrorMessage name="doors" component="span" />
               </$.InputWrapper>
             </Form>

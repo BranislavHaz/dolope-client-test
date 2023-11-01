@@ -10,9 +10,9 @@ export const GlobalStyles = createGlobalStyle`
     --warning-color: #f75e5e;
 
     // Mobile layout
-    --m-header-height: 8vh;
-    --m-wardrobe-view-height: 32vh;
-    --m-wardrobe-config-height: 53vh;
+    --m-header-height: 6vh;
+    --m-wardrobe-view-height: 30vh;
+    --m-wardrobe-config-height: 57vh;
     --m-footer-height: 7vh;
   }
 
