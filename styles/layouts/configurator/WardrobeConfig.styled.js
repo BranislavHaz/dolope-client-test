@@ -5,7 +5,6 @@ export const WardrobeConfig = styled.div`
   height: var(--m-wardrobe-config-height);
   display: flex;
   justify-content: center;
-  box-shadow: 0px -3px 17px rgba(0, 0, 0, 0.08);
   background-color: #fff;
   overflow-y: auto;
 `;
