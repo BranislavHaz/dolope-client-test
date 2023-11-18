@@ -12,8 +12,8 @@ export const Footer = styled.footer`
   padding: 0 1em;
   font-size: 0.8em;
   text-transform: uppercase;
-  background-color: #fff;
-  box-shadow: 0px -3px 17px rgba(0, 0, 0, 0.08);
+  background-color: var(--bg-color-config);
+  border-top: 1px solid rgba(235, 235, 235, 0.75);
   z-index: 1;
 `;
 
@@ -28,6 +28,7 @@ export const BackButton = styled.div`
   background-color: #fff;
   color: #000;
   font-size: 0.8em;
+  opacity: ${(props) => (props.$isActive ? "1" : "0")};
 
   &::before {
     content: "<";

@@ -1,4 +1,4 @@
-import useMainStore from "@/stores/useMainStore";
+/* import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/steps/Steps.styled";
 
 import DimensionsStep from "./DimensionsStep";
@@ -30,6 +30,16 @@ const Steps = () => {
         </div>
       ))}
     </$.StepWrapper>
+  );
+}; */
+
+import Step1 from "./Step1";
+
+const Steps = () => {
+  return (
+    <>
+      <Step1 />
+    </>
   );
 };
 

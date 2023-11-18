@@ -8,6 +8,7 @@ const createStepsSlice = (set, get) => ({
     },
     isFilled: false,
   },
+
   setCurrentStepId: (newId) => {
     set(
       (state) => {

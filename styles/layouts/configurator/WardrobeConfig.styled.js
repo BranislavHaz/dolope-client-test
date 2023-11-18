@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const WardrobeConfig = styled.div`
   width: 100%;
-  height: var(--m-wardrobe-config-height);
+  max-height: var(--m-wardrobe-config-height);
   display: flex;
+  position: fixed;
+  left: 0;
+  bottom: var(--m-footer-height);
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--bg-color-config);
   overflow-y: auto;
 `;
 

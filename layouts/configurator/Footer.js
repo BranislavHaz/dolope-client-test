@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <$.Footer>
-      <$.BackButton>zpět</$.BackButton>
+      <$.BackButton $isActive={currentStep.id !== 1}>zpět</$.BackButton>
       <$.NextButton $isActive={chceckIfIsActive()} onClick={handleClickNext}>
         pokračovat
       </$.NextButton>
