@@ -9,6 +9,23 @@ const createStepsSlice = (set, get) => ({
     isFilled: false,
   },
 
+  stepsInputs: {
+    sizeWardrobe: false,
+    typeWardrobe: false,
+    countSections: false,
+    countDoors: false,
+  },
+
+  setStepsInputs: (type, status) => {
+    set(
+      (state) => {
+        state.stepsInputs[type] = status;
+      },
+      false,
+      "statusInput/setStatusInput"
+    );
+  },
+
   setCurrentStepId: (newId) => {
     set(
       (state) => {

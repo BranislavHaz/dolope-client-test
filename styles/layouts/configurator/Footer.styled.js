@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Footer = styled.footer`
   width: 100%;
@@ -15,11 +15,13 @@ export const Footer = styled.footer`
   background-color: var(--bg-color-config);
   border-top: 1px solid rgba(235, 235, 235, 0.75);
   z-index: 1;
+  font-size: 14px;
 `;
 
 export const BackButton = styled.div`
-  width: 30%;
-  height: 3em;
+  min-width: 30%;
+  min-height: 3em;
+  padding: 1em 2em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,20 +39,32 @@ export const BackButton = styled.div`
 `;
 
 export const NextButton = styled.div`
-  width: 30%;
-  height: 3em;
+  min-width: 30%;
+  min-height: 3em;
+  padding: 1em 2em;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid;
   border-radius: 9px;
   font-size: 0.8em;
-  background-color: ${(props) =>
+  /*   background-color: ${(props) =>
     props.$isActive ? "var(--main-color)" : "var(--main-color-non-active)"};
   border-color: ${(props) =>
-    props.$isActive ? "var(--main-color)" : "var(--main-color-non-active)"};
+    props.$isActive ? "var(--main-color)" : "var(--main-color-non-active)"}; */
+  background-color: var(--main-color);
+  border-color: var(--main-color);
   color: ${(props) => (props.$isActive ? "#fff" : "#000")};
   cursor: ${(props) => (props.$isActive ? "pointer" : "not-allowed")};
+
+  ${(props) =>
+    props.$isActive ||
+    css`
+      opacity: 0.5;
+      filter: blur(2px);
+      cursor: not-allowed;
+      pointer-events: none;
+    `}
 
   &::after {
     content: ">";

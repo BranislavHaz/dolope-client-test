@@ -3,7 +3,7 @@ import { calcCorpusAndSectionsWidth } from "@/utils/calcCorpusAndSectionsWidth";
 const createSectionsSlice = (set, get) => ({
   sections: {
     width: 931,
-    count: 3,
+    count: 0,
     typeOfSections: {
       1: 0,
       2: 0,

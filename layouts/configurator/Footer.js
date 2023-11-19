@@ -1,8 +1,10 @@
 import useMainStore from "@/stores/useMainStore";
+import { chceckFilledSteps } from "@/utils/steps/checkFilledSteps";
 import * as $ from "@/styles/layouts/configurator/Footer.styled";
 
 const Footer = () => {
-  const { currentStep, setCurrentStepId } = useMainStore((state) => ({
+  const { state, currentStep, setCurrentStepId } = useMainStore((state) => ({
+    state: state,
     currentStep: state.currentStep,
     setCurrentStepId: state.setCurrentStepId,
   }));
@@ -17,20 +19,13 @@ const Footer = () => {
     }
   };
 
-  const chceckIfIsActive = () => {
-    if (currentStep.id === 1) {
-      return Object.values(currentStep.isFilledFirstStep).every(
-        (value) => value === true
-      );
-    } else {
-      return currentStep.isFilled;
-    }
-  };
-
   return (
     <$.Footer>
       <$.BackButton $isActive={currentStep.id !== 1}>zpět</$.BackButton>
-      <$.NextButton $isActive={chceckIfIsActive()} onClick={handleClickNext}>
+      <$.NextButton
+        $isActive={chceckFilledSteps(currentStep.id, state)}
+        onClick={handleClickNext}
+      >
         pokračovat
       </$.NextButton>
     </$.Footer>

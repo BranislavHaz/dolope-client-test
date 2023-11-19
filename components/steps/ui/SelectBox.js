@@ -23,7 +23,7 @@ const selectBoxType = {
   },
 };
 
-const SelectBox = ({ type, isAccept, text }) => {
+const SelectBox = ({ type, isAccept, text, isInactive }) => {
   const { modal, setIsModalActive, setModalType } = useMainStore((state) => ({
     modal: state.modal,
     setIsModalActive: state.setIsModalActive,
@@ -31,12 +31,17 @@ const SelectBox = ({ type, isAccept, text }) => {
   }));
 
   const handleClick = (type) => () => {
-    setModalType(type);
-    setIsModalActive(true);
+    if (!isInactive) {
+      setModalType(type);
+      setIsModalActive(true);
+    }
   };
 
   return (
-    <$.SelectBoxWrap onClick={handleClick(selectBoxType[type].type)}>
+    <$.SelectBoxWrap
+      $isInactive={isInactive}
+      onClick={handleClick(selectBoxType[type].type)}
+    >
       <$.Icon>
         <Image
           src={selectBoxType[type].imgSrc}

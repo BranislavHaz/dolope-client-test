@@ -3,6 +3,7 @@ import * as $ from "@/styles/components/steps/Modal.styled";
 
 import SizeWardrobe from "./SizeWardrobe";
 import TypeWardrobe from "./TypeWardrobe";
+import CountSections from "./CountSections";
 
 const Modal = () => {
   const { viewport, modal, setIsModalActive } = useMainStore((state) => ({
@@ -14,6 +15,7 @@ const Modal = () => {
   const ModalContent = {
     sizeWardrobe: <SizeWardrobe />,
     typeWardrobe: <TypeWardrobe />,
+    countSections: <CountSections />,
   };
 
   const handleClick = () => {

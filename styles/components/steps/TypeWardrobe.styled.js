@@ -5,7 +5,6 @@ export const Wrap = styled.div`
   flex-direction: column;
   width: 90%;
   text-align: center;
-  margin-bottom: 2em;
 `;
 
 export const TypesWrap = styled.div`

@@ -25,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     --bg-input-error: rgba(255, 126, 126, 0.1);
     --bg-input-icon: #282828;
     --bg-button: #282828;
+    --bg-input-active: #282828;
     --border-input-default: 1px solid rgba(196, 196, 196, 0.33);
     --border-input-active: 1px solid #282828;
     --border-input-error: 1px solid rgba(255, 0, 0, 0.2);
@@ -32,6 +33,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-family: "Roboto", sans-serif;
     --font-color: #000000;
     --font-color-error: #ff3a3a;
+    --font-color-active: #fff;
 
     --border-radius: 5px;
 

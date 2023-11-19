@@ -6,18 +6,18 @@ import * as $ from "@/styles/components/steps/TypeWardrobe.styled";
 import Title from "./ui/Title";
 
 const TypeWardrobe = () => {
-  const { wardrobe, setWardrobeType, setIsModalActive, setStatusInputs } =
+  const { wardrobe, setWardrobeType, setIsModalActive, setStepsInputs } =
     useMainStore((state) => ({
       wardrobe: state.wardrobe,
       setWardrobeType: state.setWardrobeType,
       setIsModalActive: state.setIsModalActive,
-      setStatusInputs: state.setStatusInputs,
+      setStepsInputs: state.setStepsInputs,
     }));
 
   const handleClick = (idType) => () => {
     setWardrobeType(idType);
     setIsModalActive(false);
-    setStatusInputs("typeWardrobe", true);
+    setStepsInputs("typeWardrobe", true);
   };
 
   return (

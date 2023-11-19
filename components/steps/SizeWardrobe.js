@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 
 import * as $ from "@/styles/components/steps/SizeWardrobe.styled";
@@ -17,20 +17,8 @@ const SizeWardrobe = () => {
     topSelf: undefined,
   });
 
-  const {
-    setWardrobeWidth,
-    setWardrobeHeight,
-    setWardrobeDepth,
-    setTopShelfHeight,
-    setIsModalActive,
-    setStatusInputs,
-  } = useMainStore((state) => ({
-    setWardrobeWidth: state.setWardrobeWidth,
-    setWardrobeHeight: state.setWardrobeHeight,
-    setWardrobeDepth: state.setWardrobeDepth,
-    setTopShelfHeight: state.setTopShelfHeight,
-    setIsModalActive: state.setIsModalActive,
-    setStatusInputs: state.setStatusInputs,
+  const { state } = useMainStore((state) => ({
+    state: state,
   }));
 
   const handleSubmit = () => {
@@ -48,16 +36,24 @@ const SizeWardrobe = () => {
     );
 
     if (allValuesArePositive) {
-      setWardrobeWidth(width * 10);
-      setWardrobeHeight(height * 10);
-      setWardrobeDepth(depth * 10);
-      setTopShelfHeight(topSelf * 10);
-      setIsModalActive(false);
-      setStatusInputs("sizeWardrobe", true);
+      state.setWardrobeWidth(width * 10);
+      state.setWardrobeHeight(height * 10);
+      state.setWardrobeDepth(depth * 10);
+      state.setTopShelfHeight(topSelf * 10);
+      state.setIsModalActive(false);
+      state.setStepsInputs("sizeWardrobe", true);
     } else {
-      setStatusInputs("sizeWardrobe", false);
+      state.setStepsInputs("sizeWardrobe", false);
     }
   };
+
+  useEffect(() => {
+    const { wardrobe, corpus } = state;
+    wardrobe.width && setWidth(wardrobe.width / 10);
+    wardrobe.height && setHeight(wardrobe.height / 10);
+    wardrobe.depth && setDepth(wardrobe.depth / 10);
+    corpus.topShelfHeight && setTopSelf(corpus.topShelfHeight / 10);
+  }, []);
 
   return (
     <$.FormWrap>

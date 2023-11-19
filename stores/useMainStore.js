@@ -19,7 +19,6 @@ import createProductsApiSlice from "./createProductsApiSlice";
 import createStepsSlice from "./createStepsSlice";
 
 import createModalSlice from "./createModalSlice";
-import createStatusInputs from "./createStatusInputs";
 
 const createStore = (createStoreFn) => {
   const devtoolsEnhancer = devtools(createStoreFn);
@@ -46,7 +45,6 @@ const useMainStore = create(
     ...createStepsSlice(...a),
 
     ...createModalSlice(...a),
-    ...createStatusInputs(...a),
   }))
 );
 

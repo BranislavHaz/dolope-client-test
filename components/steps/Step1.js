@@ -2,10 +2,12 @@ import useMainStore from "@/stores/useMainStore";
 import Title from "./ui/Title";
 import SelectBox from "./ui/SelectBox";
 
-const getSizeWardrobeText = (wardrobe, corpus, statusInput) => {
+import { isBasicDataFilled } from "@/utils/steps/step1/isBasicDataFilled";
+
+const getSizeWardrobeText = (wardrobe, corpus, stepsInputs) => {
   const { width, height, depth } = wardrobe;
   const { topShelfHeight } = corpus;
-  const { sizeWardrobe } = statusInput;
+  const { sizeWardrobe } = stepsInputs;
 
   if ((width || height || depth || topShelfHeight !== 0) && sizeWardrobe) {
     const text = `${width / 10}x${height / 10}x${depth / 10} | ${
@@ -34,25 +36,30 @@ const getTypeWardrobeText = (wardrobe) => {
 };
 
 const Step1 = () => {
-  const { wardrobe, corpus, statusInput } = useMainStore((state) => ({
+  const { state, wardrobe, corpus, stepsInputs } = useMainStore((state) => ({
+    state: state,
     wardrobe: state.wardrobe,
     corpus: state.corpus,
-    statusInput: state.statusInput,
+    stepsInputs: state.stepsInputs,
   }));
   return (
     <>
       <Title>Základní specifikace</Title>
       <SelectBox
         type={"sizeWardrobe"}
-        isAccept={statusInput.sizeWardrobe}
-        text={getSizeWardrobeText(wardrobe, corpus, statusInput)}
+        isAccept={stepsInputs.sizeWardrobe}
+        text={getSizeWardrobeText(wardrobe, corpus, stepsInputs)}
       />
       <SelectBox
         type={"typeWardrobe"}
-        isAccept={statusInput.typeWardrobe}
+        isAccept={stepsInputs.typeWardrobe}
         text={getTypeWardrobeText(wardrobe)}
       />
-      <SelectBox type={"countSections"} />
+      <SelectBox
+        type={"countSections"}
+        isAccept={stepsInputs.countSections && stepsInputs.countDoors}
+        isInactive={!isBasicDataFilled(state)}
+      />
     </>
   );
 };

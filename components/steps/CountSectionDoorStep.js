@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
-import { calcSectionsWidth } from "@/utils/calcSectionsWidth";
-import { calcDoorWidth } from "@/utils/calcDoorWidth";
+import { calcSectionsWidth } from "@/utils/steps/step1/calcSectionsWidth";
+import { calcDoorWidth } from "@/utils/steps/step1/calcDoorWidth";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";

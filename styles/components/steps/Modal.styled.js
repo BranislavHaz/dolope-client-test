@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ModalWrap = styled.div`
   width: calc(${(props) => props.$width} * 0.98px);
   height: calc(${(props) => props.$height} * 0.98px);
+  padding-bottom: 2em;
   position: fixed;
   top: 50%;
   left: 50%;

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const FormWrap = styled.div`
   width: 80%;
-  margin-bottom: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,7 +59,7 @@ export const Details = styled.span`
 `;
 
 export const Submit = styled.div`
-  margin: 1em 0;
+  margin-top: 1em;
   padding: 1em 2em;
   background-color: var(--bg-button);
   border: 0;

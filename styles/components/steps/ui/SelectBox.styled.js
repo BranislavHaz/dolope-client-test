@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const SelectBoxWrap = styled.div`
   width: 100%;
@@ -14,6 +14,15 @@ export const SelectBoxWrap = styled.div`
 
   font-family: var(--font-family);
   color: var(--font-color);
+
+  ${(props) =>
+    props.$isInactive &&
+    css`
+      opacity: 0.5;
+      filter: blur(4px);
+      cursor: not-allowed;
+      pointer-events: none;
+    `}
 `;
 
 export const Icon = styled.div`

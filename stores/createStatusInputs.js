@@ -1,18 +1,20 @@
 const createStatusInputs = (set, get) => ({
-  statusInput: {
+  /*   statusInputs: {
     sizeWardrobe: false,
     typeWardrobe: false,
+    countSections: false,
+    countDoors: false,
   },
 
   setStatusInputs: (type, status) => {
     set(
       (state) => {
-        state.statusInput[type] = status;
+        state.statusInputs[type] = status;
       },
       false,
       "statusInput/setStatusInput"
     );
-  },
+  },*/
 });
 
 export default createStatusInputs;
