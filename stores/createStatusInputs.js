@@ -1,6 +1,7 @@
 const createStatusInputs = (set, get) => ({
   statusInput: {
     sizeWardrobe: false,
+    typeWardrobe: false,
   },
 
   setStatusInputs: (type, status) => {

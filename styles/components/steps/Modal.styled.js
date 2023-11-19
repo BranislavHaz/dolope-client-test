@@ -14,6 +14,7 @@ export const ModalWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  overflow-y: scroll;
   transition: all 0.25s ease-out;
 
   background: rgba(255, 255, 255, 0.52);

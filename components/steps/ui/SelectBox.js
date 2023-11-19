@@ -7,31 +7,36 @@ const selectBoxType = {
     imgSrc: "/icons/size-wardrobe.svg",
     title: "Rozměry skříně",
     text: "250x220x60 cm | 60 cm",
+    type: "sizeWardrobe",
   },
   typeWardrobe: {
     imgSrc: "/icons/type-wardrobe.svg",
     title: "Typ skříně",
     text: "Mezi stěnami",
+    type: "typeWardrobe",
   },
   countSections: {
     imgSrc: "/icons/count-sections.svg",
     title: "Počet sekcí a dveří",
     text: "4x | 2x",
+    type: "countSections",
   },
 };
 
-const SelectBox = ({ type, isAccept }) => {
-  const { modal, setIsModalActive } = useMainStore((state) => ({
+const SelectBox = ({ type, isAccept, text }) => {
+  const { modal, setIsModalActive, setModalType } = useMainStore((state) => ({
     modal: state.modal,
     setIsModalActive: state.setIsModalActive,
+    setModalType: state.setModalType,
   }));
 
-  const handleClick = () => {
+  const handleClick = (type) => () => {
+    setModalType(type);
     setIsModalActive(true);
   };
 
   return (
-    <$.SelectBoxWrap onClick={handleClick}>
+    <$.SelectBoxWrap onClick={handleClick(selectBoxType[type].type)}>
       <$.Icon>
         <Image
           src={selectBoxType[type].imgSrc}
@@ -50,7 +55,7 @@ const SelectBox = ({ type, isAccept }) => {
       </$.Icon>
       <$.TextWrap>
         <$.Subtitle>{selectBoxType[type].title}</$.Subtitle>
-        <$.Text>{selectBoxType[type].text}</$.Text>
+        {text && <$.Text>{text}</$.Text>}
       </$.TextWrap>
       <$.ArrowWrap>
         <Image

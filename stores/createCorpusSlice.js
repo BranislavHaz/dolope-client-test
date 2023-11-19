@@ -5,7 +5,7 @@ const createCorpusSlice = (set, get) => ({
     width: 2865,
     height: 2300,
     depth: 500,
-    topShelfHeight: 20,
+    topShelfHeight: 0,
     minWidthReserve: 8,
   },
 

@@ -1,11 +1,19 @@
 const createWardrobeSlice = (set, get) => ({
   wardrobe: {
-    width: 2865,
-    height: 2603,
-    depth: 600,
+    width: 0,
+    height: 0,
+    depth: 0,
     thickness: 18,
     type: 0,
   },
+
+  /*
+    type
+    1 = medzi stenami
+    2 = stena vľavo
+    3 = stena vpravo
+    4 = v priestore
+    */
 
   setWardrobeWidth: (widthValue) => {
     set(
