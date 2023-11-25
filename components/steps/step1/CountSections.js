@@ -1,11 +1,11 @@
 import useMainStore from "@/stores/useMainStore";
-import Title from "./ui/Title";
+import Title from "../ui/Title";
 import {
   generateOptionsOfSections,
   generateOptionsOfDoors,
 } from "@/utils/steps/step1/generateOptions";
 
-import * as $ from "@/styles/components/steps/CountSections.styled";
+import * as $ from "@/styles/components/steps/step1/CountSections.styled";
 
 const CountSections = () => {
   const { state } = useMainStore((state) => ({
@@ -15,13 +15,13 @@ const CountSections = () => {
   const handleClick = (type, value) => () => {
     if (type === "sections") {
       state.setSectionsCount(value);
-      state.setStepsInputs("countSections", true);
-      state.setStepsInputs("countDoors", false);
+      state.setStepsInputs("step1", "countSections", true);
+      state.setStepsInputs("step1", "countDoors", false);
       state.setDoorsCount(0);
     }
     if (type === "doors") {
       state.setDoorsCount(value);
-      state.setStepsInputs("countDoors", true);
+      state.setStepsInputs("step1", "countDoors", true);
       state.setIsModalActive(false);
     }
   };

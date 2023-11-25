@@ -1,9 +1,9 @@
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/steps/TypeWardrobe.styled";
+import * as $ from "@/styles/components/steps/step1/TypeWardrobe.styled";
 
-import Title from "./ui/Title";
+import Title from "../ui/Title";
 
 const TypeWardrobe = () => {
   const { wardrobe, setWardrobeType, setIsModalActive, setStepsInputs } =
@@ -17,7 +17,7 @@ const TypeWardrobe = () => {
   const handleClick = (idType) => () => {
     setWardrobeType(idType);
     setIsModalActive(false);
-    setStepsInputs("typeWardrobe", true);
+    setStepsInputs("step1", "typeWardrobe", true);
   };
 
   return (

@@ -6,20 +6,23 @@ const selectBoxType = {
   sizeWardrobe: {
     imgSrc: "/icons/size-wardrobe.svg",
     title: "Rozměry skříně",
-    text: "250x220x60 cm | 60 cm",
     type: "sizeWardrobe",
   },
   typeWardrobe: {
     imgSrc: "/icons/type-wardrobe.svg",
     title: "Typ skříně",
-    text: "Mezi stěnami",
     type: "typeWardrobe",
   },
   countSections: {
     imgSrc: "/icons/count-sections.svg",
     title: "Počet sekcí a dveří",
-    text: "4x | 2x",
     type: "countSections",
+  },
+  typeSections: {},
+  typeDoors: {
+    imgSrc: "/icons/count-sections.svg",
+    title: "Typ dveří",
+    type: "typeDoors",
   },
 };
 

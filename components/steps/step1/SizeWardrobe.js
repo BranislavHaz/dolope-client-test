@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/steps/SizeWardrobe.styled";
+import * as $ from "@/styles/components/steps/step1/SizeWardrobe.styled";
 
-import Title from "./ui/Title";
+import Title from "../ui/Title";
 
 const SizeWardrobe = () => {
   const [width, setWidth] = useState(0);
@@ -41,9 +41,9 @@ const SizeWardrobe = () => {
       state.setWardrobeDepth(depth * 10);
       state.setTopShelfHeight(topSelf * 10);
       state.setIsModalActive(false);
-      state.setStepsInputs("sizeWardrobe", true);
+      state.setStepsInputs("step1", "sizeWardrobe", true);
     } else {
-      state.setStepsInputs("sizeWardrobe", false);
+      state.setStepsInputs("step1", "sizeWardrobe", false);
     }
   };
 

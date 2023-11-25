@@ -1,25 +1,21 @@
 const createStepsSlice = (set, get) => ({
   currentStep: {
     id: 1,
-    isFilledFirstStep: {
-      dimensions: false,
-      type: false,
-      countSectionDoor: false,
-    },
-    isFilled: false,
   },
 
   stepsInputs: {
-    sizeWardrobe: false,
-    typeWardrobe: false,
-    countSections: false,
-    countDoors: false,
+    step1: {
+      sizeWardrobe: false,
+      typeWardrobe: false,
+      countSections: false,
+      countDoors: false,
+    },
   },
 
-  setStepsInputs: (type, status) => {
+  setStepsInputs: (stepId, type, status) => {
     set(
       (state) => {
-        state.stepsInputs[type] = status;
+        state.stepsInputs[stepId][type] = status;
       },
       false,
       "statusInput/setStatusInput"
@@ -33,19 +29,6 @@ const createStepsSlice = (set, get) => ({
       },
       false,
       "steps/setCurrentStepId"
-    );
-  },
-  setCurrentStepIsFilled: (value, key) => {
-    set(
-      (state) => {
-        if (state.currentStep.id > 1) {
-          state.currentStep.isFilled = value;
-        } else if (state.currentStep.isFilledFirstStep.hasOwnProperty(key)) {
-          state.currentStep.isFilledFirstStep[key] = value;
-        }
-      },
-      false,
-      "steps/setCurrentStepIsFilled"
     );
   },
 });

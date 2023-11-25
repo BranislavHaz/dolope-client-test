@@ -4,10 +4,10 @@ export const chceckFilledSteps = (stepId, state) => {
   switch (stepId) {
     case 1:
       if (
-        stepsInputs.sizeWardrobe &&
-        stepsInputs.typeWardrobe &&
-        stepsInputs.countSections &&
-        stepsInputs.countDoors
+        stepsInputs.step1.sizeWardrobe &&
+        stepsInputs.step1.typeWardrobe &&
+        stepsInputs.step1.countSections &&
+        stepsInputs.step1.countDoors
       ) {
         return true;
       }

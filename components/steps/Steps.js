@@ -1,17 +1,11 @@
-/* import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/steps/Steps.styled";
+import useMainStore from "@/stores/useMainStore";
 
-import DimensionsStep from "./DimensionsStep";
-import TypeStep from "./TypeStep";
-import CountSectionDoorStep from "./CountSectionDoorStep";
+import Step1 from "./step1/Step1";
+import Step2 from "./step2/Step2";
 
-const steps = {
-  1: [
-    { title: "Rozměry skříně", component: DimensionsStep },
-    { title: "Typ skříně", component: TypeStep },
-    { title: "Počet sekcí a dveří", component: CountSectionDoorStep },
-  ],
-  2: [{ title: "Typ skříně", component: TypeStep }],
+const stepsMap = {
+  1: <Step1 />,
+  2: <Step2 />,
 };
 
 const Steps = () => {
@@ -19,28 +13,7 @@ const Steps = () => {
     currentStep: state.currentStep,
   }));
 
-  const currentSteps = steps[currentStep.id];
-
-  return (
-    <$.StepWrapper>
-      {currentSteps.map((step, index) => (
-        <div key={index}>
-          <$.Title>{step.title}</$.Title>
-          <step.component />
-        </div>
-      ))}
-    </$.StepWrapper>
-  );
-}; */
-
-import Step1 from "./Step1";
-
-const Steps = () => {
-  return (
-    <>
-      <Step1 />
-    </>
-  );
+  return <>{stepsMap[currentStep.id]}</>;
 };
 
 export default Steps;

@@ -2,7 +2,7 @@ import { calcDoorWidth } from "./calcDoorWidth";
 import { calcSectionsWidth } from "./calcSectionsWidth";
 import { isBasicDataFilled } from "./isBasicDataFilled";
 
-import * as $ from "@/styles/components/steps/CountSections.styled";
+import * as $ from "@/styles/components/steps/step1/CountSections.styled";
 
 export const generateOptionsOfSections = (state, handleClick) => {
   if (isBasicDataFilled(state)) {
