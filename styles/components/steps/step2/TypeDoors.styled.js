@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrap = styled.div`
   --fullHeight: ${(props) => props.$fullHeight};
@@ -24,6 +24,11 @@ export const DoorType = styled.div`
   background-color: #fff;
   box-sizing: content-box;
   border: 2px solid #000;
+  ${(props) =>
+    props.$isActive &&
+    css`
+      box-shadow: var(--main-color) 0px 0px 0px 3px;
+    `}
 `;
 
 export const DoorElement = styled.div`
