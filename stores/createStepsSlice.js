@@ -3,6 +3,10 @@ const createStepsSlice = (set, get) => ({
     id: 1,
   },
 
+  activeFilter: {
+    doors: 1,
+  },
+
   stepsInputs: {
     step1: {
       sizeWardrobe: false,
@@ -10,6 +14,16 @@ const createStepsSlice = (set, get) => ({
       countSections: false,
       countDoors: false,
     },
+  },
+
+  setActiveFilter: (type, id) => {
+    set(
+      (state) => {
+        state.activeFilter[type] = id;
+      },
+      false,
+      "steps/setActiveFilter"
+    );
   },
 
   setStepsInputs: (stepId, type, status) => {

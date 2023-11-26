@@ -7,6 +7,7 @@ export const FilterBoxWrap = styled.div`
   display: flex;
   align-items: center;
   overflow-x: scroll;
+  overflow-y: hidden;
   position: sticky;
   top: 0;
   left: 0;

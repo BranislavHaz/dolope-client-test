@@ -1,5 +1,6 @@
-import Title from "../ui/Title";
+import useMainStore from "@/stores/useMainStore";
 
+import Title from "../ui/Title";
 import FilterBox from "../ui/FilterBox";
 
 import FixedDoors from "./doorsElements/FixedDoors";
@@ -11,9 +12,17 @@ import VariableDoor4 from "./doorsElements/VariableDoor4";
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
 
 const TypeDoors = () => {
+  const { doors, activeFilter } = useMainStore((state) => ({
+    doors: state.doors,
+    activeFilter: state.activeFilter,
+  }));
   return (
     <>
-      <FilterBox />
+      <FilterBox
+        type={"doors"}
+        count={doors.count}
+        active={activeFilter.doors}
+      />
       <$.Wrap>
         <Title>Fixní výška dveří</Title>
         <FixedDoors />

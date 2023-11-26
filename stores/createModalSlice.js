@@ -1,6 +1,7 @@
 const createModalSlice = (set, get) => ({
   modal: {
     isActive: false,
+    beScrolled: false,
     type: "sizeWardrobe",
   },
 
@@ -11,6 +12,16 @@ const createModalSlice = (set, get) => ({
       },
       false,
       "modal/setIsModalActive"
+    );
+  },
+
+  setBeScrolled: (value) => {
+    set(
+      (state) => {
+        state.modal.beScrolled = value;
+      },
+      false,
+      "modal/setBeScrolled"
     );
   },
 

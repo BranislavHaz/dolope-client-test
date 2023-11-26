@@ -8,6 +8,7 @@ import CountSections from "./step1/CountSections";
 
 // Step2
 import TypeDoors from "./step2/TypeDoors";
+import { useEffect, useRef } from "react";
 
 const Modal = () => {
   const { viewport, modal, setIsModalActive } = useMainStore((state) => ({
@@ -15,6 +16,14 @@ const Modal = () => {
     modal: state.modal,
     setIsModalActive: state.setIsModalActive,
   }));
+  const modalRef = useRef(0);
+
+  useEffect(() => {
+    if (modalRef.current) {
+      modal.beScrolled &&
+        modalRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [modal.beScrolled]);
 
   const ModalContent = {
     sizeWardrobe: <SizeWardrobe />,
@@ -29,6 +38,7 @@ const Modal = () => {
 
   return (
     <$.ModalWrap
+      ref={modalRef}
       $width={viewport.width}
       $height={viewport.height}
       $isActive={modal.isActive}
