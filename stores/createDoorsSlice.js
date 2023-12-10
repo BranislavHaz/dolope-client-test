@@ -28,6 +28,21 @@ const createDoorsSlice = (set, get) => ({
       door12: { type: 0, sections: [] },
     },
 
+    typeDoors: {
+      door1: [],
+      door2: [],
+      door3: [],
+      door4: [],
+      door5: [],
+      door6: [],
+      door7: [],
+      door8: [],
+      door9: [],
+      door10: [],
+      door11: [],
+      door12: [],
+    },
+
     dimensionsFromManual: {
       doorOverhang: {
         london: 27.5,
@@ -91,6 +106,20 @@ const createDoorsSlice = (set, get) => ({
       },
       false,
       "doors/setSelectedProfile"
+    );
+  },
+
+  setTypeOfDoors: ({ doorId, sections }) => {
+    const doorKey = `door${doorId}`;
+    console.log(sections);
+    console.log(doorId);
+
+    set(
+      (state) => {
+        state.doors.typeDoors[doorKey] = sections;
+      },
+      false,
+      "doors/setTypeOfDoors"
     );
   },
 });
