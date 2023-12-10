@@ -1,13 +1,19 @@
 import useMainStore from "@/stores/useMainStore";
 import { calcMinMaxDoorHeight } from "@/utils/steps/step2/calcDoorHeight";
+import { checkIfIsActiveDoor } from "@/utils/steps/step2/checkIfIsActiveDoor";
 import { useState } from "react";
 
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
 
 const VariableDoor2 = () => {
-  const { doors } = useMainStore((state) => ({
-    doors: state.doors,
-  }));
+  const { state, doors, setTypeOfDoors, removeTypeOfDoors, activeFilter } =
+    useMainStore((state) => ({
+      state: state,
+      doors: state.doors,
+      setTypeOfDoors: state.setTypeOfDoors,
+      removeTypeOfDoors: state.removeTypeOfDoors,
+      activeFilter: state.activeFilter,
+    }));
 
   const [inputValue, setInputValue] = useState(0);
   const [variableHeight, setVariableHeight] = useState(0);
@@ -26,8 +32,34 @@ const VariableDoor2 = () => {
     }
   };
 
+  const handleClick = () => {
+    if (inputValue > 0 && !inputErr) {
+      const doorId = activeFilter.doors;
+      const typeOfDoor = 7;
+      const fixedHeight = Math.round((doors.height - inputValue * 10) / 2);
+      const sections = {
+        1: {
+          width: doors.width,
+          height: fixedHeight,
+        },
+        2: { width: doors.width, height: Math.round(inputValue * 10) },
+        3: {
+          width: doors.width,
+          height: fixedHeight,
+        },
+      };
+      setTypeOfDoors({ doorId, sections, typeOfDoor });
+    }
+  };
+
+  const handleInputClick = (e) => {
+    e.stopPropagation();
+    const doorId = activeFilter.doors;
+    removeTypeOfDoors(doorId);
+  };
+
   return (
-    <$.DoorType>
+    <$.DoorType $isActive={checkIfIsActiveDoor(state, 7)} onClick={handleClick}>
       <$.DoorElement $heightRatio={0.25}>
         {variableHeight !== 0 && (
           <$.DimensionsText>{variableHeight} cm</$.DimensionsText>
@@ -39,6 +71,7 @@ const VariableDoor2 = () => {
           value={inputValue || ""}
           onChange={(e) => setInputValue(e.target.value)}
           onBlur={(e) => handleOnBlur(e.target.value)}
+          onClick={handleInputClick}
           $isError={inputErr}
         />
         <$.LimitText $isError={inputErr}>

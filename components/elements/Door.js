@@ -1,37 +1,54 @@
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Doors.styled";
 
-import DoorEmpty from "../doors/DoorEmpty";
-import Door1 from "../doors/Door1";
-import Door2 from "../doors/Door2";
-import Door3 from "../doors/Door3";
-import Door4 from "../doors/Door4";
-import Door5 from "../doors/Door5";
-
-const doorsMap = {
-  0: DoorEmpty,
-  1: Door1,
-  2: Door2,
-  3: Door3,
-  4: Door4,
-  5: Door5,
-};
+import HProfile from "../elements/HProfile";
 
 const Door = ({ width, height, overhang, id, children }) => {
-  const { doors } = useMainStore((state) => ({
+  const { viewport, doors } = useMainStore((state) => ({
+    viewport: state.viewport,
     doors: state.doors,
   }));
 
-  const getDoorType = (doorId) => {
-    const { type } = doors.typeOfDoors[`door${doorId}`];
-    return type;
-  };
+  const { px } = viewport;
+  const currentDoorSections = doors?.typeDoors[id]?.sections;
+  const countOfSections =
+    currentDoorSections && Object.keys(currentDoorSections).length;
 
-  const DoorType = doorsMap[getDoorType(id)];
+  const getDoorElements = () => {
+    const doorElement = [];
+
+    for (let i = 1; i <= countOfSections; i++) {
+      const currentSection = doors.typeDoors[id].sections[i];
+
+      if (i < countOfSections) {
+        doorElement.push(
+          <$.DoorSection key={i}>
+            <$.DoorPart
+              $width={px * currentSection.width}
+              $height={px * currentSection.height}
+            />
+            <HProfile />
+          </$.DoorSection>
+        );
+      } else {
+        doorElement.push(
+          <$.DoorSection key={i}>
+            <$.DoorPart
+              $width={px * currentSection.width}
+              $height={px * currentSection.height}
+            />
+          </$.DoorSection>
+        );
+      }
+    }
+
+    return doorElement;
+  };
 
   return (
     <$.DoorWrapper $width={width} $height={height} $overhang={overhang}>
-      <DoorType />
+      <$.Door>{doors.typeDoors[id] && getDoorElements()}</$.Door>
+      {/* <DoorType /> */}
       {children}
     </$.DoorWrapper>
   );

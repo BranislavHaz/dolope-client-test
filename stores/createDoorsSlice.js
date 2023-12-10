@@ -28,20 +28,7 @@ const createDoorsSlice = (set, get) => ({
       door12: { type: 0, sections: [] },
     },
 
-    typeDoors: {
-      door1: [],
-      door2: [],
-      door3: [],
-      door4: [],
-      door5: [],
-      door6: [],
-      door7: [],
-      door8: [],
-      door9: [],
-      door10: [],
-      door11: [],
-      door12: [],
-    },
+    typeDoors: {},
 
     dimensionsFromManual: {
       doorOverhang: {
@@ -109,17 +96,27 @@ const createDoorsSlice = (set, get) => ({
     );
   },
 
-  setTypeOfDoors: ({ doorId, sections }) => {
-    const doorKey = `door${doorId}`;
-    console.log(sections);
-    console.log(doorId);
-
+  setTypeOfDoors: ({ doorId, sections, typeOfDoor }) => {
     set(
       (state) => {
-        state.doors.typeDoors[doorKey] = sections;
+        state.doors.typeDoors = {
+          ...state.doors.typeDoors,
+          [doorId]: { typeOfDoor, sections },
+        };
       },
       false,
       "doors/setTypeOfDoors"
+    );
+  },
+
+  removeTypeOfDoors: (doorId) => {
+    set(
+      (state) => {
+        const { [doorId]: _, ...newTypeDoors } = state.doors.typeDoors;
+        state.doors.typeDoors = newTypeDoors;
+      },
+      false,
+      "doors/removeTypeOfDoors"
     );
   },
 });

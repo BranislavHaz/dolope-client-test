@@ -1,13 +1,19 @@
 import useMainStore from "@/stores/useMainStore";
 import { calcMinMaxDoorHeight } from "@/utils/steps/step2/calcDoorHeight";
+import { checkIfIsActiveDoor } from "@/utils/steps/step2/checkIfIsActiveDoor";
 import { useState } from "react";
 
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
 
 const VariableDoor3 = () => {
-  const { doors } = useMainStore((state) => ({
-    doors: state.doors,
-  }));
+  const { state, doors, setTypeOfDoors, removeTypeOfDoors, activeFilter } =
+    useMainStore((state) => ({
+      state: state,
+      doors: state.doors,
+      setTypeOfDoors: state.setTypeOfDoors,
+      removeTypeOfDoors: state.removeTypeOfDoors,
+      activeFilter: state.activeFilter,
+    }));
 
   const [inputValue, setInputValue] = useState(0);
   const [variableHeight, setVariableHeight] = useState(0);
@@ -26,14 +32,35 @@ const VariableDoor3 = () => {
     }
   };
 
+  const handleClick = () => {
+    if (inputValue > 0 && !inputErr) {
+      const doorId = activeFilter.doors;
+      const typeOfDoor = 8;
+      const fixedHeight = Math.round(doors.height - inputValue * 2 * 10);
+      const sections = {
+        1: { width: doors.width, height: Math.round(inputValue * 10) },
+        2: { width: doors.width, height: fixedHeight },
+        3: { width: doors.width, height: Math.round(inputValue * 10) },
+      };
+      setTypeOfDoors({ doorId, sections, typeOfDoor });
+    }
+  };
+
+  const handleInputClick = (e) => {
+    e.stopPropagation();
+    const doorId = activeFilter.doors;
+    removeTypeOfDoors(doorId);
+  };
+
   return (
-    <$.DoorType>
+    <$.DoorType $isActive={checkIfIsActiveDoor(state, 8)} onClick={handleClick}>
       <$.DoorElement $heightRatio={0.4}>
         <$.InputNum
           placeholder="cm"
           value={inputValue || ""}
           onChange={(e) => setInputValue(e.target.value)}
           onBlur={(e) => handleOnBlur(e.target.value)}
+          onClick={handleInputClick}
           $isError={inputErr}
         />
         <$.LimitText $isError={inputErr}>
@@ -51,6 +78,7 @@ const VariableDoor3 = () => {
           value={inputValue || ""}
           onChange={(e) => setInputValue(e.target.value)}
           onBlur={(e) => handleOnBlur(e.target.value)}
+          onClick={handleInputClick}
           $isError={inputErr}
         />
         <$.LimitText $isError={inputErr}>

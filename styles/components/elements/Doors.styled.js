@@ -36,6 +36,10 @@ export const Door = styled.div`
   z-index: -1;
 `;
 
+export const DoorSection = styled.div`
+  position: relative;
+`;
+
 export const DoorPart = styled.div`
   width: ${(props) => props.$width}px;
   height: ${(props) => props.$height}px;
