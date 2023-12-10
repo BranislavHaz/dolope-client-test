@@ -14,6 +14,9 @@ const createStepsSlice = (set, get) => ({
       countSections: false,
       countDoors: false,
     },
+    step2: {
+      typeDoors: false,
+    },
   },
 
   setActiveFilter: (type, id) => {

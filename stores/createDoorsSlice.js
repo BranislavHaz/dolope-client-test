@@ -13,21 +13,6 @@ const createDoorsSlice = (set, get) => ({
     },
 
     availableProfiles: [],
-    typeOfDoors: {
-      door1: { type: 4, sections: [] },
-      door2: { type: 0, sections: [] },
-      door3: { type: 5, sections: [] },
-      door4: { type: 0, sections: [] },
-      door5: { type: 0, sections: [] },
-      door6: { type: 0, sections: [] },
-      door7: { type: 4, sections: [] },
-      door8: { type: 0, sections: [] },
-      door9: { type: 5, sections: [] },
-      door10: { type: 0, sections: [] },
-      door11: { type: 0, sections: [] },
-      door12: { type: 0, sections: [] },
-    },
-
     typeDoors: {},
 
     dimensionsFromManual: {

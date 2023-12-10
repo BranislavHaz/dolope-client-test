@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
+import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 import * as $ from "@/styles/components/steps/step1/SizeWardrobe.styled";
 
@@ -102,7 +103,7 @@ const SizeWardrobe = () => {
       <$.Details $isCorrect={isCorrect.topSelf !== false}>
         Maximální povolené rozmezí: 15-40 cm
       </$.Details>
-      <$.Submit onClick={handleSubmit}>Uložit</$.Submit>
+      <SubmitButton onClick={handleSubmit}>Uložit</SubmitButton>
     </$.FormWrap>
   );
 };

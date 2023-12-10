@@ -9,13 +9,41 @@ import VariableDoor2 from "./doorsElements/VariableDoor2";
 import VariableDoor3 from "./doorsElements/VariableDoor3";
 import VariableDoor4 from "./doorsElements/VariableDoor4";
 
+import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
+
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
+import { useEffect } from "react";
 
 const TypeDoors = () => {
-  const { doors, activeFilter } = useMainStore((state) => ({
+  const {
+    doors,
+    activeFilter,
+    setStepsInputs,
+    setIsModalActive,
+    setActiveFilter,
+  } = useMainStore((state) => ({
     doors: state.doors,
     activeFilter: state.activeFilter,
+    setStepsInputs: state.setStepsInputs,
+    setIsModalActive: state.setIsModalActive,
+    setActiveFilter: state.setActiveFilter,
   }));
+
+  useEffect(() => {
+    const countOfSelectedDoors = Object.keys(doors.typeDoors).length;
+
+    if (countOfSelectedDoors === doors.count) {
+      setStepsInputs("step2", "typeDoors", true);
+    } else {
+      setStepsInputs("step2", "typeDoors", false);
+    }
+  }, [doors.typeDoors]);
+
+  const handleClick = () => {
+    setIsModalActive(false);
+    setActiveFilter("doors", 1);
+  };
+
   return (
     <>
       <FilterBox
@@ -34,6 +62,9 @@ const TypeDoors = () => {
           <VariableDoor4 />
         </$.TypeDoorsWrap>
       </$.Wrap>
+      {Object.keys(doors.typeDoors).length === doors.count && (
+        <SubmitButton onClick={handleClick}>Uložit</SubmitButton>
+      )}
     </>
   );
 };

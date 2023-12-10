@@ -12,10 +12,7 @@ const Step2 = () => {
   return (
     <>
       <Title>Výběr typů</Title>
-      <SelectBox
-        type={"typeDoors"}
-        //isAccept={stepsInputs.sizeWardrobe}
-      />
+      <SelectBox type={"typeDoors"} isAccept={stepsInputs.step2.typeDoors} />
     </>
   );
 };
