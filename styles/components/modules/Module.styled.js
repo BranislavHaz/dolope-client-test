@@ -5,4 +5,8 @@ export const Module = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-left: ${(props) =>
+    props.$isInModal ? `${props.$standWidth}px solid #966f33` : "none"};
+  border-right: ${(props) =>
+    props.$isInModal ? `${props.$standWidth}px solid #966f33` : "none"};
 `;

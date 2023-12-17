@@ -7,6 +7,7 @@ import TypeWardrobe from "./step1/TypeWardrobe";
 import CountSections from "./step1/CountSections";
 
 // Step2
+import TypeSections from "./step2/TypeSections";
 import TypeDoors from "./step2/TypeDoors";
 import { useEffect, useRef } from "react";
 
@@ -29,6 +30,7 @@ const Modal = () => {
     sizeWardrobe: <SizeWardrobe />,
     typeWardrobe: <TypeWardrobe />,
     countSections: <CountSections />,
+    typeSections: <TypeSections />,
     typeDoors: <TypeDoors />,
   };
 

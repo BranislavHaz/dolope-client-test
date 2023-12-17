@@ -3,8 +3,8 @@ import useTimeout from "@/hooks/useTimeout";
 import * as $ from "@/styles/components/steps/ui/FilterBox.styled";
 
 const typeObj = {
+  sections: { title: "sekce" },
   doors: { title: "dveře" },
-  sections: "sekce",
 };
 
 const FilterBox = ({ type, count, active }) => {

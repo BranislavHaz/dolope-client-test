@@ -18,17 +18,20 @@ const selectBoxType = {
     title: "Počet sekcí a dveří",
     type: "countSections",
   },
-  typeSections: {},
+  typeSections: {
+    imgSrc: "/icons/type-sections.svg",
+    title: "Typ sekcí",
+    type: "typeSections",
+  },
   typeDoors: {
-    imgSrc: "/icons/count-sections.svg",
+    imgSrc: "/icons/type-doors.svg",
     title: "Typ dveří",
     type: "typeDoors",
   },
 };
 
 const SelectBox = ({ type, isAccept, text, isInactive }) => {
-  const { modal, setIsModalActive, setModalType } = useMainStore((state) => ({
-    modal: state.modal,
+  const { setIsModalActive, setModalType } = useMainStore((state) => ({
     setIsModalActive: state.setIsModalActive,
     setModalType: state.setModalType,
   }));

@@ -5,6 +5,7 @@ const createStepsSlice = (set, get) => ({
 
   activeFilter: {
     doors: 1,
+    sections: 1,
   },
 
   stepsInputs: {

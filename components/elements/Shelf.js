@@ -1,9 +1,8 @@
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Shelf.styled";
 
-const Shelf = () => {
-  const { wardrobe, sections, viewport } = useMainStore((state) => ({
-    wardrobe: state.wardrobe,
+const Shelf = ({ isInModal }) => {
+  const { sections, viewport } = useMainStore((state) => ({
     sections: state.sections,
     viewport: state.viewport,
   }));
@@ -11,7 +10,11 @@ const Shelf = () => {
   const { px } = viewport;
 
   return (
-    <$.Shelf $width={px * sections.width} $height={px * viewport.thickness} />
+    <$.Shelf
+      $width={px * sections.width}
+      $height={px * viewport.thickness}
+      $isInModal={isInModal}
+    />
   );
 };
 

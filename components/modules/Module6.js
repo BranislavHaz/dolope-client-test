@@ -5,7 +5,7 @@ import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 import Drawers from "../elements/Drawers";
 
-const Module6 = () => {
+const Module6 = ({ isInModal }) => {
   const { corpus, drawers, viewport } = useMainStore((state) => ({
     corpus: state.corpus,
     drawers: state.drawers,
@@ -20,7 +20,7 @@ const Module6 = () => {
     drawers.heightOfDrawers[3];
 
   return (
-    <$.Module>
+    <$.Module $isInModal={isInModal}>
       <Shelf />
       <Space height={spaceSize1} />
       <Shelf />

@@ -3,15 +3,13 @@ import Title from "../ui/Title";
 import SelectBox from "../ui/SelectBox";
 
 const Step2 = () => {
-  const { state, wardrobe, corpus, stepsInputs } = useMainStore((state) => ({
-    state: state,
-    wardrobe: state.wardrobe,
-    corpus: state.corpus,
+  const { stepsInputs } = useMainStore((state) => ({
     stepsInputs: state.stepsInputs,
   }));
   return (
     <>
       <Title>Výběr typů</Title>
+      <SelectBox type={"typeSections"} />
       <SelectBox type={"typeDoors"} isAccept={stepsInputs.step2.typeDoors} />
     </>
   );

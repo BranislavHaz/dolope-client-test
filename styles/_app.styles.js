@@ -34,6 +34,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-color: #000000;
     --font-color-error: #ff3a3a;
     --font-color-active: #fff;
+    --wood-color: #966f33;
 
     --border-radius: 5px;
 
