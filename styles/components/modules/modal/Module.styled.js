@@ -44,7 +44,11 @@ export const Space = styled.div`
   }
 `;
 
-export const Hanger = styled.div``;
+export const Hanger = styled.div`
+  width: 100%;
+  height: ${(props) => props.$height}px;
+  background-color: #bada55;
+`;
 
 export const Drawers = styled.div`
   width: 100%;

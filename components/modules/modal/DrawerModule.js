@@ -11,15 +11,12 @@ const DrawerModule = ({
   countSpaces,
   bottomShelf,
 }) => {
-  const { viewport, wardrobe, corpus, sections, drawers } = useMainStore(
-    (state) => ({
-      viewport: state.viewport,
-      wardrobe: state.wardrobe,
-      corpus: state.corpus,
-      sections: state.sections,
-      drawers: state.drawers,
-    })
-  );
+  const { viewport, wardrobe, corpus, drawers } = useMainStore((state) => ({
+    viewport: state.viewport,
+    wardrobe: state.wardrobe,
+    corpus: state.corpus,
+    drawers: state.drawers,
+  }));
 
   const sectionHeightDisplay = viewport.height * 0.3; // 30vh má SectionType v TypeSections.styled
   const sectionHeightReal = corpus.height;
