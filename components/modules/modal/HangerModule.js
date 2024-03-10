@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 
 import SpaceModal from "./elements/SpaceModal";
+import HangerModal from "./elements/HangerModal";
 import DrawersModal from "./elements/DrawersModal";
 
 import * as $ from "@/styles/components/modules/modal/Module.styled";
@@ -126,10 +127,10 @@ const HangerModule = ({
       // Delenie celkovej výšky na počet vešiakov
       countHangers === 1
         ? newHeightHangersDisplay
-        : newHeightHangersDisplay / countHangers;
+        : (newHeightHangersDisplay = newHeightHangersDisplay / countHangers);
       countHangers === 1
         ? newHeightHangersReal
-        : newHeightHangersReal / countHangers;
+        : (newHeightHangersReal = newHeightHangersReal / countHangers);
 
       // Nastavenie výsledných hodnôt
       setHeightHanger({
@@ -145,9 +146,22 @@ const HangerModule = ({
     moduleArr.push(
       <>
         {positionSelf === "top" && <$.Self />}
-        <$.Hanger $height={heightHanger.display} />
-        {countHangers === 2 && <$.Hanger $height={heightHanger.display} />}
+        {/* <$.Hanger $height={heightHanger.display} /> */}
+        <HangerModal
+          displayHeight={heightHanger.display}
+          realHeight={heightHanger.real / 10}
+        />
         <$.Self />
+        {countHangers === 2 && (
+          <>
+            {/* <$.Hanger $height={heightHanger.display} /> */}
+            <HangerModal
+              displayHeight={heightHanger.display}
+              realHeight={heightHanger.real / 10}
+            />
+            <$.Self />
+          </>
+        )}
       </>
     );
     positionSelf === "bottom" && moduleArr.push(getSpaces());

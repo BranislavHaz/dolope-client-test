@@ -38,6 +38,7 @@ export const Space = styled.div`
   display: flex;
   align-items: center;
   font-size: 0.8em;
+  position: relative;
 
   ${SpaceLine} {
     height: ${(props) => props.$height}px;
@@ -47,7 +48,22 @@ export const Space = styled.div`
 export const Hanger = styled.div`
   width: 100%;
   height: ${(props) => props.$height}px;
-  background-color: #bada55;
+  //background-color: #bada55;
+  position: relative; /* Pridané pre umiestnenie vodorovnej čiary */
+
+  ${SpaceLine} {
+    height: ${(props) => props.$height}px;
+  }
+
+  &::before {
+    content: ""; /* Dôležité pre zobrazenie pseudoelementu */
+    position: absolute;
+    top: 1em; /* 1em od vrchu */
+    left: 0;
+    width: 100%; /* Šírka čiary */
+    height: 2px; /* Výška čiary */
+    background-color: grey; /* Farba čiary */
+  }
 `;
 
 export const Drawers = styled.div`
