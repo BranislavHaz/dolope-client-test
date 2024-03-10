@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Doors = styled.div`
-  display: flex;
+  //display: flex;
+  display: none;
   position: absolute;
   left: ${(props) => props.$positionLeft}px;
 `;

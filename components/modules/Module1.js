@@ -11,14 +11,14 @@ const Module1 = ({ isInModal = false }) => {
   }));
 
   const { px } = viewport;
-  const spaceSize = (corpus.height - 5 * viewport.thickness) / 5;
+  const spaceSize = (corpus.height - 3 * viewport.thickness) / 3;
 
   return (
-    <$.Module $isInModal={isInModal} $standWidth={px * viewport.thickness}>
-      <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
-      <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
+    <$.Module
+      $isInModal={isInModal}
+      $standWidth={px * viewport.thickness}
+      $height={corpus.height * viewport.px}
+    >
       <Shelf isInModal={isInModal} />
       <Space height={spaceSize} />
       <Shelf isInModal={isInModal} />

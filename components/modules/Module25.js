@@ -3,35 +3,35 @@ import * as $ from "@/styles/components/modules/Module.styled";
 
 import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
-import Drawers from "../elements/Drawers";
+import Hanger from "../elements/Hanger";
 
-const Module7 = () => {
-  const { corpus, drawers, viewport } = useMainStore((state) => ({
+const Module25 = () => {
+  const { corpus, hangers, viewport } = useMainStore((state) => ({
     corpus: state.corpus,
-    drawers: state.drawers,
+    hangers: state.hangers,
     viewport: state.viewport,
   }));
 
+  const spaceSizeHanger = hangers.topSpace;
   const spaceSize =
-    Math.floor(
-      corpus.height - 6 * viewport.thickness - drawers.heightOfDrawers[3]
-    ) / 4;
+    corpus.height -
+    2 * spaceSizeHanger -
+    2 * hangers.height -
+    3 * viewport.thickness;
 
   return (
     <$.Module $height={corpus.height * viewport.px}>
       <Shelf />
+      <Space height={spaceSizeHanger} isVisible={false} />
+      <Hanger />
       <Space height={spaceSize} />
       <Shelf />
+      <Space height={spaceSizeHanger} isVisible={false} />
+      <Hanger />
       <Space height={spaceSize} />
-      <Shelf />
-      <Space height={spaceSize} />
-      <Shelf />
-      <Space height={spaceSize} />
-      <Shelf />
-      <Drawers numOfDrawers={3} />
       <Shelf />
     </$.Module>
   );
 };
 
-export default Module7;
+export default Module25;

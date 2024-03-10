@@ -5,10 +5,10 @@ const createSectionsSlice = (set, get) => ({
     width: 931,
     count: 0,
     typeOfSections: {
-      1: 1,
+      1: 25,
       2: 2,
-      3: 0,
-      4: 0,
+      3: 8,
+      4: 23,
       5: 0,
       6: 0,
       7: 0,

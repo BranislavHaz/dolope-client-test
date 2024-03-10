@@ -4,6 +4,7 @@ import Title from "../ui/Title";
 
 import SelfModule from "@/components/modules/modal/SelfModule";
 import DrawerModule from "@/components/modules/modal/DrawerModule";
+import VariableDrawerModule from "./sectionsElements/VariableDrawerModule";
 import HangerModule from "@/components/modules/modal/HangerModule";
 
 import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
@@ -83,7 +84,7 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <DrawerModule
+            <VariableDrawerModule
               countDrawers={2}
               countShelfs={5}
               countSpaces={3}
@@ -91,7 +92,7 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <DrawerModule
+            <VariableDrawerModule
               countDrawers={2}
               countShelfs={6}
               countSpaces={4}
@@ -99,7 +100,7 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <DrawerModule
+            <VariableDrawerModule
               countDrawers={3}
               countShelfs={4}
               countSpaces={2}
@@ -107,7 +108,7 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <DrawerModule
+            <VariableDrawerModule
               countDrawers={3}
               countShelfs={5}
               countSpaces={3}
@@ -115,7 +116,7 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <DrawerModule
+            <VariableDrawerModule
               countDrawers={4}
               countShelfs={4}
               countSpaces={2}
@@ -123,7 +124,7 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <DrawerModule
+            <VariableDrawerModule
               countDrawers={4}
               countShelfs={5}
               countSpaces={3}

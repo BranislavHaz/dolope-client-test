@@ -1,8 +1,8 @@
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/modules/Module.styled";
 
-import Shelf from "../elements/Shelf";
-import Space from "../elements/Space";
+import Shelf from "../../elements/Shelf";
+import Space from "../../elements/Space";
 
 const Module2 = ({ isInModal = false }) => {
   const { corpus, viewport } = useMainStore((state) => ({
@@ -11,14 +11,14 @@ const Module2 = ({ isInModal = false }) => {
   }));
 
   const { px } = viewport;
-  const spaceSize = (corpus.height - 4 * viewport.thickness) / 4;
+  const spaceSize = (corpus.height - 6 * viewport.thickness) / 6;
 
   return (
-    <$.Module
-      $isInModal={isInModal}
-      $standWidth={px * viewport.thickness}
-      $height={corpus.height * viewport.px}
-    >
+    <$.Module $isInModal={isInModal} $standWidth={px * viewport.thickness}>
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
       <Shelf isInModal={isInModal} />
       <Space height={spaceSize} />
       <Shelf isInModal={isInModal} />

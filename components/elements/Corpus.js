@@ -11,6 +11,12 @@ import Module4 from "@/components/modules/Module4";
 import Module5 from "@/components/modules/Module5";
 import Module6 from "@/components/modules/Module6";
 import Module7 from "@/components/modules/Module7";
+import Module8 from "@/components/modules/Module8";
+import Module9 from "@/components/modules/Module9";
+import Module10 from "@/components/modules/Module10";
+import Module23 from "@/components/modules/Module23";
+import Module24 from "@/components/modules/Module24";
+import Module25 from "@/components/modules/Module25";
 
 const modulesMap = {
   0: ModuleEmpty,
@@ -21,6 +27,12 @@ const modulesMap = {
   5: Module5,
   6: Module6,
   7: Module7,
+  8: Module8,
+  9: Module9,
+  10: Module10,
+  23: Module23,
+  24: Module24,
+  25: Module25,
 };
 
 const Corpus = () => {

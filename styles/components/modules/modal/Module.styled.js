@@ -30,6 +30,7 @@ export const SpaceLine = styled.div`
   margin-right: 0.2em;
   border-left: 0.13em dashed #000;
   opacity: 0.4;
+  z-index: -1;
 `;
 
 export const Space = styled.div`
@@ -39,16 +40,29 @@ export const Space = styled.div`
   align-items: center;
   font-size: 0.8em;
   position: relative;
+  z-index: -1;
+  ${(props) => props.$isVariable && "justify-content: center"};
 
   ${SpaceLine} {
     height: ${(props) => props.$height}px;
   }
 `;
 
+export const VariableSpace = styled.div`
+  width: 100%;
+  height: ${(props) => props.$height}px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Hanger = styled.div`
   width: 100%;
   height: ${(props) => props.$height}px;
-  //background-color: #bada55;
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
   position: relative; /* Pridané pre umiestnenie vodorovnej čiary */
 
   ${SpaceLine} {
@@ -84,4 +98,31 @@ export const Drawer = styled.div`
   &:not(:last-of-type) {
     border-bottom: none;
   }
+`;
+
+export const InputNum = styled.input.attrs({
+  type: "number",
+})`
+  width: 18vw;
+  padding: 1vw 0;
+  text-align: center;
+  font-size: 3vw;
+  border: var(--border-input-default);
+  background-color: ${(props) =>
+    props.$isError ? "var(--bg-input-error)" : "var(--bg-input)"};
+`;
+
+export const DimensionsText = styled.div`
+  font-size: 3vw;
+`;
+
+export const LimitText = styled.div`
+  padding-top: 1vw;
+  font-size: 2.5vw;
+  color: ${(props) =>
+    props.$isError ? "var(--font-color-error)" : "var(--font-color)"};
+`;
+
+export const UnitText = styled.span`
+  font-size: 3vw;
 `;

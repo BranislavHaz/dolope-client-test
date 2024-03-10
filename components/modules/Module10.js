@@ -5,7 +5,7 @@ import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 import Drawers from "../elements/Drawers";
 
-const Module6 = () => {
+const Module10 = () => {
   const { corpus, drawers, viewport } = useMainStore((state) => ({
     corpus: state.corpus,
     drawers: state.drawers,
@@ -14,8 +14,8 @@ const Module6 = () => {
 
   const spaceSize =
     Math.floor(
-      corpus.height - 7 * viewport.thickness - drawers.heightOfDrawers[2]
-    ) / 5;
+      corpus.height - 6 * viewport.thickness - drawers.heightOfDrawers[4]
+    ) / 4;
 
   return (
     <$.Module $height={corpus.height * viewport.px}>
@@ -28,12 +28,10 @@ const Module6 = () => {
       <Shelf />
       <Space height={spaceSize} />
       <Shelf />
-      <Space height={spaceSize} />
-      <Shelf />
-      <Drawers numOfDrawers={2} />
+      <Drawers numOfDrawers={4} />
       <Shelf />
     </$.Module>
   );
 };
 
-export default Module6;
+export default Module10;

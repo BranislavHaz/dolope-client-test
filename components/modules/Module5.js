@@ -3,31 +3,36 @@ import * as $ from "@/styles/components/modules/Module.styled";
 
 import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
-import Drawers from "../elements/Drawers";
 
-const Module5 = () => {
-  const { corpus, drawers, viewport } = useMainStore((state) => ({
+const Module5 = ({ isInModal = false }) => {
+  const { corpus, viewport } = useMainStore((state) => ({
     corpus: state.corpus,
-    drawers: state.drawers,
     viewport: state.viewport,
   }));
 
-  const spaceSize1 = 300;
-  const spaceSize2 =
-    corpus.height -
-    4 * viewport.thickness -
-    spaceSize1 -
-    drawers.heightOfDrawers[2];
+  const { px } = viewport;
+  const spaceSize = (corpus.height - 7 * viewport.thickness) / 7;
 
   return (
-    <$.Module>
-      <Shelf />
-      <Space height={spaceSize1} />
-      <Shelf />
-      <Space height={spaceSize2} />
-      <Shelf />
-      <Drawers numOfDrawers={2} />
-      <Shelf />
+    <$.Module
+      $isInModal={isInModal}
+      $standWidth={px * viewport.thickness}
+      $height={corpus.height * viewport.px}
+    >
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
+      <Shelf isInModal={isInModal} />
+      <Space height={spaceSize} />
     </$.Module>
   );
 };
