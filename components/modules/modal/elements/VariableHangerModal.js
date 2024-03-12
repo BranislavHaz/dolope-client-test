@@ -1,6 +1,6 @@
 import * as $ from "@/styles/components/modules/modal/Module.styled";
 
-const VariableSpaceModal = ({
+const VariableHangerModal = ({
   displayHeight,
   realHeight,
   setVariableHeight,
@@ -24,7 +24,8 @@ const VariableSpaceModal = ({
   };
 
   return (
-    <$.VariableSpace $height={displayHeight}>
+    <$.VariableHanger $height={displayHeight} $isVariable={true}>
+      <$.SpaceLine />
       <$.InputNum
         placeholder="cm"
         value={realHeight || ""}
@@ -34,8 +35,8 @@ const VariableSpaceModal = ({
       <$.LimitText $isError={inputErr}>
         {minValue}-{maxValue} cm
       </$.LimitText>
-    </$.VariableSpace>
+    </$.VariableHanger>
   );
 };
 
-export default VariableSpaceModal;
+export default VariableHangerModal;

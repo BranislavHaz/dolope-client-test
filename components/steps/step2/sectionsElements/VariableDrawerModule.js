@@ -22,6 +22,8 @@ const VariableDrawerModule = ({
   const [variableHeight, setVariableHeight] = useState(undefined);
   const [inputErr, setInputErr] = useState(null);
 
+  const minShelfSpace = 200; // minimálna hodnota pre priestor na policu
+
   const sectionHeightDisplay = viewport.height * 0.3; // 30vh má SectionType v TypeSections.styled
   const sectionHeightReal = corpus.height;
   const drawersHeightDisplay = (sectionHeightDisplay / 10) * countDrawers;
@@ -39,8 +41,6 @@ const VariableDrawerModule = ({
       10
     );
   };
-
-  const minShelfSpace = 200; // minimálna hodnota pre priestor na policu
 
   const calcMinMaxHeight = () => {
     const minValue = minShelfSpace / 10;

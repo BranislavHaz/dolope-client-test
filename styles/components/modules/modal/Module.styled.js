@@ -80,6 +80,26 @@ export const Hanger = styled.div`
   }
 `;
 
+export const VariableHanger = styled.div`
+  width: 100%;
+  height: ${(props) => props.$height}px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::before {
+    content: ""; /* Dôležité pre zobrazenie pseudoelementu */
+    position: absolute;
+    top: 1em; /* 1em od vrchu */
+    left: 0;
+    width: 100%; /* Šírka čiary */
+    height: 2px; /* Výška čiary */
+    background-color: grey; /* Farba čiary */
+  }
+`;
+
 export const Drawers = styled.div`
   width: 100%;
   height: auto;

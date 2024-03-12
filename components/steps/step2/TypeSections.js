@@ -6,6 +6,7 @@ import SelfModule from "@/components/modules/modal/SelfModule";
 import DrawerModule from "@/components/modules/modal/DrawerModule";
 import VariableDrawerModule from "./sectionsElements/VariableDrawerModule";
 import HangerModule from "@/components/modules/modal/HangerModule";
+import VariableHangerModule from "./sectionsElements/VariableHangerModule";
 
 import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
 
@@ -135,8 +136,8 @@ const TypeSections = () => {
         <Title>Závěsná tyč</Title>
         <$.TypeSectionsWrap>
           <$.SectionType>
-            <HangerModule
-              countSelf={3}
+            <VariableHangerModule
+              countShelfs={3}
               countSpaces={1}
               countDrawers={0}
               positionSelf={"top"}
@@ -144,8 +145,8 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <HangerModule
-              countSelf={4}
+            <VariableHangerModule
+              countShelfs={4}
               countSpaces={2}
               countDrawers={0}
               positionSelf={"top"}
@@ -153,8 +154,8 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <HangerModule
-              countSelf={5}
+            <VariableHangerModule
+              countShelfs={5}
               countSpaces={3}
               countDrawers={0}
               positionSelf={"top"}
@@ -162,8 +163,8 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <HangerModule
-              countSelf={4}
+            <VariableHangerModule
+              countShelfs={4}
               countSpaces={3}
               countDrawers={0}
               positionSelf={"bottom"}
@@ -171,8 +172,8 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <HangerModule
-              countSelf={5}
+            <VariableHangerModule
+              countShelfs={5}
               countSpaces={4}
               countDrawers={0}
               positionSelf={"bottom"}
@@ -180,8 +181,8 @@ const TypeSections = () => {
             />
           </$.SectionType>
           <$.SectionType>
-            <HangerModule
-              countSelf={4}
+            <VariableHangerModule
+              countShelfs={4}
               countSpaces={1}
               countDrawers={2}
               positionSelf={"bottom"}
