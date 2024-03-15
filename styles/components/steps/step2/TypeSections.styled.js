@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrap = styled.div``;
 
@@ -15,4 +15,10 @@ export const TypeSectionsWrap = styled.div`
 export const SectionType = styled.div`
   width: 24vw;
   height: 30vh;
+
+  ${(props) =>
+    props.$isActive &&
+    css`
+      box-shadow: var(--main-color) 0px 0px 0px 3px;
+    `}
 `;

@@ -4,7 +4,7 @@ import Head from "next/head";
 import * as $ from "@/styles/pages/konfigurator/index.styled";
 
 import Wardrobe from "@/components/elements/Wardrobe";
-import InputSectionModule from "@/components/inputs/InputSectionModule";
+import InputSectionModule from "@/components/inputs/temp_InputSectionModule";
 import InputSectionsCount from "@/components/inputs/InputSectionsCount";
 import InputWardrobeType from "@/components/inputs/InputWardrobeType";
 import InputWardrobeSize from "@/components/inputs/InputWardrobeSize";

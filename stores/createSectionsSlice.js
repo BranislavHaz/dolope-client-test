@@ -4,20 +4,7 @@ const createSectionsSlice = (set, get) => ({
   sections: {
     width: 931,
     count: 0,
-    typeOfSections: {
-      1: 25,
-      2: 2,
-      3: 8,
-      4: 23,
-      5: 0,
-      6: 0,
-      7: 0,
-      8: 0,
-      9: 0,
-      10: 0,
-      11: 0,
-      12: 0,
-    },
+    typeOfSections: {},
     minWidth: 450,
     maxWidth: 1000,
   },
@@ -45,14 +32,18 @@ const createSectionsSlice = (set, get) => ({
     get().updateSectionsWidth("sections");
   },
 
-  setSectionsType: (id, sectionType) =>
+  setTypeOfSections: ({ sectionId, sectionType, variableHeight = false }) => {
     set(
       (state) => {
-        state.sections.typeOfSections[id] = sectionType;
+        state.sections.typeOfSections = {
+          ...state.sections.typeOfSections,
+          [sectionId]: { sectionType, variableHeight },
+        };
       },
       false,
-      "sections/setSectionsType"
-    ),
+      "sections/setTypeOfSections"
+    );
+  },
 });
 
 export default createSectionsSlice;

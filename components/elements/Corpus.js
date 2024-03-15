@@ -41,7 +41,13 @@ const Corpus = () => {
   }));
 
   const getModule = (sectionId) => {
-    const moduleId = sections.typeOfSections[sectionId];
+    const sectionData = sections.typeOfSections[sectionId];
+    let moduleId = 0;
+
+    if (sectionData && sectionData.sectionType !== undefined) {
+      moduleId = sectionData.sectionType;
+    }
+
     const Modul = modulesMap[moduleId];
     return <Modul key={Math.random()} />;
   };
