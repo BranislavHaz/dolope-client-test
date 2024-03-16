@@ -14,6 +14,7 @@ const Step2 = () => {
         isAccept={stepsInputs.step2.typeSections}
       />
       <SelectBox type={"typeDoors"} isAccept={stepsInputs.step2.typeDoors} />
+      <SelectBox type={"typeProfiles"} />
     </>
   );
 };

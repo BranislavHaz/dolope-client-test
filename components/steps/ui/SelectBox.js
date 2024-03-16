@@ -28,6 +28,11 @@ const selectBoxType = {
     title: "Typ dveří",
     type: "typeDoors",
   },
+  typeProfiles: {
+    imgSrc: "/icons/type-profiles.svg",
+    title: "Typ profilů",
+    type: "typeProfiles",
+  },
 };
 
 const SelectBox = ({ type, isAccept, text, isInactive }) => {

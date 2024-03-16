@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/steps/Modal.styled";
 
@@ -9,7 +10,7 @@ import CountSections from "./step1/CountSections";
 // Step2
 import TypeSections from "./step2/TypeSections";
 import TypeDoors from "./step2/TypeDoors";
-import { useEffect, useRef } from "react";
+import TypeProfiles from "./step2/TypeProfiles";
 
 const Modal = () => {
   const { viewport, modal, setIsModalActive } = useMainStore((state) => ({
@@ -32,6 +33,7 @@ const Modal = () => {
     countSections: <CountSections />,
     typeSections: <TypeSections />,
     typeDoors: <TypeDoors />,
+    typeProfiles: <TypeProfiles />,
   };
 
   const handleClick = () => {
