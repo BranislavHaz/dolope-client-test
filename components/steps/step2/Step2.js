@@ -9,7 +9,10 @@ const Step2 = () => {
   return (
     <>
       <Title>Výběr typů</Title>
-      <SelectBox type={"typeSections"} />
+      <SelectBox
+        type={"typeSections"}
+        isAccept={stepsInputs.step2.typeSections}
+      />
       <SelectBox type={"typeDoors"} isAccept={stepsInputs.step2.typeDoors} />
     </>
   );

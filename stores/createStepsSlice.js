@@ -17,6 +17,7 @@ const createStepsSlice = (set, get) => ({
     },
     step2: {
       typeDoors: false,
+      typeSections: false,
     },
   },
 

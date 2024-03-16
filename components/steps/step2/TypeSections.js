@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { checkIfIsActiveSection } from "@/utils/steps/step2/checkIfIsActiveSection";
 import useMainStore from "@/stores/useMainStore";
 import FilterBox from "../ui/FilterBox";
@@ -12,11 +13,24 @@ import VariableHangerModule from "./sectionsElements/VariableHangerModule";
 import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
 
 const TypeSections = () => {
-  const { state, sections, activeFilter } = useMainStore((state) => ({
-    state: state,
-    sections: state.sections,
-    activeFilter: state.activeFilter,
-  }));
+  const { state, sections, activeFilter, setStepsInputs } = useMainStore(
+    (state) => ({
+      state: state,
+      sections: state.sections,
+      activeFilter: state.activeFilter,
+      setStepsInputs: state.setStepsInputs,
+    })
+  );
+
+  useEffect(() => {
+    const countOfSelectedSections = Object.keys(sections.typeOfSections).length;
+
+    if (countOfSelectedSections === sections.count) {
+      setStepsInputs("step2", "typeSections", true);
+    } else {
+      setStepsInputs("step2", "typeSections", false);
+    }
+  }, [sections.typeOfSections]);
 
   return (
     <>
