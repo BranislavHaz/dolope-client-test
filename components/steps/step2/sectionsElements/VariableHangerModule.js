@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { selectSection } from "@/utils/steps/step2/selectSection";
 import useMainStore from "@/stores/useMainStore";
 
 import SpaceModal from "@/components/modules/modal/elements/SpaceModal";
@@ -13,13 +14,17 @@ const VariableHangerModule = ({
   countDrawers,
   positionSelf,
   bottomShelf,
+  id,
 }) => {
-  const { viewport, wardrobe, corpus, drawers } = useMainStore((state) => ({
-    viewport: state.viewport,
-    wardrobe: state.wardrobe,
-    corpus: state.corpus,
-    drawers: state.drawers,
-  }));
+  const { state, viewport, wardrobe, corpus, drawers } = useMainStore(
+    (state) => ({
+      state: state,
+      viewport: state.viewport,
+      wardrobe: state.wardrobe,
+      corpus: state.corpus,
+      drawers: state.drawers,
+    })
+  );
 
   const [variableHeight, setVariableHeight] = useState(undefined);
   const [inputErr, setInputErr] = useState(null);
@@ -145,8 +150,15 @@ const VariableHangerModule = ({
     return <$.ModuleWrap>{moduleArr}</$.ModuleWrap>;
   };
 
+  const handleClick = () => {
+    const realHeight = Number(variableHeight) * 10;
+    if (variableHeight && !inputErr) {
+      selectSection(state, id, realHeight);
+    }
+  };
+
   return (
-    <$.Wrap>
+    <$.Wrap onClick={() => handleClick()}>
       <$.Stand />
       {generateModule()}
       <$.Stand />

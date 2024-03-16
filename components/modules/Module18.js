@@ -3,32 +3,34 @@ import * as $ from "@/styles/components/modules/Module.styled";
 
 import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
+import Hanger from "../elements/Hanger";
 
-const Module1 = ({ isInModal = false }) => {
+const Module18 = ({ variableHeight }) => {
   const { wardrobe, corpus, viewport } = useMainStore((state) => ({
     wardrobe: state.wardrobe,
     corpus: state.corpus,
     viewport: state.viewport,
   }));
 
-  const { px } = viewport;
-  const spaceSizeDisplay = (corpus.height - 3 * viewport.thickness) / 3;
-  const spaceSizeReal = (corpus.height - 3 * wardrobe.thickness) / 3;
+  const spaceSizeDisplay =
+    Math.floor(corpus.height - 4 * viewport.thickness - variableHeight) / 3;
+  const spaceSizeReal =
+    Math.floor(corpus.height - 4 * wardrobe.thickness - variableHeight) / 3;
 
   return (
-    <$.Module
-      $isInModal={isInModal}
-      $standWidth={px * viewport.thickness}
-      $height={corpus.height * viewport.px}
-    >
-      <Shelf isInModal={isInModal} />
+    <$.Module $height={corpus.height * viewport.px}>
+      <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
-      <Shelf isInModal={isInModal} />
+      <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
-      <Shelf isInModal={isInModal} />
+      <Shelf />
+      <Space heightDisplay={variableHeight} heightReal={variableHeight}>
+        <Hanger />
+      </Space>
+      <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
     </$.Module>
   );
 };
 
-export default Module1;
+export default Module18;

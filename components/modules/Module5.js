@@ -5,13 +5,16 @@ import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 
 const Module5 = ({ isInModal = false }) => {
-  const { corpus, viewport } = useMainStore((state) => ({
+  const { wardrobe, corpus, viewport } = useMainStore((state) => ({
+    wardrobe: state.wardrobe,
     corpus: state.corpus,
     viewport: state.viewport,
   }));
 
   const { px } = viewport;
-  const spaceSize = (corpus.height - 7 * viewport.thickness) / 7;
+
+  const spaceSizeDisplay = (corpus.height - 7 * viewport.thickness) / 7;
+  const spaceSizeReal = (corpus.height - 7 * wardrobe.thickness) / 7;
 
   return (
     <$.Module
@@ -20,19 +23,19 @@ const Module5 = ({ isInModal = false }) => {
       $height={corpus.height * viewport.px}
     >
       <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf isInModal={isInModal} />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
     </$.Module>
   );
 };

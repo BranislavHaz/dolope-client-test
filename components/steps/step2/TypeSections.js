@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { checkIfIsActiveSection } from "@/utils/steps/step2/checkIfIsActiveSection";
 import useMainStore from "@/stores/useMainStore";
 import FilterBox from "../ui/FilterBox";
@@ -13,22 +12,11 @@ import VariableHangerModule from "./sectionsElements/VariableHangerModule";
 import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
 
 const TypeSections = () => {
-  const { state, sections, activeFilter, setTypeOfSections } = useMainStore(
-    (state) => ({
-      state: state,
-      sections: state.sections,
-      activeFilter: state.activeFilter,
-      setTypeOfSections: state.setTypeOfSections,
-    })
-  );
-
-  const [realHeights, setRealHeights] = useState();
-
-  const handleClick = (sectionType) => {
-    const sectionId = activeFilter.sections;
-
-    setTypeOfSections({ sectionId, sectionType });
-  };
+  const { state, sections, activeFilter } = useMainStore((state) => ({
+    state: state,
+    sections: state.sections,
+    activeFilter: state.activeFilter,
+  }));
 
   return (
     <>
@@ -40,227 +28,207 @@ const TypeSections = () => {
       <$.Wrap>
         <Title>Police</Title>
         <$.TypeSectionsWrap>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 1)}
-            onClick={() => handleClick(1)}
-          >
-            <SelfModule countSelfs={3} />
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 1)}>
+            <SelfModule countSelfs={3} id={1} />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 2)}
-            onClick={() => handleClick(2)}
-          >
-            <SelfModule countSelfs={4} />
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 2)}>
+            <SelfModule countSelfs={4} id={2} />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 3)}
-            onClick={() => handleClick(3)}
-          >
-            <SelfModule countSelfs={5} />
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 3)}>
+            <SelfModule countSelfs={5} id={3} />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 4)}
-            onClick={() => handleClick(4)}
-          >
-            <SelfModule countSelfs={6} />
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 4)}>
+            <SelfModule countSelfs={6} id={4} />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 5)}
-            onClick={() => handleClick(5)}
-          >
-            <SelfModule countSelfs={7} />
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 5)}>
+            <SelfModule countSelfs={7} id={5} />
           </$.SectionType>
         </$.TypeSectionsWrap>
         <Title>Zásuvky</Title>
         <$.TypeSectionsWrap>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 6)}
-            onClick={() => handleClick(6)}
-          >
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 6)}>
             <DrawerModule
               countDrawers={2}
               countShelfs={7}
               countSpaces={5}
               bottomShelf={false}
+              id={6}
             />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 7)}
-            onClick={() => handleClick(7)}
-          >
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 7)}>
             <DrawerModule
               countDrawers={3}
               countShelfs={6}
               countSpaces={4}
               bottomShelf={false}
+              id={7}
             />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 8)}
-            onClick={() => handleClick(8)}
-          >
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 8)}>
             <DrawerModule
               countDrawers={3}
               countShelfs={7}
               countSpaces={5}
               bottomShelf={false}
+              id={8}
             />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 9)}
-            onClick={() => handleClick(9)}
-          >
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 9)}>
             <DrawerModule
               countDrawers={4}
               countShelfs={5}
               countSpaces={3}
               bottomShelf={false}
+              id={9}
             />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 10)}
-            onClick={() => handleClick(10)}
-          >
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 10)}>
             <DrawerModule
               countDrawers={4}
               countShelfs={6}
               countSpaces={4}
               bottomShelf={false}
+              id={10}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 11)}>
             <VariableDrawerModule
               countDrawers={2}
               countShelfs={5}
               countSpaces={3}
               bottomShelf={true}
+              id={11}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 12)}>
             <VariableDrawerModule
               countDrawers={2}
               countShelfs={6}
               countSpaces={4}
               bottomShelf={true}
+              id={12}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 13)}>
             <VariableDrawerModule
               countDrawers={3}
               countShelfs={4}
               countSpaces={2}
               bottomShelf={true}
+              id={13}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 14)}>
             <VariableDrawerModule
               countDrawers={3}
               countShelfs={5}
               countSpaces={3}
               bottomShelf={true}
+              id={14}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 15)}>
             <VariableDrawerModule
               countDrawers={4}
               countShelfs={4}
               countSpaces={2}
               bottomShelf={true}
+              id={15}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 16)}>
             <VariableDrawerModule
               countDrawers={4}
               countShelfs={5}
               countSpaces={3}
               bottomShelf={true}
+              id={16}
             />
           </$.SectionType>
         </$.TypeSectionsWrap>
         <Title>Závěsná tyč</Title>
         <$.TypeSectionsWrap>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 17)}>
             <VariableHangerModule
               countShelfs={3}
               countSpaces={1}
               countDrawers={0}
               positionSelf={"top"}
               bottomShelf={true}
+              id={17}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 18)}>
             <VariableHangerModule
               countShelfs={4}
               countSpaces={2}
               countDrawers={0}
               positionSelf={"top"}
               bottomShelf={true}
+              id={18}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 19)}>
             <VariableHangerModule
               countShelfs={5}
               countSpaces={3}
               countDrawers={0}
               positionSelf={"top"}
               bottomShelf={true}
+              id={19}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 20)}>
             <VariableHangerModule
               countShelfs={4}
               countSpaces={3}
               countDrawers={0}
               positionSelf={"bottom"}
               bottomShelf={false}
+              id={20}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 21)}>
             <VariableHangerModule
               countShelfs={5}
               countSpaces={4}
               countDrawers={0}
               positionSelf={"bottom"}
               bottomShelf={false}
+              id={21}
             />
           </$.SectionType>
-          <$.SectionType>
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 22)}>
             <VariableHangerModule
               countShelfs={4}
               countSpaces={1}
               countDrawers={2}
               positionSelf={"bottom"}
               bottomShelf={false}
+              id={22}
             />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 23)}
-            onClick={() => handleClick(23)}
-          >
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 23)}>
             <HangerModule
               countSelf={3}
               countSpaces={0}
               countDrawers={3}
               positionSelf={"bottom"}
               bottomShelf={false}
+              id={23}
             />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 24)}
-            onClick={() => handleClick(24)}
-          >
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 24)}>
             <HangerModule
               countSelf={3}
               countSpaces={0}
               countDrawers={4}
               positionSelf={"bottom"}
               bottomShelf={false}
+              id={24}
             />
           </$.SectionType>
-          <$.SectionType
-            $isActive={checkIfIsActiveSection(state, 25)}
-            onClick={() => handleClick(25)}
-          >
+          <$.SectionType $isActive={checkIfIsActiveSection(state, 25)}>
             <HangerModule
               countSelf={3}
               countSpaces={0}
@@ -268,6 +236,7 @@ const TypeSections = () => {
               countHangers={2}
               positionSelf={"bottom"}
               bottomShelf={false}
+              id={25}
             />
           </$.SectionType>
         </$.TypeSectionsWrap>

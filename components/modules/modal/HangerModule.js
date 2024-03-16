@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { selectSection } from "@/utils/steps/step2/selectSection";
 import useMainStore from "@/stores/useMainStore";
 
 import SpaceModal from "./elements/SpaceModal";
@@ -14,13 +15,17 @@ const HangerModule = ({
   countHangers = 1,
   positionSelf,
   bottomShelf,
+  id,
 }) => {
-  const { viewport, wardrobe, corpus, drawers } = useMainStore((state) => ({
-    viewport: state.viewport,
-    wardrobe: state.wardrobe,
-    corpus: state.corpus,
-    drawers: state.drawers,
-  }));
+  const { state, viewport, wardrobe, corpus, drawers } = useMainStore(
+    (state) => ({
+      state: state,
+      viewport: state.viewport,
+      wardrobe: state.wardrobe,
+      corpus: state.corpus,
+      drawers: state.drawers,
+    })
+  );
 
   useEffect(() => {
     getHangers();
@@ -187,7 +192,7 @@ const HangerModule = ({
   };
 
   return (
-    <$.Wrap>
+    <$.Wrap onClick={() => selectSection(state, id)}>
       <$.Stand />
       {generateModule()}
       <$.Stand />

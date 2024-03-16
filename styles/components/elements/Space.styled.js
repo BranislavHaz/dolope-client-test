@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const Space = styled.div`
+  position: relative;
   background-color: #fff;
   width: ${(props) => props.$width}px;
   height: ${(props) => props.$height}px;

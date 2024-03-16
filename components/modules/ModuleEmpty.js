@@ -5,19 +5,22 @@ import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 
 const ModuleEmpty = () => {
-  const { corpus, sections, viewport } = useMainStore((state) => ({
+  const { wardrobe, corpus, sections, viewport } = useMainStore((state) => ({
+    wardrobe: state.wardrobe,
     corpus: state.corpus,
     sections: state.sections,
     viewport: state.viewport,
   }));
 
   const { px } = viewport;
-  const spaceSize = corpus.height - 2 * viewport.thickness;
+
+  const spaceSizeDisplay = corpus.height - 2 * viewport.thickness;
+  const spaceSizeReal = corpus.height - 2 * wardrobe.thickness;
 
   return (
     <$.Module $isEmpty={true} $width={px * sections.width}>
       <Shelf />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf />
     </$.Module>
   );

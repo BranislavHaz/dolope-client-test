@@ -1,6 +1,9 @@
 import { styled } from "styled-components";
 
 export const Hanger = styled.div`
+  position: absolute;
+  top: 0.5em;
+  left: 0;
   background-color: #c0c0c0;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;

@@ -6,29 +6,34 @@ import Space from "../elements/Space";
 import Drawers from "../elements/Drawers";
 
 const Module6 = () => {
-  const { corpus, drawers, viewport } = useMainStore((state) => ({
+  const { wardrobe, corpus, drawers, viewport } = useMainStore((state) => ({
+    wardrobe: state.wardrobe,
     corpus: state.corpus,
     drawers: state.drawers,
     viewport: state.viewport,
   }));
 
-  const spaceSize =
+  const spaceSizeDisplay =
     Math.floor(
       corpus.height - 7 * viewport.thickness - drawers.heightOfDrawers[2]
+    ) / 5;
+  const spaceSizeReal =
+    Math.floor(
+      corpus.height - 7 * wardrobe.thickness - drawers.heightOfDrawers[2]
     ) / 5;
 
   return (
     <$.Module $height={corpus.height * viewport.px}>
       <Shelf />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf />
-      <Space height={spaceSize} />
+      <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf />
       <Drawers numOfDrawers={2} />
       <Shelf />

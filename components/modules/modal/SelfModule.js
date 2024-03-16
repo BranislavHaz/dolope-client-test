@@ -1,11 +1,13 @@
 import React from "react";
+import { selectSection } from "@/utils/steps/step2/selectSection";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/modules/modal/Module.styled";
 
 import SpaceModal from "./elements/SpaceModal";
 
-const SelfModule = ({ countSelfs }) => {
-  const { viewport, wardrobe, corpus } = useMainStore((state) => ({
+const SelfModule = ({ countSelfs, id }) => {
+  const { state, viewport, wardrobe, corpus } = useMainStore((state) => ({
+    state: state,
     viewport: state.viewport,
     wardrobe: state.wardrobe,
     corpus: state.corpus,
@@ -45,7 +47,7 @@ const SelfModule = ({ countSelfs }) => {
   };
 
   return (
-    <$.Wrap>
+    <$.Wrap onClick={() => selectSection(state, id)}>
       <$.Stand />
       {generateModule()}
       <$.Stand />
