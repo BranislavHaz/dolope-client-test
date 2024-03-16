@@ -6,6 +6,7 @@ const createDoorsSlice = (set, get) => ({
     width: 0,
     height: 2603,
     count: 0,
+    isVisible: false,
     selectedProfile: {
       color: "silver",
       handle: "london",
@@ -56,6 +57,16 @@ const createDoorsSlice = (set, get) => ({
       },
       false,
       "doors/updateDoorsSize"
+    );
+  },
+
+  setVisibilityDoors: (status) => {
+    set(
+      (state) => {
+        state.doors.isVisible = status;
+      },
+      false,
+      "doors/setVisibilityDoors"
     );
   },
 

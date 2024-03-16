@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Doors = styled.div`
-  //display: flex;
-  display: none;
+  display: flex;
   position: absolute;
   left: ${(props) => props.$positionLeft}px;
 `;
@@ -10,7 +9,7 @@ export const Doors = styled.div`
 export const DoorWrapper = styled.div`
   width: ${(props) => props.$width}px;
   height: ${(props) => props.$height}px;
-  display: flex;
+  display: ${(props) => (props.$isVisible ? "flex" : "none")};
   justify-content: space-between;
 
   &:not(:first-child) {

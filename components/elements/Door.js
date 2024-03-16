@@ -46,9 +46,13 @@ const Door = ({ width, height, overhang, id, children }) => {
   };
 
   return (
-    <$.DoorWrapper $width={width} $height={height} $overhang={overhang}>
+    <$.DoorWrapper
+      $width={width}
+      $height={height}
+      $overhang={overhang}
+      $isVisible={doors.isVisible}
+    >
       <$.Door>{doors.typeDoors[id] && getDoorElements()}</$.Door>
-      {/* <DoorType /> */}
       {children}
     </$.DoorWrapper>
   );

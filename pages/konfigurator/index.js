@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 
 import Modal from "@/components/steps/Modal";
+import ShowHideDoors from "@/components/steps/ui/ShowHideDoors";
 import Header from "@/layouts/configurator/Header";
 import WardrobeView from "@/layouts/configurator/WardrobeView";
 import WardrobeConfig from "@/layouts/configurator/WardrobeConfig";
@@ -34,6 +35,7 @@ const Index = ({ products }) => {
       </Head>
 
       <Modal />
+      <ShowHideDoors />
       <Header />
       <WardrobeView />
       <WardrobeConfig />
