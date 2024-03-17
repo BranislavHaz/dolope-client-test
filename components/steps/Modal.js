@@ -12,6 +12,9 @@ import TypeSections from "./step2/TypeSections";
 import TypeDoors from "./step2/TypeDoors";
 import TypeProfiles from "./step2/TypeProfiles";
 
+// Step 3
+import DecorCorpus from "./step3/DecorCorpus";
+
 const Modal = () => {
   const { viewport, modal, setIsModalActive } = useMainStore((state) => ({
     viewport: state.viewport,
@@ -34,6 +37,7 @@ const Modal = () => {
     typeSections: <TypeSections />,
     typeDoors: <TypeDoors />,
     typeProfiles: <TypeProfiles />,
+    decorCorpus: <DecorCorpus />,
   };
 
   const handleClick = () => {

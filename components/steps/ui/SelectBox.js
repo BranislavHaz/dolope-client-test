@@ -33,6 +33,21 @@ const selectBoxType = {
     title: "Typ profilů",
     type: "typeProfiles",
   },
+  decorCorpus: {
+    imgSrc: "/icons/decor-corpus.svg",
+    title: "Dekor vnitřní části",
+    type: "decorCorpus",
+  },
+  decorWardrobe: {
+    imgSrc: "/icons/decor-wardrobe.svg",
+    title: "Dekor vnější části",
+    type: "decorWardrobe",
+  },
+  decorDoors: {
+    imgSrc: "/icons/decor-doors.svg",
+    title: "Dekor dveří",
+    type: "decorDoors",
+  },
 };
 
 const SelectBox = ({ type, isAccept, text, isInactive }) => {
