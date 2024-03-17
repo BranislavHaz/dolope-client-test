@@ -12,7 +12,7 @@ export const Space = styled.div`
 
 export const Line = styled.div`
   height: 100%;
-  margin-left: 1em;
+  margin-left: 0.3em;
   border-left: 0.13em dashed #000;
   opacity: 0.3;
 `;
