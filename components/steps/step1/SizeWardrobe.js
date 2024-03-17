@@ -56,8 +56,14 @@ const SizeWardrobe = () => {
     corpus.topShelfHeight && setTopSelf(corpus.topShelfHeight / 10);
   }, []);
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   return (
-    <$.FormWrap>
+    <$.FormWrap onKeyDown={handleKeyDown}>
       <Title>Rozměry skříně</Title>
       <$.InputWrapper $isCorrect={isCorrect.width !== false}>
         <input
