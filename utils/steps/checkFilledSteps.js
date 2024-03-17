@@ -13,6 +13,16 @@ export const chceckFilledSteps = (stepId, state) => {
       }
       return false;
 
+    case 2:
+      if (
+        stepsInputs.step2.typeDoors &&
+        stepsInputs.step2.typeSections &&
+        stepsInputs.step2.typeProfiles
+      ) {
+        return true;
+      }
+      return false;
+
     default:
       break;
   }

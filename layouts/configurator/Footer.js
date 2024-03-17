@@ -16,6 +16,9 @@ const Footer = () => {
     if (currentStep.id === 1) {
       Object.values(stepsInputs.step1).every((value) => value === true) &&
         setCurrentStepId(currentStep.id + 1);
+    } else if (currentStep.id === 2) {
+      Object.values(stepsInputs.step2).every((value) => value === true) &&
+        setCurrentStepId(currentStep.id + 1);
     } else {
       currentStep.isFilled && setCurrentStepId(currentStep.id + 1);
     }
