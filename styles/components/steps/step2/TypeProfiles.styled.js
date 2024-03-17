@@ -12,7 +12,9 @@ export const TypeProfilesWrap = styled.div`
   column-gap: 1em;
 `;
 
-export const ProfileElement = styled.div`
+export const ProfileElement = styled.div``;
+
+export const ProfileElementImg = styled.div`
   ${(props) =>
     props.$isActive &&
     css`
@@ -30,6 +32,19 @@ export const ColorProfilesWrap = styled.div`
   column-gap: 1em;
 `;
 
-export const ColorElement = styled.div`
-  opacity: ${(props) => (props.$isAvailable ? 1 : 0.1)};
+export const ColorElement = styled.div``;
+
+export const ColorElementImg = styled.div`
+  ${(props) =>
+    !props.$isAvailable &&
+    css`
+      filter: blur(0.3rem);
+      cursor: not-allowed;
+    `};
+
+  ${(props) =>
+    props.$isActive &&
+    css`
+      background-color: var(--main-color);
+    `}
 `;

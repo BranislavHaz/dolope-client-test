@@ -9,7 +9,7 @@ const createDoorsSlice = (set, get) => ({
     isVisible: false,
     selectedProfile: {
       color: "silver",
-      handle: "london",
+      handle: "unfilled",
       wheels: "asymmetric",
     },
 
@@ -18,6 +18,7 @@ const createDoorsSlice = (set, get) => ({
 
     dimensionsFromManual: {
       doorOverhang: {
+        unfilled: 27.5,
         london: 27.5,
         berlin: 40,
         paris: 34,
@@ -25,6 +26,7 @@ const createDoorsSlice = (set, get) => ({
         zurich: 31,
       },
       widthReserve: {
+        unfilled: 35,
         london: 35,
         berlin: 62,
         paris: 51,

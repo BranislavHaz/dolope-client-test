@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
@@ -13,20 +13,52 @@ const colorMapping = {
   champagne: "šampaň",
 };
 
+const doorsAvailableProfiles = [
+  { name: "Berlin", colors: ["silver", "white", "black"] },
+  { name: "London", colors: ["silver", "white", "black"] },
+  { name: "Paris", colors: ["champagne", "white", "black"] },
+  { name: "Wien", colors: ["champagne", "white", "silver"] },
+  { name: "Zürich", colors: ["champagne", "white", "silver"] },
+];
+
 const TypeProfiles = () => {
-  const { doors, setSelectedProfile } = useMainStore((state) => ({
-    doors: state.doors,
-    setSelectedProfile: state.setSelectedProfile,
-  }));
+  const { doors, setSelectedProfile, setStepsInputs } = useMainStore(
+    (state) => ({
+      doors: state.doors,
+      setSelectedProfile: state.setSelectedProfile,
+      setStepsInputs: state.setStepsInputs,
+    })
+  );
 
-  const [profileState, setProfileState] = useState(doors.selectedProfile);
+  const [activeProfile, setActiveProfile] = useState(null);
+  const [activeColor, setActiveColor] = useState(null);
+  const [availableColors, setAvailableColors] = useState([]);
 
-  const handleSelectChange = (e) => {
-    const value = JSON.parse(e.target.value);
-    const handle = value.handle.replace(/ü/g, "u").toLowerCase();
-    const color = value.color;
+  // Získanie unikátnych farieb zo všetkých miest
+  const allColors = Array.from(
+    new Set(doorsAvailableProfiles.flatMap((profile) => profile.colors))
+  );
 
-    if (value.title === "London") {
+  /*   useEffect(() => {
+    if (activeProfile) {
+      const profile = doorsAvailableProfiles.find(
+        (c) => c.name === activeProfile
+      );
+      if (profile) {
+        setAvailableColors(profile.colors);
+      }
+    } else {
+      setAvailableColors([]);
+    }
+  }, [activeProfile]); */
+
+  const handleSelectChange = (color) => {
+    const handle = activeProfile
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+
+    if (activeProfile === "London") {
       setSelectedProfile({
         handle,
         color,
@@ -41,51 +73,30 @@ const TypeProfiles = () => {
     }
   };
 
-  const handleClickProfile = (handle) => {
-    setProfileState({ handle, color: undefined });
-  };
-
-  const handleClickColor = (color) => {
-    setProfileState({ ...profile, color: color });
-  };
-
-  const getAvailableColors = () => {
-    const colors = ["silver", "white", "black", "champagne"];
-
-    return doors.availableProfiles.flatMap((profile) => {
-      /* return profile.colors.map((color) => {}); */
-      return colors.map((color) => {
-        return (
-          <$.ColorElement $isAvailable={profile.colors.includes(color)}>
-            <Image
-              src={`./images/profiles/${color}-profile.png`}
-              width={100}
-              height={100}
-            />
-
-            <div>{colorMapping[color]}</div>
-          </$.ColorElement>
-        );
-      });
+  const handleClickProfile = (profileName) => {
+    setActiveProfile(profileName);
+    setActiveColor(null);
+    setStepsInputs("step2", "typeProfiles", false);
+    setSelectedProfile({
+      handle: "unfilled",
+      color: "silver",
+      wheels: "symmetric",
     });
 
-    /*     return colors.map((color) => {
-      return (
-        <$.ColorElement $isAvailable={doors}>
-          <Image
-            src={`./images/profiles/${color}-profile.png`}
-            width={100}
-            height={100}
-          />
-
-          <div>{colorMapping[color]}</div>
-        </$.ColorElement>
+    if (profileName) {
+      const profile = doorsAvailableProfiles.find(
+        (c) => c.name === profileName
       );
-    }); */
+      if (profile) {
+        setAvailableColors(profile.colors);
+      }
+    } else {
+      setAvailableColors([]);
+    }
   };
 
-  const createOptions = () => {
-    return doors.availableProfiles.flatMap((profile) => {
+  const generateProfiles = () => {
+    return doorsAvailableProfiles.map((profile) => {
       const profileName = profile.name
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
@@ -93,44 +104,54 @@ const TypeProfiles = () => {
 
       return (
         <$.ProfileElement
-          $isActive={profileName === profileState.handle}
-          onClick={() => handleClickProfile(profileName)}
+          key={profile.name}
+          onClick={() => handleClickProfile(profile.name)}
         >
-          {
+          <$.ProfileElementImg $isActive={profile.name === activeProfile}>
             <Image
               src={`./images/profiles/${profileName}-profile.jpg`}
               width={100}
               height={100}
             />
-          }
+          </$.ProfileElementImg>
           <div>{profile.name}</div>
         </$.ProfileElement>
       );
-
-      /*       return profile.colors.map((color) => {
-        const type = profile.name + " - " + colorMapping[color];
-        return (
-          <>
-            {
-              <Image
-                src={`./images/profiles/${profileName}-profile.jpg`}
-                width={100}
-                height={100}
-              />
-            }
-            <div>{type}</div>
-          </>
-        );
-      }); */
     });
+  };
+
+  const handleClickColor = (color) => {
+    if (availableColors.includes(color) && activeProfile) {
+      setActiveColor(color);
+      handleSelectChange(color);
+      setStepsInputs("step2", "typeProfiles", true);
+    }
+  };
+
+  const generateColors = () => {
+    return allColors.map((color) => (
+      <$.ColorElement key={color} onClick={() => handleClickColor(color)}>
+        <$.ColorElementImg
+          $isAvailable={availableColors.includes(color)}
+          $isActive={color === activeColor}
+        >
+          <Image
+            src={`./images/profiles/${color}-profile.png`}
+            width={100}
+            height={100}
+          />
+        </$.ColorElementImg>
+        <div>{colorMapping[color]}</div>
+      </$.ColorElement>
+    ));
   };
 
   return (
     <$.Wrap>
       <Title>Typ profilu</Title>
-      <$.TypeProfilesWrap>{createOptions()}</$.TypeProfilesWrap>
+      <$.TypeProfilesWrap>{generateProfiles()}</$.TypeProfilesWrap>
       <Title>Barva profilu</Title>
-      <$.ColorProfilesWrap>{getAvailableColors()}</$.ColorProfilesWrap>
+      <$.ColorProfilesWrap>{generateColors()}</$.ColorProfilesWrap>
     </$.Wrap>
   );
 };
