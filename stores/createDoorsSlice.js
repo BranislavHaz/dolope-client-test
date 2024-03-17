@@ -8,7 +8,7 @@ const createDoorsSlice = (set, get) => ({
     count: 0,
     isVisible: false,
     selectedProfile: {
-      color: "silver",
+      color: "unfilled",
       handle: "unfilled",
       wheels: "asymmetric",
     },

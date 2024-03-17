@@ -24,7 +24,11 @@ const Step2 = () => {
       champagne: "šampaň",
     };
 
-    if (doors.selectedProfile && doors.selectedProfile.handle !== "unfilled") {
+    if (
+      doors.selectedProfile &&
+      doors.selectedProfile.handle !== "unfilled" &&
+      doors.selectedProfile.color !== "unfilled"
+    ) {
       const handle = doors.selectedProfile.handle;
       const color = doors.selectedProfile.color;
       return `${nameMapping[handle]} | ${colorMapping[color]}`;

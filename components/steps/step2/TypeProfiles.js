@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import useTimeout from "@/hooks/useTimeout";
 import useMainStore from "@/stores/useMainStore";
 
 import Title from "../ui/Title";
 
 import * as $ from "@/styles/components/steps/step2/TypeProfiles.styled";
-import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 const colorMapping = {
   silver: "stříbrná",
@@ -13,14 +13,6 @@ const colorMapping = {
   white: "bílá lesklá",
   champagne: "šampaň",
 };
-
-const doorsAvailableProfiles = [
-  { name: "Berlin", colors: ["silver", "white", "black"] },
-  { name: "London", colors: ["silver", "white", "black"] },
-  { name: "Paris", colors: ["champagne", "white", "black"] },
-  { name: "Wien", colors: ["champagne", "white", "silver"] },
-  { name: "Zürich", colors: ["champagne", "white", "silver"] },
-];
 
 const TypeProfiles = () => {
   const { doors, setSelectedProfile, setStepsInputs, setIsModalActive } =
@@ -31,60 +23,36 @@ const TypeProfiles = () => {
       setIsModalActive: state.setIsModalActive,
     }));
 
-  const [activeProfile, setActiveProfile] = useState(null);
-  const [activeColor, setActiveColor] = useState(null);
-  const [availableColors, setAvailableColors] = useState([]);
-
+  const set = useTimeout();
+  const availableProfiles = doors.availableProfiles;
+  const activeProfileObj = doors.selectedProfile;
+  const activeProfile = doors.selectedProfile.handle;
+  const activeColor = doors.selectedProfile.color;
   // Získanie unikátnych farieb zo všetkých miest
   const allColors = Array.from(
-    new Set(doorsAvailableProfiles.flatMap((profile) => profile.colors))
+    new Set(availableProfiles.flatMap((profile) => profile.colors))
   );
 
-  const handleSelectChange = (color) => {
-    const handle = activeProfile
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
+  const [availableColors, setAvailableColors] = useState([]);
 
-    if (activeProfile === "London") {
-      setSelectedProfile({
-        handle,
-        color,
-        wheels: "asymmetric",
-      });
-    } else {
-      setSelectedProfile({
-        handle,
-        color,
-        wheels: "symmetric",
-      });
-    }
-  };
-
-  const handleClickProfile = (profileName) => {
-    setActiveProfile(profileName);
-    setActiveColor(null);
-    setStepsInputs("step2", "typeProfiles", false);
-    setSelectedProfile({
-      handle: "unfilled",
-      color: "silver",
-      wheels: "symmetric",
-    });
-
-    if (profileName) {
-      const profile = doorsAvailableProfiles.find(
-        (c) => c.name === profileName
-      );
-      if (profile) {
-        setAvailableColors(profile.colors);
-      }
+  useEffect(() => {
+    const profile = availableProfiles.find(
+      (p) =>
+        p.name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase() === doors.selectedProfile.handle.toLowerCase()
+    );
+    if (profile) {
+      setAvailableColors(profile.colors);
     } else {
       setAvailableColors([]);
     }
-  };
+  }, [doors.selectedProfile.handle]);
 
+  /* Generovanie Elementov */
   const generateProfiles = () => {
-    return doorsAvailableProfiles.map((profile) => {
+    return availableProfiles.map((profile) => {
       const profileName = profile.name
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
@@ -93,9 +61,9 @@ const TypeProfiles = () => {
       return (
         <$.ProfileElement
           key={profile.name}
-          onClick={() => handleClickProfile(profile.name)}
+          onClick={() => handleClickProfile(profileName)}
         >
-          <$.ProfileElementImg $isActive={profile.name === activeProfile}>
+          <$.ProfileElementImg $isActive={profileName === activeProfile}>
             <Image
               src={`./images/profiles/${profileName}-profile.jpg`}
               width={100}
@@ -106,15 +74,6 @@ const TypeProfiles = () => {
         </$.ProfileElement>
       );
     });
-  };
-
-  const handleClickColor = (color) => {
-    if (availableColors.includes(color) && activeProfile) {
-      setActiveColor(color);
-      handleSelectChange(color);
-      setStepsInputs("step2", "typeProfiles", true);
-      setIsModalActive(false);
-    }
   };
 
   const generateColors = () => {
@@ -133,6 +92,27 @@ const TypeProfiles = () => {
         <div>{colorMapping[color]}</div>
       </$.ColorElement>
     ));
+  };
+
+  /* Handle click akcie */
+  const handleClickProfile = (profileName) => {
+    const typeWheel = profileName === "london" ? "asymmetric" : "symmetric";
+    setStepsInputs("step2", "typeProfiles", false);
+    setSelectedProfile({
+      handle: profileName,
+      color: "unfilled",
+      wheels: typeWheel,
+    });
+  };
+
+  const handleClickColor = (color) => {
+    if (availableColors.includes(color) && activeProfile !== "unfilled") {
+      setStepsInputs("step2", "typeProfiles", true);
+      setSelectedProfile({ ...activeProfileObj, color });
+      set(() => {
+        setIsModalActive(false);
+      }, 280);
+    }
   };
 
   return (
