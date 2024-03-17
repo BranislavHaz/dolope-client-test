@@ -27,12 +27,18 @@ export const ModalWrap = styled.div`
 
 export const CloseModal = styled.div`
   width: 100%;
+  height: 3.2rem;
   text-align: right;
   font-weight: 300;
   font-size: 16px;
-  line-height: 3em;
-  border-bottom: 1px solid rgba(201, 201, 201, 0.3);
-  opacity: 0.6;
+  line-height: 3rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 12;
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
+  margin-bottom: -1px;
 `;
 
 export const CloseIcon = styled.span`

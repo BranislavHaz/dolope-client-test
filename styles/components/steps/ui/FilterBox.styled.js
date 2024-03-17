@@ -9,15 +9,14 @@ export const FilterBoxWrap = styled.div`
   overflow-x: scroll;
   overflow-y: hidden;
   position: sticky;
-  top: 0;
+  top: 3.1rem;
   left: 0;
-  //background-color: var(--main-color);
   background-color: #fff;
   backdrop-filter: blur(4px);
+  z-index: 11;
 `;
 
 export const FilterElement = styled.div`
-  //background-color: rgba(255, 255, 255, 0.8);
   padding: 0.5em;
   border: var(--border-input-default);
   border-radius: var(--border-radius);
