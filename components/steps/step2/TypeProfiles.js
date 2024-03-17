@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
 import Title from "../ui/Title";
 
 import * as $ from "@/styles/components/steps/step2/TypeProfiles.styled";
+import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 const colorMapping = {
   silver: "stříbrná",
@@ -22,13 +23,13 @@ const doorsAvailableProfiles = [
 ];
 
 const TypeProfiles = () => {
-  const { doors, setSelectedProfile, setStepsInputs } = useMainStore(
-    (state) => ({
+  const { doors, setSelectedProfile, setStepsInputs, setIsModalActive } =
+    useMainStore((state) => ({
       doors: state.doors,
       setSelectedProfile: state.setSelectedProfile,
       setStepsInputs: state.setStepsInputs,
-    })
-  );
+      setIsModalActive: state.setIsModalActive,
+    }));
 
   const [activeProfile, setActiveProfile] = useState(null);
   const [activeColor, setActiveColor] = useState(null);
@@ -38,19 +39,6 @@ const TypeProfiles = () => {
   const allColors = Array.from(
     new Set(doorsAvailableProfiles.flatMap((profile) => profile.colors))
   );
-
-  /*   useEffect(() => {
-    if (activeProfile) {
-      const profile = doorsAvailableProfiles.find(
-        (c) => c.name === activeProfile
-      );
-      if (profile) {
-        setAvailableColors(profile.colors);
-      }
-    } else {
-      setAvailableColors([]);
-    }
-  }, [activeProfile]); */
 
   const handleSelectChange = (color) => {
     const handle = activeProfile
@@ -125,6 +113,7 @@ const TypeProfiles = () => {
       setActiveColor(color);
       handleSelectChange(color);
       setStepsInputs("step2", "typeProfiles", true);
+      setIsModalActive(false);
     }
   };
 

@@ -8,4 +8,5 @@ export const SubmitButton = styled.div`
   border-radius: var(--border-radius);
   font-size: 14px;
   color: #fff;
+  visibility: ${(props) => (props.$isVisible ? "visible" : "hidden")};
 `;

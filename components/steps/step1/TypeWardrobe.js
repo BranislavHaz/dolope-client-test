@@ -2,6 +2,7 @@ import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
 import * as $ from "@/styles/components/steps/step1/TypeWardrobe.styled";
+import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 import Title from "../ui/Title";
 

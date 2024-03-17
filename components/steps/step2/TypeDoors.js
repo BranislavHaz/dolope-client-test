@@ -18,12 +18,14 @@ const TypeDoors = () => {
   const {
     doors,
     activeFilter,
+    stepsInputs,
     setStepsInputs,
     setIsModalActive,
     setActiveFilter,
   } = useMainStore((state) => ({
     doors: state.doors,
     activeFilter: state.activeFilter,
+    stepsInputs: state.stepsInputs,
     setStepsInputs: state.setStepsInputs,
     setIsModalActive: state.setIsModalActive,
     setActiveFilter: state.setActiveFilter,
@@ -39,7 +41,7 @@ const TypeDoors = () => {
     }
   }, [doors.typeDoors]);
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     setIsModalActive(false);
     setActiveFilter("doors", 1);
   };
@@ -62,9 +64,13 @@ const TypeDoors = () => {
           <VariableDoor4 />
         </$.TypeDoorsWrap>
       </$.Wrap>
-      {Object.keys(doors.typeDoors).length === doors.count && (
-        <SubmitButton onClick={handleClick}>Uložit</SubmitButton>
-      )}
+
+      <SubmitButton
+        $isVisible={stepsInputs.step2.typeDoors}
+        onClick={handleSubmit}
+      >
+        Uložit
+      </SubmitButton>
     </>
   );
 };

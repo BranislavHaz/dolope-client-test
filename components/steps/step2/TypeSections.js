@@ -11,16 +11,17 @@ import HangerModule from "@/components/modules/modal/HangerModule";
 import VariableHangerModule from "./sectionsElements/VariableHangerModule";
 
 import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
+import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 const TypeSections = () => {
-  const { state, sections, activeFilter, setStepsInputs } = useMainStore(
-    (state) => ({
+  const { state, sections, activeFilter, stepsInputs, setStepsInputs } =
+    useMainStore((state) => ({
       state: state,
       sections: state.sections,
       activeFilter: state.activeFilter,
+      stepsInputs: state.stepsInputs,
       setStepsInputs: state.setStepsInputs,
-    })
-  );
+    }));
 
   useEffect(() => {
     const countOfSelectedSections = Object.keys(sections.typeOfSections).length;
@@ -31,6 +32,11 @@ const TypeSections = () => {
       setStepsInputs("step2", "typeSections", false);
     }
   }, [sections.typeOfSections]);
+
+  const handleSubmit = () => {
+    state.setIsModalActive(false);
+    state.setActiveFilter("sections", 1);
+  };
 
   return (
     <>
@@ -255,6 +261,12 @@ const TypeSections = () => {
           </$.SectionType>
         </$.TypeSectionsWrap>
       </$.Wrap>
+      <SubmitButton
+        $isVisible={stepsInputs.step2.typeSections}
+        onClick={handleSubmit}
+      >
+        Uložit
+      </SubmitButton>
     </>
   );
 };
