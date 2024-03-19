@@ -20,6 +20,8 @@ import createStepsSlice from "./createStepsSlice";
 
 import createModalSlice from "./createModalSlice";
 
+import createFiltersSlice from "./createFiltersSlice";
+
 const createStore = (createStoreFn) => {
   const devtoolsEnhancer = devtools(createStoreFn);
   return immer(devtoolsEnhancer);
@@ -45,6 +47,7 @@ const useMainStore = create(
     ...createStepsSlice(...a),
 
     ...createModalSlice(...a),
+    ...createFiltersSlice(...a),
   }))
 );
 

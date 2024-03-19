@@ -1,7 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 
 import Title from "../ui/Title";
-import FilterBox from "../ui/FilterBox";
+import FilterBoxCount from "../ui/FilterBoxCount";
 
 import FixedDoors from "./doorsElements/FixedDoors";
 import VariableDoor1 from "./doorsElements/VariableDoor1";
@@ -48,7 +48,7 @@ const TypeDoors = () => {
 
   return (
     <>
-      <FilterBox
+      <FilterBoxCount
         type={"doors"}
         count={doors.count}
         active={activeFilter.doors}

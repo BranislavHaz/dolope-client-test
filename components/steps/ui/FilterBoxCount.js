@@ -7,7 +7,7 @@ const typeObj = {
   doors: { title: "dveře" },
 };
 
-const FilterBox = ({ type, count, active }) => {
+const FilterBoxCount = ({ type, count, active }) => {
   const { setActiveFilter, setBeScrolled } = useMainStore((state) => ({
     setActiveFilter: state.setActiveFilter,
     setBeScrolled: state.setBeScrolled,
@@ -42,4 +42,4 @@ const FilterBox = ({ type, count, active }) => {
   );
 };
 
-export default FilterBox;
+export default FilterBoxCount;
