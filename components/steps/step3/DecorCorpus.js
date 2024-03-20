@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useState } from "react";
 import useMainStore from "@/stores/useMainStore";
 
+import FilterBoxDecors from "../ui/FilterBoxDecors";
+
 import * as $ from "@/styles/components/steps/step3/DecorCorpus.styled";
 
 const DecorCorpus = () => {
@@ -40,6 +42,7 @@ const DecorCorpus = () => {
 
   return (
     <$.Wrap>
+      <FilterBoxDecors type={"corpus"} />
       <div>
         {/*         <button onClick={() => setSelectedManufacturer("Egger")}>Egger</button>
         <button onClick={() => setSelectedManufacturer("Kronospan")}>
