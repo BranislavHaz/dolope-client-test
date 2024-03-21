@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 export const FilterBoxWrap = styled.div`
   width: 100%;
-  position: absolute;
+  position: sticky;
   top: 3.1rem;
   left: 0;
   background-color: #fff;
@@ -49,19 +49,36 @@ export const BoxContent = styled.div`
   animation: ${fadeIn} 0.6s ease-out;
 `;
 
-export const Search = styled.input.attrs({ type: "text" })`
+export const SearchWrap = styled.div`
   width: 80%;
-  text-align: center;
   margin: 0 auto;
+`;
+
+export const Search = styled.input.attrs({ type: "text" })`
+  width: 100%;
+  text-align: center;
   border: 1px solid;
-  border-color: var(--border-input-default);
+  border-color: ${(props) =>
+    props.$isError ? "var(--warning-color)" : "var(--border-input-default)"};
   border-radius: 10px;
   line-height: 2.5em;
 `;
 
+export const SearchErrorText = styled.div`
+  margin-top: 0.1em;
+  height: 1em;
+  font-size: 0.9em;
+  text-align: right;
+  color: var(--font-color-error);
+`;
+
 export const SelectBoxWrap = styled.div`
   width: 90%;
-  padding-top: 1em;
+  padding-top: 0.5em;
+
+  &:not(:first-of-type) {
+    padding-top: 1em;
+  }
 `;
 
 export const SelectBoxGroup = styled.div`
@@ -94,6 +111,7 @@ export const SubmitWrap = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-bottom: 1rem;
 `;
 
 export const SubmitButton = styled.span`

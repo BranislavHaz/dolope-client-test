@@ -10,6 +10,7 @@ const FilterBoxDecors = ({ type }) => {
     setDecorFilter: state.setDecorFilter,
   }));
 
+  const [isError, setIsError] = useState(false);
   const [isContentOpen, setIsContentOpen] = useState(false);
   const [searchValue, setSearchValue] = useState(decorFilter[type].search);
   const [activeManufacturer, setActiveManufacturer] = useState(
@@ -31,16 +32,24 @@ const FilterBoxDecors = ({ type }) => {
 
   const toggleContent = () => {
     setIsContentOpen(!isContentOpen);
+    setSearchValue(decorFilter[type].search);
+    setActiveManufacturer(decorFilter[type].manufacturer);
+    setActiveDecorType(decorFilter[type].decorType);
   };
 
   const handleSubmit = () => {
-    setDecorFilter({
-      type,
-      search: searchValue === "" ? null : searchValue,
-      manufacturer: activeManufacturer,
-      decorType: activeDecorType,
-    });
-    toggleContent();
+    if (searchValue && searchValue.length < 3 && searchValue.length > 1) {
+      setIsError(true);
+    } else {
+      setIsError(false);
+      setDecorFilter({
+        type,
+        search: searchValue === "" ? null : searchValue,
+        manufacturer: activeManufacturer,
+        decorType: activeDecorType,
+      });
+      toggleContent();
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -59,12 +68,18 @@ const FilterBoxDecors = ({ type }) => {
       </$.BoxHeader>
       {isContentOpen && (
         <$.BoxContent>
-          <$.Search
-            placeholder="Vyhledejte název nebo kód dekoru"
-            value={searchValue || ""}
-            onChange={(e) => setSearchValue(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
+          <$.SearchWrap>
+            <$.Search
+              placeholder="Vyhledejte název nebo kód dekoru"
+              value={searchValue || ""}
+              onChange={(e) => setSearchValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              $isError={isError}
+            />
+            <$.SearchErrorText>
+              {isError ? "Minimálně 3 znaky" : ""}
+            </$.SearchErrorText>
+          </$.SearchWrap>
           <$.SelectBoxWrap>
             <$.SelectoBoxTitle>Výrobce</$.SelectoBoxTitle>
             <$.SelectBoxGroup>
