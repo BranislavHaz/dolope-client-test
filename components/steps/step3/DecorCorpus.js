@@ -34,7 +34,7 @@ const DecorCorpus = () => {
             width={100}
             height={50}
           />
-          {decor.id} - {`${decor.id_manufacturer}.jpeg`}
+          {decor.id} - {`${decor.category}.jpeg`}
         </div>
       );
     });
@@ -44,11 +44,11 @@ const DecorCorpus = () => {
     <$.Wrap>
       <FilterBoxDecors type={"corpus"} />
       <div>
-        {/*         <button onClick={() => setSelectedManufacturer("Egger")}>Egger</button>
+        <button onClick={() => setSelectedManufacturer("Egger")}>Egger</button>
         <button onClick={() => setSelectedManufacturer("Kronospan")}>
           Kronospan
-        </button> */}
-        <button
+        </button>
+        {/*         <button
           onClick={() => setDecorFilter({ type: "corpus", search: "janko" })}
         >
           Egger
@@ -59,7 +59,7 @@ const DecorCorpus = () => {
           }
         >
           Kronospan
-        </button>
+        </button> */}
       </div>
       <div>{getDecors()}</div>
     </$.Wrap>

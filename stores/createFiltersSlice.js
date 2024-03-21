@@ -2,18 +2,18 @@ const createFiltersSlice = (set, get) => ({
   decorFilter: {
     corpus: {
       search: null,
-      manufacturer: null,
-      decorType: null,
+      manufacturer: "All",
+      decorType: "all",
     },
     wardrobe: {
       search: null,
-      manufacturer: null,
-      decorType: null,
+      manufacturer: "All",
+      decorType: "all",
     },
     doors: {
       search: null,
-      manufacturer: null,
-      decorType: null,
+      manufacturer: "All",
+      decorType: "all",
     },
   },
 

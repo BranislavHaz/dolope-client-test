@@ -29,6 +29,7 @@ export const GlobalStyles = createGlobalStyle`
     --border-input-default: 1px solid rgba(196, 196, 196, 0.33);
     --border-input-active: 1px solid #282828;
     --border-input-error: 1px solid rgba(255, 0, 0, 0.2);
+    --border-select: 1px solid #000;
 
     --font-family: "Roboto", sans-serif;
     --font-color: #000000;
