@@ -1,16 +1,27 @@
 import Image from "next/image";
-import { useState } from "react";
 import useMainStore from "@/stores/useMainStore";
+import useTimeout from "@/hooks/useTimeout";
 
 import FilterBoxDecors from "../ui/FilterBoxDecors";
 
 import * as $ from "@/styles/components/steps/step3/DecorCorpus.styled";
 
 const DecorCorpus = () => {
-  const { productsAPI, decorFilter } = useMainStore((state) => ({
+  const {
+    corpus,
+    setCorpusDecorId,
+    setIsModalActive,
+    productsAPI,
+    decorFilter,
+  } = useMainStore((state) => ({
+    corpus: state.corpus,
+    setCorpusDecorId: state.setCorpusDecorId,
+    setIsModalActive: state.setIsModalActive,
     productsAPI: state.productsAPI,
     decorFilter: state.decorFilter,
   }));
+
+  const set = useTimeout();
 
   const filteredDecors = productsAPI.dtd18.filter((decor) => {
     const matchesManufacturer =
@@ -36,26 +47,43 @@ const DecorCorpus = () => {
     );
   });
 
+  const handleClick = (decorId) => {
+    setCorpusDecorId(decorId);
+    set(() => {
+      setIsModalActive(false);
+    }, 280);
+  };
+
   const getDecors = () => {
     return filteredDecors.map((decor) => {
       return (
-        <div key={decor.id}>
-          <Image
-            src={`/images/decors/egger/${decor.id_manufacturer}.jpeg`}
-            width={100}
-            height={50}
-          />
-          {decor.name} - {`${decor.manufacturer}`}
-        </div>
+        <$.DecorWrap
+          key={decor.id}
+          $isActive={corpus.decorId === decor.id}
+          onClick={() => handleClick(decor.id)}
+        >
+          {
+            <$.DecorImage>
+              <Image
+                src={`/images/decors/egger/${decor.id_manufacturer}.jpeg`}
+                width={100}
+                height={100}
+              />
+            </$.DecorImage>
+          }
+          <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label}`}</$.DecorTitle>
+        </$.DecorWrap>
       );
     });
   };
 
   return (
-    <$.Wrap>
+    <>
       <FilterBoxDecors type={"corpus"} />
-      <$.Elements>{getDecors()}</$.Elements>
-    </$.Wrap>
+      <$.Wrap>
+        <$.DecorsWrap>{getDecors()}</$.DecorsWrap>
+      </$.Wrap>
+    </>
   );
 };
 

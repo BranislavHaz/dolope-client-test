@@ -7,6 +7,7 @@ const createCorpusSlice = (set, get) => ({
     depth: 500,
     topShelfHeight: 0,
     minWidthReserve: 8,
+    decorId: null,
   },
 
   updateCorpusWidth: (nameOfAction) => {
@@ -50,6 +51,16 @@ const createCorpusSlice = (set, get) => ({
       "corpus/setTopShelfHeight"
     );
     get().updateCorpusHeight("corpus");
+  },
+
+  setCorpusDecorId: (decorId) => {
+    set(
+      (state) => {
+        state.corpus.decorId = decorId;
+      },
+      false,
+      "corpus/setCorpusDecorId"
+    );
   },
 });
 

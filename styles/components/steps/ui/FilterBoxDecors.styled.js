@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 export const FilterBoxWrap = styled.div`
   width: 100%;
   position: sticky;
-  top: 3.1rem;
+  top: calc(3rem + 1px);
   left: 0;
   background-color: #fff;
   backdrop-filter: blur(4px);

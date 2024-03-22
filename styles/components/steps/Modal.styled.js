@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ModalWrap = styled.div`
   width: calc(${(props) => props.$width} * 0.98px);
   height: calc(${(props) => props.$height} * 0.98px);
+  min-height: calc(${(props) => props.$height} * 0.98px);
   padding-bottom: 2em;
   position: fixed;
   top: 50%;
@@ -15,7 +16,7 @@ export const ModalWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  overflow-y: scroll;
+  overflow-y: auto;
   transition: all 0.25s ease-out;
 
   background: rgba(255, 255, 255, 0.52);
