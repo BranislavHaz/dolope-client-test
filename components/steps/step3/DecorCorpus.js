@@ -2,8 +2,6 @@ import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import useTimeout from "@/hooks/useTimeout";
 
-import FilterBoxDecors from "../ui/FilterBoxDecors";
-
 import * as $ from "@/styles/components/steps/step3/DecorCorpus.styled";
 
 const DecorCorpus = () => {
@@ -13,12 +11,14 @@ const DecorCorpus = () => {
     setIsModalActive,
     productsAPI,
     decorFilter,
+    setStepsInputs,
   } = useMainStore((state) => ({
     corpus: state.corpus,
     setCorpusDecorId: state.setCorpusDecorId,
     setIsModalActive: state.setIsModalActive,
     productsAPI: state.productsAPI,
     decorFilter: state.decorFilter,
+    setStepsInputs: state.setStepsInputs,
   }));
 
   const set = useTimeout();
@@ -55,6 +55,7 @@ const DecorCorpus = () => {
 
   const handleClick = (decorId) => {
     setCorpusDecorId(decorId);
+    setStepsInputs("step3", "decorCorpus", true);
     set(() => {
       setIsModalActive(false);
     }, 280);
@@ -85,7 +86,6 @@ const DecorCorpus = () => {
 
   return (
     <>
-      {/* <FilterBoxDecors type={"corpus"} /> */}
       <$.Wrap>
         <$.DecorsWrap>{getDecors()}</$.DecorsWrap>
       </$.Wrap>
