@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Wrap = styled.div`
   width: 100%;
   display: flex;
-  flex-grow: 1;
+  //flex-grow: 1;
   justify-content: center;
 `;
 
@@ -11,7 +11,6 @@ export const DecorsWrap = styled.div`
   width: 90%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
   column-gap: 0.3em;
   row-gap: 0.2em;
   margin-top: 1em;

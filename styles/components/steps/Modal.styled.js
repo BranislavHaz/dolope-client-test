@@ -26,6 +26,18 @@ export const ModalWrap = styled.div`
   -webkit-backdrop-filter: blur(10.5px);
 `;
 
+export const TopBar = styled.div`
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  background-color: #fff;
+  z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.02) 0px 4px 6px -2px;
+`;
+
 export const CloseModal = styled.div`
   width: 100%;
   height: 3.2rem;
@@ -33,12 +45,7 @@ export const CloseModal = styled.div`
   font-weight: 300;
   font-size: 16px;
   line-height: 3rem;
-  position: sticky;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  z-index: 12;
-  border-bottom: 1px solid rgba(255, 255, 255, 1);
+  border-bottom: 1px solid #bebebe;
   margin-bottom: -1px;
 `;
 

@@ -2,18 +2,13 @@ import styled from "styled-components";
 
 export const FilterBoxWrap = styled.div`
   width: 100%;
-  min-height: 3em;
+  height: 3em;
   padding: 2em 0 2em 1em;
   display: flex;
   align-items: center;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
-  position: sticky;
-  top: 3.1rem;
-  left: 0;
   background-color: #fff;
-  backdrop-filter: blur(4px);
-  z-index: 11;
 `;
 
 export const FilterElement = styled.div`

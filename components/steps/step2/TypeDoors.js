@@ -17,14 +17,12 @@ import { useEffect } from "react";
 const TypeDoors = () => {
   const {
     doors,
-    activeFilter,
     stepsInputs,
     setStepsInputs,
     setIsModalActive,
     setActiveFilter,
   } = useMainStore((state) => ({
     doors: state.doors,
-    activeFilter: state.activeFilter,
     stepsInputs: state.stepsInputs,
     setStepsInputs: state.setStepsInputs,
     setIsModalActive: state.setIsModalActive,
@@ -48,11 +46,6 @@ const TypeDoors = () => {
 
   return (
     <>
-      <FilterBoxCount
-        type={"doors"}
-        count={doors.count}
-        active={activeFilter.doors}
-      />
       <$.Wrap>
         <Title>Fixní výška dveří</Title>
         <FixedDoors />

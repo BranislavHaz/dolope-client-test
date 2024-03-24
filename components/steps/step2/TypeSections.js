@@ -14,14 +14,14 @@ import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
 import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 const TypeSections = () => {
-  const { state, sections, activeFilter, stepsInputs, setStepsInputs } =
-    useMainStore((state) => ({
+  const { state, sections, stepsInputs, setStepsInputs } = useMainStore(
+    (state) => ({
       state: state,
       sections: state.sections,
-      activeFilter: state.activeFilter,
       stepsInputs: state.stepsInputs,
       setStepsInputs: state.setStepsInputs,
-    }));
+    })
+  );
 
   useEffect(() => {
     const countOfSelectedSections = Object.keys(sections.typeOfSections).length;
@@ -40,11 +40,6 @@ const TypeSections = () => {
 
   return (
     <>
-      <FilterBoxCount
-        type={"sections"}
-        count={sections.count}
-        active={activeFilter.sections}
-      />
       <$.Wrap>
         <Title>Police</Title>
         <$.TypeSectionsWrap>

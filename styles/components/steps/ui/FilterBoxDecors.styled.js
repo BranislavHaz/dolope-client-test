@@ -2,14 +2,9 @@ import styled, { keyframes } from "styled-components";
 
 export const FilterBoxWrap = styled.div`
   width: 100%;
-  position: sticky;
-  top: calc(3rem + 1px);
-  left: 0;
   background-color: #fff;
   backdrop-filter: blur(4px);
   z-index: 11;
-  border-top: 1px solid;
-  border-color: var(--border-input-default);
 `;
 
 const fadeIn = keyframes`
@@ -28,8 +23,6 @@ export const BoxHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.02) 0px 4px 6px -2px;
 `;
 
 export const IconWrap = styled.div`

@@ -15,12 +15,20 @@ import TypeProfiles from "./step2/TypeProfiles";
 // Step 3
 import DecorCorpus from "./step3/DecorCorpus";
 
+// UI/UX
+import FilterBoxCount from "./ui/FilterBoxCount";
+import FilterBoxDecors from "./ui/FilterBoxDecors";
+
 const Modal = () => {
-  const { viewport, modal, setIsModalActive } = useMainStore((state) => ({
-    viewport: state.viewport,
-    modal: state.modal,
-    setIsModalActive: state.setIsModalActive,
-  }));
+  const { viewport, modal, setIsModalActive, sections, doors, activeFilter } =
+    useMainStore((state) => ({
+      viewport: state.viewport,
+      modal: state.modal,
+      setIsModalActive: state.setIsModalActive,
+      sections: state.sections,
+      doors: state.doors,
+      activeFilter: state.activeFilter,
+    }));
   const modalRef = useRef(0);
 
   useEffect(() => {
@@ -51,9 +59,26 @@ const Modal = () => {
       $height={viewport.height}
       $isActive={modal.isActive}
     >
-      <$.CloseModal onClick={handleClick}>
-        Zavřít okno <$.CloseIcon>x</$.CloseIcon>
-      </$.CloseModal>
+      <$.TopBar>
+        <$.CloseModal onClick={handleClick}>
+          Zavřít okno <$.CloseIcon>x</$.CloseIcon>
+        </$.CloseModal>
+        {modal.type === "typeSections" && (
+          <FilterBoxCount
+            type={"sections"}
+            count={sections.count}
+            active={activeFilter.sections}
+          />
+        )}
+        {modal.type === "typeDoors" && (
+          <FilterBoxCount
+            type={"doors"}
+            count={doors.count}
+            active={activeFilter.doors}
+          />
+        )}
+        {modal.type === "decorCorpus" && <FilterBoxDecors type={"corpus"} />}
+      </$.TopBar>
       {ModalContent[modal.type]}
     </$.ModalWrap>
   );

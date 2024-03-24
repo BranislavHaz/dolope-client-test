@@ -22,6 +22,12 @@ const DecorCorpus = () => {
   }));
 
   const set = useTimeout();
+  const normalizeString = (str) => {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+  };
 
   const filteredDecors = productsAPI.dtd18.filter((decor) => {
     const matchesManufacturer =
@@ -37,9 +43,9 @@ const DecorCorpus = () => {
     // Kontrola, či search reťazec je null alebo prázdný, alebo sa nachádza v title
     const matchesSearch =
       !decorFilter.corpus.search ||
-      decor.title
-        .toLowerCase()
-        .includes(decorFilter.corpus.search.toLowerCase());
+      normalizeString(decor.title).includes(
+        normalizeString(decorFilter.corpus.search)
+      );
 
     // Vracia dekory, ktoré zodpovedajú všetkým štyrom podmienkam
     return (
@@ -79,7 +85,7 @@ const DecorCorpus = () => {
 
   return (
     <>
-      <FilterBoxDecors type={"corpus"} />
+      {/* <FilterBoxDecors type={"corpus"} /> */}
       <$.Wrap>
         <$.DecorsWrap>{getDecors()}</$.DecorsWrap>
       </$.Wrap>
