@@ -20,6 +20,11 @@ const createStepsSlice = (set, get) => ({
       typeSections: false,
       typeProfiles: false,
     },
+    step3: {
+      decorCorpus: false,
+      decorWardrobe: false,
+      decorDoors: false,
+    },
   },
 
   setActiveFilter: (type, id) => {
