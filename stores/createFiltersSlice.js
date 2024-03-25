@@ -5,7 +5,7 @@ const createFiltersSlice = (set, get) => ({
       manufacturer: "All",
       decorType: "all",
     },
-    wardrobe: {
+    sideWalls: {
       search: null,
       manufacturer: "All",
       decorType: "all",

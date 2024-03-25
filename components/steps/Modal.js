@@ -14,7 +14,7 @@ import TypeProfiles from "./step2/TypeProfiles";
 
 // Step 3
 import DecorCorpus from "./step3/DecorCorpus";
-import DecorWardrobe from "./step3/DecorWardrobe";
+import DecorSideWalls from "./step3/DecorSideWalls";
 import DecorDoors from "./step3/DecorDoors";
 
 // UI/UX
@@ -48,7 +48,7 @@ const Modal = () => {
     typeDoors: <TypeDoors />,
     typeProfiles: <TypeProfiles />,
     decorCorpus: <DecorCorpus />,
-    decorWardrobe: <DecorWardrobe />,
+    decorSideWalls: <DecorSideWalls />,
     decorDoors: <DecorDoors />,
   };
 
@@ -82,8 +82,8 @@ const Modal = () => {
           />
         )}
         {modal.type === "decorCorpus" && <FilterBoxDecors type={"corpus"} />}
-        {modal.type === "decorWardrobe" && (
-          <FilterBoxDecors type={"wardrobe"} />
+        {modal.type === "decorSideWalls" && (
+          <FilterBoxDecors type={"sideWalls"} />
         )}
         {modal.type === "decorDoors" && <FilterBoxDecors type={"doors"} />}
       </$.TopBar>

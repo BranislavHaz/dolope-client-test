@@ -12,6 +12,8 @@ const createSideWallsSlice = (set, get) => ({
       right: true,
       count: 1,
     },
+
+    decorId: null,
   },
 
   updateSideWalls: (nameOfAction) => {
@@ -65,19 +67,15 @@ const createSideWallsSlice = (set, get) => ({
     );
   },
 
-  /*  setSideWalls: ({ sideWallsCover, sideWallsStop }) => {
+  setSideWallsDecorId: (decorId) => {
     set(
       (state) => {
-        state.sideWalls.cover = sideWallsCover;
-        state.sideWalls.stop = {
-          ...sideWallsStop,
-          width: state.sideWalls.stop.width,
-        };
+        state.sideWalls.decorId = decorId;
       },
       false,
-      "sideWalls/setSideWalls"
+      "sideWalls/setSideWallsDecorId"
     );
-  }, */
+  },
 });
 
 export default createSideWallsSlice;

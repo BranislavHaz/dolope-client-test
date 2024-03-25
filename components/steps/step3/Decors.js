@@ -8,6 +8,8 @@ const Decors = ({ type }) => {
   const {
     corpus,
     setCorpusDecorId,
+    sideWalls,
+    setSideWallsDecorId,
     setIsModalActive,
     productsAPI,
     decorFilter,
@@ -15,6 +17,8 @@ const Decors = ({ type }) => {
   } = useMainStore((state) => ({
     corpus: state.corpus,
     setCorpusDecorId: state.setCorpusDecorId,
+    sideWalls: state.sideWalls,
+    setSideWallsDecorId: state.setSideWallsDecorId,
     setIsModalActive: state.setIsModalActive,
     productsAPI: state.productsAPI,
     decorFilter: state.decorFilter,
@@ -30,7 +34,7 @@ const Decors = ({ type }) => {
   };
 
   const productsToFilter =
-    type === "corpus" || type === "wardrobe"
+    type === "corpus" || type === "sideWalls"
       ? productsAPI.dtd18
       : productsAPI.dtd10;
 
@@ -59,11 +63,26 @@ const Decors = ({ type }) => {
   });
 
   const handleClick = (decorId) => {
-    setCorpusDecorId(decorId);
-    setStepsInputs("step3", "decorCorpus", true);
+    if (type === "corpus") {
+      setCorpusDecorId(decorId);
+      setStepsInputs("step3", "decorCorpus", true);
+    }
+    if (type === "sideWalls") {
+      setSideWallsDecorId(decorId);
+      setStepsInputs("step3", "decorSideWalls", true);
+    }
     set(() => {
       setIsModalActive(false);
     }, 280);
+  };
+
+  const verifyActiveDecor = (decorId) => {
+    if (type === "corpus") {
+      return corpus.decorId === decorId;
+    } else if (type === "sideWalls") {
+      return sideWalls.decorId === decorId;
+    }
+    return false;
   };
 
   const getDecors = () => {
@@ -71,7 +90,7 @@ const Decors = ({ type }) => {
       return (
         <$.DecorWrap
           key={decor.id}
-          $isActive={corpus.decorId === decor.id}
+          $isActive={verifyActiveDecor(decor.id)}
           onClick={() => handleClick(decor.id)}
         >
           {

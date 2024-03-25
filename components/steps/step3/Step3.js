@@ -3,15 +3,15 @@ import Title from "../ui/Title";
 import SelectBox from "../ui/SelectBox";
 
 const Step3 = () => {
-  const { state, wardrobe, corpus, productsAPI, stepsInputs } = useMainStore(
-    (state) => ({
+  const { state, wardrobe, corpus, sideWalls, productsAPI, stepsInputs } =
+    useMainStore((state) => ({
       state: state,
       wardrobe: state.wardrobe,
       corpus: state.corpus,
+      sideWalls: state.sideWalls,
       productsAPI: state.productsAPI,
       stepsInputs: state.stepsInputs,
-    })
-  );
+    }));
 
   const getDecorName = (productId) => {
     const product = productsAPI.dtd18.find(
@@ -29,8 +29,9 @@ const Step3 = () => {
         isAccept={stepsInputs.step3.decorCorpus}
       />
       <SelectBox
-        type={"decorWardrobe"}
-        isAccept={stepsInputs.step3.decorWardrobe}
+        type={"decorSideWalls"}
+        text={getDecorName(sideWalls.decorId)}
+        isAccept={stepsInputs.step3.decorSideWalls}
       />
       <SelectBox type={"decorDoors"} isAccept={stepsInputs.step3.decorDoors} />
     </>

@@ -22,7 +22,7 @@ const createStepsSlice = (set, get) => ({
     },
     step3: {
       decorCorpus: false,
-      decorWardrobe: false,
+      decorSideWalls: false,
       decorDoors: false,
     },
   },

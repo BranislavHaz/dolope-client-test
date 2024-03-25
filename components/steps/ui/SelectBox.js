@@ -38,10 +38,10 @@ const selectBoxType = {
     title: "Dekor vnitřní části",
     type: "decorCorpus",
   },
-  decorWardrobe: {
-    imgSrc: "/icons/decor-wardrobe.svg",
+  decorSideWalls: {
+    imgSrc: "/icons/decor-sidewalls.svg",
     title: "Dekor vnější části",
-    type: "decorWardrobe",
+    type: "decorSideWalls",
   },
   decorDoors: {
     imgSrc: "/icons/decor-doors.svg",
