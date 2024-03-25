@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 export const Wrap = styled.div`
   width: 100%;
   display: flex;
-  //flex-grow: 1;
   justify-content: center;
 `;
 
