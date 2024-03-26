@@ -17,7 +17,7 @@ export const DecorsWrap = styled.div`
 
 export const DecorWrap = styled.div`
   width: 100%;
-  height: 8rem;
+  height: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,15 +33,18 @@ export const DecorWrap = styled.div`
 `;
 
 export const DecorImage = styled.div`
-  img {
+  position: relative;
+  width: 100%;
+  height: 6rem;
+  /*   img {
     width: 100%;
     height: auto;
-  }
+  } */
 `;
 
 export const DecorTitle = styled.div`
   width: 100%;
-  height: 100%;
+  height: 4rem;
   display: flex;
   align-items: center;
   padding: 0.3rem 0.1rem;

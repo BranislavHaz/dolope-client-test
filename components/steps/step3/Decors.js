@@ -87,6 +87,9 @@ const Decors = ({ type }) => {
 
   const getDecors = () => {
     return filteredDecors.map((decor) => {
+      const manufacturerImgUrl =
+        decor.manufacturer === "Egger" ? "egger" : "kronospan";
+
       return (
         <$.DecorWrap
           key={decor.id}
@@ -96,13 +99,16 @@ const Decors = ({ type }) => {
           {
             <$.DecorImage>
               <Image
-                src={`/images/decors/egger/${decor.id_manufacturer}.jpeg`}
-                width={100}
-                height={100}
+                src={`/images/decors/${manufacturerImgUrl}/${decor.id_manufacturer}.jpeg`}
+                /*                 width={100}
+                height={100} */
+                layout="fill" // Toto umožňuje obrázku vyplniť element
+                //objectFit="cover" // Orezá obrázok, aby pokryl kontajner
+                objectPosition="center" // Zarovná obrázok na stred kontajnera
               />
             </$.DecorImage>
           }
-          <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label}`}</$.DecorTitle>
+          <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label} - ${decor.id}`}</$.DecorTitle>
         </$.DecorWrap>
       );
     });
