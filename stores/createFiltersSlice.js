@@ -17,6 +17,11 @@ const createFiltersSlice = (set, get) => ({
     },
   },
 
+  activeDoorSection: {
+    doorId: 1,
+    sectionId: 1,
+  },
+
   setDecorFilter: ({ type, search, manufacturer, decorType }) => {
     set(
       (state) => {
@@ -34,6 +39,17 @@ const createFiltersSlice = (set, get) => ({
       },
       false,
       "filters/setDecorFilter"
+    );
+  },
+
+  setActiveDoorSection: ({ doorId, sectionId }) => {
+    set(
+      (state) => {
+        state.activeDoorSection.doorId = doorId;
+        state.activeDoorSection.sectionId = sectionId;
+      },
+      false,
+      "filters/setActiveDoorSection"
     );
   },
 });

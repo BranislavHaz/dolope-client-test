@@ -2,6 +2,8 @@ import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import useTimeout from "@/hooks/useTimeout";
 
+import { checkDoorsSectionsFilled } from "@/utils/steps/step3/checkDoorsSectionsFilled";
+
 import * as $ from "@/styles/components/steps/step3/Decors";
 
 const Decors = ({ type }) => {
@@ -10,19 +12,29 @@ const Decors = ({ type }) => {
     setCorpusDecorId,
     sideWalls,
     setSideWallsDecorId,
+    doors,
+    activeDoorSection,
+    setActiveDoorSection,
+    setDoorSectionDecorId,
     setIsModalActive,
     productsAPI,
     decorFilter,
     setStepsInputs,
+    setBeScrolled,
   } = useMainStore((state) => ({
     corpus: state.corpus,
     setCorpusDecorId: state.setCorpusDecorId,
     sideWalls: state.sideWalls,
     setSideWallsDecorId: state.setSideWallsDecorId,
+    doors: state.doors,
+    activeDoorSection: state.activeDoorSection,
+    setActiveDoorSection: state.setActiveDoorSection,
+    setDoorSectionDecorId: state.setDoorSectionDecorId,
     setIsModalActive: state.setIsModalActive,
     productsAPI: state.productsAPI,
     decorFilter: state.decorFilter,
     setStepsInputs: state.setStepsInputs,
+    setBeScrolled: state.setBeScrolled,
   }));
 
   const set = useTimeout();
@@ -66,14 +78,51 @@ const Decors = ({ type }) => {
     if (type === "corpus") {
       setCorpusDecorId(decorId);
       setStepsInputs("step3", "decorCorpus", true);
+      set(() => {
+        setIsModalActive(false);
+      }, 280);
     }
     if (type === "sideWalls") {
       setSideWallsDecorId(decorId);
       setStepsInputs("step3", "decorSideWalls", true);
+      set(() => {
+        setIsModalActive(false);
+      }, 280);
     }
-    set(() => {
-      setIsModalActive(false);
-    }, 280);
+    if (type === "doors") {
+      setBeScrolled(true);
+      const { doorId, sectionId } = activeDoorSection;
+      setDoorSectionDecorId({ doorId, sectionId, decorId });
+      setTimeout(() => setBeScrolled(false), 500);
+      const isAllFilled = checkDoorsSectionsFilled(doors.typeDoors);
+      isAllFilled
+        ? setStepsInputs("step3", "decorDoors", true)
+        : setStepsInputs("step3", "decorDoors", false);
+
+      const countSectionCurrentDoor = Object.keys(
+        doors.typeDoors[doorId].sections
+      ).length;
+
+      if (countSectionCurrentDoor > sectionId) {
+        setTimeout(
+          () => setActiveDoorSection({ doorId, sectionId: sectionId + 1 }),
+          500
+        );
+      } else if (
+        countSectionCurrentDoor === sectionId &&
+        doors.count > doorId
+      ) {
+        setTimeout(
+          () => setActiveDoorSection({ doorId: doorId + 1, sectionId: 1 }),
+          500
+        );
+      } else {
+        setTimeout(
+          () => setActiveDoorSection({ doorId: 1, sectionId: 1 }),
+          500
+        );
+      }
+    }
   };
 
   const verifyActiveDecor = (decorId) => {
@@ -81,15 +130,18 @@ const Decors = ({ type }) => {
       return corpus.decorId === decorId;
     } else if (type === "sideWalls") {
       return sideWalls.decorId === decorId;
+    } else if (type === "doors") {
+      return (
+        doors.typeDoors[activeDoorSection.doorId].sections[
+          activeDoorSection.sectionId
+        ].decorId === decorId
+      );
     }
     return false;
   };
 
   const getDecors = () => {
     return filteredDecors.map((decor) => {
-      const manufacturerImgUrl =
-        decor.manufacturer === "Egger" ? "egger" : "kronospan";
-
       return (
         <$.DecorWrap
           key={decor.id}
@@ -99,12 +151,9 @@ const Decors = ({ type }) => {
           {
             <$.DecorImage>
               <Image
-                src={`/images/decors/${manufacturerImgUrl}/${decor.id_manufacturer}.jpeg`}
-                /*                 width={100}
-                height={100} */
-                layout="fill" // Toto umožňuje obrázku vyplniť element
-                //objectFit="cover" // Orezá obrázok, aby pokryl kontajner
-                objectPosition="center" // Zarovná obrázok na stred kontajnera
+                src={`/images/decors/${decor.id_manufacturer}.jpeg`}
+                layout="fill"
+                objectPosition="center"
               />
             </$.DecorImage>
           }
