@@ -1,9 +1,17 @@
 import styled, { css } from "styled-components";
 
-export const CountSectionsWrap = styled.div`
-  width: 90%;
+export const Wrap = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+`;
+
+export const CountSectionsWrap = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
 `;
 
 export const SelectWrap = styled.div`

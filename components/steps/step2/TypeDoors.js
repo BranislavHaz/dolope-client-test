@@ -1,15 +1,13 @@
 import useMainStore from "@/stores/useMainStore";
 
 import Title from "../ui/Title";
-import FilterBoxCount from "../ui/FilterBoxCount";
+import SubmitButton from "../ui/SubmitButton";
 
 import FixedDoors from "./doorsElements/FixedDoors";
 import VariableDoor1 from "./doorsElements/VariableDoor1";
 import VariableDoor2 from "./doorsElements/VariableDoor2";
 import VariableDoor3 from "./doorsElements/VariableDoor3";
 import VariableDoor4 from "./doorsElements/VariableDoor4";
-
-import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
 import { useEffect } from "react";
@@ -59,11 +57,9 @@ const TypeDoors = () => {
       </$.Wrap>
 
       <SubmitButton
-        $isVisible={stepsInputs.step2.typeDoors}
-        onClick={handleSubmit}
-      >
-        Uložit
-      </SubmitButton>
+        isVisible={stepsInputs.step2.typeDoors}
+        submitAction={handleSubmit}
+      />
     </>
   );
 };

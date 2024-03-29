@@ -9,9 +9,9 @@ import DrawerModule from "@/components/modules/modal/DrawerModule";
 import VariableDrawerModule from "./sectionsElements/VariableDrawerModule";
 import HangerModule from "@/components/modules/modal/HangerModule";
 import VariableHangerModule from "./sectionsElements/VariableHangerModule";
+import SubmitButton from "../ui/SubmitButton";
 
 import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
-import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 const TypeSections = () => {
   const { state, sections, stepsInputs, setStepsInputs } = useMainStore(
@@ -257,11 +257,9 @@ const TypeSections = () => {
         </$.TypeSectionsWrap>
       </$.Wrap>
       <SubmitButton
-        $isVisible={stepsInputs.step2.typeSections}
-        onClick={handleSubmit}
-      >
-        Uložit
-      </SubmitButton>
+        isVisible={stepsInputs.step2.typeSections}
+        submitAction={handleSubmit}
+      />
     </>
   );
 };

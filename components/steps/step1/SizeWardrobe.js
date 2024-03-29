@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
-import { SubmitButton } from "@/styles/components/steps/ui/SubmitButton.styled";
 
 import * as $ from "@/styles/components/steps/step1/SizeWardrobe.styled";
 
 import Title from "../ui/Title";
+import SubmitButton from "../ui/SubmitButton";
 
 const SizeWardrobe = () => {
   const [width, setWidth] = useState(0);
@@ -109,9 +109,11 @@ const SizeWardrobe = () => {
       <$.Details $isCorrect={isCorrect.topSelf !== false}>
         Maximální povolené rozmezí: 15-40 cm
       </$.Details>
-      <SubmitButton $isVisible={true} onClick={handleSubmit}>
-        Uložit
-      </SubmitButton>
+      <SubmitButton
+        isVisible={true}
+        submitAction={handleSubmit}
+        withBg={false}
+      />
     </$.FormWrap>
   );
 };

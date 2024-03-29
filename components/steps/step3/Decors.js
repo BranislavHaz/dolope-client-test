@@ -78,16 +78,10 @@ const Decors = ({ type }) => {
     if (type === "corpus") {
       setCorpusDecorId(decorId);
       setStepsInputs("step3", "decorCorpus", true);
-      set(() => {
-        setIsModalActive(false);
-      }, 280);
     }
     if (type === "sideWalls") {
       setSideWallsDecorId(decorId);
       setStepsInputs("step3", "decorSideWalls", true);
-      set(() => {
-        setIsModalActive(false);
-      }, 280);
     }
     if (type === "doors") {
       setBeScrolled(true);

@@ -1,10 +1,18 @@
 import styled from "styled-components";
 
+export const FullWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
   text-align: center;
+  margin-bottom: 2rem;
 `;
 
 export const TypesWrap = styled.div`

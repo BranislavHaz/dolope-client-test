@@ -4,6 +4,7 @@ import useTimeout from "@/hooks/useTimeout";
 import useMainStore from "@/stores/useMainStore";
 
 import Title from "../ui/Title";
+import SubmitButton from "../ui/SubmitButton";
 
 import * as $ from "@/styles/components/steps/step2/TypeProfiles.styled";
 
@@ -15,13 +16,19 @@ const colorMapping = {
 };
 
 const TypeProfiles = () => {
-  const { doors, setSelectedProfile, setStepsInputs, setIsModalActive } =
-    useMainStore((state) => ({
-      doors: state.doors,
-      setSelectedProfile: state.setSelectedProfile,
-      setStepsInputs: state.setStepsInputs,
-      setIsModalActive: state.setIsModalActive,
-    }));
+  const {
+    doors,
+    setSelectedProfile,
+    setStepsInputs,
+    setIsModalActive,
+    stepsInputs,
+  } = useMainStore((state) => ({
+    doors: state.doors,
+    setSelectedProfile: state.setSelectedProfile,
+    setStepsInputs: state.setStepsInputs,
+    setIsModalActive: state.setIsModalActive,
+    stepsInputs: state.stepsInputs,
+  }));
 
   const set = useTimeout();
   const availableProfiles = doors.availableProfiles;
@@ -109,19 +116,26 @@ const TypeProfiles = () => {
     if (availableColors.includes(color) && activeProfile !== "unfilled") {
       setStepsInputs("step2", "typeProfiles", true);
       setSelectedProfile({ ...activeProfileObj, color });
-      set(() => {
-        setIsModalActive(false);
-      }, 280);
     }
   };
 
+  const handleSubmit = () => {
+    setIsModalActive(false);
+  };
+
   return (
-    <$.Wrap>
-      <Title>Typ profilu</Title>
-      <$.TypeProfilesWrap>{generateProfiles()}</$.TypeProfilesWrap>
-      <Title>Barva profilu</Title>
-      <$.ColorProfilesWrap>{generateColors()}</$.ColorProfilesWrap>
-    </$.Wrap>
+    <>
+      <$.Wrap>
+        <Title>Typ profilu</Title>
+        <$.TypeProfilesWrap>{generateProfiles()}</$.TypeProfilesWrap>
+        <Title>Barva profilu</Title>
+        <$.ColorProfilesWrap>{generateColors()}</$.ColorProfilesWrap>
+      </$.Wrap>
+      <SubmitButton
+        isVisible={stepsInputs.step2.typeProfiles}
+        submitAction={handleSubmit}
+      />
+    </>
   );
 };
 

@@ -7,6 +7,8 @@ import {
 
 import * as $ from "@/styles/components/steps/step1/CountSections.styled";
 
+import SubmitButton from "../ui/SubmitButton";
+
 const CountSections = () => {
   const { state } = useMainStore((state) => ({
     state: state,
@@ -22,23 +24,35 @@ const CountSections = () => {
     if (type === "doors") {
       state.setDoorsCount(value);
       state.setStepsInputs("step1", "countDoors", true);
-      state.setIsModalActive(false);
     }
   };
 
+  const handleSubmit = () => {
+    state.setIsModalActive(false);
+  };
+
   return (
-    <$.CountSectionsWrap>
-      <Title>Počet sekcí (šířka)</Title>
-      <$.SelectWrap>
-        {generateOptionsOfSections(state, handleClick)}
-      </$.SelectWrap>
-      <$.CountDoorWrap $isInactive={state.sections.count === 0}>
-        <Title>Počet posuvných dveří (šířka)</Title>
+    <$.Wrap>
+      <$.CountSectionsWrap>
+        <Title>Počet sekcí (šířka)</Title>
         <$.SelectWrap>
-          {generateOptionsOfDoors(state, state.sections.count, handleClick)}
+          {generateOptionsOfSections(state, handleClick)}
         </$.SelectWrap>
-      </$.CountDoorWrap>
-    </$.CountSectionsWrap>
+        <$.CountDoorWrap $isInactive={state.sections.count === 0}>
+          <Title>Počet posuvných dveří (šířka)</Title>
+          <$.SelectWrap>
+            {generateOptionsOfDoors(state, state.sections.count, handleClick)}
+          </$.SelectWrap>
+        </$.CountDoorWrap>
+      </$.CountSectionsWrap>
+      <SubmitButton
+        isVisible={
+          state.stepsInputs.step1.countSections &&
+          state.stepsInputs.step1.countDoors
+        }
+        submitAction={handleSubmit}
+      />
+    </$.Wrap>
   );
 };
 
