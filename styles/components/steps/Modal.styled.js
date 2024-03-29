@@ -28,7 +28,7 @@ export const ModalWrap = styled.div`
 export const TopBar = styled.div`
   width: 100%;
   position: sticky;
-  top: 0;
+  top: -2px;
   left: 0;
   opacity: 1;
   background-color: #fff;

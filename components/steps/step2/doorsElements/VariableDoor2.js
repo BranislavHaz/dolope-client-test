@@ -1,6 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 import { calcMinMaxDoorHeight } from "@/utils/steps/step2/calcDoorHeight";
 import { checkIfIsActiveDoor } from "@/utils/steps/step2/checkIfIsActiveDoor";
+import { nextStepFilterBox } from "@/utils/steps/step2/nextStepFilterBox";
 import { useState } from "react";
 
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
@@ -53,6 +54,7 @@ const VariableDoor2 = () => {
         },
       };
       setTypeOfDoors({ doorId, sections, typeOfDoor });
+      nextStepFilterBox({ state, type: "doors" });
     }
   };
 

@@ -1,6 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 import { calcDoorElementHeight } from "@/utils/steps/step2/calcDoorHeight";
 import { checkIfIsActiveDoor } from "@/utils/steps/step2/checkIfIsActiveDoor";
+import { nextStepFilterBox } from "@/utils/steps/step2/nextStepFilterBox";
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
 
 const getDoorSections = (countOfSections, doors) => {
@@ -33,6 +34,7 @@ const FixedDoors = () => {
     const doorId = activeFilter.doors;
     const sections = getDoorSections(typeOfDoor, doors);
     setTypeOfDoors({ doorId, sections, typeOfDoor });
+    nextStepFilterBox({ state, type: "doors" });
   };
 
   return (

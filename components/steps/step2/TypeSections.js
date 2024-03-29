@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { checkIfIsActiveSection } from "@/utils/steps/step2/checkIfIsActiveSection";
 import useMainStore from "@/stores/useMainStore";
-import FilterBoxCount from "../ui/FilterBoxCount";
 import Title from "../ui/Title";
 
 import SelfModule from "@/components/modules/modal/SelfModule";

@@ -87,7 +87,6 @@ const Decors = ({ type }) => {
       setBeScrolled(true);
       const { doorId, sectionId } = activeDoorSection;
       setDoorSectionDecorId({ doorId, sectionId, decorId });
-      setTimeout(() => setBeScrolled(false), 500);
       const isAllFilled = checkDoorsSectionsFilled(doors.typeDoors);
       isAllFilled
         ? setStepsInputs("step3", "decorDoors", true)
@@ -97,24 +96,20 @@ const Decors = ({ type }) => {
         doors.typeDoors[doorId].sections
       ).length;
 
+      const nextSectionDecor = ({ doorId, sectionId }) => {
+        setBeScrolled(false);
+        setActiveDoorSection({ doorId, sectionId });
+      };
+
       if (countSectionCurrentDoor > sectionId) {
-        setTimeout(
-          () => setActiveDoorSection({ doorId, sectionId: sectionId + 1 }),
-          500
-        );
+        set(() => nextSectionDecor({ doorId, sectionId: sectionId + 1 }), 700);
       } else if (
         countSectionCurrentDoor === sectionId &&
         doors.count > doorId
       ) {
-        setTimeout(
-          () => setActiveDoorSection({ doorId: doorId + 1, sectionId: 1 }),
-          500
-        );
+        set(() => nextSectionDecor({ doorId: doorId + 1, sectionId: 1 }), 700);
       } else {
-        setTimeout(
-          () => setActiveDoorSection({ doorId: 1, sectionId: 1 }),
-          500
-        );
+        set(() => nextSectionDecor({ doorId: 1, sectionId: 1 }), 700);
       }
     }
   };
