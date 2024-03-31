@@ -7,12 +7,12 @@ export const Wrap = styled.div`
 `;
 
 export const DecorsWrap = styled.div`
-  width: 90%;
+  width: ${(props) => (props.$isUsed ? "95%" : "90%")};
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 0.3em;
-  row-gap: 0.2em;
-  margin-top: 1em;
+  column-gap: 0.4em;
+  row-gap: 1em;
+  margin-top: ${(props) => (props.$isUsed ? "0" : "1em")};
 `;
 
 export const DecorWrap = styled.div`
@@ -23,7 +23,7 @@ export const DecorWrap = styled.div`
   align-items: center;
   border: var(--border-input-default);
   border-radius: 10px;
-  margin: 1em 0.2em;
+  overflow: hidden;
 
   ${(props) =>
     props.$isActive &&
@@ -36,10 +36,6 @@ export const DecorImage = styled.div`
   position: relative;
   width: 100%;
   height: 6rem;
-  /*   img {
-    width: 100%;
-    height: auto;
-  } */
 `;
 
 export const DecorTitle = styled.div`

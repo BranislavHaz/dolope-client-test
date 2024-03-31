@@ -1,4 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
+import UsedDoorsDecor from "./UsedDoorsDecor";
 import Decors from "./Decors";
 import ModalDoors from "@/components/modal/doors/ModalDoors";
 import SubmitButton from "../ui/SubmitButton";
@@ -16,6 +17,7 @@ const DecorDoors = () => {
   return (
     <>
       <ModalDoors />
+      <UsedDoorsDecor />
       <Decors type={"doors"} />
       <SubmitButton
         isVisible={stepsInputs.step3.decorDoors}
