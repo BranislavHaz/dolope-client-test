@@ -46,6 +46,7 @@ export const CloseModal = styled.div`
   line-height: 3rem;
   border-bottom: 1px solid #bebebe;
   margin-bottom: -1px;
+  cursor: pointer;
 `;
 
 export const CloseIcon = styled.span`

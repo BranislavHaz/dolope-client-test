@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const WardrobeConfig = styled.div`
   width: 100%;
@@ -10,6 +11,11 @@ export const WardrobeConfig = styled.div`
   justify-content: center;
   background-color: var(--bg-color-config);
   overflow-y: auto;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    position: relative;
+  }
 `;
 
 export const ContentWrapper = styled.div`

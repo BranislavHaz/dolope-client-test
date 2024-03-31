@@ -11,13 +11,16 @@ import Footer from "@/layouts/configurator/Footer";
 import useMainStore from "@/stores/useMainStore";
 import { fetchProducts } from "@/utils/fetchProducts";
 
+import * as $ from "@/styles/pages/konfigurator/index.styled";
+
 export async function getStaticProps() {
   const products = await fetchProducts();
   return { props: { products } };
 }
 
 const Index = ({ products }) => {
-  const { setProductsApi } = useMainStore((state) => ({
+  const { viewport, setProductsApi } = useMainStore((state) => ({
+    viewport: state.viewport,
     setProductsApi: state.setProductsApi,
   }));
 
@@ -35,11 +38,17 @@ const Index = ({ products }) => {
       </Head>
 
       <Modal />
-      <ShowHideDoors />
-      <Header />
-      <WardrobeView />
-      <WardrobeConfig />
-      <Footer />
+      <$.WrapContent>
+        <$.WrapView $height={viewport.height}>
+          <ShowHideDoors />
+          <Header />
+          <WardrobeView />
+        </$.WrapView>
+        <$.WrapConfig $height={viewport.height}>
+          <WardrobeConfig />
+          <Footer />
+        </$.WrapConfig>
+      </$.WrapContent>
     </>
   );
 };

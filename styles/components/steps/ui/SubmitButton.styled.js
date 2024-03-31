@@ -9,6 +9,7 @@ export const SubmitWrap = styled.div`
   justify-content: center;
   align-items: center;
   visibility: ${(props) => (props.$isVisible ? "visible" : "hidden")};
+  cursor: pointer;
 
   ${(props) =>
     props.$withBg &&

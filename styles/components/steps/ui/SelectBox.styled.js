@@ -11,6 +11,7 @@ export const SelectBoxWrap = styled.div`
   background-color: var(--bg-color-select-box);
   box-shadow: 0 0 6px 1px rgba(199, 199, 199, 0.25);
   border-radius: var(--border-radius);
+  cursor: pointer;
 
   font-family: var(--font-family);
   color: var(--font-color);

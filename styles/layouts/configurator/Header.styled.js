@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const Header = styled.header`
   width: 100%;
@@ -7,6 +8,12 @@ export const Header = styled.header`
   justify-content: center;
   align-items: center;
   background-color: var(--background-color);
+
+  @media ${device.tablet} {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 `;
 
 export const Logo = styled.div`

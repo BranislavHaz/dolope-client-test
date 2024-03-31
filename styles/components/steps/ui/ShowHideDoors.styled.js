@@ -12,8 +12,9 @@ export const Wrap = styled.div`
   top: 0;
   right: 0;
   overflow: hidden;
-  //border-top-left-radius: 40px 40px;
   border-bottom-left-radius: 12px 12px;
+  z-index: 10;
+  cursor: pointer;
 
   & img {
     margin-top: 5px;

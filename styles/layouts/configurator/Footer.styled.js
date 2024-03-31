@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { device } from "@/utils/devices";
 
 export const Footer = styled.footer`
   width: 100%;
@@ -16,6 +17,12 @@ export const Footer = styled.footer`
   border-top: 1px solid rgba(235, 235, 235, 0.75);
   z-index: 1;
   font-size: 14px;
+
+  @media ${device.tablet} {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 `;
 
 export const BackButton = styled.div`
@@ -31,6 +38,7 @@ export const BackButton = styled.div`
   color: #000;
   font-size: 0.8em;
   opacity: ${(props) => (props.$isActive ? "1" : "0")};
+  cursor: ${(props) => (props.$isActive ? "pointer" : "default")};
 
   &::before {
     content: "<";
@@ -48,10 +56,6 @@ export const NextButton = styled.div`
   border: 1px solid;
   border-radius: 9px;
   font-size: 0.8em;
-  /*   background-color: ${(props) =>
-    props.$isActive ? "var(--main-color)" : "var(--main-color-non-active)"};
-  border-color: ${(props) =>
-    props.$isActive ? "var(--main-color)" : "var(--main-color-non-active)"}; */
   background-color: var(--main-color);
   border-color: var(--main-color);
   color: ${(props) => (props.$isActive ? "#fff" : "#000")};
