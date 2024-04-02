@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { device } from "@/utils/devices";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -12,6 +13,10 @@ export const CountSectionsWrap = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+
+  @media ${device.tablet} {
+    width: 60%;
+  }
 `;
 
 export const SelectWrap = styled.div`
@@ -26,6 +31,7 @@ export const Select = styled.div`
   border: var(--border-input-default);
   border-radius: var(--border-radius);
   text-align: center;
+  cursor: pointer;
 
   ${(props) =>
     props.$isActive &&

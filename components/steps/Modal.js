@@ -57,38 +57,44 @@ const Modal = () => {
   };
 
   return (
-    <$.ModalWrap
-      ref={modalRef}
+    <$.Overlay
       $width={viewport.width}
       $height={viewport.height}
       $isActive={modal.isActive}
     >
-      <$.TopBar>
-        <$.CloseModal onClick={handleClick}>
-          Zavřít okno <$.CloseIcon>x</$.CloseIcon>
-        </$.CloseModal>
-        {modal.type === "typeSections" && (
-          <FilterBoxCount
-            type={"sections"}
-            count={sections.count}
-            active={activeFilter.sections}
-          />
-        )}
-        {modal.type === "typeDoors" && (
-          <FilterBoxCount
-            type={"doors"}
-            count={doors.count}
-            active={activeFilter.doors}
-          />
-        )}
-        {modal.type === "decorCorpus" && <FilterBoxDecors type={"corpus"} />}
-        {modal.type === "decorSideWalls" && (
-          <FilterBoxDecors type={"sideWalls"} />
-        )}
-        {modal.type === "decorDoors" && <FilterBoxDecors type={"doors"} />}
-      </$.TopBar>
-      {ModalContent[modal.type]}
-    </$.ModalWrap>
+      <$.ModalWrap
+        ref={modalRef}
+        $width={viewport.width}
+        $height={viewport.height}
+        $isActive={modal.isActive}
+      >
+        <$.TopBar>
+          <$.CloseModal>
+            <$.CloseIcon onClick={handleClick} />
+          </$.CloseModal>
+          {modal.type === "typeSections" && (
+            <FilterBoxCount
+              type={"sections"}
+              count={sections.count}
+              active={activeFilter.sections}
+            />
+          )}
+          {modal.type === "typeDoors" && (
+            <FilterBoxCount
+              type={"doors"}
+              count={doors.count}
+              active={activeFilter.doors}
+            />
+          )}
+          {modal.type === "decorCorpus" && <FilterBoxDecors type={"corpus"} />}
+          {modal.type === "decorSideWalls" && (
+            <FilterBoxDecors type={"sideWalls"} />
+          )}
+          {modal.type === "decorDoors" && <FilterBoxDecors type={"doors"} />}
+        </$.TopBar>
+        {ModalContent[modal.type]}
+      </$.ModalWrap>
+    </$.Overlay>
   );
 };
 

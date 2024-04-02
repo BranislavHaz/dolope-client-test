@@ -1,8 +1,8 @@
 import * as $ from "@/styles/components/steps/ui/SubmitButton.styled";
 
-const SubmitButton = ({ isVisible, submitAction, withBg = true }) => {
+const SubmitButton = ({ isVisible, submitAction }) => {
   return (
-    <$.SubmitWrap $withBg={withBg} $isVisible={isVisible}>
+    <$.SubmitWrap $isVisible={isVisible}>
       <$.SubmitButton onClick={submitAction}>Uložit</$.SubmitButton>
     </$.SubmitWrap>
   );

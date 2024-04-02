@@ -1,10 +1,16 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const FormWrap = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${device.tablet} {
+    width: 40%;
+    min-width: 450px;
+  }
 `;
 
 export const InputWrapper = styled.div`

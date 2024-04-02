@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { device } from "@/utils/devices";
 
 export const Wrap = styled.div``;
 
@@ -10,9 +11,15 @@ export const TypeProfilesWrap = styled.div`
   justify-items: center;
   row-gap: 1em;
   column-gap: 1em;
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 `;
 
-export const ProfileElement = styled.div``;
+export const ProfileElement = styled.div`
+  cursor: pointer;
+`;
 
 export const ProfileElementImg = styled.div`
   ${(props) =>
@@ -30,15 +37,21 @@ export const ColorProfilesWrap = styled.div`
   justify-items: center;
   row-gap: 1em;
   column-gap: 1em;
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 `;
 
-export const ColorElement = styled.div``;
+export const ColorElement = styled.div`
+  cursor: pointer;
+`;
 
 export const ColorElementImg = styled.div`
   ${(props) =>
     !props.$isAvailable &&
     css`
-      filter: blur(0.3rem);
+      filter: blur(0.4rem);
       cursor: not-allowed;
     `};
 

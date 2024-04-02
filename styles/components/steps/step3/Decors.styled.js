@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { device } from "@/utils/devices";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -13,6 +14,12 @@ export const DecorsWrap = styled.div`
   column-gap: 0.4em;
   row-gap: 1em;
   margin-top: ${(props) => (props.$isUsed ? "0" : "1em")};
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 1em;
+    row-gap: 1em;
+  }
 `;
 
 export const DecorWrap = styled.div`
@@ -24,18 +31,27 @@ export const DecorWrap = styled.div`
   border: var(--border-input-default);
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
 
   ${(props) =>
     props.$isActive &&
     css`
       background-color: var(--main-color);
     `}
+
+  @media ${device.tablet} {
+    height: 20rem;
+  }
 `;
 
 export const DecorImage = styled.div`
   position: relative;
   width: 100%;
   height: 6rem;
+
+  @media ${device.tablet} {
+    height: 15rem;
+  }
 `;
 
 export const DecorTitle = styled.div`
@@ -47,4 +63,8 @@ export const DecorTitle = styled.div`
   font-size: 0.8rem;
   font-weight: 200;
   text-align: center;
+
+  @media ${device.tablet} {
+    justify-content: center;
+  }
 `;

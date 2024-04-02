@@ -36,7 +36,6 @@ const Index = ({ products }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Modal />
       <$.WrapContent>
         <$.WrapView $height={viewport.height}>

@@ -10,19 +10,11 @@ export const SubmitWrap = styled.div`
   align-items: center;
   visibility: ${(props) => (props.$isVisible ? "visible" : "hidden")};
   cursor: pointer;
-
-  ${(props) =>
-    props.$withBg &&
-    css`
-      background-color: #fff;
-      box-shadow: rgba(0, 0, 0, 0.04) -3px -10px 15px -3px,
-        rgba(0, 0, 0, 0.02) 0px -4px 6px -2px;
-    `}
 `;
 
 export const SubmitButton = styled.div`
   display: inline-block;
-  margin: 0.5rem 0;
+  margin: 1.5rem 0;
   padding: 1em 2em;
   background-color: var(--bg-button);
   border: 0;

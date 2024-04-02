@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const Wrap = styled.div`
   display: grid;
@@ -130,10 +131,20 @@ export const InputNum = styled.input.attrs({
   border: var(--border-input-default);
   background-color: ${(props) =>
     props.$isError ? "var(--bg-input-error)" : "var(--bg-input)"};
+
+  @media ${device.tablet} {
+    width: 70%;
+    font-size: 0.8rem;
+    padding: 0.3rem 0;
+  }
 `;
 
 export const DimensionsText = styled.div`
   font-size: 3vw;
+
+  @media ${device.tablet} {
+    font-size: 0.8rem;
+  }
 `;
 
 export const LimitText = styled.div`
@@ -141,6 +152,11 @@ export const LimitText = styled.div`
   font-size: 2.5vw;
   color: ${(props) =>
     props.$isError ? "var(--font-color-error)" : "var(--font-color)"};
+
+  @media ${device.tablet} {
+    padding-top: 0.4rem;
+    font-size: 0.8rem;
+  }
 `;
 
 export const UnitText = styled.span`

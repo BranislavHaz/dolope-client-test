@@ -5,6 +5,7 @@ export const DoorWrapper = styled.div`
   height: ${(props) => props.$height}px;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 
   &:not(:first-child) {
     margin-left: -${(props) => props.$overhang}px;
