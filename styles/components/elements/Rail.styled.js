@@ -8,7 +8,10 @@ export const Rail = styled.div`
   left: ${(props) => props.$positionLeft}px;
   ${(props) => (props.$type === "top" ? "top: 0" : "bottom: 0")};
   z-index: 3;
-  background-color: #c0c0c0;
+  background-color: ${(props) =>
+    props.$profileColor
+      ? `var(--profile-color-${props.$profileColor})`
+      : "#c0c0c0"};
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
 `;

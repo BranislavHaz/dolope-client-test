@@ -79,10 +79,12 @@ export const TopBar = styled.div`
   left: 0;
   opacity: 1;
   z-index: 10;
+  display: flex;
+  justify-content: end;
 `;
 
 export const CloseModal = styled.div`
-  width: 100%;
+  width: 3.2rem;
   height: 3.2rem;
   text-align: right;
   font-weight: 300;
@@ -94,13 +96,14 @@ export const CloseModal = styled.div`
 
 export const CloseIcon = styled.div`
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 1rem;
+  right: 1rem;
   text-transform: uppercase;
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
   background-color: var(--bg-input-icon);
+  z-index: 12;
   cursor: pointer;
 
   &::before {

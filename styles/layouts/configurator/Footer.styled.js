@@ -19,6 +19,7 @@ export const Footer = styled.footer`
   font-size: 14px;
 
   @media ${device.tablet} {
+    height: var(--l-footer-height);
     position: absolute;
     bottom: 0;
     right: 0;

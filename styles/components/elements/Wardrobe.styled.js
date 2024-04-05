@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const WardrobeWrapper = styled.div`
   width: 100%;
@@ -6,6 +7,10 @@ export const WardrobeWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${device.tablet} {
+    height: var(--l-wardrobe-view-height);
+  }
 `;
 
 export const Wardrobe = styled.div`

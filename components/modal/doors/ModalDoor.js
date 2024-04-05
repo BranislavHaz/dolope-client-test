@@ -41,7 +41,8 @@ const ModalDoor = ({ width, height, overhang, id, children }) => {
     const doorElement = [
       <$.HProfile
         $width={px * doors.width}
-        $height={px * 1.5 * hProfile.height}
+        $height={px * viewport.thickness}
+        $isTop={true}
       />,
     ];
 
@@ -65,7 +66,7 @@ const ModalDoor = ({ width, height, overhang, id, children }) => {
             />
             <$.HProfile
               $width={px * doors.width}
-              $height={px * 1.5 * hProfile.height}
+              $height={px * viewport.thickness}
             />
           </$.DoorSection>
         );
@@ -88,10 +89,7 @@ const ModalDoor = ({ width, height, overhang, id, children }) => {
     }
 
     doorElement.push(
-      <$.HProfile
-        $width={px * doors.width}
-        $height={px * 1.5 * hProfile.height}
-      />
+      <$.HProfile $width={px * doors.width} $height={px * viewport.thickness} />
     );
 
     return doorElement;

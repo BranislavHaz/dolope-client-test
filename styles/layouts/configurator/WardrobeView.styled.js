@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const WardrobeView = styled.div`
   width: 100%;
@@ -9,4 +10,8 @@ export const WardrobeView = styled.div`
   background-color: var(--bg-color-view);
   position: relative;
   z-index: 10;
+
+  @media ${device.tablet} {
+    height: var(--l-wardrobe-view-height);
+  }
 `;

@@ -2,9 +2,11 @@ import styled, { keyframes } from "styled-components";
 
 export const FilterBoxWrap = styled.div`
   width: 100%;
-  background-color: #fff;
-  backdrop-filter: blur(4px);
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 11;
+  cursor: pointer;
 `;
 
 const fadeIn = keyframes`
@@ -18,11 +20,13 @@ const fadeIn = keyframes`
 `;
 
 export const BoxHeader = styled.div`
-  min-height: 3em;
-  padding: 0.5em 0 0.5em 0;
+  width: 100%;
+  height: 3em;
+  padding: 2em 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
 `;
 
 export const IconWrap = styled.div`
@@ -38,8 +42,10 @@ export const BoxContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1.5em 0;
+  padding: 1.5em 0;
+  background-color: #fff;
   animation: ${fadeIn} 0.6s ease-out;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 `;
 
 export const SearchWrap = styled.div`

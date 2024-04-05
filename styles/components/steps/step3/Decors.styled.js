@@ -5,6 +5,7 @@ export const Wrap = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 `;
 
 export const DecorsWrap = styled.div`

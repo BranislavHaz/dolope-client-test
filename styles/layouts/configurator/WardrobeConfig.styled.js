@@ -15,6 +15,7 @@ export const WardrobeConfig = styled.div`
   @media ${device.tablet} {
     flex-direction: row;
     position: relative;
+    max-height: var(--l-wardrobe-config-height);
   }
 `;
 

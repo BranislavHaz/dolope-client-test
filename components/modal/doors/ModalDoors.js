@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/modal/doors/ModalDoors.styled";
 

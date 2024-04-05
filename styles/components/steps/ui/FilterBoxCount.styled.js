@@ -9,6 +9,9 @@ export const FilterBoxWrap = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 export const FilterElement = styled.div`

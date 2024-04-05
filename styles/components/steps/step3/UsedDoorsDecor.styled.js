@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const Wrap = styled.div`
   width: 90%;
@@ -9,6 +10,9 @@ export const Wrap = styled.div`
   padding-bottom: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius);
+
+  @media ${device.tablet} {
+  }
 `;
 
 export const Title = styled.h3`

@@ -15,6 +15,17 @@ export const GlobalStyles = createGlobalStyle`
     --m-wardrobe-config-height: 47vh;
     --m-footer-height: 7vh;
 
+    // Laptop layout
+    --l-wardrobe-view-height: 60vh;
+    --l-wardrobe-config-height: 80vh;
+    --l-footer-height: 15vh;
+
+    // Profile color
+    --profile-color-white: #ffffff;
+    --profile-color-black: #000000;
+    --profile-color-silver: #c0c0c0;
+    --profile-color-champagne: #aaa484;
+
     // now
     --bg-color-view: #EBEBEB;
     --bg-color-config: #F5F5F5;

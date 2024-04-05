@@ -6,7 +6,10 @@ export const HProfile = styled.div`
   position: absolute;
   bottom: calc(${(props) => props.$height} / -2) px;
   left: 0;
-  background-color: silver;
+  background-color: ${(props) =>
+    props.$profileColor
+      ? `var(--profile-color-${props.$profileColor})`
+      : "#c0c0c0"};
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   z-index: 10;

@@ -14,6 +14,7 @@ const HProfile = () => {
     <$.HProfile
       $width={px * doors.width}
       $height={px * 1.5 * hProfile.height}
+      $profileColor={doors.selectedProfile.color}
     />
   );
 };

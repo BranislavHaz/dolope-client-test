@@ -2,13 +2,13 @@ import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Rail.styled";
 
 const Rail = ({ type }) => {
-  const { viewport, wardrobe, corpus, rails, sections } = useMainStore(
+  const { viewport, wardrobe, rails, sections, doors } = useMainStore(
     (state) => ({
       viewport: state.viewport,
       wardrobe: state.wardrobe,
-      corpus: state.corpus,
       rails: state.rails,
       sections: state.sections,
+      doors: state.doors,
     })
   );
   const { px } = viewport;
@@ -37,6 +37,7 @@ const Rail = ({ type }) => {
       $height={px * railHeight}
       $type={type}
       $positionLeft={px * viewport.thickness}
+      $profileColor={doors.selectedProfile.color}
     />
   );
 };

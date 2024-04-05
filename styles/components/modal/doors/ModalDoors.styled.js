@@ -16,6 +16,5 @@ export const Handle = styled.div`
   width: ${(props) => props.$width}px;
   height: 100%;
   background-color: #c0c0c0;
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
+  border: 1px solid #000;
 `;
