@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import useTimeout from "@/hooks/useTimeout";
@@ -35,6 +36,13 @@ const Decors = ({ type }) => {
     setBeScrolled: state.setBeScrolled,
   }));
 
+  useEffect(() => {
+    const isAllFilled = checkDoorsSectionsFilled(doors.typeDoors);
+    isAllFilled
+      ? setStepsInputs("step3", "decorDoors", true)
+      : setStepsInputs("step3", "decorDoors", false);
+  }, [doors.typeDoors]);
+
   const set = useTimeout();
 
   const filteredDecors =
@@ -55,10 +63,6 @@ const Decors = ({ type }) => {
       setBeScrolled(true);
       const { doorId, sectionId } = activeDoorSection;
       setDoorSectionDecorId({ doorId, sectionId, decorId });
-      const isAllFilled = checkDoorsSectionsFilled(doors.typeDoors);
-      isAllFilled
-        ? setStepsInputs("step3", "decorDoors", true)
-        : setStepsInputs("step3", "decorDoors", false);
 
       const countSectionCurrentDoor = Object.keys(
         doors.typeDoors[doorId].sections
