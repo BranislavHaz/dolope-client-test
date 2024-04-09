@@ -7,7 +7,7 @@ export const HProfile = styled.div`
   bottom: calc(${(props) => props.$height} / -2) px;
   left: 0;
   background-color: ${(props) =>
-    props.$profileColor
+    props.$profileColor !== "unfilled"
       ? `var(--profile-color-${props.$profileColor})`
       : "#c0c0c0"};
   border-top: 1px solid #000;

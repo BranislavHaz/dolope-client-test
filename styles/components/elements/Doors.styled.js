@@ -43,5 +43,9 @@ export const DoorSection = styled.div`
 export const DoorPart = styled.div`
   width: ${(props) => props.$width}px;
   height: ${(props) => props.$height}px;
-  background-color: ${(props) => (props.$isEmpty ? "#fff" : "burlywood")};
+
+  ${(props) =>
+    props.$bgImg
+      ? `background-image: url(${props.$bgImg})`
+      : "background-color: var(--wood-color)"};
 `;

@@ -33,7 +33,6 @@ const Rail = ({ type }) => {
   return (
     <$.Rail
       $width={px * getRailWidth()}
-      //$subtractionWidth={px * 2 * viewport.thickness}
       $height={px * railHeight}
       $type={type}
       $positionLeft={px * viewport.thickness}

@@ -1,13 +1,17 @@
 import useMainStore from "@/stores/useMainStore";
+import { getDecorUrl } from "@/utils/getDecorUrl";
+
 import * as $ from "@/styles/components/elements/Side.styled";
 
 const Side = ({ location }) => {
-  const { wardrobe, viewport } = useMainStore((state) => ({
+  const { state, wardrobe, viewport } = useMainStore((state) => ({
+    state: state,
     wardrobe: state.wardrobe,
     viewport: state.viewport,
   }));
 
   const { px } = viewport;
+  const decorUrl = getDecorUrl({ state, type: "sideWalls" });
 
   const isABar = (location) => {
     if (location === "left") {
@@ -25,6 +29,7 @@ const Side = ({ location }) => {
       $height={px * wardrobe.height}
       $location={location}
       $isABar={isABar(location)}
+      $bgImg={decorUrl}
     />
   );
 };

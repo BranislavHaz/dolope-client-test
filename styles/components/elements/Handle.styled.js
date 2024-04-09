@@ -4,7 +4,7 @@ export const Handle = styled.div`
   width: ${(props) => props.$width}px;
   height: 100%;
   background-color: ${(props) =>
-    props.$profileColor
+    props.$profileColor !== "unfilled"
       ? `var(--profile-color-${props.$profileColor})`
       : "#c0c0c0"};
   border-left: ${(props) => (props.$isFirst ? "none" : "1px solid #000")};

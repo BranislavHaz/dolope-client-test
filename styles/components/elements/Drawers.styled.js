@@ -30,7 +30,7 @@ export const DrawerGripGap = styled.div`
 
 export const Drawers1 = styled.div`
   display: grid;
-  background-color: #eb5e8d;
+  background-color: var(--wood-color);
 
   ${({ $thicknessDTD, $frontWidth, $frontHeight, $grooveWidth, $gripGap }) => `
   grid-template-columns: ${$grooveWidth}px ${$frontWidth}px ${$grooveWidth}px;
@@ -42,11 +42,16 @@ export const Drawers1 = styled.div`
     "DrawerSideLeft DrawerGripGap DrawerSideRight"
     "DrawerSideLeft DrawerFront DrawerSideRight"
     "DrawerSideLeft DrawerBottom DrawerSideRight";
+
+  ${(props) =>
+    props.$bgImg
+      ? `background-image: url(${props.$bgImg})`
+      : "background-color: var(--wood-color)"};
 `;
 
 export const Drawers2 = styled.div`
   display: grid;
-  background-color: #eb5e8d;
+  background-color: var(--wood-color);
 
   ${({ $thicknessDTD, $frontWidth, $frontHeight, $grooveWidth, $gripGap }) => `
   grid-template-columns: ${$grooveWidth}px ${$frontWidth}px ${$grooveWidth}px;
@@ -60,11 +65,16 @@ export const Drawers2 = styled.div`
     "DrawerSideLeft DrawerGripGap DrawerSideRight"
     "DrawerSideLeft DrawerFront DrawerSideRight"
     "DrawerSideLeft DrawerBottom DrawerSideRight";
+
+  ${(props) =>
+    props.$bgImg
+      ? `background-image: url(${props.$bgImg})`
+      : "background-color: var(--wood-color)"};
 `;
 
 export const Drawers3 = styled.div`
   display: grid;
-  background-color: #eb5e8d;
+  background-color: var(--wood-color);
 
   ${({ $thicknessDTD, $frontWidth, $frontHeight, $grooveWidth, $gripGap }) => `
   grid-template-columns: ${$grooveWidth}px ${$frontWidth}px ${$grooveWidth}px;
@@ -80,11 +90,16 @@ export const Drawers3 = styled.div`
     "DrawerSideLeft DrawerGripGap DrawerSideRight"
     "DrawerSideLeft DrawerFront DrawerSideRight"
     "DrawerSideLeft DrawerBottom DrawerSideRight";
+
+  ${(props) =>
+    props.$bgImg
+      ? `background-image: url(${props.$bgImg})`
+      : "background-color: var(--wood-color)"};
 `;
 
 export const Drawers4 = styled.div`
   display: grid;
-  background-color: #eb5e8d;
+  background-color: var(--wood-color);
 
   ${({ $thicknessDTD, $frontWidth, $frontHeight, $grooveWidth, $gripGap }) => `
   grid-template-columns: ${$grooveWidth}px ${$frontWidth}px ${$grooveWidth}px;
@@ -102,4 +117,9 @@ export const Drawers4 = styled.div`
     "DrawerSideLeft DrawerGripGap DrawerSideRight"
     "DrawerSideLeft DrawerFront DrawerSideRight"
     "DrawerSideLeft DrawerBottom DrawerSideRight";
+
+  ${(props) =>
+    props.$bgImg
+      ? `background-image: url(${props.$bgImg})`
+      : "background-color: var(--wood-color)"};
 `;

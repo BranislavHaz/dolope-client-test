@@ -18,7 +18,6 @@ const ModalDoor = ({ width, height, overhang, id, children }) => {
   }));
 
   const { px } = viewport;
-  const { hProfile } = doors.dimensionsFromManual;
   const currentDoorSections = doors?.typeDoors[id]?.sections;
   const countOfSections =
     currentDoorSections && Object.keys(currentDoorSections).length;
@@ -33,7 +32,7 @@ const ModalDoor = ({ width, height, overhang, id, children }) => {
       const decor = productsAPI.dtd10.find((decor) => decor.id === decorId);
       return `/images/decors/${decor.id_manufacturer}.jpeg`;
     } else {
-      return null;
+      return false;
     }
   };
 
