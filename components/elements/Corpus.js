@@ -60,8 +60,10 @@ const modulesMap = {
 };
 
 const Corpus = () => {
-  const { sections } = useMainStore((state) => ({
+  const { wardrobe, sections, viewportSizes } = useMainStore((state) => ({
+    wardrobe: state.wardrobe,
     sections: state.sections,
+    viewportSizes: state.viewportSizes,
   }));
 
   const getModule = (sectionId) => {
@@ -81,18 +83,16 @@ const Corpus = () => {
   const getSections = () => {
     const sectionsArray = [];
     for (let i = 1; i <= sections.count; i++) {
-      const isLastSection = i === sections.count ? true : false;
-      sectionsArray.push(
-        getModule(i),
-        <Stand key={i} location={isLastSection ? "right" : "inside"} />
-      );
+      sectionsArray.push(getModule(i), <Stand key={i} />);
     }
     return sectionsArray;
   };
 
+  const leftOffset = wardrobe.type < 3 ? 0 : viewportSizes.thicknessDtd;
+
   return (
-    <$.Corpus>
-      <Stand location="left" />
+    <$.Corpus $leftOffsetSize={leftOffset}>
+      <Stand />
       {getSections()}
     </$.Corpus>
   );

@@ -8,15 +8,21 @@ import Rail from "@/components/elements/Rail";
 import Side from "@/components/elements/Side";
 
 const Wardrobe = () => {
-  const { wardrobe, sideWalls, viewport, setViewport, sections } = useMainStore(
-    (state) => ({
-      wardrobe: state.wardrobe,
-      sideWalls: state.sideWalls,
-      viewport: state.viewport,
-      setViewport: state.setViewport,
-      sections: state.sections,
-    })
-  );
+  const {
+    wardrobe,
+    sideWalls,
+    viewport,
+    viewportSizes,
+    setViewport,
+    sections,
+  } = useMainStore((state) => ({
+    wardrobe: state.wardrobe,
+    sideWalls: state.sideWalls,
+    viewport: state.viewport,
+    viewportSizes: state.viewportSizes,
+    setViewport: state.setViewport,
+    sections: state.sections,
+  }));
 
   useEffect(() => {
     setViewport(
@@ -45,12 +51,22 @@ const Wardrobe = () => {
   const countOfStands = sections.count + 1;
   const countOfSideWalls = sideWalls?.cover?.count || 0;
 
-  const wardrobeWidth =
+  /*  const wardrobeWidth =
     sections.count * sections.width +
-    (countOfStands + countOfSideWalls) * viewport.thickness;
+    (countOfStands + countOfSideWalls) * viewport.thickness; */
+
+  const wardrobeWidth =
+    sections.count * sections.width * px +
+    (viewport.thickness * px >= 2
+      ? (countOfStands + countOfSideWalls) * viewport.thickness * px
+      : (countOfStands + countOfSideWalls) * 2);
 
   return (
-    <$.Wardrobe $width={px * wardrobeWidth} $height={px * wardrobe.height}>
+    <$.Wardrobe
+      $width={viewportSizes.widthWardrobe}
+      $height={viewportSizes.heightWardrobe}
+    >
+      {/* <$.Wardrobe $width={px * wardrobeWidth} $height={px * wardrobe.height}> */}
       <Side location="left" />
       <Doors />
       <Rail type="top" />

@@ -3,21 +3,23 @@ import { getDecorUrl } from "@/utils/getDecorUrl";
 
 import * as $ from "@/styles/components/elements/Stand.styled";
 
-const Stand = ({ location }) => {
-  const { state, corpus, viewport } = useMainStore((state) => ({
+const Stand = () => {
+  const { state, corpus, viewport, viewportSizes } = useMainStore((state) => ({
     state: state,
     corpus: state.corpus,
     viewport: state.viewport,
+    viewportSizes: state.viewportSizes,
   }));
 
   const { px } = viewport;
   const decorUrl = getDecorUrl({ state, type: "corpus" });
 
+  const width = viewport.thickness * px >= 2 ? viewport.thickness * px : 2;
+
   return (
     <$.Stand
-      $width={px * viewport.thickness}
-      $height={px * corpus.height}
-      $location={location}
+      $width={viewportSizes.thicknessDtd}
+      $height={viewportSizes.heightCorpus}
       $bgImg={decorUrl}
     />
   );

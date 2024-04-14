@@ -3,21 +3,18 @@ import { getDecorUrl } from "@/utils/getDecorUrl";
 
 import * as $ from "@/styles/components/elements/Shelf.styled";
 
-const Shelf = ({ isInModal }) => {
-  const { state, sections, viewport } = useMainStore((state) => ({
+const Shelf = () => {
+  const { state, viewportSizes } = useMainStore((state) => ({
     state: state,
-    sections: state.sections,
-    viewport: state.viewport,
+    viewportSizes: state.viewportSizes,
   }));
 
-  const { px } = viewport;
   const decorUrl = getDecorUrl({ state, type: "corpus" });
 
   return (
     <$.Shelf
-      $width={px * sections.width}
-      $height={px * viewport.thickness}
-      $isInModal={isInModal}
+      $width={viewportSizes.widthSection}
+      $height={viewportSizes.thicknessDtd}
       $bgImg={decorUrl}
     />
   );

@@ -4,28 +4,24 @@ import * as $ from "@/styles/components/modules/Module.styled";
 import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 
-const Module1 = ({ isInModal = false }) => {
-  const { wardrobe, corpus, viewport } = useMainStore((state) => ({
+const Module1 = () => {
+  const { wardrobe, corpus, viewportSizes } = useMainStore((state) => ({
     wardrobe: state.wardrobe,
     corpus: state.corpus,
-    viewport: state.viewport,
+    viewportSizes: state.viewportSizes,
   }));
 
-  const { px } = viewport;
-  const spaceSizeDisplay = (corpus.height - 3 * viewport.thickness) / 3;
+  const spaceSizeDisplay =
+    (viewportSizes.heightCorpus - 3 * viewportSizes.thicknessDtd) / 3;
   const spaceSizeReal = (corpus.height - 3 * wardrobe.thickness) / 3;
 
   return (
-    <$.Module
-      $isInModal={isInModal}
-      $standWidth={px * viewport.thickness}
-      $height={corpus.height * viewport.px}
-    >
-      <Shelf isInModal={isInModal} />
+    <$.Module>
+      <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
-      <Shelf isInModal={isInModal} />
+      <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
-      <Shelf isInModal={isInModal} />
+      <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
     </$.Module>
   );

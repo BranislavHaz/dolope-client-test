@@ -27,6 +27,7 @@ const createWardrobeSlice = (set, get) => ({
     get().updateSectionsWidth("wardrobe");
     get().updateViewportPX("wardrobe");
     get().updateAreaParts("wardrobe");
+    get().updateViewportSizes("wardrobe");
   },
 
   setWardrobeHeight: (heightValue) => {
@@ -39,6 +40,7 @@ const createWardrobeSlice = (set, get) => ({
     );
     get().updateCorpusHeight("wardrobe");
     get().updateViewportPX("wardrobe");
+    get().updateViewportSizes("wardrobe");
   },
 
   setWardrobeDepth: (depthValue) => {
@@ -63,6 +65,7 @@ const createWardrobeSlice = (set, get) => ({
     get().updateCorpusWidth("wardrobe");
     get().updateSectionsWidth("wardrobe");
     get().updateSideWalls("wardrobe");
+    get().updateViewportSizes("wardrobe");
   },
 });
 

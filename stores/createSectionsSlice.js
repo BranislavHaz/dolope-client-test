@@ -30,6 +30,7 @@ const createSectionsSlice = (set, get) => ({
     );
     get().updateCorpusWidth("sections");
     get().updateSectionsWidth("sections");
+    get().updateViewportSizes("sections");
   },
 
   setTypeOfSections: ({ sectionId, sectionType, variableHeight = false }) => {

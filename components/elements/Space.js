@@ -2,9 +2,10 @@ import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Space.styled";
 
 const Space = ({ heightDisplay, heightReal, isVisible = true, children }) => {
-  const { sections, viewport } = useMainStore((state) => ({
+  const { sections, viewport, viewportSizes } = useMainStore((state) => ({
     sections: state.sections,
     viewport: state.viewport,
+    viewportSizes: state.viewportSizes,
   }));
 
   const { px } = viewport;
@@ -20,7 +21,7 @@ const Space = ({ heightDisplay, heightReal, isVisible = true, children }) => {
   const isLinesVisible = verifyIsVisible();
 
   return (
-    <$.Space $width={px * sections.width} $height={px * heightDisplay}>
+    <$.Space $width={viewportSizes.widthSection} $height={heightDisplay}>
       {children}
       {isLinesVisible && <$.Line />}
       {isLinesVisible && (

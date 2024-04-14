@@ -2,40 +2,28 @@ import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Rail.styled";
 
 const Rail = ({ type }) => {
-  const { viewport, wardrobe, rails, sections, doors } = useMainStore(
-    (state) => ({
+  const { viewport, wardrobe, rails, sections, doors, viewportSizes } =
+    useMainStore((state) => ({
       viewport: state.viewport,
       wardrobe: state.wardrobe,
       rails: state.rails,
       sections: state.sections,
       doors: state.doors,
-    })
-  );
+      viewportSizes: state.viewportSizes,
+    }));
   const { px } = viewport;
 
-  const getRailWidth = () => {
-    const standsThickness = (sections.count + 1) * viewport.thickness;
-    const sectionsWidth = sections.count * sections.width;
-
-    switch (wardrobe.type) {
-      case 1:
-        return standsThickness + sectionsWidth - 2 * viewport.thickness;
-      case 2:
-      case 3:
-        return standsThickness + sectionsWidth - viewport.thickness;
-      default:
-        return standsThickness + sectionsWidth;
-    }
-  };
+  const railWidth =
+    viewportSizes.widthWardrobe - 2 * viewportSizes.thicknessDtd;
 
   const railHeight = type === "top" ? rails.heightTop : rails.heightBottom;
 
   return (
     <$.Rail
-      $width={px * getRailWidth()}
+      $width={railWidth}
       $height={px * railHeight}
       $type={type}
-      $positionLeft={px * viewport.thickness}
+      $positionLeft={viewportSizes.thicknessDtd}
       $profileColor={doors.selectedProfile.color}
     />
   );
