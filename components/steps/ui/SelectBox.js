@@ -77,7 +77,7 @@ const SelectBox = ({ type, isAccept, text, isInactive }) => {
         />
         <$.AcceptIcon $isAccept={isAccept}>
           <Image
-            src={"/icons/accept.svg"}
+            src={"./icons/accept.svg"}
             width={20}
             height={20}
             alt={"Údaje byly vyplněny správně"}

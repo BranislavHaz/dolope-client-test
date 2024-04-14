@@ -10,7 +10,6 @@ const UsedDoorsDecor = () => {
   }));
 
   const uniqueDecors = getUniqueDecors({ state });
-  console.log(uniqueDecors.length);
 
   return (
     <$.Wrap $isVisible={uniqueDecors.length > 0}>

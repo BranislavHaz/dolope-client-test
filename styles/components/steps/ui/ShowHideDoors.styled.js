@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Wrap = styled.div`
   width: 70px;
-  //background-color: #fff;
   background-color: var(--main-color);
   opacity: 0.8;
   display: ${(props) => (props.$isVisible ? "flex" : "none")};
@@ -13,7 +12,7 @@ export const Wrap = styled.div`
   right: 0;
   overflow: hidden;
   border-bottom-left-radius: 12px 12px;
-  z-index: 10;
+  z-index: 90;
   cursor: pointer;
 
   & img {
@@ -21,7 +20,10 @@ export const Wrap = styled.div`
   }
 `;
 
-export const Text = styled.div`
-  font-size: 1rem;
-  padding: 0 3px 7px 3px;
+export const TextBlock = styled.div`
+  font-size: 12px;
+  padding: 3px 3px 7px 3px;
+  text-align: center;
 `;
+
+export const Text = styled.div``;

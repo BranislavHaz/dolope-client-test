@@ -108,9 +108,8 @@ export const SelectBox = styled.span`
 
 export const SubmitWrap = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 1rem;
+  padding-bottom: 6rem;
+  position: relative;
 `;
 
 export const SubmitButton = styled.span`
@@ -125,4 +124,24 @@ export const SubmitButton = styled.span`
   background-color: var(--bg-button);
   color: var(--font-color-active);
   border-radius: 9px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const CloseButton = styled.span`
+  min-height: 3em;
+  margin-top: 2em;
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  border-radius: 9px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
 `;

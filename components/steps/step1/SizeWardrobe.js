@@ -63,58 +63,60 @@ const SizeWardrobe = () => {
   };
 
   return (
-    <$.FormWrap onKeyDown={handleKeyDown}>
-      <Title>Rozměry skříně</Title>
-      <$.InputWrapper $isCorrect={isCorrect.width !== false}>
-        <input
-          type="number"
-          placeholder="Šířka skříně"
-          value={width === 0 ? "" : width}
-          onChange={(e) => setWidth(e.target.value)}
-        />
-      </$.InputWrapper>
-      <$.Details $isCorrect={isCorrect.width !== false}>
-        Maximální povolené rozmezí: 150-560 cm
-      </$.Details>
-      <$.InputWrapper $isCorrect={isCorrect.height !== false}>
-        <input
-          type="number"
-          placeholder="Výška skříně"
-          value={height === 0 ? "" : height}
-          onChange={(e) => setHeight(e.target.value)}
-        />
-      </$.InputWrapper>
-      <$.Details $isCorrect={isCorrect.height !== false}>
-        Maximální povolené rozmezí: 100-277 cm
-      </$.Details>
-      <$.InputWrapper $isCorrect={isCorrect.depth !== false}>
-        <input
-          type="number"
-          placeholder="Hloubka skříně"
-          value={depth === 0 ? "" : depth}
-          onChange={(e) => setDepth(e.target.value)}
-        />
-      </$.InputWrapper>
-      <$.Details $isCorrect={isCorrect.depth !== false}>
-        Maximální povolené rozmezí: 28-100 cm
-      </$.Details>
-      <$.InputWrapper $isCorrect={isCorrect.topSelf !== false}>
-        <input
-          type="number"
-          placeholder="Výška vrchní police"
-          value={topSelf === 0 ? "" : topSelf}
-          onChange={(e) => setTopSelf(e.target.value)}
-        />
-      </$.InputWrapper>
-      <$.Details $isCorrect={isCorrect.topSelf !== false}>
-        Maximální povolené rozmezí: 15-40 cm
-      </$.Details>
+    <>
+      <$.FormWrap onKeyDown={handleKeyDown}>
+        <Title>Rozměry skříně</Title>
+        <$.InputWrapper $isCorrect={isCorrect.width !== false}>
+          <input
+            type="number"
+            placeholder="Šířka skříně"
+            value={width === 0 ? "" : width}
+            onChange={(e) => setWidth(e.target.value)}
+          />
+        </$.InputWrapper>
+        <$.Details $isCorrect={isCorrect.width !== false}>
+          Maximální povolené rozmezí: 150-560 cm
+        </$.Details>
+        <$.InputWrapper $isCorrect={isCorrect.height !== false}>
+          <input
+            type="number"
+            placeholder="Výška skříně"
+            value={height === 0 ? "" : height}
+            onChange={(e) => setHeight(e.target.value)}
+          />
+        </$.InputWrapper>
+        <$.Details $isCorrect={isCorrect.height !== false}>
+          Maximální povolené rozmezí: 100-277 cm
+        </$.Details>
+        <$.InputWrapper $isCorrect={isCorrect.depth !== false}>
+          <input
+            type="number"
+            placeholder="Hloubka skříně"
+            value={depth === 0 ? "" : depth}
+            onChange={(e) => setDepth(e.target.value)}
+          />
+        </$.InputWrapper>
+        <$.Details $isCorrect={isCorrect.depth !== false}>
+          Maximální povolené rozmezí: 28-100 cm
+        </$.Details>
+        <$.InputWrapper $isCorrect={isCorrect.topSelf !== false}>
+          <input
+            type="number"
+            placeholder="Výška vrchní police"
+            value={topSelf === 0 ? "" : topSelf}
+            onChange={(e) => setTopSelf(e.target.value)}
+          />
+        </$.InputWrapper>
+        <$.Details $isCorrect={isCorrect.topSelf !== false}>
+          Maximální povolené rozmezí: 15-40 cm
+        </$.Details>
+      </$.FormWrap>
       <SubmitButton
         isVisible={true}
         submitAction={handleSubmit}
         withBg={false}
       />
-    </$.FormWrap>
+    </>
   );
 };
 

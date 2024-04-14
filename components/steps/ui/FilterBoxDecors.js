@@ -52,6 +52,10 @@ const FilterBoxDecors = ({ type }) => {
     }
   };
 
+  const handleClose = () => {
+    setIsContentOpen(false);
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSubmit();
@@ -141,6 +145,7 @@ const FilterBoxDecors = ({ type }) => {
           </$.SelectBoxWrap>
           <$.SubmitWrap>
             <$.SubmitButton onClick={handleSubmit}>Filtrovat</$.SubmitButton>
+            <$.CloseButton onClick={handleClose}>Zavřít</$.CloseButton>
           </$.SubmitWrap>
         </$.BoxContent>
       )}

@@ -40,6 +40,10 @@ const Modal = () => {
     }
   }, [modal.beScrolled]);
 
+  useEffect(() => {
+    modal.isActive && modalRef.current.scrollTo({ top: 0, behavior: "auto" });
+  }, [modal.isActive]);
+
   const ModalContent = {
     sizeWardrobe: <SizeWardrobe />,
     typeWardrobe: <TypeWardrobe />,

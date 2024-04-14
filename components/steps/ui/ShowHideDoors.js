@@ -25,8 +25,10 @@ const ShowHideDoors = () => {
         height={20}
         alt={"Údaje byly vyplněny správně"}
       />
-
-      <$.Text>{doors.isVisible ? "Skrýt" : "Zobrazit"}</$.Text>
+      <$.TextBlock>
+        <$.Text>{doors.isVisible ? "Skrýt" : "Zobrazit"}</$.Text>
+        <$.Text>dveře</$.Text>
+      </$.TextBlock>
     </$.Wrap>
   );
 };

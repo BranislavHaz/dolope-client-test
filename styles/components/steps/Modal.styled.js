@@ -46,7 +46,6 @@ export const ModalWrap = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
   display: flex;
   opacity: ${(props) => (props.$isActive ? 1 : 0)};
   z-index: ${(props) => (props.$isActive ? 100 : 0)};
@@ -63,7 +62,6 @@ export const ModalWrap = styled.div`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10.5px);
   -webkit-backdrop-filter: blur(10.5px);
-  z-index: 1;
 
   @media ${device.tablet} {
     width: calc(${(props) => props.$width} * 0.9px);
