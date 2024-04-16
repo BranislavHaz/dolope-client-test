@@ -11,6 +11,6 @@ export const Rail = styled.div`
     props.$profileColor !== "unfilled"
       ? `var(--profile-color-${props.$profileColor})`
       : "#c0c0c0"};
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 0.25px solid #000;
+  border-bottom: 0.25px solid #000;
 `;

@@ -9,6 +9,19 @@ const createViewportSlice = (set, get) => ({
     heightWardrobe: 0,
     heightCorpus: 0,
     widthSection: 0,
+    drawers: {
+      height: {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+      },
+      frontWidth: 0,
+      frontHeight: 0,
+      grooveWidth: 0,
+      gripGap: 0,
+      frontGap: 0,
+    },
   },
 
   updateViewportPX: (nameOfAction) => {
