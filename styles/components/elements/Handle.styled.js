@@ -7,6 +7,6 @@ export const Handle = styled.div`
     props.$profileColor !== "unfilled"
       ? `var(--profile-color-${props.$profileColor})`
       : "#c0c0c0"};
-  border-left: ${(props) => (props.$isFirst ? "none" : "0.25px solid #000")};
-  border-right: ${(props) => (props.$isLast ? "none" : "0.25px solid #000")};
+  border-left: 0.25px solid #000;
+  border-right: 0.25px solid #000;
 `;

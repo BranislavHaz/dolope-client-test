@@ -2,16 +2,15 @@ import useMainStore from "@/stores/useMainStore";
 
 import * as $ from "@/styles/components/elements/Handle.styled";
 
-const Handle = ({ width, isFirst = false, isLast = false }) => {
-  const { doors } = useMainStore((state) => ({
+const Handle = () => {
+  const { doors, viewportSizes } = useMainStore((state) => ({
     doors: state.doors,
+    viewportSizes: state.viewportSizes,
   }));
 
   return (
     <$.Handle
-      $width={width}
-      $isFirst={isFirst}
-      $isLast={isLast}
+      $width={viewportSizes.door.profileHeight}
       $profileColor={doors.selectedProfile.color}
     />
   );

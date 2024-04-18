@@ -3,16 +3,16 @@ import { getDecorUrl } from "@/utils/getDecorUrl";
 
 import * as $ from "@/styles/components/elements/Doors.styled";
 
+import Handle from "./Handle";
 import HProfile from "../elements/HProfile";
 
-const Door = ({ width, height, overhang, id, children }) => {
-  const { state, viewport, doors } = useMainStore((state) => ({
+const Door = ({ id }) => {
+  const { state, doors, viewportSizes } = useMainStore((state) => ({
     state: state,
-    viewport: state.viewport,
     doors: state.doors,
+    viewportSizes: state.viewportSizes,
   }));
 
-  const { px } = viewport;
   const currentDoorSections = doors?.typeDoors[id]?.sections;
   const countOfSections =
     currentDoorSections && Object.keys(currentDoorSections).length;
@@ -29,12 +29,16 @@ const Door = ({ width, height, overhang, id, children }) => {
         doorSectionId: i,
       });
 
+      const heightSection = Number(
+        (currentSection.height / doors.height) * viewportSizes.door.height
+      ).toFixed(2);
+
       if (i < countOfSections) {
         doorElement.push(
           <$.DoorSection key={i}>
             <$.DoorPart
-              $width={px * currentSection.width}
-              $height={px * currentSection.height}
+              $width={viewportSizes.door.width}
+              $height={heightSection}
               $bgImg={decorUrl}
             />
             <HProfile />
@@ -44,8 +48,8 @@ const Door = ({ width, height, overhang, id, children }) => {
         doorElement.push(
           <$.DoorSection key={i}>
             <$.DoorPart
-              $width={px * currentSection.width}
-              $height={px * currentSection.height}
+              $width={viewportSizes.door.width}
+              $height={heightSection}
               $bgImg={decorUrl}
             />
           </$.DoorSection>
@@ -58,13 +62,14 @@ const Door = ({ width, height, overhang, id, children }) => {
 
   return (
     <$.DoorWrapper
-      $width={width}
-      $height={height}
-      $overhang={overhang}
+      $width={viewportSizes.door.width}
+      $height={viewportSizes.door.height}
       $isVisible={doors.isVisible}
+      $overhang={viewportSizes.wardrobe.thicknessDTD * 2}
     >
+      <Handle />
       <$.Door>{doors.typeDoors[id] && getDoorElements()}</$.Door>
-      {children}
+      <Handle />
     </$.DoorWrapper>
   );
 };

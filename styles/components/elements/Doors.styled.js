@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Doors = styled.div`
   display: flex;
-  position: absolute;
+  position: relative;
   left: ${(props) => props.$positionLeft}px;
+  bottom: 0;
 `;
 
 export const DoorWrapper = styled.div`

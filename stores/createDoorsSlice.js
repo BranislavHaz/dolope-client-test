@@ -82,6 +82,7 @@ const createDoorsSlice = (set, get) => ({
     );
     get().updateDoorsSize();
     get().updateAvailableProfiles();
+    get().updateViewportSizes("doors");
   },
 
   setSelectedProfile: (profile) => {

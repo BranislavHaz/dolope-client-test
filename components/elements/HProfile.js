@@ -2,9 +2,10 @@ import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/HProfile.styled";
 
 const HProfile = () => {
-  const { viewport, doors } = useMainStore((state) => ({
+  const { viewport, doors, viewportSizes } = useMainStore((state) => ({
     viewport: state.viewport,
     doors: state.doors,
+    viewportSizes: state.viewportSizes,
   }));
 
   const { px } = viewport;
@@ -12,8 +13,8 @@ const HProfile = () => {
 
   return (
     <$.HProfile
-      $width={px * doors.width}
-      $height={px * 1.5 * hProfile.height}
+      $width={viewportSizes.door.width}
+      $height={viewportSizes.door.profileHeight}
       $profileColor={doors.selectedProfile.color}
     />
   );

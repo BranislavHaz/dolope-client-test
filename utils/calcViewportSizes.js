@@ -43,6 +43,30 @@ export const calcViewportSizes = (state) => {
   };
   // End Drawers
 
+  // Start Rails
+  const rawHeightTopRail =
+    Math.round(state.rails.heightTop * thicknessDTD * 100) / 100;
+  const rawHeightBottomRail =
+    Math.round(state.rails.heightBottom * thicknessDTD * 100) / 100;
+
+  const heightTopRail = rawHeightTopRail >= 2 ? rawHeightTopRail : 2;
+  const heightBottomRail = rawHeightBottomRail >= 2 ? rawHeightBottomRail : 2;
+  const widthRail = widthWardrobe - 2 * thicknessDTD;
+  // End Rails
+
+  // Start Door
+  const heightDoorProfile = thicknessDTD * 2;
+  const widthDoor =
+    Math.round(
+      ((widthWardrobe -
+        2 * thicknessDTD +
+        (state.doors.count - 1) * heightDoorProfile) /
+        state.doors.count) *
+        100
+    ) / 100;
+  const heightDoor = Math.round((heightWardrobe - thicknessDTD) * 100) / 100;
+  // End Door
+
   return {
     wardrobe: {
       width: widthWardrobe,
@@ -62,6 +86,21 @@ export const calcViewportSizes = (state) => {
       gripGap,
       frontGap,
       height: drawersHeight,
+    },
+    rails: {
+      top: {
+        width: widthRail,
+        height: heightTopRail,
+      },
+      bottom: {
+        width: widthRail,
+        height: heightBottomRail,
+      },
+    },
+    door: {
+      width: widthDoor,
+      height: heightDoor,
+      profileHeight: heightDoorProfile,
     },
   };
 };

@@ -24,6 +24,21 @@ const createViewportSlice = (set, get) => ({
       gripGap: 0,
       frontGap: 0,
     },
+    rails: {
+      top: {
+        width: 0,
+        height: 0,
+      },
+      bottom: {
+        width: 0,
+        height: 0,
+      },
+    },
+    door: {
+      width: 0,
+      height: 0,
+      profileHeight: 0,
+    },
   },
 
   updateViewportPX: (nameOfAction) => {
