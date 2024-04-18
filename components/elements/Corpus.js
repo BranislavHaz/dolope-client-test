@@ -60,24 +60,36 @@ const modulesMap = {
 };
 
 const Corpus = () => {
-  const { wardrobe, sections, viewportSizes } = useMainStore((state) => ({
-    wardrobe: state.wardrobe,
-    sections: state.sections,
-    viewportSizes: state.viewportSizes,
-  }));
+  const { wardrobe, sections, viewport, viewportSizes } = useMainStore(
+    (state) => ({
+      wardrobe: state.wardrobe,
+      sections: state.sections,
+      viewport: state.viewport,
+      viewportSizes: state.viewportSizes,
+    })
+  );
 
   const getModule = (sectionId) => {
     const sectionData = sections.typeOfSections[sectionId];
     let moduleId = 0;
-    let variableHeight = false;
+    let variableHeightReal = false;
+    let variableHeightDisplay = false;
 
     if (sectionData && sectionData.sectionType !== undefined) {
       moduleId = sectionData.sectionType;
-      variableHeight = sectionData.variableHeight;
+      variableHeightReal = sectionData.variableHeight;
+      variableHeightDisplay =
+        Math.round(sectionData.variableHeight * viewport.px * 100) / 100;
     }
 
     const Modul = modulesMap[moduleId];
-    return <Modul key={Math.random()} variableHeight={variableHeight} />;
+    return (
+      <Modul
+        key={Math.random()}
+        variableHeightDisplay={variableHeightDisplay}
+        variableHeightReal={variableHeightReal}
+      />
+    );
   };
 
   const getSections = () => {

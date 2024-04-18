@@ -6,19 +6,19 @@ import Space from "../elements/Space";
 import Hanger from "../elements/Hanger";
 
 const Module25 = () => {
-  const { wardrobe, corpus, viewport } = useMainStore((state) => ({
+  const { wardrobe, corpus, viewportSizes } = useMainStore((state) => ({
     wardrobe: state.wardrobe,
     corpus: state.corpus,
-    viewport: state.viewport,
+    viewportSizes: state.viewportSizes,
   }));
 
   const spaceSizeDisplay =
-    Math.floor(((corpus.height - 3 * viewport.thickness) / 2) * 100) / 100;
+    (viewportSizes.heightCorpus - 3 * viewportSizes.thicknessDtd) / 2;
   const spaceSizeReal =
     Math.floor(((corpus.height - 3 * wardrobe.thickness) / 2) * 100) / 100;
 
   return (
-    <$.Module $height={corpus.height * viewport.px}>
+    <$.Module>
       <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal}>
         <Hanger />

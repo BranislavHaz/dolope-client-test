@@ -5,31 +5,32 @@ import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 import Drawers from "../elements/Drawers";
 
-const Module13 = ({ variableHeight }) => {
-  const { wardrobe, corpus, drawers, viewport } = useMainStore((state) => ({
-    wardrobe: state.wardrobe,
-    corpus: state.corpus,
-    drawers: state.drawers,
-    viewport: state.viewport,
-  }));
+const Module13 = ({ variableHeightDisplay, variableHeightReal }) => {
+  const { wardrobe, corpus, drawers, viewportSizes } = useMainStore(
+    (state) => ({
+      wardrobe: state.wardrobe,
+      corpus: state.corpus,
+      drawers: state.drawers,
+      viewportSizes: state.viewportSizes,
+    })
+  );
 
   const spaceSizeDisplay =
-    Math.floor(
-      corpus.height -
-        4 * viewport.thickness -
-        drawers.heightOfDrawers[3] -
-        variableHeight
-    ) / 2;
+    (viewportSizes.heightCorpus -
+      4 * viewportSizes.thicknessDtd -
+      viewportSizes.drawers.height[3] -
+      variableHeightDisplay) /
+    2;
   const spaceSizeReal =
     Math.floor(
       corpus.height -
         4 * wardrobe.thickness -
         drawers.heightOfDrawers[3] -
-        variableHeight
+        variableHeightReal
     ) / 2;
 
   return (
-    <$.Module $height={corpus.height * viewport.px}>
+    <$.Module>
       <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf />
@@ -37,7 +38,10 @@ const Module13 = ({ variableHeight }) => {
       <Shelf />
       <Drawers numOfDrawers={3} />
       <Shelf />
-      <Space heightDisplay={variableHeight} heightReal={variableHeight} />
+      <Space
+        heightDisplay={variableHeightDisplay}
+        heightReal={variableHeightReal}
+      />
     </$.Module>
   );
 };

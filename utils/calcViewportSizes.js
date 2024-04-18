@@ -24,8 +24,8 @@ export const calcViewportSizes = (state) => {
   drawers.height = {
     1: drawers.gripGap + drawers.frontHeight + 2 * thicknessDtd,
     2: 2 * (drawers.gripGap + drawers.frontHeight + thicknessDtd),
-    3: 3 * (drawers.gripGap + drawers.frontHeight + thicknessDtd),
-    4: 4 * (drawers.gripGap + drawers.frontHeight + thicknessDtd),
+    3: 3 * (drawers.gripGap + drawers.frontHeight) + 2 * thicknessDtd,
+    4: 4 * (drawers.gripGap + drawers.frontHeight) + 2 * thicknessDtd,
   };
   const widthWardrobe =
     Math.round(

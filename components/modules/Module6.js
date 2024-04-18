@@ -25,8 +25,6 @@ const Module6 = () => {
       corpus.height - 7 * wardrobe.thickness - drawers.heightOfDrawers[2]
     ) / 5;
 
-  console.log(spaceSizeDisplay);
-
   return (
     <$.Module>
       <Shelf />

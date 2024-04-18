@@ -7,20 +7,24 @@ import Drawers from "../elements/Drawers";
 import Hanger from "../elements/Hanger";
 
 const Module23 = () => {
-  const { wardrobe, corpus, drawers, viewport } = useMainStore((state) => ({
-    wardrobe: state.wardrobe,
-    corpus: state.corpus,
-    drawers: state.drawers,
-    viewport: state.viewport,
-  }));
+  const { wardrobe, corpus, drawers, viewportSizes } = useMainStore(
+    (state) => ({
+      wardrobe: state.wardrobe,
+      corpus: state.corpus,
+      drawers: state.drawers,
+      viewportSizes: state.viewportSizes,
+    })
+  );
 
   const spaceSizeDisplay =
-    corpus.height - 3 * viewport.thickness - drawers.heightOfDrawers[3];
+    viewportSizes.heightCorpus -
+    3 * viewportSizes.thicknessDtd -
+    viewportSizes.drawers.height[3];
   const spaceSizeReal =
     corpus.height - 3 * wardrobe.thickness - drawers.heightOfDrawers[3];
 
   return (
-    <$.Module $height={corpus.height * viewport.px}>
+    <$.Module>
       <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal}>
         <Hanger />

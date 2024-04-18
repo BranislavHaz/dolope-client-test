@@ -5,24 +5,30 @@ import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";
 import Hanger from "../elements/Hanger";
 
-const Module17 = ({ variableHeight }) => {
-  const { wardrobe, corpus, viewport } = useMainStore((state) => ({
+const Module17 = ({ variableHeightDisplay, variableHeightReal }) => {
+  const { wardrobe, corpus, viewportSizes } = useMainStore((state) => ({
     wardrobe: state.wardrobe,
     corpus: state.corpus,
-    viewport: state.viewport,
+    viewportSizes: state.viewportSizes,
   }));
 
   const spaceSizeDisplay =
-    Math.floor(corpus.height - 3 * viewport.thickness - variableHeight) / 2;
+    (viewportSizes.heightCorpus -
+      3 * viewportSizes.thicknessDtd -
+      variableHeightDisplay) /
+    2;
   const spaceSizeReal =
-    Math.floor(corpus.height - 3 * wardrobe.thickness - variableHeight) / 2;
+    Math.floor(corpus.height - 3 * wardrobe.thickness - variableHeightReal) / 2;
 
   return (
-    <$.Module $height={corpus.height * viewport.px}>
+    <$.Module>
       <Shelf />
       <Space heightDisplay={spaceSizeDisplay} heightReal={spaceSizeReal} />
       <Shelf />
-      <Space heightDisplay={variableHeight} heightReal={variableHeight}>
+      <Space
+        heightDisplay={variableHeightDisplay}
+        heightReal={variableHeightReal}
+      >
         <Hanger />
       </Space>
       <Shelf />
