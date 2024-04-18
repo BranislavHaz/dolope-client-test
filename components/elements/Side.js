@@ -18,8 +18,8 @@ const Side = ({ location }) => {
 
   return (
     <$.Side
-      $width={viewportSizes.thicknessDtd}
-      $height={viewportSizes.heightWardrobe}
+      $width={viewportSizes.wardrobe.thicknessDTD}
+      $height={viewportSizes.wardrobe.height}
       $location={location}
       $bgImg={decorUrl}
     />

@@ -6,10 +6,10 @@ const Space = ({ heightDisplay, heightReal, children }) => {
     viewportSizes: state.viewportSizes,
   }));
 
-  const isLinesVisible = viewportSizes.widthSection > 40 && heightDisplay > 30;
+  const isLinesVisible = viewportSizes.section.width > 40 && heightDisplay > 30;
 
   return (
-    <$.Space $width={viewportSizes.widthSection} $height={heightDisplay}>
+    <$.Space $width={viewportSizes.section.width} $height={heightDisplay}>
       {children}
       {isLinesVisible && (
         <>

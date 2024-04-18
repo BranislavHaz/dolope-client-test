@@ -63,8 +63,8 @@ const Wardrobe = () => {
 
   return (
     <$.Wardrobe
-      $width={viewportSizes.widthWardrobe}
-      $height={viewportSizes.heightWardrobe}
+      $width={viewportSizes.wardrobe.width}
+      $height={viewportSizes.wardrobe.height}
     >
       {/* <$.Wardrobe $width={px * wardrobeWidth} $height={px * wardrobe.height}> */}
       <Side location="left" />

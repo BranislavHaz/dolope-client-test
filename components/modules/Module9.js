@@ -16,8 +16,8 @@ const Module9 = () => {
   );
 
   const spaceSizeDisplay =
-    (viewportSizes.heightCorpus -
-      5 * viewportSizes.thicknessDtd -
+    (viewportSizes.corpus.height -
+      5 * viewportSizes.wardrobe.thicknessDTD -
       viewportSizes.drawers.height[4]) /
     3;
   const spaceSizeReal =

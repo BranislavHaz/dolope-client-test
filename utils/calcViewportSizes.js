@@ -1,46 +1,67 @@
 export const calcViewportSizes = (state) => {
-  const { wardrobe, corpus, sideWalls, sections } = state;
   const { px } = state.viewport;
-  const countSideWallsCover = sideWalls.cover.count;
-  const countStands = sections.count + 1;
-  const countSections = sections.count;
 
-  const thicknessDtd =
-    wardrobe.thickness * px <= 3 ? 3 : wardrobe.thickness * px;
-  const widthSection = Math.round(sections.width * px * 100) / 100;
-  const heightCorpus = Math.round(corpus.height * px * 100) / 100;
-  const heightWardrobe = Math.round(wardrobe.height * px * 100) / 100;
-  const drawers = {
-    frontWidth:
-      Math.round(
-        (state.sections.width - 2 * state.drawers.grooveWidth) * px * 100
-      ) / 100,
-    frontHeight: Math.round(state.drawers.frontHeight * px * 100) / 100,
-    grooveWidth: Math.round(state.drawers.grooveWidth * px * 100) / 100,
-    gripGap: Math.round(state.drawers.gripGap * px * 100) / 100,
-    frontGap: Math.round(state.drawers.frontGap * px * 100) / 100,
-  };
+  // Start Corpus
+  const heightCorpus = Math.round(state.corpus.height * px * 100) / 100;
+  // End Corpus
 
-  drawers.height = {
-    1: drawers.gripGap + drawers.frontHeight + 2 * thicknessDtd,
-    2: 2 * (drawers.gripGap + drawers.frontHeight + thicknessDtd),
-    3: 3 * (drawers.gripGap + drawers.frontHeight) + 2 * thicknessDtd,
-    4: 4 * (drawers.gripGap + drawers.frontHeight) + 2 * thicknessDtd,
-  };
+  // Start Section
+  const widthSection = Math.round(state.sections.width * px * 100) / 100;
+  // End Section
+
+  // Start Wardrobe
+  const countSideWallsCover = state.sideWalls.cover.count;
+  const countStands = state.sections.count + 1;
+  const countSections = state.sections.count;
+
+  const thicknessDTD =
+    state.wardrobe.thickness * px <= 3 ? 3 : state.wardrobe.thickness * px;
   const widthWardrobe =
     Math.round(
-      (countSideWallsCover * thicknessDtd +
-        countStands * thicknessDtd +
+      (countSideWallsCover * thicknessDTD +
+        countStands * thicknessDTD +
         countSections * widthSection) *
         100
     ) / 100;
+  const heightWardrobe = Math.round(state.wardrobe.height * px * 100) / 100;
+  // End Wardrobe
+
+  // Start Drawers
+  const frontHeight = Math.round(state.drawers.frontHeight * px * 100) / 100;
+  const grooveWidth = Math.round(state.drawers.grooveWidth * px * 100) / 100;
+  const gripGap = Math.round(state.drawers.gripGap * px * 100) / 100;
+  const frontGap = Math.round(state.drawers.frontGap * px * 100) / 100;
+  const frontWidth =
+    Math.round(
+      (state.sections.width - 2 * state.drawers.grooveWidth) * px * 100
+    ) / 100;
+  const drawersHeight = {
+    1: gripGap + frontHeight + 2 * thicknessDTD,
+    2: 2 * (gripGap + frontHeight + thicknessDTD),
+    3: 3 * (gripGap + frontHeight) + 2 * thicknessDTD,
+    4: 4 * (gripGap + frontHeight) + 2 * thicknessDTD,
+  };
+  // End Drawers
 
   return {
-    thicknessDtd,
-    widthWardrobe,
-    heightWardrobe,
-    heightCorpus,
-    widthSection,
-    drawers,
+    wardrobe: {
+      width: widthWardrobe,
+      height: heightWardrobe,
+      thicknessDTD,
+    },
+    corpus: {
+      height: heightCorpus,
+    },
+    section: {
+      width: widthSection,
+    },
+    drawers: {
+      frontWidth,
+      frontHeight,
+      grooveWidth,
+      gripGap,
+      frontGap,
+      height: drawersHeight,
+    },
   };
 };

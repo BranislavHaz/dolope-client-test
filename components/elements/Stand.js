@@ -18,8 +18,8 @@ const Stand = () => {
 
   return (
     <$.Stand
-      $width={viewportSizes.thicknessDtd}
-      $height={viewportSizes.heightCorpus}
+      $width={viewportSizes.wardrobe.thicknessDTD}
+      $height={viewportSizes.corpus.height}
       $bgImg={decorUrl}
     />
   );

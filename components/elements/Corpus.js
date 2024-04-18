@@ -100,7 +100,8 @@ const Corpus = () => {
     return sectionsArray;
   };
 
-  const leftOffset = wardrobe.type < 3 ? 0 : viewportSizes.thicknessDtd;
+  const leftOffset =
+    wardrobe.type < 3 ? 0 : viewportSizes.wardrobe.thicknessDTD;
 
   return (
     <$.Corpus $leftOffsetSize={leftOffset}>

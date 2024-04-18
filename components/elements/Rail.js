@@ -14,7 +14,7 @@ const Rail = ({ type }) => {
   const { px } = viewport;
 
   const railWidth =
-    viewportSizes.widthWardrobe - 2 * viewportSizes.thicknessDtd;
+    viewportSizes.wardrobe.width - 2 * viewportSizes.wardrobe.thicknessDTD;
 
   const railHeight = type === "top" ? rails.heightTop : rails.heightBottom;
 
@@ -23,7 +23,7 @@ const Rail = ({ type }) => {
       $width={railWidth}
       $height={px * railHeight}
       $type={type}
-      $positionLeft={viewportSizes.thicknessDtd}
+      $positionLeft={viewportSizes.wardrobe.thicknessDTD}
       $profileColor={doors.selectedProfile.color}
     />
   );

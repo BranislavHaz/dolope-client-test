@@ -12,7 +12,7 @@ const Module3 = () => {
   }));
 
   const spaceSizeDisplay =
-    (viewportSizes.heightCorpus - 5 * viewportSizes.thicknessDtd) / 5;
+    (viewportSizes.corpus.height - 5 * viewportSizes.wardrobe.thicknessDTD) / 5;
   const spaceSizeReal = (corpus.height - 5 * wardrobe.thickness) / 5;
 
   return (

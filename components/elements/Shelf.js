@@ -13,8 +13,8 @@ const Shelf = () => {
 
   return (
     <$.Shelf
-      $width={viewportSizes.widthSection}
-      $height={viewportSizes.thicknessDtd}
+      $width={viewportSizes.section.width}
+      $height={viewportSizes.wardrobe.thicknessDTD}
       $bgImg={decorUrl}
     />
   );

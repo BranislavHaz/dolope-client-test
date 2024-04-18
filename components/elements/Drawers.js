@@ -46,7 +46,7 @@ const Drawers = ({ numOfDrawers }) => {
 
     return (
       <DrawerContainer
-        $thicknessDTD={viewportSizes.thicknessDtd}
+        $thicknessDTD={viewportSizes.wardrobe.thicknessDTD}
         $frontWidth={viewportSizes.drawers.frontWidth}
         $frontHeight={viewportSizes.drawers.frontHeight}
         $grooveWidth={viewportSizes.drawers.grooveWidth}
