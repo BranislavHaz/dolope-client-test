@@ -93,6 +93,8 @@ const Modal = () => {
 
   const handleClick = () => {
     setIsModalActive(false);
+    setIsSubmitVisible(false);
+    setSubmitAction(() => () => setIsModalActive(false));
   };
 
   const ModalContent = {
@@ -186,6 +188,7 @@ const Modal = () => {
                 <FilterBoxDecors type={"doors"} />
               )}
             </$.TopBar>
+            <$.CloseModal onClick={handleClick} />
             {ModalContent[modal.type]}
             <$.ModalFooter>
               <$.CloseButton onClick={handleClick}>zavřít</$.CloseButton>

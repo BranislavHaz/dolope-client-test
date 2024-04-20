@@ -7,8 +7,6 @@ export const FullModalWrap = styled.div`
   left: 0;
   width: ${(props) => props.$width}px;
   height: ${(props) => props.$height}px;
-  max-width: 100vw;
-  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +15,8 @@ export const FullModalWrap = styled.div`
   box-sizing: border-box;
 
   @media ${device.tablet} {
+    width: 70vw;
+    max-height: 100vh;
   }
 `;
 
@@ -54,19 +54,18 @@ export const ModalWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  overflow-y: auto;
   background: rgba(255, 255, 255, 0.9);
   animation: ${modalPopUp} 0.15s ease-in-out;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
 
   @media ${device.tablet} {
-    width: calc(${(props) => props.$width} * 0.9px);
-    min-width: calc(${(props) => props.$width} * 0.9px);
-    height: calc(${(props) => props.$height} * 0.9px);
-    min-height: calc(${(props) => props.$height} * 0.9px);
+    width: 70vw;
+    min-width: 70vw;
+    height: 100vh;
+    min-height: 100vh;
+    position: fixed;
 
-    border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10.5px);
     -webkit-backdrop-filter: blur(10.5px);
@@ -75,6 +74,7 @@ export const ModalWrap = styled.div`
 
 export const TopBar = styled.div`
   width: 100%;
+  height: 4rem;
   position: sticky;
   top: -2px;
   left: 0;
@@ -82,17 +82,41 @@ export const TopBar = styled.div`
   z-index: 10;
   display: flex;
   justify-content: end;
+  align-items: center;
 `;
 
 export const CloseModal = styled.div`
-  width: 3.2rem;
-  height: 3.2rem;
-  text-align: right;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 3rem;
-  margin-bottom: -1px;
-  position: relative;
+  display: none;
+
+  @media ${device.tablet} {
+    width: 4rem;
+    height: 4rem;
+    font-weight: 300;
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    cursor: pointer;
+    display: block;
+    background-color: #282828;
+
+    &::after {
+      content: "X";
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      width: 100%;
+      height: 100%;
+      transition: all 0.65s ease-out;
+      position: sticky;
+    }
+
+    &:hover::after {
+      transform: rotateX(180deg);
+    }
+  }
 `;
 
 export const ModalFooter = styled.div`
@@ -106,7 +130,12 @@ export const ModalFooter = styled.div`
   align-items: center;
   border-radius: var(--border-radius);
   background-color: rgba(255, 255, 255, 1);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  visibility: visible;
+
+  @media ${device.tablet} {
+    visibility: hidden;
+  }
 `;
 
 const Button = styled.div`
@@ -135,6 +164,10 @@ const Button = styled.div`
     transform: skewX(-1deg) scale(1.02);
     filter: brightness(1.01);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
+
+  @media ${device.tablet} {
+    display: none;
   }
 `;
 

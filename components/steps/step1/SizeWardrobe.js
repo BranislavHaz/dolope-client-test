@@ -113,6 +113,9 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
         <$.Details $isCorrect={isCorrect.topSelf !== false}>
           Maximální povolené rozmezí: 15-40 cm
         </$.Details>
+        <$.SubmitWrap>
+          <$.Submit onClick={submitAction}>Uložit</$.Submit>
+        </$.SubmitWrap>
       </$.FormWrap>
     </>
   );

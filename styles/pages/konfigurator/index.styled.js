@@ -31,8 +31,8 @@ export const WrapView = styled.div`
 
   @media ${device.tablet} {
     position: relative;
-    width: 60vw;
-    height: ${(props) => `${props.$height}px`};
+    width: 70vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,8 +41,8 @@ export const WrapView = styled.div`
 
 export const WrapConfig = styled.div`
   @media ${device.tablet} {
-    width: 40vw;
-    height: ${(props) => `${props.$height}px`};
+    width: 30vw;
+    height: 100vh;
     position: relative;
     display: flex;
     align-items: center;

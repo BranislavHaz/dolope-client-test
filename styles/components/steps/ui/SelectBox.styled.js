@@ -31,6 +31,7 @@ export const SelectBoxWrap = styled.div`
   color: var(--font-color);
   animation: ${arrivalElement} 0.25s ease-in forwards;
   animation-delay: ${(props) => props.$delayAnimation}s;
+  transition: all 150ms ease-in-out;
 
   ${(props) =>
     props.$isInactive &&
@@ -40,11 +41,17 @@ export const SelectBoxWrap = styled.div`
       pointer-events: none;
     `}
 
+  ${(props) =>
+    props.$isActive &&
+    css`
+      scale: 1.01;
+      background-color: #fff;
+    `}
+
   &:hover {
     scale: 1.01;
-    filter: brightness(1.02);
     box-shadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px";
-    transition-duration: 100ms;
+    background-color: #fff;
   }
 `;
 
@@ -55,7 +62,9 @@ export const Icon = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: var(--bg-color-select-box-icon);
+  background-color: ${(props) =>
+    props.$isActive ? "var(--main-color)" : "var(--bg-color-select-box-icon)"};
+
   border-radius: var(--border-radius);
 `;
 
@@ -66,6 +75,7 @@ export const AcceptIcon = styled.span`
   position: absolute;
   top: -0.3em;
   right: -0.2em;
+  transition: all 0.5s ease-in;
 `;
 
 export const TextWrap = styled.div`
