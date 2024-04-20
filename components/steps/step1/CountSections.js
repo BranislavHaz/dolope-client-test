@@ -7,8 +7,6 @@ import {
 
 import * as $ from "@/styles/components/steps/step1/CountSections.styled";
 
-import SubmitButton from "../ui/SubmitButton";
-
 const CountSections = () => {
   const { state } = useMainStore((state) => ({
     state: state,
@@ -27,10 +25,6 @@ const CountSections = () => {
     }
   };
 
-  const handleSubmit = () => {
-    state.setIsModalActive(false);
-  };
-
   return (
     <$.Wrap>
       <$.CountSectionsWrap>
@@ -45,13 +39,6 @@ const CountSections = () => {
           </$.SelectWrap>
         </$.CountDoorWrap>
       </$.CountSectionsWrap>
-      <SubmitButton
-        isVisible={
-          state.stepsInputs.step1.countSections &&
-          state.stepsInputs.step1.countDoors
-        }
-        submitAction={handleSubmit}
-      />
     </$.Wrap>
   );
 };

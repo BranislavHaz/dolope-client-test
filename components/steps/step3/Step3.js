@@ -26,13 +26,19 @@ const Step3 = () => {
         type={"decorCorpus"}
         text={getDecorName(corpus.decorId)}
         isAccept={stepsInputs.step3.decorCorpus}
+        id={1}
       />
       <SelectBox
         type={"decorSideWalls"}
         text={getDecorName(sideWalls.decorId)}
         isAccept={stepsInputs.step3.decorSideWalls}
+        id={2}
       />
-      <SelectBox type={"decorDoors"} isAccept={stepsInputs.step3.decorDoors} />
+      <SelectBox
+        type={"decorDoors"}
+        isAccept={stepsInputs.step3.decorDoors}
+        id={3}
+      />
     </>
   );
 };

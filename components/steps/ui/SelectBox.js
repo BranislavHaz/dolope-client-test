@@ -50,7 +50,7 @@ const selectBoxType = {
   },
 };
 
-const SelectBox = ({ type, isAccept, text, isInactive }) => {
+const SelectBox = ({ type, isAccept, text, isInactive, id }) => {
   const { setIsModalActive, setModalType } = useMainStore((state) => ({
     setIsModalActive: state.setIsModalActive,
     setModalType: state.setModalType,
@@ -63,9 +63,12 @@ const SelectBox = ({ type, isAccept, text, isInactive }) => {
     }
   };
 
+  const delay = id === 1 ? 0 : id * 0.1;
+
   return (
     <$.SelectBoxWrap
       $isInactive={isInactive}
+      $delayAnimation={delay}
       onClick={handleClick(selectBoxType[type].type)}
     >
       <$.Icon>

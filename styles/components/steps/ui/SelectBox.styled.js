@@ -1,6 +1,20 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+const arrivalElement = keyframes`
+ from {
+    transform: scale(0.9) skew(2deg) rotateX(1deg);
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    transform: scale(1) skew(0deg) rotateX(0deg);
+    opacity: 1;
+    visibility: visible;
+  }
+`;
 
 export const SelectBoxWrap = styled.div`
+  visibility: hidden;
   width: 100%;
   height: 4em;
   margin-bottom: 1em;
@@ -15,15 +29,23 @@ export const SelectBoxWrap = styled.div`
 
   font-family: var(--font-family);
   color: var(--font-color);
+  animation: ${arrivalElement} 0.25s ease-in forwards;
+  animation-delay: ${(props) => props.$delayAnimation}s;
 
   ${(props) =>
     props.$isInactive &&
     css`
-      opacity: 0.5;
       filter: blur(4px);
       cursor: not-allowed;
       pointer-events: none;
     `}
+
+  &:hover {
+    scale: 1.01;
+    filter: brightness(1.02);
+    box-shadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px";
+    transition-duration: 100ms;
+  }
 `;
 
 export const Icon = styled.div`

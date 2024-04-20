@@ -59,11 +59,13 @@ const Step1 = () => {
         type={"sizeWardrobe"}
         isAccept={stepsInputs.step1.sizeWardrobe}
         text={getSizeWardrobeText(wardrobe, corpus, stepsInputs)}
+        id={1}
       />
       <SelectBox
         type={"typeWardrobe"}
         isAccept={stepsInputs.step1.typeWardrobe}
         text={getTypeWardrobeText(wardrobe)}
+        id={2}
       />
       <SelectBox
         type={"countSections"}
@@ -72,6 +74,7 @@ const Step1 = () => {
         }
         isInactive={!isBasicDataFilled(state)}
         text={getCountSectionsText(state)}
+        id={3}
       />
     </>
   );

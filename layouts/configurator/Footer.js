@@ -30,17 +30,18 @@ const Footer = () => {
     }
   };
 
+  const isNextButtonActive = chceckFilledSteps(currentStep.id, state);
+
   return (
     <$.Footer>
       <$.BackButton $isActive={currentStep.id !== 1} onClick={handleClickBack}>
         zpět
       </$.BackButton>
-      <$.NextButton
-        $isActive={chceckFilledSteps(currentStep.id, state)}
-        onClick={handleClickNext}
-      >
-        pokračovat
-      </$.NextButton>
+      {isNextButtonActive && (
+        <$.NextButton $isActive={isNextButtonActive} onClick={handleClickNext}>
+          pokračovat
+        </$.NextButton>
+      )}
     </$.Footer>
   );
 };

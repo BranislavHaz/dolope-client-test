@@ -27,6 +27,8 @@ export const WrapContent = styled.div`
 `;
 
 export const WrapView = styled.div`
+  background-color: var(--background-color);
+
   @media ${device.tablet} {
     position: relative;
     width: 60vw;

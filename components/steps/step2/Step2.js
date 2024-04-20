@@ -41,12 +41,18 @@ const Step2 = () => {
       <SelectBox
         type={"typeSections"}
         isAccept={stepsInputs.step2.typeSections}
+        id={1}
       />
-      <SelectBox type={"typeDoors"} isAccept={stepsInputs.step2.typeDoors} />
+      <SelectBox
+        type={"typeDoors"}
+        isAccept={stepsInputs.step2.typeDoors}
+        id={2}
+      />
       <SelectBox
         type={"typeProfiles"}
         text={getTypeProfileText()}
         isAccept={stepsInputs.step2.typeProfiles}
+        id={3}
       />
     </>
   );

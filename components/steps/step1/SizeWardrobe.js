@@ -4,9 +4,8 @@ import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/steps/step1/SizeWardrobe.styled";
 
 import Title from "../ui/Title";
-import SubmitButton from "../ui/SubmitButton";
 
-const SizeWardrobe = () => {
+const SizeWardrobe = ({ setHandleSubmit }) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [depth, setDepth] = useState(0);
@@ -22,7 +21,7 @@ const SizeWardrobe = () => {
     state: state,
   }));
 
-  const handleSubmit = () => {
+  const submitAction = () => {
     const newIsCorrect = {
       width: width >= 150 && width <= 560 ? width : false,
       height: height >= 100 && height <= 277 ? height : false,
@@ -56,9 +55,13 @@ const SizeWardrobe = () => {
     corpus.topShelfHeight && setTopSelf(corpus.topShelfHeight / 10);
   }, []);
 
+  useEffect(() => {
+    setHandleSubmit(() => submitAction);
+  }, [width, height, depth, topSelf]);
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      handleSubmit();
+      submitAction();
     }
   };
 
@@ -111,11 +114,6 @@ const SizeWardrobe = () => {
           Maximální povolené rozmezí: 15-40 cm
         </$.Details>
       </$.FormWrap>
-      <SubmitButton
-        isVisible={true}
-        submitAction={handleSubmit}
-        withBg={false}
-      />
     </>
   );
 };

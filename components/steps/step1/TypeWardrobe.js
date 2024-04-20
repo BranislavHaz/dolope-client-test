@@ -4,31 +4,20 @@ import useMainStore from "@/stores/useMainStore";
 
 import * as $ from "@/styles/components/steps/step1/TypeWardrobe.styled";
 
-import SubmitButton from "../ui/SubmitButton";
 import Title from "../ui/Title";
 
 const TypeWardrobe = () => {
-  const {
-    wardrobe,
-    setWardrobeType,
-    setIsModalActive,
-    stepsInputs,
-    setStepsInputs,
-  } = useMainStore((state) => ({
-    wardrobe: state.wardrobe,
-    setWardrobeType: state.setWardrobeType,
-    setIsModalActive: state.setIsModalActive,
-    stepsInputs: state.stepsInputs,
-    setStepsInputs: state.setStepsInputs,
-  }));
+  const { wardrobe, setWardrobeType, setStepsInputs } = useMainStore(
+    (state) => ({
+      wardrobe: state.wardrobe,
+      setWardrobeType: state.setWardrobeType,
+      setStepsInputs: state.setStepsInputs,
+    })
+  );
 
   const handleClick = (idType) => () => {
     setWardrobeType(idType);
     setStepsInputs("step1", "typeWardrobe", true);
-  };
-
-  const handleSubmit = () => {
-    setIsModalActive(false);
   };
 
   return (
@@ -74,10 +63,6 @@ const TypeWardrobe = () => {
           </$.TypeImage>
         </$.TypesWrap>
       </$.Wrap>
-      <SubmitButton
-        isVisible={stepsInputs.step1.typeWardrobe}
-        submitAction={handleSubmit}
-      />
     </$.FullWrap>
   );
 };

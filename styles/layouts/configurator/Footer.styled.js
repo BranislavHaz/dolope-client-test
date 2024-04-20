@@ -75,4 +75,9 @@ export const NextButton = styled.div`
     content: ">";
     margin-left: 0.3em;
   }
+
+  &:hover {
+    transform: skewX(-1deg) scale(1.02);
+    filter: brightness(1.03);
+  }
 `;

@@ -146,46 +146,61 @@ const HangerModule = ({
   };
 
   const generateModule = () => {
-    const moduleArr = [<$.Self />];
-    positionSelf === "top" && moduleArr.push(getSpaces());
+    const moduleArr = [<$.Self key="initial-self" />];
+    positionSelf === "top" &&
+      moduleArr.push(
+        ...getSpaces().map((item, index) =>
+          React.cloneElement(item, { key: `top-space-${index}` })
+        )
+      );
+
     moduleArr.push(
-      <>
-        {positionSelf === "top" && <$.Self />}
-        {/* <$.Hanger $height={heightHanger.display} /> */}
+      <React.Fragment key="main-fragment">
+        {positionSelf === "top" && <$.Self key="top-self" />}
         <HangerModal
+          key="hanger-modal-1"
           displayHeight={heightHanger.display}
           realHeight={heightHanger.real / 10}
         />
-        <$.Self />
+        <$.Self key="middle-self" />
         {countHangers === 2 && (
-          <>
-            {/* <$.Hanger $height={heightHanger.display} /> */}
+          <React.Fragment key="double-hanger">
             <HangerModal
+              key="hanger-modal-2"
               displayHeight={heightHanger.display}
               realHeight={heightHanger.real / 10}
             />
-            <$.Self />
-          </>
+            <$.Self key="bottom-self" />
+          </React.Fragment>
         )}
-      </>
+      </React.Fragment>
     );
-    positionSelf === "bottom" && moduleArr.push(getSpaces());
+
+    positionSelf === "bottom" &&
+      moduleArr.push(
+        ...getSpaces().map((item, index) =>
+          React.cloneElement(item, { key: `bottom-space-${index}` })
+        )
+      );
+
     countDrawers &&
       moduleArr.push(
-        <React.Fragment>
-          {countSpaces > 0 && <$.Self />}
-          <DrawersModal countDrawers={countDrawers} />
-          <$.Self />
+        <React.Fragment key="drawer-fragment">
+          {countSpaces > 0 && <$.Self key="pre-drawer-self" />}
+          <DrawersModal key="drawers-modal" countDrawers={countDrawers} />
+          <$.Self key="post-drawer-self" />
         </React.Fragment>
       );
+
     bottomShelf &&
       moduleArr.push(
-        <>
+        <React.Fragment key="bottom-shelf">
           <SpaceModal
+            key="space-modal"
             displayHeight={bottomShelfHeightDisplay}
             realHeight={bottomShelfHeightReal / 10}
           />
-        </>
+        </React.Fragment>
       );
 
     return <$.ModuleWrap>{moduleArr}</$.ModuleWrap>;
