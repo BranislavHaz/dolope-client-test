@@ -1,28 +1,40 @@
+import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import UsedDoorsDecor from "./UsedDoorsDecor";
 import Decors from "./Decors";
 import ModalDoors from "@/components/modal/doors/ModalDoors";
-import SubmitButton from "../ui/SubmitButton";
+import FlashMessage from "../ui/FlashMessage";
 
-const DecorDoors = () => {
-  const { stepsInputs, setIsModalActive } = useMainStore((state) => ({
-    stepsInputs: state.stepsInputs,
-    setIsModalActive: state.setIsModalActive,
-  }));
+const DecorDoors = ({ setHandleSubmit }) => {
+  const { doors, stepsInputs, setIsModalActive, setFlashMessage } =
+    useMainStore((state) => ({
+      doors: state.doors,
+      stepsInputs: state.stepsInputs,
+      setIsModalActive: state.setIsModalActive,
+      setFlashMessage: state.setFlashMessage,
+    }));
 
   const handleSubmit = () => {
-    setIsModalActive(false);
+    if (stepsInputs.step3.decorDoors) {
+      setIsModalActive(false);
+      setFlashMessage({ type: "error", value: false });
+    } else {
+      setFlashMessage({ type: "error", value: true });
+    }
   };
+
+  useEffect(() => {
+    setHandleSubmit(() => () => handleSubmit());
+  }, [doors.typeDoors, stepsInputs.step3.decorDoors]);
 
   return (
     <>
+      <FlashMessage type={"error"}>
+        Prosím vyberte dekor pro všechny dveře..
+      </FlashMessage>
       <ModalDoors />
       <UsedDoorsDecor />
       <Decors type={"doors"} />
-      <SubmitButton
-        isVisible={stepsInputs.step3.decorDoors}
-        submitAction={handleSubmit}
-      />
     </>
   );
 };

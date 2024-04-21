@@ -2,6 +2,8 @@ import { useState } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
+import Button from "./Button";
+
 import * as $ from "@/styles/components/steps/ui/FilterBoxDecors.styled";
 
 const FilterBoxDecors = ({ type }) => {
@@ -144,8 +146,12 @@ const FilterBoxDecors = ({ type }) => {
             </$.SelectBoxGroup>
           </$.SelectBoxWrap>
           <$.SubmitWrap>
-            <$.SubmitButton onClick={handleSubmit}>Filtrovat</$.SubmitButton>
-            <$.CloseButton onClick={handleClose}>Zavřít</$.CloseButton>
+            <Button type={"darkColor"} handleClick={handleSubmit}>
+              Filtrovat
+            </Button>
+            <Button type={"lightColor"} handleClick={handleClose}>
+              Zavřít
+            </Button>
           </$.SubmitWrap>
         </$.BoxContent>
       )}

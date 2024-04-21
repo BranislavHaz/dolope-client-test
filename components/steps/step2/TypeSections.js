@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { checkIfIsActiveSection } from "@/utils/steps/step2/checkIfIsActiveSection";
 import useMainStore from "@/stores/useMainStore";
+
+import FlashMessage from "../ui/FlashMessage";
 import Title from "../ui/Title";
 
 import SelfModule from "@/components/modules/modal/SelfModule";
@@ -8,17 +10,16 @@ import DrawerModule from "@/components/modules/modal/DrawerModule";
 import VariableDrawerModule from "./sectionsElements/VariableDrawerModule";
 import HangerModule from "@/components/modules/modal/HangerModule";
 import VariableHangerModule from "./sectionsElements/VariableHangerModule";
-import SubmitButton from "../ui/SubmitButton";
 
 import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
 
-const TypeSections = () => {
-  const { state, sections, stepsInputs, setStepsInputs } = useMainStore(
+const TypeSections = ({ setHandleSubmit }) => {
+  const { state, sections, setStepsInputs, setFlashMessage } = useMainStore(
     (state) => ({
       state: state,
       sections: state.sections,
-      stepsInputs: state.stepsInputs,
       setStepsInputs: state.setStepsInputs,
+      setFlashMessage: state.setFlashMessage,
     })
   );
 
@@ -33,12 +34,24 @@ const TypeSections = () => {
   }, [sections.typeOfSections]);
 
   const handleSubmit = () => {
-    state.setIsModalActive(false);
-    state.setActiveFilter("sections", 1);
+    if (Object.keys(sections.typeOfSections).length === sections.count) {
+      state.setIsModalActive(false);
+      state.setActiveFilter("sections", 1);
+      setFlashMessage({ type: "error", value: false });
+    } else {
+      setFlashMessage({ type: "error", value: true });
+    }
   };
+
+  useEffect(() => {
+    setHandleSubmit(() => () => handleSubmit());
+  }, [sections.typeOfSections]);
 
   return (
     <>
+      <FlashMessage type={"error"}>
+        Prosím vyberte typ pro všechny sekce.
+      </FlashMessage>
       <$.Wrap>
         <Title>Police</Title>
         <$.TypeSectionsWrap>
@@ -255,10 +268,6 @@ const TypeSections = () => {
           </$.SectionType>
         </$.TypeSectionsWrap>
       </$.Wrap>
-      <SubmitButton
-        isVisible={stepsInputs.step2.typeSections}
-        submitAction={handleSubmit}
-      />
     </>
   );
 };

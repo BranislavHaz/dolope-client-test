@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import useTimeout from "@/hooks/useTimeout";
 import useMainStore from "@/stores/useMainStore";
 import Title from "../ui/Title";
 import SelectBox from "../ui/SelectBox";
@@ -55,6 +57,29 @@ const Step1 = () => {
       modal: state.modal,
     })
   );
+
+  const [introAnim, setIntroAnim] = useState({
+    sizeWardrobe: false,
+    typeWardrobe: false,
+    countDoors: false,
+  });
+  const set = useTimeout();
+
+  const setAnime = (type) => {
+    setIntroAnim((old) => ({
+      ...old,
+      [type]: true,
+    }));
+  };
+
+  useEffect(() => {
+    if (stepsInputs.step1.typeWardrobe) {
+      setAnime("typeWardrobe");
+    }
+  }, [stepsInputs.step1.typeWardrobe]);
+
+  console.log(introAnim.typeWardrobe);
+
   return (
     <>
       <Title>Základní specifikace</Title>
@@ -69,6 +94,7 @@ const Step1 = () => {
         type={"typeWardrobe"}
         isAccept={stepsInputs.step1.typeWardrobe}
         isActive={modal.isActive && modal.type === "typeWardrobe"}
+        isAnime={introAnim.typeWardrobe}
         text={getTypeWardrobeText(wardrobe)}
         id={2}
       />

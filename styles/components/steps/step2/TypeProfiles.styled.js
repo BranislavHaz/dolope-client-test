@@ -1,7 +1,9 @@
 import styled, { css } from "styled-components";
 import { device } from "@/utils/devices";
 
-export const Wrap = styled.div``;
+export const Wrap = styled.div`
+  animation: var(--blob-animation);
+`;
 
 export const TypeProfilesWrap = styled.div`
   width: 90%;

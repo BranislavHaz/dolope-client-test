@@ -3,9 +3,10 @@ import Title from "../ui/Title";
 import SelectBox from "../ui/SelectBox";
 
 const Step2 = () => {
-  const { doors, stepsInputs } = useMainStore((state) => ({
+  const { doors, stepsInputs, modal } = useMainStore((state) => ({
     doors: state.doors,
     stepsInputs: state.stepsInputs,
+    modal: state.modal,
   }));
 
   const getTypeProfileText = () => {
@@ -41,17 +42,20 @@ const Step2 = () => {
       <SelectBox
         type={"typeSections"}
         isAccept={stepsInputs.step2.typeSections}
+        isActive={modal.isActive && modal.type === "typeSections"}
         id={1}
       />
       <SelectBox
         type={"typeDoors"}
         isAccept={stepsInputs.step2.typeDoors}
+        isActive={modal.isActive && modal.type === "typeDoors"}
         id={2}
       />
       <SelectBox
         type={"typeProfiles"}
         text={getTypeProfileText()}
         isAccept={stepsInputs.step2.typeProfiles}
+        isActive={modal.isActive && modal.type === "typeProfiles"}
         id={3}
       />
     </>

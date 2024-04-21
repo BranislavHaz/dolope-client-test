@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/steps/Modal.styled";
 
+import Button from "./ui/Button";
+
 // Step 1
 import SizeWardrobe from "./step1/SizeWardrobe";
 import TypeWardrobe from "./step1/TypeWardrobe";
@@ -30,6 +32,7 @@ const Modal = () => {
     doors,
     activeFilter,
     stepsInputs,
+    setFlashMessage,
   } = useMainStore((state) => ({
     state: state,
     viewport: state.viewport,
@@ -39,6 +42,7 @@ const Modal = () => {
     doors: state.doors,
     activeFilter: state.activeFilter,
     stepsInputs: state.stepsInputs,
+    setFlashMessage: state.setFlashMessage,
   }));
   const modalRef = useRef(0);
 
@@ -88,65 +92,27 @@ const Modal = () => {
 
   useEffect(() => {
     const isVisible = checkVisibleSubmit();
+    setIsSubmitVisible(false);
     modal.isActive && setIsSubmitVisible(isVisible);
   }, [stepsInputs, modal.isActive]);
 
   const handleClick = () => {
     setIsModalActive(false);
     setIsSubmitVisible(false);
+    setFlashMessage({ type: "error", value: false });
     setSubmitAction(() => () => setIsModalActive(false));
   };
 
   const ModalContent = {
-    sizeWardrobe: (
-      <SizeWardrobe
-        setIsSubmitVisible={setIsSubmitVisible}
-        setHandleSubmit={setSubmitAction}
-      />
-    ),
-    typeWardrobe: <TypeWardrobe setIsSubmitVisible={setIsSubmitVisible} />,
-    countSections: (
-      <CountSections
-        setIsSubmitVisible={setIsSubmitVisible}
-        setHandleSubmit={setSubmitAction}
-      />
-    ),
-    typeSections: (
-      <TypeSections
-        setIsSubmitVisible={setIsSubmitVisible}
-        setHandleSubmit={setSubmitAction}
-      />
-    ),
-    typeDoors: (
-      <TypeDoors
-        setIsSubmitVisible={setIsSubmitVisible}
-        setHandleSubmit={setSubmitAction}
-      />
-    ),
-    typeProfiles: (
-      <TypeProfiles
-        setIsSubmitVisible={setIsSubmitVisible}
-        setHandleSubmit={setSubmitAction}
-      />
-    ),
-    decorCorpus: (
-      <DecorCorpus
-        setIsSubmitVisible={setIsSubmitVisible}
-        setHandleSubmit={setSubmitAction}
-      />
-    ),
-    decorSideWalls: (
-      <DecorSideWalls
-        setIsSubmitVisible={setIsSubmitVisible}
-        setHandleSubmit={setSubmitAction}
-      />
-    ),
-    decorDoors: (
-      <DecorDoors
-        setIsSubmitVisible={setIsSubmitVisible}
-        setHandleSubmit={setSubmitAction}
-      />
-    ),
+    sizeWardrobe: <SizeWardrobe setHandleSubmit={setSubmitAction} />,
+    typeWardrobe: <TypeWardrobe setHandleSubmit={setSubmitAction} />,
+    countSections: <CountSections setHandleSubmit={setSubmitAction} />,
+    typeSections: <TypeSections setHandleSubmit={setSubmitAction} />,
+    typeDoors: <TypeDoors setHandleSubmit={setSubmitAction} />,
+    typeProfiles: <TypeProfiles setHandleSubmit={setSubmitAction} />,
+    decorCorpus: <DecorCorpus setHandleSubmit={setSubmitAction} />,
+    decorSideWalls: <DecorSideWalls setHandleSubmit={setSubmitAction} />,
+    decorDoors: <DecorDoors setHandleSubmit={setSubmitAction} />,
   };
 
   return (
@@ -187,14 +153,20 @@ const Modal = () => {
               {modal.type === "decorDoors" && (
                 <FilterBoxDecors type={"doors"} />
               )}
+              <$.CloseModal onClick={handleClick} />
             </$.TopBar>
-            <$.CloseModal onClick={handleClick} />
             {ModalContent[modal.type]}
             <$.ModalFooter>
-              <$.CloseButton onClick={handleClick}>zavřít</$.CloseButton>
-              <$.SaveButton onClick={submitAction} $isVisible={isSubmitVisible}>
+              <Button type={"lightColor"} handleClick={handleClick}>
+                zavřít
+              </Button>
+              <Button
+                type={"mainColor"}
+                handleClick={submitAction}
+                $isVisible={isSubmitVisible}
+              >
                 uložit
-              </$.SaveButton>
+              </Button>
             </$.ModalFooter>
           </$.ModalWrap>
         </$.FullModalWrap>

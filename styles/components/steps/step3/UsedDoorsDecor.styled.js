@@ -10,6 +10,7 @@ export const Wrap = styled.div`
   padding-bottom: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius);
+  animation: var(--blob-animation);
 
   @media ${device.tablet} {
   }

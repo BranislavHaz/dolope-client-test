@@ -5,7 +5,8 @@ export const Doors = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 5rem;
+  position: relative;
 
   @media ${device.tablet} {
     margin-bottom: 2rem;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FilterBoxWrap = styled.div`
   width: 100%;
-  height: 3em;
+  height: var(--filter-box-h);
   padding: 2em 0 2em 1em;
   display: flex;
   align-items: center;

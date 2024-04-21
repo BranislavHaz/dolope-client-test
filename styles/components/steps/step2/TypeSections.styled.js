@@ -2,10 +2,14 @@ import styled, { css } from "styled-components";
 import { device } from "@/utils/devices";
 
 export const Wrap = styled.div`
+  padding-top: var(--filter-box-h);
+
   @media ${device.tablet} {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 0;
+    animation: var(--blob-animation);
   }
 `;
 

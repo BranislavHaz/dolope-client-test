@@ -125,7 +125,7 @@ const Decors = ({ type }) => {
   };
 
   return (
-    <$.Wrap>
+    <$.Wrap $isUsed={type === "usedDoors"} $isDoors={type === "doors"}>
       <$.DecorsWrap $isUsed={type === "usedDoors"}>{getDecors()}</$.DecorsWrap>
     </$.Wrap>
   );

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { blobIn } from "./pages/konfigurator/animations.styled";
 
 export const GlobalStyles = createGlobalStyle`
 :root {
@@ -18,7 +19,7 @@ export const GlobalStyles = createGlobalStyle`
     // Laptop layout
     --l-wardrobe-view-height: 60vh;
     --l-wardrobe-config-height: 80vh;
-    --l-footer-height: 15vh;
+    --l-footer-height: 5rem;
 
     // Profile color
     --profile-color-white: #ffffff;
@@ -36,6 +37,7 @@ export const GlobalStyles = createGlobalStyle`
     --bg-input-error: rgba(255, 126, 126, 0.1);
     --bg-input-icon: #282828;
     --bg-button: #282828;
+    --bg-button-light: #fff;
     --bg-input-active: #282828;
     --border-input-default: 1px solid rgba(196, 196, 196, 0.33);
     --border-input-active: 1px solid #282828;
@@ -44,11 +46,17 @@ export const GlobalStyles = createGlobalStyle`
 
     --font-family: "Roboto", sans-serif;
     --font-color: #000000;
-    --font-color-error: #ff3a3a;
+    --font-color-error: #ff5757;
     --font-color-active: #fff;
     --wood-color: #966f33;
 
     --border-radius: 5px;
+
+
+    --filter-box-h: 4rem;
+
+    // animations
+    --blob-animation: ${blobIn} 0.25s ease-in-out;
 
 
   }
@@ -77,5 +85,12 @@ a {
 
 * {
     box-sizing: border-box;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 `;

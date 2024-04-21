@@ -3,6 +3,12 @@ import { device } from "@/utils/devices";
 
 export const Wrap = styled.div`
   --fullHeight: ${(props) => props.$fullHeight};
+  animation: var(--blob-animation);
+  padding-top: var(--filter-box-h);
+
+  @media ${device.tablet} {
+    padding-top: 0;
+  }
 `;
 
 export const TypeDoorsWrap = styled.div`

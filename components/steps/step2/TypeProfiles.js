@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import useTimeout from "@/hooks/useTimeout";
 import useMainStore from "@/stores/useMainStore";
 
+import FlashMessage from "../ui/FlashMessage";
 import Title from "../ui/Title";
-import SubmitButton from "../ui/SubmitButton";
 
 import * as $ from "@/styles/components/steps/step2/TypeProfiles.styled";
 
@@ -15,22 +14,23 @@ const colorMapping = {
   champagne: "šampaň",
 };
 
-const TypeProfiles = () => {
+const TypeProfiles = ({ setHandleSubmit }) => {
   const {
     doors,
     setSelectedProfile,
     setStepsInputs,
+    setFlashMessage,
     setIsModalActive,
     stepsInputs,
   } = useMainStore((state) => ({
     doors: state.doors,
     setSelectedProfile: state.setSelectedProfile,
+    stepsInputs: state.stepsInputs,
     setStepsInputs: state.setStepsInputs,
     setIsModalActive: state.setIsModalActive,
-    stepsInputs: state.stepsInputs,
+    setFlashMessage: state.setFlashMessage,
   }));
 
-  const set = useTimeout();
   const availableProfiles = doors.availableProfiles;
   const activeProfileObj = doors.selectedProfile;
   const activeProfile = doors.selectedProfile.handle;
@@ -120,21 +120,29 @@ const TypeProfiles = () => {
   };
 
   const handleSubmit = () => {
-    setIsModalActive(false);
+    if (stepsInputs.step2.typeProfiles) {
+      setIsModalActive(false);
+      setFlashMessage({ type: "error", value: false });
+    } else {
+      setFlashMessage({ type: "error", value: true });
+    }
   };
+
+  useEffect(() => {
+    setHandleSubmit(() => () => handleSubmit());
+  }, [stepsInputs.step2.typeProfiles]);
 
   return (
     <>
+      <FlashMessage type={"error"}>
+        Prosím vyberte typ a barvu profilů.
+      </FlashMessage>
       <$.Wrap>
         <Title>Typ profilu</Title>
         <$.TypeProfilesWrap>{generateProfiles()}</$.TypeProfilesWrap>
         <Title>Barva profilu</Title>
         <$.ColorProfilesWrap>{generateColors()}</$.ColorProfilesWrap>
       </$.Wrap>
-      <SubmitButton
-        isVisible={stepsInputs.step2.typeProfiles}
-        submitAction={handleSubmit}
-      />
     </>
   );
 };

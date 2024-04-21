@@ -1,5 +1,8 @@
 import useMainStore from "@/stores/useMainStore";
 import { chceckFilledSteps } from "@/utils/steps/checkFilledSteps";
+
+import Button from "@/components/steps/ui/Button";
+
 import * as $ from "@/styles/layouts/configurator/Footer.styled";
 
 const Footer = () => {
@@ -13,6 +16,7 @@ const Footer = () => {
   );
 
   const handleClickNext = () => {
+    state.setIsModalActive(false);
     if (currentStep.id === 1) {
       Object.values(stepsInputs.step1).every((value) => value === true) &&
         setCurrentStepId(currentStep.id + 1);
@@ -34,13 +38,13 @@ const Footer = () => {
 
   return (
     <$.Footer>
-      <$.BackButton $isActive={currentStep.id !== 1} onClick={handleClickBack}>
+      <Button type={"lightColor"} handleClick={handleClickBack}>
         zpět
-      </$.BackButton>
+      </Button>
       {isNextButtonActive && (
-        <$.NextButton $isActive={isNextButtonActive} onClick={handleClickNext}>
+        <Button type={"mainColor"} handleClick={handleClickNext}>
           pokračovat
-        </$.NextButton>
+        </Button>
       )}
     </$.Footer>
   );

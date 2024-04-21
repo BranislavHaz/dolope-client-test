@@ -1,24 +1,35 @@
+import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import Decors from "./Decors";
-import SubmitButton from "../ui/SubmitButton";
 
-const DecorSideWalls = () => {
-  const { stepsInputs, setIsModalActive } = useMainStore((state) => ({
-    stepsInputs: state.stepsInputs,
-    setIsModalActive: state.setIsModalActive,
-  }));
+import FlashMessage from "../ui/FlashMessage";
+
+const DecorSideWalls = ({ setHandleSubmit }) => {
+  const { sideWalls, setIsModalActive, setFlashMessage } = useMainStore(
+    (state) => ({
+      sideWalls: state.sideWalls,
+      setIsModalActive: state.setIsModalActive,
+      setFlashMessage: state.setFlashMessage,
+    })
+  );
 
   const handleSubmit = () => {
-    setIsModalActive(false);
+    if (sideWalls.decorId) {
+      setIsModalActive(false);
+      setFlashMessage({ type: "error", value: false });
+    } else {
+      setFlashMessage({ type: "error", value: true });
+    }
   };
+
+  useEffect(() => {
+    setHandleSubmit(() => () => handleSubmit());
+  }, [sideWalls.decorId]);
 
   return (
     <>
+      <FlashMessage type={"error"}>Prosím vyberte typ dekoru.</FlashMessage>
       <Decors type={"sideWalls"} />
-      <SubmitButton
-        isVisible={stepsInputs.step3.decorSideWalls}
-        submitAction={handleSubmit}
-      />
     </>
   );
 };

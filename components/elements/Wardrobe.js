@@ -51,10 +51,6 @@ const Wardrobe = () => {
   const countOfStands = sections.count + 1;
   const countOfSideWalls = sideWalls?.cover?.count || 0;
 
-  /*  const wardrobeWidth =
-    sections.count * sections.width +
-    (countOfStands + countOfSideWalls) * viewport.thickness; */
-
   const wardrobeWidth =
     sections.count * sections.width * px +
     (viewport.thickness * px >= 2
@@ -66,7 +62,6 @@ const Wardrobe = () => {
       $width={viewportSizes.wardrobe.width}
       $height={viewportSizes.wardrobe.height}
     >
-      {/* <$.Wardrobe $width={px * wardrobeWidth} $height={px * wardrobe.height}> */}
       <Side location="left" />
       <Doors />
       <Rail type="top" />

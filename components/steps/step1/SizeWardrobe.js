@@ -4,6 +4,8 @@ import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/steps/step1/SizeWardrobe.styled";
 
 import Title from "../ui/Title";
+import Button from "../ui/Button";
+import FlashMessage from "../ui/FlashMessage";
 
 const SizeWardrobe = ({ setHandleSubmit }) => {
   const [width, setWidth] = useState(0);
@@ -17,11 +19,12 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
     topSelf: undefined,
   });
 
-  const { state } = useMainStore((state) => ({
+  const { state, setFlashMessage } = useMainStore((state) => ({
     state: state,
+    setFlashMessage: state.setFlashMessage,
   }));
 
-  const submitAction = () => {
+  const submitAction = (type) => {
     const newIsCorrect = {
       width: width >= 150 && width <= 560 ? width : false,
       height: height >= 100 && height <= 277 ? height : false,
@@ -40,10 +43,12 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
       state.setWardrobeHeight(height * 10);
       state.setWardrobeDepth(depth * 10);
       state.setTopShelfHeight(topSelf * 10);
-      state.setIsModalActive(false);
       state.setStepsInputs("step1", "sizeWardrobe", true);
+
+      type === "mobile" && state.setIsModalActive(false);
     } else {
       state.setStepsInputs("step1", "sizeWardrobe", false);
+      setFlashMessage({ type: "error", value: true });
     }
   };
 
@@ -56,17 +61,20 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
   }, []);
 
   useEffect(() => {
-    setHandleSubmit(() => submitAction);
+    setHandleSubmit(() => () => submitAction("mobile"));
   }, [width, height, depth, topSelf]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      submitAction();
+      state.viewport.width <= 768 ? submitAction("mobile") : submitAction();
     }
   };
 
   return (
     <>
+      <FlashMessage type={"error"}>
+        Prosím zkontrolujte všechny vyplněné údaje.
+      </FlashMessage>
       <$.FormWrap onKeyDown={handleKeyDown}>
         <Title>Rozměry skříně</Title>
         <$.InputWrapper $isCorrect={isCorrect.width !== false}>
@@ -114,7 +122,9 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
           Maximální povolené rozmezí: 15-40 cm
         </$.Details>
         <$.SubmitWrap>
-          <$.Submit onClick={submitAction}>Uložit</$.Submit>
+          <Button handleClick={submitAction} type={"darkColor"}>
+            uložit
+          </Button>
         </$.SubmitWrap>
       </$.FormWrap>
     </>

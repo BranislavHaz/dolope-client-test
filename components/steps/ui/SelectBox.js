@@ -50,7 +50,15 @@ const selectBoxType = {
   },
 };
 
-const SelectBox = ({ type, isAccept, text, isInactive, id, isActive }) => {
+const SelectBox = ({
+  type,
+  isAccept,
+  text,
+  isInactive,
+  id,
+  isActive,
+  isAnime,
+}) => {
   const { setIsModalActive, setModalType } = useMainStore((state) => ({
     setIsModalActive: state.setIsModalActive,
     setModalType: state.setModalType,
@@ -71,6 +79,7 @@ const SelectBox = ({ type, isAccept, text, isInactive, id, isActive }) => {
       $delayAnimation={delay}
       onClick={handleClick(selectBoxType[type].type)}
       $isActive={isActive}
+      $isAnime={isAnime}
     >
       <$.Icon $isActive={isActive}>
         <Image
@@ -88,7 +97,7 @@ const SelectBox = ({ type, isAccept, text, isInactive, id, isActive }) => {
           />
         </$.AcceptIcon>
       </$.Icon>
-      <$.TextWrap>
+      <$.TextWrap $isAccept={isAccept}>
         <$.Subtitle>{selectBoxType[type].title}</$.Subtitle>
         {text && <$.Text>{text}</$.Text>}
       </$.TextWrap>

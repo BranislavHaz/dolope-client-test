@@ -6,6 +6,7 @@ export const FullWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: var(--blob-animation);
 `;
 
 export const Wrap = styled.div`

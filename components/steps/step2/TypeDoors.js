@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 
+import FlashMessage from "../ui/FlashMessage";
 import Title from "../ui/Title";
-import SubmitButton from "../ui/SubmitButton";
 
 import FixedDoors from "./doorsElements/FixedDoors";
 import VariableDoor1 from "./doorsElements/VariableDoor1";
@@ -10,21 +11,20 @@ import VariableDoor3 from "./doorsElements/VariableDoor3";
 import VariableDoor4 from "./doorsElements/VariableDoor4";
 
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
-import { useEffect } from "react";
 
-const TypeDoors = () => {
+const TypeDoors = ({ setHandleSubmit }) => {
   const {
     doors,
-    stepsInputs,
     setStepsInputs,
     setIsModalActive,
     setActiveFilter,
+    setFlashMessage,
   } = useMainStore((state) => ({
     doors: state.doors,
-    stepsInputs: state.stepsInputs,
     setStepsInputs: state.setStepsInputs,
     setIsModalActive: state.setIsModalActive,
     setActiveFilter: state.setActiveFilter,
+    setFlashMessage: state.setFlashMessage,
   }));
 
   useEffect(() => {
@@ -38,12 +38,24 @@ const TypeDoors = () => {
   }, [doors.typeDoors]);
 
   const handleSubmit = () => {
-    setIsModalActive(false);
-    setActiveFilter("doors", 1);
+    if (Object.keys(doors.typeDoors).length === doors.count) {
+      setIsModalActive(false);
+      setActiveFilter("doors", 1);
+      setFlashMessage({ type: "error", value: false });
+    } else {
+      setFlashMessage({ type: "error", value: true });
+    }
   };
+
+  useEffect(() => {
+    setHandleSubmit(() => () => handleSubmit());
+  }, [doors.typeDoors]);
 
   return (
     <>
+      <FlashMessage type={"error"}>
+        Prosím vyberte typ pro všechny dveře.
+      </FlashMessage>
       <$.Wrap>
         <Title>Fixní výška dveří</Title>
         <FixedDoors />
@@ -55,11 +67,6 @@ const TypeDoors = () => {
           <VariableDoor4 />
         </$.TypeDoorsWrap>
       </$.Wrap>
-
-      <SubmitButton
-        isVisible={stepsInputs.step2.typeDoors}
-        submitAction={handleSubmit}
-      />
     </>
   );
 };
