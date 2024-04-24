@@ -13,18 +13,6 @@ const arrivalElement = keyframes`
   }
 `;
 
-const blobber = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
-
 export const SelectBoxWrap = styled.div`
   visibility: hidden;
   width: 100%;
@@ -41,19 +29,9 @@ export const SelectBoxWrap = styled.div`
 
   font-family: var(--font-family);
   color: var(--font-color);
-  //animation: ${arrivalElement} 0.25s ease-in forwards;
-  //animation-delay: ${(props) => props.$delayAnimation}s;
+  animation: ${arrivalElement} 0.25s ease-in forwards;
+  animation-delay: ${(props) => props.$delayAnimation}s;
   transition: all 150ms ease-in-out;
-  ${(props) => {
-    return props.$isAnime
-      ? css`
-          animation: ${blobber} 0.25s linear none forwards;
-        `
-      : css`
-          animation: ${arrivalElement} 0.25s ease-in forwards;
-          animation-delay: ${props.$delayAnimation}s;
-        `;
-  }}
 
   ${(props) =>
     props.$isInactive &&
@@ -92,12 +70,12 @@ export const Icon = styled.div`
 
 const showAccept = keyframes`
  0% {
-    transform: scale(0) skew(2deg) rotateX(-25deg);
+    transform: scale(2) skew(2deg) rotateX(-25deg);
     opacity: 0;
     visibility: hidden;
   }
   50% {
-    transform: scale(2) skew(2deg) rotateX(25deg);
+    transform: scale(3) skew(2deg) rotateX(25deg);
     opacity: 1;
     visibility: visible;
   }

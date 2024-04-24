@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { checkIfIsActiveSection } from "@/utils/steps/step2/checkIfIsActiveSection";
 import useMainStore from "@/stores/useMainStore";
 
-import FlashMessage from "../ui/FlashMessage";
 import Title from "../ui/Title";
 
 import SelfModule from "@/components/modules/modal/SelfModule";
@@ -11,17 +10,16 @@ import VariableDrawerModule from "./sectionsElements/VariableDrawerModule";
 import HangerModule from "@/components/modules/modal/HangerModule";
 import VariableHangerModule from "./sectionsElements/VariableHangerModule";
 
+import toast from "react-hot-toast";
+
 import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
 
 const TypeSections = ({ setHandleSubmit }) => {
-  const { state, sections, setStepsInputs, setFlashMessage } = useMainStore(
-    (state) => ({
-      state: state,
-      sections: state.sections,
-      setStepsInputs: state.setStepsInputs,
-      setFlashMessage: state.setFlashMessage,
-    })
-  );
+  const { state, sections, setStepsInputs } = useMainStore((state) => ({
+    state: state,
+    sections: state.sections,
+    setStepsInputs: state.setStepsInputs,
+  }));
 
   useEffect(() => {
     const countOfSelectedSections = Object.keys(sections.typeOfSections).length;
@@ -37,9 +35,9 @@ const TypeSections = ({ setHandleSubmit }) => {
     if (Object.keys(sections.typeOfSections).length === sections.count) {
       state.setIsModalActive(false);
       state.setActiveFilter("sections", 1);
-      setFlashMessage({ type: "error", value: false });
+      toast.success("Typy sekcí byly uloženy!");
     } else {
-      setFlashMessage({ type: "error", value: true });
+      toast.error("Vyberte typ pro všechny sekce!");
     }
   };
 
@@ -49,9 +47,6 @@ const TypeSections = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <FlashMessage type={"error"}>
-        Prosím vyberte typ pro všechny sekce.
-      </FlashMessage>
       <$.Wrap>
         <Title>Police</Title>
         <$.TypeSectionsWrap>

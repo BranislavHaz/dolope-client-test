@@ -37,8 +37,12 @@ const Footer = () => {
   const isNextButtonActive = chceckFilledSteps(currentStep.id, state);
 
   return (
-    <$.Footer>
-      <Button type={"lightColor"} handleClick={handleClickBack}>
+    <$.Footer $isFirstStep={currentStep.id === 1}>
+      <Button
+        type={"lightColor"}
+        handleClick={handleClickBack}
+        isVisible={currentStep.id !== 1}
+      >
         zpět
       </Button>
       {isNextButtonActive && (

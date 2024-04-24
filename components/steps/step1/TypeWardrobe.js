@@ -4,30 +4,25 @@ import useMainStore from "@/stores/useMainStore";
 
 import * as $ from "@/styles/components/steps/step1/TypeWardrobe.styled";
 
-import FlashMessage from "../ui/FlashMessage";
 import Title from "../ui/Title";
 
+import toast from "react-hot-toast";
+
 const TypeWardrobe = ({ setHandleSubmit }) => {
-  const {
-    wardrobe,
-    setWardrobeType,
-    setStepsInputs,
-    setIsModalActive,
-    setFlashMessage,
-  } = useMainStore((state) => ({
-    wardrobe: state.wardrobe,
-    setWardrobeType: state.setWardrobeType,
-    setStepsInputs: state.setStepsInputs,
-    setIsModalActive: state.setIsModalActive,
-    setFlashMessage: state.setFlashMessage,
-  }));
+  const { wardrobe, setWardrobeType, setStepsInputs, setIsModalActive } =
+    useMainStore((state) => ({
+      wardrobe: state.wardrobe,
+      setWardrobeType: state.setWardrobeType,
+      setStepsInputs: state.setStepsInputs,
+      setIsModalActive: state.setIsModalActive,
+    }));
 
   const handleSubmit = () => {
     if (wardrobe.type) {
       setIsModalActive(false);
-      setFlashMessage({ type: "error", value: false });
+      toast.success("Typ skříně byl uložen!");
     } else {
-      setFlashMessage({ type: "error", value: true });
+      toast.error("Vyberte typ skříně!");
     }
   };
 
@@ -42,7 +37,6 @@ const TypeWardrobe = ({ setHandleSubmit }) => {
 
   return (
     <$.FullWrap>
-      <FlashMessage type={"error"}>Prosím vyberte si typ skříně.</FlashMessage>
       <$.Wrap>
         <Title>Typ skříně</Title>
         <$.TypesWrap>

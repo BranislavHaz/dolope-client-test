@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
-import FlashMessage from "../ui/FlashMessage";
 import Title from "../ui/Title";
+
+import toast from "react-hot-toast";
 
 import * as $ from "@/styles/components/steps/step2/TypeProfiles.styled";
 
@@ -19,7 +20,6 @@ const TypeProfiles = ({ setHandleSubmit }) => {
     doors,
     setSelectedProfile,
     setStepsInputs,
-    setFlashMessage,
     setIsModalActive,
     stepsInputs,
   } = useMainStore((state) => ({
@@ -28,7 +28,6 @@ const TypeProfiles = ({ setHandleSubmit }) => {
     stepsInputs: state.stepsInputs,
     setStepsInputs: state.setStepsInputs,
     setIsModalActive: state.setIsModalActive,
-    setFlashMessage: state.setFlashMessage,
   }));
 
   const availableProfiles = doors.availableProfiles;
@@ -122,9 +121,9 @@ const TypeProfiles = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (stepsInputs.step2.typeProfiles) {
       setIsModalActive(false);
-      setFlashMessage({ type: "error", value: false });
+      toast.success("Typ a barva profilů byly uloženy!");
     } else {
-      setFlashMessage({ type: "error", value: true });
+      toast.error("Vyberte typ a barvu profilů!");
     }
   };
 
@@ -134,9 +133,6 @@ const TypeProfiles = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <FlashMessage type={"error"}>
-        Prosím vyberte typ a barvu profilů.
-      </FlashMessage>
       <$.Wrap>
         <Title>Typ profilu</Title>
         <$.TypeProfilesWrap>{generateProfiles()}</$.TypeProfilesWrap>

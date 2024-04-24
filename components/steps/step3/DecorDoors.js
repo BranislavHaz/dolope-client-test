@@ -3,23 +3,22 @@ import useMainStore from "@/stores/useMainStore";
 import UsedDoorsDecor from "./UsedDoorsDecor";
 import Decors from "./Decors";
 import ModalDoors from "@/components/modal/doors/ModalDoors";
-import FlashMessage from "../ui/FlashMessage";
+
+import toast from "react-hot-toast";
 
 const DecorDoors = ({ setHandleSubmit }) => {
-  const { doors, stepsInputs, setIsModalActive, setFlashMessage } =
-    useMainStore((state) => ({
-      doors: state.doors,
-      stepsInputs: state.stepsInputs,
-      setIsModalActive: state.setIsModalActive,
-      setFlashMessage: state.setFlashMessage,
-    }));
+  const { doors, stepsInputs, setIsModalActive } = useMainStore((state) => ({
+    doors: state.doors,
+    stepsInputs: state.stepsInputs,
+    setIsModalActive: state.setIsModalActive,
+  }));
 
   const handleSubmit = () => {
     if (stepsInputs.step3.decorDoors) {
       setIsModalActive(false);
-      setFlashMessage({ type: "error", value: false });
+      toast.success("Dekory dveří byly uloženy!");
     } else {
-      setFlashMessage({ type: "error", value: true });
+      toast.error("Vyberte dekor pro všechny dveře a jejich sekce!");
     }
   };
 
@@ -29,9 +28,6 @@ const DecorDoors = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <FlashMessage type={"error"}>
-        Prosím vyberte dekor pro všechny dveře..
-      </FlashMessage>
       <ModalDoors />
       <UsedDoorsDecor />
       <Decors type={"doors"} />

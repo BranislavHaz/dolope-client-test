@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { device } from "@/utils/devices";
 
 export const FullModalWrap = styled.div`
@@ -37,23 +37,6 @@ export const Overlay = styled.div`
   }
 `;
 
-const modalPopUp = keyframes`
-  0% {
-    transform: scale(0.5) perspective(75em);
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1.01) perspective(35em);
-    opacity: 1;
-}
-
-  100% {
-    transform: scale(1) perspective(0em);
-    opacity: 1;
-  }
-`;
-
 export const ModalWrap = styled.div`
   width: ${(props) => props.$width}px;
   min-width: ${(props) => props.$width}px;
@@ -65,7 +48,6 @@ export const ModalWrap = styled.div`
   align-items: center;
   justify-content: space-between;
   background: rgba(255, 255, 255, 0.9);
-  animation: ${modalPopUp} 0.15s ease-in-out;
   overflow-x: hidden;
   overflow-y: auto;
 

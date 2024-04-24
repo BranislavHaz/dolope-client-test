@@ -16,7 +16,6 @@ const Button = styled.div`
   margin: 0.5em 0;
   transition: all 0.2s, box-shadow 0.08s ease-in;
   touch-action: manipulation;
-  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: var(--border-radius);
@@ -32,11 +31,13 @@ const Button = styled.div`
   }
 
   @media ${device.zero} {
-    ${(props) => (props.$isVisibleMobile ? "visible" : "hidden")};
+    display: ${(props) =>
+      props.$isVisibleMobile && props.$isVisible ? "flex" : "none"};
   }
 
   @media ${device.tablet} {
-    ${(props) => (props.$isVisibleTablet ? "visible" : "hidden")};
+    display: ${(props) =>
+      props.$isVisibleTablet && props.$isVisible ? "flex" : "none"};
   }
 `;
 

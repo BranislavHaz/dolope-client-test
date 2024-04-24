@@ -4,6 +4,8 @@ import useMainStore from "@/stores/useMainStore";
 import FlashMessage from "../ui/FlashMessage";
 import Title from "../ui/Title";
 
+import toast from "react-hot-toast";
+
 import {
   generateOptionsOfSections,
   generateOptionsOfDoors,
@@ -32,9 +34,11 @@ const CountSections = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (state.sections.count && state.doors.count) {
       state.setIsModalActive(false);
-      state.setFlashMessage({ type: "error", value: false });
+      toast.success("Počet sekcí a dveří bylo uloženo!");
     } else {
-      state.setFlashMessage({ type: "error", value: true });
+      state.sections.count
+        ? toast.error("Vyberte počet dveří!")
+        : toast.error("Vyberte počet sekcí a dveří!");
     }
   };
 
@@ -44,9 +48,6 @@ const CountSections = ({ setHandleSubmit }) => {
 
   return (
     <$.Wrap>
-      <FlashMessage type={"error"}>
-        Prosím vyberte počet sekcí a dveří.
-      </FlashMessage>
       <$.CountSectionsWrap>
         <Title>Počet sekcí (šířka)</Title>
         <$.SelectWrap>

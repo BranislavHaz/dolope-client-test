@@ -2,23 +2,20 @@ import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import Decors from "./Decors";
 
-import FlashMessage from "../ui/FlashMessage";
+import toast from "react-hot-toast";
 
 const DecorSideWalls = ({ setHandleSubmit }) => {
-  const { sideWalls, setIsModalActive, setFlashMessage } = useMainStore(
-    (state) => ({
-      sideWalls: state.sideWalls,
-      setIsModalActive: state.setIsModalActive,
-      setFlashMessage: state.setFlashMessage,
-    })
-  );
+  const { sideWalls, setIsModalActive } = useMainStore((state) => ({
+    sideWalls: state.sideWalls,
+    setIsModalActive: state.setIsModalActive,
+  }));
 
   const handleSubmit = () => {
     if (sideWalls.decorId) {
       setIsModalActive(false);
-      setFlashMessage({ type: "error", value: false });
+      toast.success("Dekor vnější části skříně byl uložen!");
     } else {
-      setFlashMessage({ type: "error", value: true });
+      toast.error("Vyberte dekor vnější části skříně!");
     }
   };
 
@@ -28,7 +25,6 @@ const DecorSideWalls = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <FlashMessage type={"error"}>Prosím vyberte typ dekoru.</FlashMessage>
       <Decors type={"sideWalls"} />
     </>
   );

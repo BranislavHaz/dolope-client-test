@@ -1,6 +1,8 @@
 import { GlobalStyles } from "@/styles/_app.styles";
 import Head from "next/head";
 
+import { Toaster } from "react-hot-toast";
+
 const App = ({ Component, pageProps }) => {
   return (
     <>
@@ -11,6 +13,7 @@ const App = ({ Component, pageProps }) => {
         />
       </Head>
       <GlobalStyles />
+      <Toaster />
       <Component {...pageProps} />
     </>
   );

@@ -10,6 +10,7 @@ export const WardrobeConfig = styled.div`
   bottom: var(--m-footer-height);
   justify-content: center;
   background-color: var(--bg-color-config);
+  overflow-x: hidden;
   overflow-y: auto;
 
   @media ${device.tablet} {

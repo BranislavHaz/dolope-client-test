@@ -2,23 +2,20 @@ import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import Decors from "./Decors";
 
-import FlashMessage from "../ui/FlashMessage";
+import toast from "react-hot-toast";
 
 const DecorCorpus = ({ setHandleSubmit }) => {
-  const { corpus, setIsModalActive, setFlashMessage } = useMainStore(
-    (state) => ({
-      corpus: state.corpus,
-      setIsModalActive: state.setIsModalActive,
-      setFlashMessage: state.setFlashMessage,
-    })
-  );
+  const { corpus, setIsModalActive } = useMainStore((state) => ({
+    corpus: state.corpus,
+    setIsModalActive: state.setIsModalActive,
+  }));
 
   const handleSubmit = () => {
     if (corpus.decorId) {
       setIsModalActive(false);
-      setFlashMessage({ type: "error", value: false });
+      toast.success("Dekor vnitřní části skříně byl uložen!");
     } else {
-      setFlashMessage({ type: "error", value: true });
+      toast.error("Vyberte dekor vnitřní části skříně!");
     }
   };
 
@@ -28,7 +25,6 @@ const DecorCorpus = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <FlashMessage type={"error"}>Prosím vyberte typ dekoru.</FlashMessage>
       <Decors type={"corpus"} />
     </>
   );

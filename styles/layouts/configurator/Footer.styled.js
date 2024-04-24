@@ -8,7 +8,7 @@ export const Footer = styled.footer`
   position: fixed;
   left: 0;
   bottom: 0;
-  justify-content: space-between;
+  justify-content: ${(props) => (props.$isFirstStep ? "end" : "space-between")};
   align-items: center;
   padding: 0 1em;
   font-size: 0.8em;

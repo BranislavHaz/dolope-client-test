@@ -5,7 +5,8 @@ import * as $ from "@/styles/components/steps/step1/SizeWardrobe.styled";
 
 import Title from "../ui/Title";
 import Button from "../ui/Button";
-import FlashMessage from "../ui/FlashMessage";
+
+import toast from "react-hot-toast";
 
 const SizeWardrobe = ({ setHandleSubmit }) => {
   const [width, setWidth] = useState(0);
@@ -19,9 +20,8 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
     topSelf: undefined,
   });
 
-  const { state, setFlashMessage } = useMainStore((state) => ({
+  const { state } = useMainStore((state) => ({
     state: state,
-    setFlashMessage: state.setFlashMessage,
   }));
 
   const submitAction = (type) => {
@@ -46,9 +46,10 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
       state.setStepsInputs("step1", "sizeWardrobe", true);
 
       type === "mobile" && state.setIsModalActive(false);
+      type === "mobile" && toast.success("Rozměry skříně byly uloženy!");
     } else {
       state.setStepsInputs("step1", "sizeWardrobe", false);
-      setFlashMessage({ type: "error", value: true });
+      type === "mobile" && toast.error("Zkontrolujte všechny vyplněné údaje!");
     }
   };
 
@@ -72,9 +73,6 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <FlashMessage type={"error"}>
-        Prosím zkontrolujte všechny vyplněné údaje.
-      </FlashMessage>
       <$.FormWrap onKeyDown={handleKeyDown}>
         <Title>Rozměry skříně</Title>
         <$.InputWrapper $isCorrect={isCorrect.width !== false}>
