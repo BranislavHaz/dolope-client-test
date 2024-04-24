@@ -60,7 +60,8 @@ export const InputWrapper = styled.div`
 
   & input:active,
   & input:focus {
-    border: var(--border-input-active);
+    background-color: rgba(241, 185, 13, 0.05);
+    border: 1px solid var(--main-color);
   }
 
   &::after {

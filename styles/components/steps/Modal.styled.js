@@ -124,6 +124,7 @@ export const ModalFooter = styled.div`
   background-color: rgba(255, 255, 255, 1);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   visibility: visible;
+  z-index: 10;
 
   @media ${device.tablet} {
     visibility: hidden;

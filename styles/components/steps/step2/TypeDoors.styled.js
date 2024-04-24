@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "@/utils/devices";
+import { SelectElement } from "../ui/SelectElement.styled";
 
 export const Wrap = styled.div`
   --fullHeight: ${(props) => props.$fullHeight};
@@ -21,13 +22,35 @@ export const TypeDoorsWrap = styled.div`
   column-gap: 1em;
 
   @media ${device.tablet} {
+    width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 `;
 
-export const DoorType = styled.div`
+export const DoorWrap = styled(SelectElement)`
   width: 24vw;
   height: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media ${device.tablet} {
+    max-width: 120px;
+    width: 100%;
+    max-height: 300px;
+    height: 100%;
+  }
+
+  ${(props) =>
+    props.$isActive &&
+    css`
+      box-shadow: var(--main-color) 0px 0px 0px 3px;
+    `}
+`;
+
+export const DoorType = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,23 +59,10 @@ export const DoorType = styled.div`
   box-sizing: content-box;
   border: 2px solid #000;
   cursor: pointer;
-
-  ${(props) =>
-    props.$isActive &&
-    css`
-      box-shadow: var(--main-color) 0px 0px 0px 3px;
-    `}
-
-  @media ${device.tablet} {
-    max-width: 120px;
-    width: 100%;
-    max-height: 300px;
-    height: 100%;
-  }
 `;
 
 export const DoorElement = styled.div`
-  width: 23vw;
+  width: 100%;
   height: ${(props) => 60 * props.$heightRatio - 1}vw;
   display: flex;
   flex-direction: column;
@@ -61,9 +71,7 @@ export const DoorElement = styled.div`
   border: 1px solid #000;
 
   @media ${device.tablet} {
-    max-width: 120px;
-    width: 100%;
-    height: ${(props) => 60 * props.$heightRatio - 1}vw;
+    height: ${(props) => 50 * props.$heightRatio - 1}vw;
   }
 `;
 

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "@/utils/devices";
+import { SelectElement } from "../ui/SelectElement.styled";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -27,8 +28,8 @@ export const SelectWrap = styled.div`
   row-gap: 1em;
 `;
 
-export const Select = styled.div`
-  padding: 0.5em 0.8em;
+export const Select = styled(SelectElement)`
+  padding: 0.5em 0.8em !important;
   border: var(--border-input-default);
   border-radius: var(--border-radius);
   text-align: center;

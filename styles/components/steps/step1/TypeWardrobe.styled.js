@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { device } from "@/utils/devices";
+import { SelectElement } from "../ui/SelectElement.styled";
 
 export const FullWrap = styled.div`
   width: 100%;
@@ -36,14 +37,14 @@ export const TypesWrap = styled.div`
   }
 `;
 
-export const TypeImage = styled.div`
+export const TypeImage = styled(SelectElement)`
   max-width: 100%;
-  padding: 0.5em;
-  border: ${(props) =>
-    props.$isActive
-      ? "var(--border-input-active)"
-      : "var(--border-input-default)"};
-  border-radius: var(--border-radius);
+  padding: 0.8em !important;
+  ${(props) =>
+    props.$isActive &&
+    css`
+      box-shadow: var(--select-active-shadow);
+    `}
 
   & img {
     width: 100%;

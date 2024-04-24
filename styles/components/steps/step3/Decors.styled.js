@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "@/utils/devices";
+import { SelectElement } from "../ui/SelectElement.styled";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -30,7 +31,7 @@ export const DecorsWrap = styled.div`
   }
 `;
 
-export const DecorWrap = styled.div`
+export const DecorWrap = styled(SelectElement)`
   width: 100%;
   height: 10rem;
   display: flex;
@@ -44,21 +45,22 @@ export const DecorWrap = styled.div`
   ${(props) =>
     props.$isActive &&
     css`
-      background-color: var(--main-color);
+      box-shadow: var(--select-active-shadow);
     `}
 
   @media ${device.tablet} {
-    height: 20rem;
+    height: 18rem;
   }
 `;
 
 export const DecorImage = styled.div`
   position: relative;
-  width: 100%;
-  height: 6rem;
+  width: 95%;
+  height: 10rem;
+  margin-top: 0.3rem;
 
   @media ${device.tablet} {
-    height: 15rem;
+    height: 14rem;
   }
 `;
 

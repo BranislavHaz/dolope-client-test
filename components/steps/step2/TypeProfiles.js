@@ -67,9 +67,10 @@ const TypeProfiles = ({ setHandleSubmit }) => {
       return (
         <$.ProfileElement
           key={profile.name}
+          $isActive={profileName === activeProfile}
           onClick={() => handleClickProfile(profileName)}
         >
-          <$.ProfileElementImg $isActive={profileName === activeProfile}>
+          <$.ProfileElementImg>
             <Image
               src={`./images/profiles/${profileName}-profile.jpg`}
               width={100}
@@ -84,11 +85,12 @@ const TypeProfiles = ({ setHandleSubmit }) => {
 
   const generateColors = () => {
     return allColors.map((color) => (
-      <$.ColorElement key={color} onClick={() => handleClickColor(color)}>
-        <$.ColorElementImg
-          $isAvailable={availableColors.includes(color)}
-          $isActive={color === activeColor}
-        >
+      <$.ColorElement
+        key={color}
+        $isActive={color === activeColor}
+        onClick={() => handleClickColor(color)}
+      >
+        <$.ColorElementImg $isAvailable={availableColors.includes(color)}>
           <Image
             src={`./images/profiles/${color}-profile.png`}
             width={100}

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "@/utils/devices";
+import { SelectElement } from "../ui/SelectElement.styled";
 
 export const Wrap = styled.div`
   padding-top: var(--filter-box-h);
@@ -23,12 +24,12 @@ export const TypeSectionsWrap = styled.div`
   column-gap: 1em;
 
   @media ${device.tablet} {
-    width: 90%;
+    width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 `;
 
-export const SectionType = styled.div`
+export const SectionType = styled(SelectElement)`
   width: 24vw;
   height: 30vh;
   cursor: pointer;
@@ -36,7 +37,7 @@ export const SectionType = styled.div`
   ${(props) =>
     props.$isActive &&
     css`
-      box-shadow: var(--main-color) 0px 0px 0px 3px;
+      box-shadow: var(--select-active-shadow);
     `}
 
   @media ${device.tablet} {

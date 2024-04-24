@@ -41,7 +41,7 @@ export const Space = styled.div`
   align-items: center;
   font-size: 0.8em;
   position: relative;
-  z-index: -1;
+  z-index: 1;
   ${(props) => props.$isVariable && "justify-content: center"};
 
   ${SpaceLine} {

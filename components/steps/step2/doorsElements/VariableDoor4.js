@@ -38,8 +38,9 @@ const VariableDoor4 = () => {
   };
 
   const handleClick = () => {
+    const doorId = activeFilter.doors;
+
     if (inputValue > 0 && !inputErr) {
-      const doorId = activeFilter.doors;
       const typeOfDoor = 9;
       const fixedHeight = Math.round((doors.height - inputValue * 2 * 10) / 3);
       const sections = {
@@ -51,7 +52,10 @@ const VariableDoor4 = () => {
       };
       setTypeOfDoors({ doorId, sections, typeOfDoor });
       nextStepFilterBox({ state, type: "doors" });
+    } else {
+      setTypeOfDoors({ doorId, isFilled: false });
     }
+    !inputValue && setInputErr(true);
   };
 
   const handleInputClick = (e) => {
@@ -61,47 +65,49 @@ const VariableDoor4 = () => {
   };
 
   return (
-    <$.DoorType $isActive={checkIfIsActiveDoor(state, 9)} onClick={handleClick}>
-      <$.DoorElement $heightRatio={0.1}>
-        {variableHeight !== 0 && (
-          <$.DimensionsText>{variableHeight} cm</$.DimensionsText>
-        )}
-      </$.DoorElement>
-      <$.DoorElement $heightRatio={0.35}>
-        <$.InputNum
-          placeholder="cm"
-          value={inputValue || ""}
-          onChange={(e) => handleOnChange(e.target.value)}
-          onClick={handleInputClick}
-          $isError={inputErr}
-        />
-        <$.LimitText $isError={inputErr}>
-          {calcMinMaxDoorHeight(4, doors.height).text}
-        </$.LimitText>
-      </$.DoorElement>
-      <$.DoorElement $heightRatio={0.1}>
-        {variableHeight !== 0 && (
-          <$.DimensionsText>{variableHeight} cm</$.DimensionsText>
-        )}
-      </$.DoorElement>
-      <$.DoorElement $heightRatio={0.35}>
-        <$.InputNum
-          placeholder="cm"
-          value={inputValue || ""}
-          onChange={(e) => handleOnChange(e.target.value)}
-          onClick={handleInputClick}
-          $isError={inputErr}
-        />
-        <$.LimitText $isError={inputErr}>
-          {calcMinMaxDoorHeight(4, doors.height).text}
-        </$.LimitText>
-      </$.DoorElement>
-      <$.DoorElement $heightRatio={0.1}>
-        {variableHeight !== 0 && (
-          <$.DimensionsText>{variableHeight} cm</$.DimensionsText>
-        )}
-      </$.DoorElement>
-    </$.DoorType>
+    <$.DoorWrap $isActive={checkIfIsActiveDoor(state, 9)} onClick={handleClick}>
+      <$.DoorType>
+        <$.DoorElement $heightRatio={0.1}>
+          {variableHeight !== 0 && (
+            <$.DimensionsText>{variableHeight} cm</$.DimensionsText>
+          )}
+        </$.DoorElement>
+        <$.DoorElement $heightRatio={0.35}>
+          <$.InputNum
+            placeholder="cm"
+            value={inputValue || ""}
+            onChange={(e) => handleOnChange(e.target.value)}
+            onClick={handleInputClick}
+            $isError={inputErr}
+          />
+          <$.LimitText $isError={inputErr}>
+            {calcMinMaxDoorHeight(4, doors.height).text}
+          </$.LimitText>
+        </$.DoorElement>
+        <$.DoorElement $heightRatio={0.1}>
+          {variableHeight !== 0 && (
+            <$.DimensionsText>{variableHeight} cm</$.DimensionsText>
+          )}
+        </$.DoorElement>
+        <$.DoorElement $heightRatio={0.35}>
+          <$.InputNum
+            placeholder="cm"
+            value={inputValue || ""}
+            onChange={(e) => handleOnChange(e.target.value)}
+            onClick={handleInputClick}
+            $isError={inputErr}
+          />
+          <$.LimitText $isError={inputErr}>
+            {calcMinMaxDoorHeight(4, doors.height).text}
+          </$.LimitText>
+        </$.DoorElement>
+        <$.DoorElement $heightRatio={0.1}>
+          {variableHeight !== 0 && (
+            <$.DimensionsText>{variableHeight} cm</$.DimensionsText>
+          )}
+        </$.DoorElement>
+      </$.DoorType>
+    </$.DoorWrap>
   );
 };
 

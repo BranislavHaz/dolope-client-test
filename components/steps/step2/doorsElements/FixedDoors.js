@@ -39,106 +39,116 @@ const FixedDoors = () => {
 
   return (
     <$.TypeDoorsWrap>
-      <$.DoorType
+      <$.DoorWrap
         $isActive={checkIfIsActiveDoor(state, 1)}
         onClick={() => handleClick(1)}
       >
-        <$.DoorElement $heightRatio={1}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(1, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-      </$.DoorType>
-      <$.DoorType
+        <$.DoorType>
+          <$.DoorElement $heightRatio={1}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(1, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+        </$.DoorType>
+      </$.DoorWrap>
+      <$.DoorWrap
         $isActive={checkIfIsActiveDoor(state, 2)}
         onClick={() => handleClick(2)}
       >
-        <$.DoorElement $heightRatio={0.5}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(2, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.5}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(2, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-      </$.DoorType>
-      <$.DoorType
+        <$.DoorType>
+          <$.DoorElement $heightRatio={0.5}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(2, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.5}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(2, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+        </$.DoorType>
+      </$.DoorWrap>
+      <$.DoorWrap
         $isActive={checkIfIsActiveDoor(state, 3)}
         onClick={() => handleClick(3)}
       >
-        <$.DoorElement $heightRatio={0.33}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(3, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.33}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(3, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.33}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(3, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-      </$.DoorType>
-      <$.DoorType
+        <$.DoorType>
+          <$.DoorElement $heightRatio={0.33}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(3, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.33}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(3, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.33}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(3, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+        </$.DoorType>
+      </$.DoorWrap>
+      <$.DoorWrap
         $isActive={checkIfIsActiveDoor(state, 4)}
         onClick={() => handleClick(4)}
       >
-        <$.DoorElement $heightRatio={0.25}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(4, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.25}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(4, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.25}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(4, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.25}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(4, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-      </$.DoorType>
-      <$.DoorType
+        <$.DoorType>
+          <$.DoorElement $heightRatio={0.25}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(4, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.25}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(4, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.25}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(4, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.25}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(4, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+        </$.DoorType>
+      </$.DoorWrap>
+      <$.DoorWrap
         $isActive={checkIfIsActiveDoor(state, 5)}
         onClick={() => handleClick(5)}
       >
-        <$.DoorElement $heightRatio={0.2}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(5, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.2}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(5, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.2}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(5, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.2}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(5, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-        <$.DoorElement $heightRatio={0.2}>
-          <$.DimensionsText>
-            {calcDoorElementHeight(5, doors.height)} cm
-          </$.DimensionsText>
-        </$.DoorElement>
-      </$.DoorType>
+        <$.DoorType>
+          <$.DoorElement $heightRatio={0.2}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(5, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.2}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(5, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.2}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(5, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.2}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(5, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+          <$.DoorElement $heightRatio={0.2}>
+            <$.DimensionsText>
+              {calcDoorElementHeight(5, doors.height)} cm
+            </$.DimensionsText>
+          </$.DoorElement>
+        </$.DoorType>
+      </$.DoorWrap>
     </$.TypeDoorsWrap>
   );
 };
