@@ -15,13 +15,13 @@ export const Wrap = styled.div`
 `;
 
 export const TypeSectionsWrap = styled.div`
-  width: 95%;
+  width: 90%;
   padding-bottom: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
-  row-gap: 0.6rem;
-  column-gap: 0.6rem;
+  row-gap: 1em;
+  column-gap: 1em;
 
   @media ${device.tablet} {
     width: 100%;
@@ -30,7 +30,7 @@ export const TypeSectionsWrap = styled.div`
 `;
 
 export const SectionType = styled(SelectElement)`
-  width: 27vw;
+  width: 24vw;
   height: 30vh;
   cursor: pointer;
 

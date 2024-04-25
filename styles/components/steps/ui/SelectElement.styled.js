@@ -1,13 +1,18 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const SelectElement = styled.div`
   cursor: pointer;
   box-shadow: var(--select-inactive-shadow);
   border-radius: var(--select-radius);
-  padding: 5px;
+  padding: 8px;
   transition: all 0.1s ease-in;
 
   &:hover {
-    transform: var(--select-tranform-hover);
+    transform: scale(1);
+
+    @media ${device.tablet} {
+      transform: var(--select-tranform-hover);
+    }
   }
 `;

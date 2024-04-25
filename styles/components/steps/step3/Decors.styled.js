@@ -39,6 +39,7 @@ export const DecorWrap = styled(SelectElement)`
   align-items: center;
   border: var(--border-input-default);
   border-radius: 10px;
+  padding: 0;
   overflow: hidden;
   cursor: pointer;
 
@@ -55,9 +56,8 @@ export const DecorWrap = styled(SelectElement)`
 
 export const DecorImage = styled.div`
   position: relative;
-  width: 95%;
+  width: 100%;
   height: 10rem;
-  margin-top: 0.3rem;
 
   @media ${device.tablet} {
     height: 14rem;
@@ -69,7 +69,7 @@ export const DecorTitle = styled.div`
   height: 4rem;
   display: flex;
   align-items: center;
-  padding: 0.3rem 0.1rem;
+  padding: 0.3rem;
   font-size: 0.8rem;
   font-weight: 200;
   text-align: center;

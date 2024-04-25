@@ -73,17 +73,17 @@ const FixedDoors = () => {
         onClick={() => handleClick(3)}
       >
         <$.DoorType>
-          <$.DoorElement $heightRatio={0.33}>
+          <$.DoorElement $heightRatio={1 / 3}>
             <$.DimensionsText>
               {calcDoorElementHeight(3, doors.height)} cm
             </$.DimensionsText>
           </$.DoorElement>
-          <$.DoorElement $heightRatio={0.33}>
+          <$.DoorElement $heightRatio={1 / 3}>
             <$.DimensionsText>
               {calcDoorElementHeight(3, doors.height)} cm
             </$.DimensionsText>
           </$.DoorElement>
-          <$.DoorElement $heightRatio={0.33}>
+          <$.DoorElement $heightRatio={1 / 3}>
             <$.DimensionsText>
               {calcDoorElementHeight(3, doors.height)} cm
             </$.DimensionsText>
@@ -122,27 +122,27 @@ const FixedDoors = () => {
         onClick={() => handleClick(5)}
       >
         <$.DoorType>
-          <$.DoorElement $heightRatio={0.2}>
+          <$.DoorElement $heightRatio={1 / 5}>
             <$.DimensionsText>
               {calcDoorElementHeight(5, doors.height)} cm
             </$.DimensionsText>
           </$.DoorElement>
-          <$.DoorElement $heightRatio={0.2}>
+          <$.DoorElement $heightRatio={1 / 5}>
             <$.DimensionsText>
               {calcDoorElementHeight(5, doors.height)} cm
             </$.DimensionsText>
           </$.DoorElement>
-          <$.DoorElement $heightRatio={0.2}>
+          <$.DoorElement $heightRatio={1 / 5}>
             <$.DimensionsText>
               {calcDoorElementHeight(5, doors.height)} cm
             </$.DimensionsText>
           </$.DoorElement>
-          <$.DoorElement $heightRatio={0.2}>
+          <$.DoorElement $heightRatio={1 / 5}>
             <$.DimensionsText>
               {calcDoorElementHeight(5, doors.height)} cm
             </$.DimensionsText>
           </$.DoorElement>
-          <$.DoorElement $heightRatio={0.2}>
+          <$.DoorElement $heightRatio={1 / 5}>
             <$.DimensionsText>
               {calcDoorElementHeight(5, doors.height)} cm
             </$.DimensionsText>

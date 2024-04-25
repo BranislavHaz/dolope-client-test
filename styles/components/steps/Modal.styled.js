@@ -122,7 +122,7 @@ export const ModalFooter = styled.div`
   align-items: center;
   border-radius: var(--border-radius);
   background-color: rgba(255, 255, 255, 1);
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   visibility: visible;
   z-index: 10;
 

@@ -13,13 +13,13 @@ export const Wrap = styled.div`
 `;
 
 export const TypeDoorsWrap = styled.div`
-  width: 90%;
+  width: 95%;
   padding-bottom: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
-  row-gap: 1em;
-  column-gap: 1em;
+  row-gap: 0.6rem;
+  column-gap: 0.6rem;
 
   @media ${device.tablet} {
     width: 100%;
@@ -28,7 +28,7 @@ export const TypeDoorsWrap = styled.div`
 `;
 
 export const DoorWrap = styled(SelectElement)`
-  width: 24vw;
+  width: 27vw;
   height: 60vw;
   display: flex;
   justify-content: center;
@@ -37,8 +37,7 @@ export const DoorWrap = styled(SelectElement)`
   @media ${device.tablet} {
     max-width: 120px;
     width: 100%;
-    max-height: 300px;
-    height: 100%;
+    height: 300px;
   }
 
   ${(props) =>
@@ -54,6 +53,7 @@ export const DoorType = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-items: center;
   justify-content: space-evenly;
   background-color: #fff;
   box-sizing: content-box;
@@ -63,16 +63,12 @@ export const DoorType = styled.div`
 
 export const DoorElement = styled.div`
   width: 100%;
-  height: ${(props) => 60 * props.$heightRatio - 1}vw;
+  height: ${(props) => Math.ceil((100 * props.$heightRatio * 100) / 100)}%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 1px solid #000;
-
-  @media ${device.tablet} {
-    height: ${(props) => 50 * props.$heightRatio - 1}vw;
-  }
 `;
 
 export const InputNum = styled.input.attrs({
