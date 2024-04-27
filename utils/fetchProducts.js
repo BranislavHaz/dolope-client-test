@@ -18,11 +18,17 @@ export const fetchProducts = async () => {
   );
   const dtd18 = await resDTD18.json();
 
+  const resGlass = await fetch(
+    `https://dolope-6771.rostiapp.cz/agc/products`,
+    fetchSetting
+  );
+  const glass = await resGlass.json();
+
   const resSlidingDoor = await fetch(
     `https://dolope-6771.rostiapp.cz/nabykov/products`,
     fetchSetting
   );
   const slidingDoor = await resSlidingDoor.json();
 
-  return { dtd10, dtd18, slidingDoor };
+  return { dtd10, dtd18, glass, slidingDoor };
 };

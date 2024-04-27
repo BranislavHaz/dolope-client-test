@@ -110,12 +110,13 @@ const createDoorsSlice = (set, get) => ({
     );
   },
 
-  setDoorSectionDecorId: ({ doorId, sectionId, decorId }) => {
+  setDoorSectionDecorId: ({ doorId, sectionId, decorId, materialType }) => {
     set(
       (state) => {
         state.doors.typeDoors[doorId].sections[sectionId] = {
           ...state.doors.typeDoors[doorId].sections[sectionId],
           decorId,
+          materialType,
         };
       },
       false,

@@ -11,9 +11,11 @@ const createFiltersSlice = (set, get) => ({
       decorType: "all",
     },
     doors: {
+      materialType: "wood",
       search: null,
       manufacturer: "All",
       decorType: "all",
+      glassType: "all",
     },
   },
 
@@ -22,10 +24,35 @@ const createFiltersSlice = (set, get) => ({
     sectionId: 1,
   },
 
-  setDecorFilter: ({ type, search, manufacturer, decorType }) => {
+  setMaterialType: ({ type }) => {
+    set(
+      (state) => {
+        state.decorFilter.doors.materialType = type;
+      },
+      false,
+      "filters/setMaterialType"
+    );
+  },
+
+  setDecorFilter: ({
+    type,
+    search,
+    manufacturer,
+    decorType,
+    materialType = undefined,
+    glassType = undefined,
+  }) => {
     set(
       (state) => {
         if (!state.decorFilter[type]) return;
+
+        if (materialType !== undefined) {
+          state.decorFilter.doors.materialType = materialType;
+        }
+
+        if (glassType !== undefined) {
+          state.decorFilter.doors.glassType = glassType;
+        }
 
         if (search !== undefined) {
           state.decorFilter[type].search = search;

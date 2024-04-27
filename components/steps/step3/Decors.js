@@ -22,6 +22,7 @@ const Decors = ({ type }) => {
     setDoorSectionDecorId,
     setStepsInputs,
     setBeScrolled,
+    decorFilter,
   } = useMainStore((state) => ({
     state: state,
     corpus: state.corpus,
@@ -34,6 +35,7 @@ const Decors = ({ type }) => {
     setDoorSectionDecorId: state.setDoorSectionDecorId,
     setStepsInputs: state.setStepsInputs,
     setBeScrolled: state.setBeScrolled,
+    decorFilter: state.decorFilter,
   }));
 
   useEffect(() => {
@@ -50,6 +52,8 @@ const Decors = ({ type }) => {
       ? getUniqueDecors({ state })
       : getFilteredDecors({ state, type });
 
+  console.log(filteredDecors);
+
   const handleClick = (decorId) => {
     if (type === "corpus") {
       setCorpusDecorId(decorId);
@@ -62,7 +66,9 @@ const Decors = ({ type }) => {
     if (type === "doors" || type === "usedDoors") {
       setBeScrolled(true);
       const { doorId, sectionId } = activeDoorSection;
-      setDoorSectionDecorId({ doorId, sectionId, decorId });
+      const { materialType } = decorFilter.doors;
+
+      setDoorSectionDecorId({ doorId, sectionId, decorId, materialType });
 
       const countSectionCurrentDoor = Object.keys(
         doors.typeDoors[doorId].sections
@@ -108,13 +114,11 @@ const Decors = ({ type }) => {
     const minPrice = Math.min(...prices);
     const maxPrice = Math.max(...prices);
 
-    // Vypočítame intervaly
     const range = maxPrice - minPrice;
     const cheapThreshold = minPrice + range / 3;
     const expensiveThreshold = maxPrice - range / 3;
 
     return filteredDecors.map((decor) => {
-      // Určíme cenovú kategóriu produktu
       const price = parseFloat(decor.price_with_vat);
       let categoryLabel;
       if (price <= cheapThreshold) {
@@ -123,6 +127,32 @@ const Decors = ({ type }) => {
         categoryLabel = "czk-high-price.svg";
       } else {
         categoryLabel = "czk-medium-price.svg";
+      }
+
+      if (decor.category === "glass" || decor.category === "mirror") {
+        return (
+          <$.DecorWrap
+            key={decor.id}
+            $isActive={verifyActiveDecor(decor.id)}
+            onClick={() => handleClick(decor.id)}
+          >
+            <$.PriceLevelIcon>
+              <Image src={`/icons/czk-high-price.svg`} width={30} height={30} />
+            </$.PriceLevelIcon>
+            <$.DecorImage>
+              <Image
+                src={`/images/glass/${decor.id}.jpeg`}
+                layout="fill"
+                objectPosition="center"
+              />
+            </$.DecorImage>
+            <$.DecorTitle>{`${
+              decor.category === "glass"
+                ? decor.name_cz + " - sklo"
+                : decor.name_cz
+            } (${decor.id})`}</$.DecorTitle>
+          </$.DecorWrap>
+        );
       }
 
       return (
@@ -134,16 +164,14 @@ const Decors = ({ type }) => {
           <$.PriceLevelIcon $priceLevel={categoryLabel}>
             <Image src={`/icons/${categoryLabel}`} width={30} height={30} />
           </$.PriceLevelIcon>
-          {
-            <$.DecorImage>
-              <Image
-                src={`/images/decors/${decor.id_manufacturer}.jpeg`}
-                layout="fill"
-                objectPosition="center"
-              />
-            </$.DecorImage>
-          }
-          <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label} - ${decor.id} (${decor.price_with_vat}) - ${categoryLabel}`}</$.DecorTitle>
+          <$.DecorImage>
+            <Image
+              src={`/images/decors/${decor.id_manufacturer}.jpeg`}
+              layout="fill"
+              objectPosition="center"
+            />
+          </$.DecorImage>
+          <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label}`}</$.DecorTitle>
         </$.DecorWrap>
       );
     });

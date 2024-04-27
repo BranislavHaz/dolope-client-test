@@ -28,9 +28,15 @@ const ModalDoor = ({ width, height, overhang, id, children }) => {
 
   const getImgUrl = (sectionId) => {
     const decorId = doors.typeDoors[id].sections[sectionId].decorId || null;
-    if (decorId) {
+    const materialType =
+      doors.typeDoors[id].sections[sectionId].materialType || null;
+
+    if (decorId && materialType === "wood") {
       const decor = productsAPI.dtd10.find((decor) => decor.id === decorId);
       return `/images/decors/${decor.id_manufacturer}.jpeg`;
+    } else if (decorId && materialType === "glass") {
+      const color = productsAPI.glass.find((color) => color.id === decorId);
+      return `/images/glass/${color.id}.jpeg`;
     } else {
       return false;
     }

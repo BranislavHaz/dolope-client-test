@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import UsedDoorsDecor from "./UsedDoorsDecor";
+
 import Decors from "./Decors";
 import ModalDoors from "@/components/modal/doors/ModalDoors";
 

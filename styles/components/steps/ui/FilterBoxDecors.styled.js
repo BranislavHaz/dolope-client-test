@@ -20,6 +20,20 @@ const fadeIn = keyframes`
   }
 `;
 
+const activeElement = keyframes`
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+   transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+`;
+
 export const BoxHeader = styled.div`
   width: 100%;
   height: 3em;
@@ -36,6 +50,48 @@ export const BoxHeader = styled.div`
       font-weight: 500;
     }
   }
+`;
+
+export const MaterialTypeWrap = styled.div`
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
+
+export const MaterialType = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background-color: var(--bg-button);
+  }
+
+  &:first-child {
+    border-right: 0.5px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &:last-child {
+    border-left: 0.5px solid rgba(0, 0, 0, 0.1);
+  }
+
+  ${(props) =>
+    props.$isActive &&
+    css`
+      //animation: ${activeElement} 0.15s ease-in-out;
+      background-color: var(--bg-input-active);
+      color: #fff;
+    `}
 `;
 
 export const IconWrap = styled.div`
@@ -99,20 +155,6 @@ export const SelectoBoxTitle = styled.h3`
   font-size: 1.1rem;
   font-weight: 300;
   margin-bottom: 0.3em;
-`;
-
-const activeElement = keyframes`
-  0% {
-    transform: scale(0);
-  }
-
-  50% {
-   transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
 `;
 
 export const SelectBox = styled.span`
