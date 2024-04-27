@@ -42,6 +42,7 @@ export const DecorWrap = styled(SelectElement)`
   padding: 0;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
 
   ${(props) =>
     props.$isActive &&
@@ -52,6 +53,17 @@ export const DecorWrap = styled(SelectElement)`
   @media ${device.tablet} {
     height: 18rem;
   }
+`;
+
+export const PriceLevelIcon = styled.div`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
 export const DecorImage = styled.div`

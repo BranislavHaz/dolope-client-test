@@ -102,13 +102,38 @@ const Decors = ({ type }) => {
   };
 
   const getDecors = () => {
+    const prices = filteredDecors.map((item) =>
+      parseFloat(item.price_with_vat)
+    );
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+
+    // Vypočítame intervaly
+    const range = maxPrice - minPrice;
+    const cheapThreshold = minPrice + range / 3;
+    const expensiveThreshold = maxPrice - range / 3;
+
     return filteredDecors.map((decor) => {
+      // Určíme cenovú kategóriu produktu
+      const price = parseFloat(decor.price_with_vat);
+      let categoryLabel;
+      if (price <= cheapThreshold) {
+        categoryLabel = "czk-low-price.svg";
+      } else if (price >= expensiveThreshold) {
+        categoryLabel = "czk-high-price.svg";
+      } else {
+        categoryLabel = "czk-medium-price.svg";
+      }
+
       return (
         <$.DecorWrap
           key={decor.id}
           $isActive={verifyActiveDecor(decor.id)}
           onClick={() => handleClick(decor.id)}
         >
+          <$.PriceLevelIcon $priceLevel={categoryLabel}>
+            <Image src={`/icons/${categoryLabel}`} width={30} height={30} />
+          </$.PriceLevelIcon>
           {
             <$.DecorImage>
               <Image
@@ -118,7 +143,7 @@ const Decors = ({ type }) => {
               />
             </$.DecorImage>
           }
-          <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label} - ${decor.id}`}</$.DecorTitle>
+          <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label} - ${decor.id} (${decor.price_with_vat}) - ${categoryLabel}`}</$.DecorTitle>
         </$.DecorWrap>
       );
     });
