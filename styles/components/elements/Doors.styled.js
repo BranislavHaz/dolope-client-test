@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { device } from "@/utils/devices";
 
 export const Doors = styled.div`
   display: ${(props) => (props.$isVisible ? "flex" : "none")};
@@ -10,6 +11,11 @@ export const Doors = styled.div`
     props.$type === "modal" &&
     css`
       transform: scale(0.8);
+      margin: 5rem 0 1rem 0;
+
+      @media ${device.tablet} {
+        margin: 3rem 0 1rem 0;
+      }
     `}
 `;
 
@@ -36,12 +42,6 @@ export const DoorWrapper = styled.div`
     box-shadow: 10px 0px 8px -5px rgba(21, 21, 21, 0.18),
       -10px 0px 8px -5px rgba(21, 21, 21, 0.18);
   }
-
-  ${(props) =>
-    props.$type === "modal" &&
-    css`
-      margin: 2em 0 1rem 0;
-    `}
 `;
 
 export const Door = styled.div`
@@ -59,18 +59,20 @@ export const DoorPart = styled.div`
   border: 0.25px solid #000;
   cursor: ${(props) => (props.$type === "modal" ? "pointer" : "auto")};
 
+  @media ${device.tablet} {
+    ${(props) =>
+      props.$type === "modal" &&
+      css`
+        &:hover {
+          filter: grayscale(80%);
+        }
+      `}
+  }
+
   ${(props) =>
     props.$bgImg
       ? `background-image: url(${props.$bgImg})`
       : "background-color: var(--wood-color)"};
-
-  ${(props) =>
-    props.$type === "modal" &&
-    css`
-      &:hover {
-        filter: grayscale(80%);
-      }
-    `}
 
   &::before {
     content: "";
