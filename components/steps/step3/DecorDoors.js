@@ -3,7 +3,7 @@ import useMainStore from "@/stores/useMainStore";
 import UsedDoorsDecor from "./UsedDoorsDecor";
 
 import Decors from "./Decors";
-import ModalDoors from "@/components/modal/doors/ModalDoors";
+import Doors from "@/components/elements/Doors";
 
 import toast from "react-hot-toast";
 
@@ -29,7 +29,7 @@ const DecorDoors = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <ModalDoors />
+      <Doors type={"modal"} />
       <UsedDoorsDecor />
       <Decors type={"doors"} />
     </>

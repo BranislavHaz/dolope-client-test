@@ -6,16 +6,28 @@ import * as $ from "@/styles/components/elements/Doors.styled";
 import Handle from "./Handle";
 import HProfile from "../elements/HProfile";
 
-const Door = ({ id }) => {
-  const { state, doors, viewportSizes } = useMainStore((state) => ({
+const Door = ({ id, type }) => {
+  const {
+    state,
+    doors,
+    viewportSizes,
+    activeDoorSection,
+    setActiveDoorSection,
+  } = useMainStore((state) => ({
     state: state,
     doors: state.doors,
     viewportSizes: state.viewportSizes,
+    activeDoorSection: state.activeDoorSection,
+    setActiveDoorSection: state.setActiveDoorSection,
   }));
 
   const currentDoorSections = doors?.typeDoors[id]?.sections;
   const countOfSections =
     currentDoorSections && Object.keys(currentDoorSections).length;
+
+  const handleClickSection = (sectionId) => {
+    setActiveDoorSection({ doorId: id, sectionId: sectionId });
+  };
 
   const getDoorElements = () => {
     const doorElement = [];
@@ -40,6 +52,14 @@ const Door = ({ id }) => {
               $width={viewportSizes.door.width}
               $height={heightSection}
               $bgImg={decorUrl}
+              $type={type}
+              $isActive={
+                type === "modal"
+                  ? activeDoorSection.doorId === id &&
+                    activeDoorSection.sectionId === i
+                  : false
+              }
+              onClick={() => type === "modal" && handleClickSection(i)}
             />
             <HProfile />
           </$.DoorSection>
@@ -51,6 +71,14 @@ const Door = ({ id }) => {
               $width={viewportSizes.door.width}
               $height={heightSection}
               $bgImg={decorUrl}
+              $type={type}
+              $isActive={
+                type === "modal"
+                  ? activeDoorSection.doorId === id &&
+                    activeDoorSection.sectionId === i
+                  : false
+              }
+              onClick={() => type === "modal" && handleClickSection(i)}
             />
           </$.DoorSection>
         );
@@ -64,8 +92,8 @@ const Door = ({ id }) => {
     <$.DoorWrapper
       $width={viewportSizes.door.width}
       $height={viewportSizes.door.height}
-      $isVisible={doors.isVisible}
       $overhang={viewportSizes.wardrobe.thicknessDTD * 2}
+      $type={type}
     >
       <Handle />
       <$.Door>{doors.typeDoors[id] && getDoorElements()}</$.Door>
