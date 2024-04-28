@@ -33,11 +33,10 @@ export const DecorsWrap = styled.div`
 
 export const DecorWrap = styled(SelectElement)`
   width: 100%;
-  height: 10rem;
+  height: 14rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: var(--border-input-default);
   border-radius: 10px;
   padding: 0;
   overflow: hidden;
@@ -71,6 +70,7 @@ export const PriceLabelWrap = styled.div`
   border-radius: 5px;
   background-color: #fff;
   color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   ${(props) => {
     if (props.$priceLevel === 1) {
