@@ -55,15 +55,44 @@ export const DecorWrap = styled(SelectElement)`
   }
 `;
 
-export const PriceLevelIcon = styled.div`
-  width: 30px;
+export const PriceLabelWrap = styled.div`
+  width: 85px;
   height: 30px;
   position: absolute;
-  top: 0.2rem;
-  right: 0.2rem;
+  top: 0.6rem;
+  right: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 2px solid;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #fff;
+
+  ${(props) => {
+    if (props.$priceLevel === 1) {
+      return css`
+        background-color: green;
+        border-color: green;
+      `;
+    }
+    if (props.$priceLevel === 2) {
+      return css`
+        background-color: yellow;
+        border-color: yellow;
+        color: #000;
+      `;
+    }
+    if (props.$priceLevel === 3) {
+      return css`
+        background-color: red;
+        border-color: red;
+      `;
+    }
+  }}
 `;
 
 export const DecorImage = styled.div`

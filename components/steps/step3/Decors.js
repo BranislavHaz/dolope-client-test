@@ -23,6 +23,8 @@ const Decors = ({ type }) => {
     setStepsInputs,
     setBeScrolled,
     decorFilter,
+    modal,
+    productsAPI,
   } = useMainStore((state) => ({
     state: state,
     corpus: state.corpus,
@@ -36,6 +38,8 @@ const Decors = ({ type }) => {
     setStepsInputs: state.setStepsInputs,
     setBeScrolled: state.setBeScrolled,
     decorFilter: state.decorFilter,
+    modal: state.modal,
+    productsAPI: state.productsAPI,
   }));
 
   useEffect(() => {
@@ -45,14 +49,17 @@ const Decors = ({ type }) => {
       : setStepsInputs("step3", "decorDoors", false);
   }, [doors.typeDoors]);
 
+  useEffect(() => {
+    setBeScrolled(true);
+    set(() => setBeScrolled(false), 700);
+  }, [modal.type]);
+
   const set = useTimeout();
 
   const filteredDecors =
     type === "usedDoors"
       ? getUniqueDecors({ state })
       : getFilteredDecors({ state, type });
-
-  console.log(filteredDecors);
 
   const handleClick = (decorId) => {
     if (type === "corpus") {
@@ -108,9 +115,10 @@ const Decors = ({ type }) => {
   };
 
   const getDecors = () => {
-    const prices = filteredDecors.map((item) =>
-      parseFloat(item.price_with_vat)
-    );
+    const prices =
+      type !== "usedDoors"
+        ? filteredDecors.map((item) => parseFloat(item.price_with_vat))
+        : productsAPI.dtd10.map((item) => parseFloat(item.price_with_vat));
     const minPrice = Math.min(...prices);
     const maxPrice = Math.max(...prices);
 
@@ -122,11 +130,11 @@ const Decors = ({ type }) => {
       const price = parseFloat(decor.price_with_vat);
       let categoryLabel;
       if (price <= cheapThreshold) {
-        categoryLabel = "czk-low-price.svg";
+        categoryLabel = 1;
       } else if (price >= expensiveThreshold) {
-        categoryLabel = "czk-high-price.svg";
+        categoryLabel = 3;
       } else {
-        categoryLabel = "czk-medium-price.svg";
+        categoryLabel = 2;
       }
 
       if (decor.category === "glass" || decor.category === "mirror") {
@@ -136,9 +144,9 @@ const Decors = ({ type }) => {
             $isActive={verifyActiveDecor(decor.id)}
             onClick={() => handleClick(decor.id)}
           >
-            <$.PriceLevelIcon>
-              <Image src={`/icons/czk-high-price.svg`} width={30} height={30} />
-            </$.PriceLevelIcon>
+            <$.PriceLabelWrap $priceLevel={3}>
+              {decor.price_with_vat} Kč/m2
+            </$.PriceLabelWrap>
             <$.DecorImage>
               <Image
                 src={`/images/glass/${decor.id}.jpeg`}
@@ -161,9 +169,9 @@ const Decors = ({ type }) => {
           $isActive={verifyActiveDecor(decor.id)}
           onClick={() => handleClick(decor.id)}
         >
-          <$.PriceLevelIcon $priceLevel={categoryLabel}>
-            <Image src={`/icons/${categoryLabel}`} width={30} height={30} />
-          </$.PriceLevelIcon>
+          <$.PriceLabelWrap $priceLevel={categoryLabel}>
+            {decor.price_with_vat} Kč/m2
+          </$.PriceLabelWrap>
           <$.DecorImage>
             <Image
               src={`/images/decors/${decor.id_manufacturer}.jpeg`}

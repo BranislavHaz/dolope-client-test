@@ -51,7 +51,7 @@ const FilterBoxDecors = ({ type }) => {
   };
 
   const handleSubmit = () => {
-    if (searchValue && searchValue.length < 3 && searchValue.length > 1) {
+    if (searchValue && searchValue.length < 3 && searchValue !== null) {
       setIsError(true);
     } else {
       setIsError(false);
