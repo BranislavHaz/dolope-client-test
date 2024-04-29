@@ -6,6 +6,7 @@ export const Side = styled.div`
   width: ${(props) => props.$width}px;
   height: ${(props) => props.$height}px;
   border: 0.25px solid #000;
+  z-index: 10;
 
   ${(props) =>
     props.$bgImg

@@ -26,6 +26,9 @@ const TypeSections = ({ setHandleSubmit }) => {
 
     if (countOfSelectedSections === sections.count) {
       setStepsInputs("step2", "typeSections", true);
+      toast.success("Typy sekcí byly uloženy!", {
+        className: "toast-tablet",
+      });
     } else {
       setStepsInputs("step2", "typeSections", false);
     }
@@ -35,9 +38,13 @@ const TypeSections = ({ setHandleSubmit }) => {
     if (Object.keys(sections.typeOfSections).length === sections.count) {
       state.setIsModalActive(false);
       state.setActiveFilter("sections", 1);
-      toast.success("Typy sekcí byly uloženy!");
+      toast.success("Typy sekcí byly uloženy!", {
+        className: "toast-mobile",
+      });
     } else {
-      toast.error("Vyberte typ pro všechny sekce!");
+      toast.error("Vyberte typ pro všechny sekce!", {
+        className: "toast-mobile",
+      });
     }
   };
 

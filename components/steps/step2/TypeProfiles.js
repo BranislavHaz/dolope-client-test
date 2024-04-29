@@ -117,15 +117,22 @@ const TypeProfiles = ({ setHandleSubmit }) => {
     if (availableColors.includes(color) && activeProfile !== "unfilled") {
       setStepsInputs("step2", "typeProfiles", true);
       setSelectedProfile({ ...activeProfileObj, color });
+      toast.success("Typ a barva profilů byly uloženy!", {
+        className: "toast-tablet",
+      });
     }
   };
 
   const handleSubmit = () => {
     if (stepsInputs.step2.typeProfiles) {
       setIsModalActive(false);
-      toast.success("Typ a barva profilů byly uloženy!");
+      toast.success("Typ a barva profilů byly uloženy!", {
+        className: "toast-mobile",
+      });
     } else {
-      toast.error("Vyberte typ a barvu profilů!");
+      toast.error("Vyberte typ a barvu profilů!", {
+        className: "toast-mobile",
+      });
     }
   };
 

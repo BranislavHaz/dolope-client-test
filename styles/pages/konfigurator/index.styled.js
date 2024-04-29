@@ -20,6 +20,29 @@ export const WrapContent = styled.div`
   display: flex;
   flex-direction: column;
 
+  & div:has(div.toast-mobile) {
+    display: flex;
+    z-index: 999;
+  }
+  & div:has(div.toast-tablet) {
+    display: none;
+    z-index: 0;
+    width: 70vw;
+  }
+
+  @media ${device.tablet} {
+    height: var(--l-wardrobe-view-height);
+    & div:has(div.toast-mobile) {
+      display: none;
+      z-index: 0;
+    }
+    & div:has(div.toast-tablet) {
+      display: flex;
+      z-index: 999;
+      width: 70vw;
+    }
+  }
+
   @media ${device.tablet} {
     flex-direction: row;
     justify-content: space-between;

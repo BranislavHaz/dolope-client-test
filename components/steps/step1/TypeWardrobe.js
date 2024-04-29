@@ -20,9 +20,9 @@ const TypeWardrobe = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (wardrobe.type) {
       setIsModalActive(false);
-      toast.success("Typ skříně byl uložen!");
+      toast.success("Typ skříně byl uložen!", { className: "toast-mobile" });
     } else {
-      toast.error("Vyberte typ skříně!");
+      toast.error("Vyberte typ skříně!", { className: "toast-mobile" });
     }
   };
 
@@ -33,6 +33,7 @@ const TypeWardrobe = ({ setHandleSubmit }) => {
   const handleClick = (e) => {
     setWardrobeType(Number(e.currentTarget.id));
     setStepsInputs("step1", "typeWardrobe", true);
+    toast.success("Typ skříně byl uložen!", { className: "toast-tablet" });
   };
 
   return (

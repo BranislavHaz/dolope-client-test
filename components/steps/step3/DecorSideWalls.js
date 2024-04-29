@@ -13,9 +13,13 @@ const DecorSideWalls = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (sideWalls.decorId) {
       setIsModalActive(false);
-      toast.success("Dekor vnější části skříně byl uložen!");
+      toast.success("Dekor vnější části skříně byl uložen!", {
+        className: "toast-mobile",
+      });
     } else {
-      toast.error("Vyberte dekor vnější části skříně!");
+      toast.error("Vyberte dekor vnější části skříně!", {
+        className: "toast-mobile",
+      });
     }
   };
 

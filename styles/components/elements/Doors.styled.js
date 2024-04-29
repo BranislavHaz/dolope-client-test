@@ -58,13 +58,14 @@ export const DoorPart = styled.div`
   height: ${(props) => props.$height}px;
   border: 0.25px solid #000;
   cursor: ${(props) => (props.$type === "modal" ? "pointer" : "auto")};
+  position: relative;
 
   @media ${device.tablet} {
     ${(props) =>
       props.$type === "modal" &&
       css`
         &:hover {
-          filter: grayscale(80%);
+          box-shadow: inset 0px 0px 300px 200px rgba(241, 185, 13, 0.4);
         }
       `}
   }
@@ -73,20 +74,26 @@ export const DoorPart = styled.div`
     props.$bgImg
       ? `background-image: url(${props.$bgImg})`
       : "background-color: var(--wood-color)"};
+`;
 
-  &::before {
-    content: "";
-    width: ${(props) => props.$width}px;
-    height: ${(props) => props.$height}px;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    ${(props) =>
-      props.$isActive &&
-      css`
-        background-color: var(--main-color);
-        opacity: 0.55;
-      `}
-  }
+export const CurrentlyEdited = styled.div`
+  display: none;
+  ${(props) =>
+    props.$isActive &&
+    css`
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #282828;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4px 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    `}
 `;

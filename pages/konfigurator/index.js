@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Head from "next/head";
+import { Toaster } from "react-hot-toast";
 
 import Modal from "@/components/steps/Modal";
 import ShowHideDoors from "@/components/steps/ui/ShowHideDoors";
@@ -38,6 +39,7 @@ const Index = ({ products }) => {
       </Head>
       <Modal />
       <$.WrapContent>
+        <Toaster />
         <$.WrapView $height={viewport.height}>
           <ShowHideDoors />
           <Header />

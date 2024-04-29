@@ -60,7 +60,18 @@ const Door = ({ id, type }) => {
                   : false
               }
               onClick={() => type === "modal" && handleClickSection(i)}
-            />
+            >
+              <$.CurrentlyEdited
+                $isActive={
+                  type === "modal"
+                    ? activeDoorSection.doorId === id &&
+                      activeDoorSection.sectionId === i
+                    : false
+                }
+              >
+                upravujete
+              </$.CurrentlyEdited>
+            </$.DoorPart>
             <HProfile />
           </$.DoorSection>
         );
@@ -79,7 +90,18 @@ const Door = ({ id, type }) => {
                   : false
               }
               onClick={() => type === "modal" && handleClickSection(i)}
-            />
+            >
+              <$.CurrentlyEdited
+                $isActive={
+                  type === "modal"
+                    ? activeDoorSection.doorId === id &&
+                      activeDoorSection.sectionId === i
+                    : false
+                }
+              >
+                upravujete
+              </$.CurrentlyEdited>
+            </$.DoorPart>
           </$.DoorSection>
         );
       }

@@ -23,22 +23,35 @@ const CountSections = ({ setHandleSubmit }) => {
       state.setSectionsCount(value);
       state.setStepsInputs("step1", "countSections", true);
       state.setStepsInputs("step1", "countDoors", false);
+      state.setStepsInputs("step2", "typeSections", false);
+      state.setVisibilityDoors(false);
       state.setDoorsCount(0);
     }
     if (type === "doors") {
       state.setDoorsCount(value);
       state.setStepsInputs("step1", "countDoors", true);
+      state.setStepsInputs("step2", "typeDoors", false);
+      state.setVisibilityDoors(false);
+      toast.success("Počet sekcí a dveří bylo uloženo!", {
+        className: "toast-tablet",
+      });
     }
   };
 
   const handleSubmit = () => {
     if (state.sections.count && state.doors.count) {
       state.setIsModalActive(false);
-      toast.success("Počet sekcí a dveří bylo uloženo!");
+      toast.success("Počet sekcí a dveří bylo uloženo!", {
+        className: "toast-mobile",
+      });
     } else {
       state.sections.count
-        ? toast.error("Vyberte počet dveří!")
-        : toast.error("Vyberte počet sekcí a dveří!");
+        ? toast.error("Vyberte počet dveří!", {
+            className: "toast-mobile",
+          })
+        : toast.error("Vyberte počet sekcí a dveří!", {
+            className: "toast-mobile",
+          });
     }
   };
 

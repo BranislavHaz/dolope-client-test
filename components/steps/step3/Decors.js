@@ -7,6 +7,8 @@ import { getUniqueDecors } from "@/utils/steps/step3/getUniqueDecors";
 
 import { checkDoorsSectionsFilled } from "@/utils/steps/step3/checkDoorsSectionsFilled";
 
+import toast from "react-hot-toast";
+
 import * as $ from "@/styles/components/steps/step3/Decors.styled";
 
 const Decors = ({ type }) => {
@@ -43,13 +45,6 @@ const Decors = ({ type }) => {
   }));
 
   useEffect(() => {
-    const isAllFilled = checkDoorsSectionsFilled(doors.typeDoors);
-    isAllFilled
-      ? setStepsInputs("step3", "decorDoors", true)
-      : setStepsInputs("step3", "decorDoors", false);
-  }, [doors.typeDoors]);
-
-  useEffect(() => {
     setBeScrolled(true);
     set(() => setBeScrolled(false), 700);
   }, [modal.type]);
@@ -65,10 +60,16 @@ const Decors = ({ type }) => {
     if (type === "corpus") {
       setCorpusDecorId(decorId);
       setStepsInputs("step3", "decorCorpus", true);
+      toast.success("Dekor vnitřní části skříně byl uložen!", {
+        className: "toast-tablet",
+      });
     }
     if (type === "sideWalls") {
       setSideWallsDecorId(decorId);
       setStepsInputs("step3", "decorSideWalls", true);
+      toast.success("Dekor vnější části skříně byl uložen!", {
+        className: "toast-tablet",
+      });
     }
     if (type === "doors" || type === "usedDoors") {
       setBeScrolled(true);
@@ -95,6 +96,17 @@ const Decors = ({ type }) => {
         set(() => nextSectionDecor({ doorId: doorId + 1, sectionId: 1 }), 700);
       } else {
         set(() => nextSectionDecor({ doorId: 1, sectionId: 1 }), 700);
+      }
+
+      const isAllDoorsDecorFilled = checkDoorsSectionsFilled(doors.typeDoors);
+
+      if (isAllDoorsDecorFilled) {
+        setStepsInputs("step3", "decorDoors", true);
+        toast.success("Dekory dveří byly uloženy!", {
+          className: "toast-tablet",
+        });
+      } else {
+        setStepsInputs("step3", "decorDoors", false);
       }
     }
   };
