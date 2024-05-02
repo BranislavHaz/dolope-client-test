@@ -78,6 +78,7 @@ export const DoorPart = styled.div`
 
 export const CurrentlyEdited = styled.div`
   display: none;
+
   ${(props) =>
     props.$isActive &&
     css`
@@ -94,6 +95,13 @@ export const CurrentlyEdited = styled.div`
       text-align: center;
       padding: 4px 2px;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 300;
+      font-size: ${props.$width <= 140
+        ? `calc(${props.$width}px / 10)`
+        : "14px"};
     `}
+
+  @media ${device.tablet} {
+    font-weight: 500;
+  }
 `;

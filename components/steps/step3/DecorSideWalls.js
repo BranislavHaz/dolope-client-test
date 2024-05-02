@@ -14,11 +14,11 @@ const DecorSideWalls = ({ setHandleSubmit }) => {
     if (sideWalls.decorId) {
       setIsModalActive(false);
       toast.success("Dekor vnější části skříně byl uložen!", {
-        className: "toast-mobile",
+        className: "small-device",
       });
     } else {
       toast.error("Vyberte dekor vnější části skříně!", {
-        className: "toast-mobile",
+        className: "small-device",
       });
     }
   };

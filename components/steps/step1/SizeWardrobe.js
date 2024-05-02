@@ -48,19 +48,19 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
       type === "mobile" && state.setIsModalActive(false);
       type === "mobile"
         ? toast.success("Rozměry skříně byly uloženy!", {
-            className: "toast-mobile",
+            className: "small-device",
           })
         : toast.success("Rozměry skříně byly uloženy!", {
-            className: "toast-tablet",
+            className: "larger-device",
           });
     } else {
       state.setStepsInputs("step1", "sizeWardrobe", false);
       type === "mobile"
         ? toast.error("Zkontrolujte všechny vyplněné údaje!", {
-            className: "toast-mobile",
+            className: "small-device",
           })
         : toast.error("Zkontrolujte všechny vyplněné údaje!", {
-            className: "toast-tablet",
+            className: "larger-device",
           });
     }
   };

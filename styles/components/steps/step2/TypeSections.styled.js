@@ -31,7 +31,7 @@ export const TypeSectionsWrap = styled.div`
 
 export const SectionType = styled(SelectElement)`
   width: 27vw;
-  height: 30vh;
+  height: auto;
   cursor: pointer;
 
   ${(props) =>

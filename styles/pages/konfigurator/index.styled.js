@@ -20,26 +20,29 @@ export const WrapContent = styled.div`
   display: flex;
   flex-direction: column;
 
-  & div:has(div.toast-mobile) {
-    display: flex;
-    z-index: 999;
-  }
-  & div:has(div.toast-tablet) {
-    display: none;
-    z-index: 0;
-    width: 70vw;
+  div.small-device {
+    @media ${device.zero} {
+      display: flex;
+    }
+
+    @media ${device.tablet} {
+      display: none;
+    }
   }
 
-  @media ${device.tablet} {
-    height: var(--l-wardrobe-view-height);
-    & div:has(div.toast-mobile) {
-      display: none;
-      z-index: 0;
-    }
-    & div:has(div.toast-tablet) {
-      display: flex;
-      z-index: 999;
+  & div:has(div.larger-device) {
+    @media ${device.tablet} {
       width: 70vw;
+    }
+  }
+
+  div.larger-device {
+    @media ${device.zero} {
+      display: none;
+    }
+
+    @media ${device.tablet} {
+      display: flex;
     }
   }
 

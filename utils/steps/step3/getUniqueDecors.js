@@ -41,8 +41,5 @@ export const getUniqueDecors = ({ state }) => {
     state
   );
 
-  // Správne použitie console.log
-  console.log(filteredDecorsByType);
-
   return filteredDecorsByType;
 };

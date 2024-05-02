@@ -18,11 +18,11 @@ const DecorDoors = ({ setHandleSubmit }) => {
     if (stepsInputs.step3.decorDoors) {
       setIsModalActive(false);
       toast.success("Dekory dveří byly uloženy!", {
-        className: "toast-mobile",
+        className: "small-device",
       });
     } else {
       toast.error("Vyberte dekor pro všechny dveře a jejich sekce!", {
-        className: "toast-mobile",
+        className: "small-device",
       });
     }
   };

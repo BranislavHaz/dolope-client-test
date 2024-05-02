@@ -68,6 +68,7 @@ const Door = ({ id, type }) => {
                       activeDoorSection.sectionId === i
                     : false
                 }
+                $width={viewportSizes.door.width}
               >
                 upravujete
               </$.CurrentlyEdited>
@@ -98,6 +99,7 @@ const Door = ({ id, type }) => {
                       activeDoorSection.sectionId === i
                     : false
                 }
+                $width={viewportSizes.door.width}
               >
                 upravujete
               </$.CurrentlyEdited>

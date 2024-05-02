@@ -14,11 +14,11 @@ const DecorCorpus = ({ setHandleSubmit }) => {
     if (corpus.decorId) {
       setIsModalActive(false);
       toast.success("Dekor vnitřní části skříně byl uložen!", {
-        className: "toast-mobile",
+        className: "small-device",
       });
     } else {
       toast.error("Vyberte dekor vnitřní části skříně!", {
-        className: "toast-mobile",
+        className: "small-device",
       });
     }
   };

@@ -27,7 +27,7 @@ const TypeDoors = ({ setHandleSubmit }) => {
 
     if (countOfSelectedDoors === doors.count) {
       setStepsInputs("step2", "typeDoors", true);
-      toast.success("Typy dveří byly uloženy!", { className: "toast-tablet" });
+      toast.success("Typy dveří byly uloženy!", { className: "larger-device" });
     } else {
       setStepsInputs("step2", "typeDoors", false);
     }
@@ -37,13 +37,13 @@ const TypeDoors = ({ setHandleSubmit }) => {
     if (Object.keys(doors.typeDoors).length === doors.count) {
       setIsModalActive(false);
       setActiveFilter("doors", 1);
-      toast.success("Typy dveří byly uloženy!", { className: "toast-mobile" });
+      toast.success("Typy dveří byly uloženy!", { className: "small-device" });
     } else {
       toast.error("Vyberte typ pro všechny dveře!", {
-        className: "toast-mobile",
+        className: "small-device",
       });
       toast.error("Vyberte typ pro všechny dveře!", {
-        className: "toast-tablet",
+        className: "larger-device",
       });
     }
   };

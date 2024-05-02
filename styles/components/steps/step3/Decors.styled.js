@@ -110,12 +110,9 @@ export const DecorTitle = styled.div`
   height: 4rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0.3rem;
   font-size: 0.8rem;
   font-weight: 200;
   text-align: center;
-
-  @media ${device.tablet} {
-    justify-content: center;
-  }
 `;

@@ -32,8 +32,8 @@ const CountSections = ({ setHandleSubmit }) => {
       state.setStepsInputs("step1", "countDoors", true);
       state.setStepsInputs("step2", "typeDoors", false);
       state.setVisibilityDoors(false);
-      toast.success("Počet sekcí a dveří bylo uloženo!", {
-        className: "toast-tablet",
+      toast.success("Počet sekcí a dveří byly uloženy!", {
+        className: "larger-device",
       });
     }
   };
@@ -41,16 +41,16 @@ const CountSections = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (state.sections.count && state.doors.count) {
       state.setIsModalActive(false);
-      toast.success("Počet sekcí a dveří bylo uloženo!", {
-        className: "toast-mobile",
+      toast.success("Počet sekcí a dveří byly uloženy!", {
+        className: "small-device",
       });
     } else {
       state.sections.count
         ? toast.error("Vyberte počet dveří!", {
-            className: "toast-mobile",
+            className: "small-device",
           })
         : toast.error("Vyberte počet sekcí a dveří!", {
-            className: "toast-mobile",
+            className: "small-device",
           });
     }
   };
