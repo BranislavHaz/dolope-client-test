@@ -33,7 +33,6 @@ const Modal = () => {
     doors,
     activeFilter,
     stepsInputs,
-    setFlashMessage,
   } = useMainStore((state) => ({
     state: state,
     viewport: state.viewport,
@@ -43,7 +42,6 @@ const Modal = () => {
     doors: state.doors,
     activeFilter: state.activeFilter,
     stepsInputs: state.stepsInputs,
-    setFlashMessage: state.setFlashMessage,
   }));
   const modalRef = useRef(0);
 
@@ -100,7 +98,6 @@ const Modal = () => {
   const handleClick = () => {
     setIsModalActive(false);
     setIsSubmitVisible(false);
-    setFlashMessage({ type: "error", value: false });
     setSubmitAction(() => () => setIsModalActive(false));
   };
 
