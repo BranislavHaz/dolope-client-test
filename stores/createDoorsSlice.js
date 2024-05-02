@@ -1,5 +1,6 @@
 import { calcDoorsSize } from "@/utils/calcDoorsSize";
 import { getTypesOfProfiles } from "@/utils/getAvailableProfiles/getTypesOfProfiles";
+import { checkDoorsSectionsFilled } from "@/utils/checkDoorsSectionsFilled";
 
 const createDoorsSlice = (set, get) => ({
   doors: {
@@ -122,6 +123,11 @@ const createDoorsSlice = (set, get) => ({
       false,
       "doors/setDoorSectionDecorId"
     );
+  },
+
+  checkIsAllDoorFilled: () => {
+    const state = get();
+    return checkDoorsSectionsFilled(state.doors.typeDoors);
   },
 
   removeTypeOfDoors: (doorId) => {
