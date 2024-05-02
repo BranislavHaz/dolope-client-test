@@ -23,7 +23,6 @@ const Decors = ({ type }) => {
     checkIsAllDoorFilled,
     setStepsInputs,
     setBeScrolled,
-    decorFilter,
     modal,
     productsAPI,
   } = useMainStore((state) => ({
@@ -39,7 +38,6 @@ const Decors = ({ type }) => {
     checkIsAllDoorFilled: state.checkIsAllDoorFilled,
     setStepsInputs: state.setStepsInputs,
     setBeScrolled: state.setBeScrolled,
-    decorFilter: state.decorFilter,
     modal: state.modal,
     productsAPI: state.productsAPI,
   }));
@@ -56,7 +54,7 @@ const Decors = ({ type }) => {
       ? getUniqueDecors({ state })
       : getFilteredDecors({ state, type });
 
-  const handleClick = (decorId) => {
+  const handleClick = ({ decorId, materialType }) => {
     if (type === "corpus") {
       setCorpusDecorId(decorId);
       setStepsInputs("step3", "decorCorpus", true);
@@ -74,7 +72,6 @@ const Decors = ({ type }) => {
     if (type === "doors" || type === "usedDoors") {
       setBeScrolled(true);
       const { doorId, sectionId } = activeDoorSection;
-      const { materialType } = decorFilter.doors;
 
       setDoorSectionDecorId({ doorId, sectionId, decorId, materialType });
 
@@ -154,7 +151,9 @@ const Decors = ({ type }) => {
           <$.DecorWrap
             key={decor.id}
             $isActive={verifyActiveDecor(decor.id)}
-            onClick={() => handleClick(decor.id)}
+            onClick={() =>
+              handleClick({ decorId: decor.id, materialType: decor.category })
+            }
           >
             <$.PriceLabelWrap $priceLevel={3}>
               {decor.price_with_vat} Kč/m2
@@ -179,7 +178,9 @@ const Decors = ({ type }) => {
         <$.DecorWrap
           key={decor.id}
           $isActive={verifyActiveDecor(decor.id)}
-          onClick={() => handleClick(decor.id)}
+          onClick={() =>
+            handleClick({ decorId: decor.id, materialType: "wood" })
+          }
         >
           <$.PriceLabelWrap $priceLevel={categoryLabel}>
             {decor.price_with_vat} Kč/m2

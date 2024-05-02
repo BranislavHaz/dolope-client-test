@@ -17,20 +17,21 @@ export const getDecorUrl = ({
   } else if (type === "door") {
     const decorId =
       state.doors.typeDoors[doorId].sections[doorSectionId].decorId || null;
-    const materialType =
-      state.doors.typeDoors[doorId].sections[doorSectionId].materialType ||
-      null;
 
-    if (decorId && materialType === "wood") {
-      const decor = state.productsAPI.dtd10.find(
+    if (decorId) {
+      const decorWood = state.productsAPI.dtd10.find(
         (decor) => decor.id === decorId
       );
-      return `/images/decors/${decor.id_manufacturer}.jpeg`;
-    } else if (decorId && materialType === "glass") {
-      const decor = state.productsAPI.glass.find(
-        (decor) => decor.id === decorId
-      );
-      return `/images/glass/${decor.id}.jpeg`;
+
+      if (decorWood) {
+        return `/images/decors/${decorWood.id_manufacturer}.jpeg`;
+      } else {
+        const decorGlass = state.productsAPI.glass.find(
+          (decor) => decor.id === decorId
+        );
+
+        return `/images/glass/${decorGlass.id}.jpeg`;
+      }
     } else {
       return null;
     }

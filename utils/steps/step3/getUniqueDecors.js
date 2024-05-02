@@ -5,7 +5,10 @@ const filterProductsByType = (array, state) => {
         return state.productsAPI.dtd10.find(
           (product) => product.id === item.decorId
         );
-      } else if (item.materialType === "glass") {
+      } else if (
+        item.materialType === "glass" ||
+        item.materialType === "mirror"
+      ) {
         return state.productsAPI.glass.find(
           (product) => product.id === item.decorId
         );
