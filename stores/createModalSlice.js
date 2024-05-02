@@ -3,9 +3,6 @@ const createModalSlice = (set, get) => ({
     isActive: false,
     beScrolled: false,
     type: "sizeWardrobe",
-    flashMessage: {
-      error: false,
-    },
   },
 
   setIsModalActive: (value) => {
@@ -35,16 +32,6 @@ const createModalSlice = (set, get) => ({
       },
       false,
       "modal/setModalType"
-    );
-  },
-
-  setFlashMessage: ({ type, value }) => {
-    set(
-      (state) => {
-        state.modal.flashMessage[type] = value;
-      },
-      false,
-      "modal/setFlashMessage"
     );
   },
 });

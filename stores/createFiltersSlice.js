@@ -79,6 +79,38 @@ const createFiltersSlice = (set, get) => ({
       "filters/setActiveDoorSection"
     );
   },
+
+  setFilterDefaultValues: (nameOfAction) => {
+    set(
+      (state) => {
+        (state.decorFilter = {
+          corpus: {
+            search: null,
+            manufacturer: "All",
+            decorType: "all",
+          },
+          sideWalls: {
+            search: null,
+            manufacturer: "All",
+            decorType: "all",
+          },
+          doors: {
+            materialType: "wood",
+            search: null,
+            manufacturer: "All",
+            decorType: "all",
+            glassType: "all",
+          },
+        }),
+          (state.activeDoorSection = {
+            doorId: 1,
+            sectionId: 1,
+          });
+      },
+      false,
+      `${nameOfAction}/setFilterDefaultValues`
+    );
+  },
 });
 
 export default createFiltersSlice;

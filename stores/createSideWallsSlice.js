@@ -76,6 +76,31 @@ const createSideWallsSlice = (set, get) => ({
       "sideWalls/setSideWallsDecorId"
     );
   },
+
+  setSideWallsDefaultValues: (nameOfAction) => {
+    set(
+      (state) => {
+        state.sideWalls = {
+          cover: {
+            left: false,
+            right: false,
+            count: 0,
+          },
+
+          stop: {
+            width: 100,
+            left: true,
+            right: true,
+            count: 1,
+          },
+
+          decorId: null,
+        };
+      },
+      false,
+      `${nameOfAction}/setSideWallsDefaultValues`
+    );
+  },
 });
 
 export default createSideWallsSlice;

@@ -140,6 +140,32 @@ const createDoorsSlice = (set, get) => ({
       "doors/removeTypeOfDoors"
     );
   },
+
+  setDoorsDefaultValues: (nameOfAction) => {
+    set(
+      (state) => {
+        state.doors = {
+          ...state.doors,
+
+          width: 0,
+          height: 2603,
+          count: 0,
+          isVisible: false,
+          selectedProfile: {
+            color: "unfilled",
+            handle: "unfilled",
+            wheels: "asymmetric",
+          },
+
+          availableProfiles: [],
+          typeDoors: {},
+          dimensionsFromManual: state.doors.dimensionsFromManual,
+        };
+      },
+      false,
+      `${nameOfAction}/setDoorsDefaultValues`
+    );
+  },
 });
 
 export default createDoorsSlice;

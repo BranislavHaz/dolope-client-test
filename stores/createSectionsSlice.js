@@ -9,6 +9,22 @@ const createSectionsSlice = (set, get) => ({
     maxWidth: 1000,
   },
 
+  setSectionsDefaultValues: (nameOfAction) => {
+    set(
+      (state) => {
+        state.sections = {
+          width: 931,
+          count: 0,
+          typeOfSections: {},
+          minWidth: 450,
+          maxWidth: 1000,
+        };
+      },
+      false,
+      `${nameOfAction}/updateSectionsWidth`
+    );
+  },
+
   updateSectionsWidth: (nameOfAction) => {
     set(
       (state) => {

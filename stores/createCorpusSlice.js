@@ -10,6 +10,23 @@ const createCorpusSlice = (set, get) => ({
     decorId: null,
   },
 
+  setCorpusDefaultValues: (nameOfAction) => {
+    set(
+      (state) => {
+        state.corpus = {
+          width: 2865,
+          height: 2300,
+          depth: 500,
+          topShelfHeight: 0,
+          minWidthReserve: 8,
+          decorId: null,
+        };
+      },
+      false,
+      `${nameOfAction}/setCorpusDefaultValues`
+    );
+  },
+
   updateCorpusWidth: (nameOfAction) => {
     set(
       (state) => {

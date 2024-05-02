@@ -39,6 +39,7 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
     );
 
     if (allValuesArePositive) {
+      state.clearAllValues();
       state.setWardrobeWidth(width * 10);
       state.setWardrobeHeight(height * 10);
       state.setWardrobeDepth(depth * 10);

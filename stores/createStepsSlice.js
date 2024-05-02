@@ -56,6 +56,42 @@ const createStepsSlice = (set, get) => ({
       "steps/setCurrentStepId"
     );
   },
+
+  setStepsDefaultValues: (nameOfAction) => {
+    set(
+      (state) => {
+        state.stepsInputs = {
+          step1: {
+            sizeWardrobe: false,
+            typeWardrobe: false,
+            countSections: false,
+            countDoors: false,
+          },
+          step2: {
+            typeDoors: false,
+            typeSections: false,
+            typeProfiles: false,
+          },
+          step3: {
+            decorCorpus: false,
+            decorSideWalls: false,
+            decorDoors: false,
+          },
+        };
+
+        state.activeFilter = {
+          doors: 1,
+          sections: 1,
+        };
+
+        state.currentStep = {
+          id: 1,
+        };
+      },
+      false,
+      `${nameOfAction}/setStepsDefaultValues`
+    );
+  },
 });
 
 export default createStepsSlice;

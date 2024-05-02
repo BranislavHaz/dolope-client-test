@@ -15,6 +15,32 @@ const createWardrobeSlice = (set, get) => ({
     4 = v priestore
     */
 
+  setWardrobeDefaultValues: (nameOfAction) => {
+    set(
+      (state) => {
+        state.wardrobe = {
+          width: 0,
+          height: 0,
+          depth: 0,
+          thickness: 18,
+          type: 0,
+        };
+      },
+      false,
+      `${nameOfAction}/setWardrobeDefaultValues`
+    );
+  },
+
+  clearAllValues: () => {
+    get().setStepsDefaultValues("wardrobe");
+    get().setFilterDefaultValues("wardrobe");
+    get().setWardrobeDefaultValues("wardrobe");
+    get().setSideWallsDefaultValues("wardrobe");
+    get().setCorpusDefaultValues("wardrobe");
+    get().setSectionsDefaultValues("wardrobe");
+    get().setDoorsDefaultValues("wardrobe");
+  },
+
   setWardrobeWidth: (widthValue) => {
     set(
       (state) => {
