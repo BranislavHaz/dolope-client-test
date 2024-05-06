@@ -20,7 +20,6 @@ const Button = styled.div`
   align-items: center;
   border-radius: var(--border-radius);
   font-size: 0.9rem;
-  text-transform: capitalize;
   box-sizing: border-box;
   cursor: pointer;
 
@@ -39,6 +38,10 @@ const Button = styled.div`
     display: ${(props) =>
       props.$isVisibleTablet && props.$isVisible ? "flex" : "none"};
   }
+`;
+
+export const LowerCaseText = styled.span`
+  text-transform: lowercase;
 `;
 
 export const MainColorButton = styled(Button)`

@@ -12,7 +12,6 @@ export const Footer = styled.footer`
   align-items: center;
   padding: 0 1em;
   font-size: 0.8em;
-  text-transform: uppercase;
   background-color: var(--bg-color-config);
   border-top: 1px solid rgba(235, 235, 235, 0.75);
   z-index: 1;

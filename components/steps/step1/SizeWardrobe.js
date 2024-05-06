@@ -134,7 +134,7 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
         </$.Details>
         <$.SubmitWrap>
           <Button handleClick={submitAction} type={"darkColor"}>
-            uložit
+            Uložit
           </Button>
         </$.SubmitWrap>
       </$.FormWrap>

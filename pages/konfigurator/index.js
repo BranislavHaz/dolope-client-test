@@ -7,6 +7,7 @@ import ShowHideDoors from "@/components/steps/ui/ShowHideDoors";
 import Header from "@/layouts/configurator/Header";
 import WardrobeView from "@/layouts/configurator/WardrobeView";
 import WardrobeConfig from "@/layouts/configurator/WardrobeConfig";
+import Step4 from "@/components/steps/step4/Step4";
 import Footer from "@/layouts/configurator/Footer";
 
 import useMainStore from "@/stores/useMainStore";
@@ -20,9 +21,10 @@ export async function getStaticProps() {
 }
 
 const Index = ({ products }) => {
-  const { viewport, setProductsApi } = useMainStore((state) => ({
+  const { viewport, setProductsApi, currentStep } = useMainStore((state) => ({
     viewport: state.viewport,
     setProductsApi: state.setProductsApi,
+    currentStep: state.currentStep,
   }));
 
   useEffect(() => {
@@ -38,18 +40,26 @@ const Index = ({ products }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Modal />
-      <$.WrapContent>
-        <Toaster />
-        <$.WrapView $height={viewport.height}>
-          <ShowHideDoors />
+      {currentStep.id !== 4 && (
+        <$.WrapContent>
+          <Toaster />
+          <$.WrapView $height={viewport.height}>
+            <ShowHideDoors />
+            <Header />
+            <WardrobeView />
+          </$.WrapView>
+          <$.WrapConfig $height={viewport.height}>
+            <WardrobeConfig />
+            <Footer />
+          </$.WrapConfig>
+        </$.WrapContent>
+      )}
+      {currentStep.id === 4 && (
+        <>
           <Header />
-          <WardrobeView />
-        </$.WrapView>
-        <$.WrapConfig $height={viewport.height}>
-          <WardrobeConfig />
-          <Footer />
-        </$.WrapConfig>
-      </$.WrapContent>
+          <Step4 />
+        </>
+      )}
     </>
   );
 };
