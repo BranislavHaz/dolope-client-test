@@ -20,7 +20,7 @@ const createDrawersSlice = (set, get) => ({
       4: 840,
     },
     slideReserve: 10,
-    slideSizes: [250, 300, 350, 400, 450, 500, 550],
+    slideSizes: [300, 350, 400, 450, 500, 550, 600, 650],
   },
 });
 
