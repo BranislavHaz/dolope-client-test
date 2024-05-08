@@ -23,6 +23,16 @@ export const chceckFilledSteps = (stepId, state) => {
       }
       return false;
 
+    case 3:
+      if (
+        stepsInputs.step3.decorCorpus &&
+        stepsInputs.step3.decorSideWalls &&
+        stepsInputs.step3.decorDoors
+      ) {
+        return true;
+      }
+      return false;
+
     default:
       break;
   }
