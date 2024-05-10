@@ -36,9 +36,10 @@ export const getAreasPrice = (state) => {
   const sumPrices = (priceObject) => {
     return Object.values(priceObject)
       .reduce((acc, curr) => acc + curr, 0)
-      .toFixed(2);
+      .toFixed(0);
   };
 
   const totalPriceAreas = sumPrices(pricesAreaObj);
-  return totalPriceAreas;
+
+  return +totalPriceAreas;
 };
