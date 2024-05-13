@@ -1,10 +1,16 @@
+import Image from "next/image";
 import * as $ from "@/styles/layouts/configurator/Header.styled";
 
 const Header = () => {
   return (
     <$.Header>
       <$.Logo>
-        dolope<$.Dot>.</$.Dot>
+        <Image
+          src={"/logos/dolope-logo.svg"}
+          width={150}
+          height={30}
+          alt="Dolope - logo"
+        />
       </$.Logo>
     </$.Header>
   );

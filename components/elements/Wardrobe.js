@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/elements/Wardrobe.styled";
 
@@ -8,54 +7,9 @@ import Rail from "@/components/elements/Rail";
 import Side from "@/components/elements/Side";
 
 const Wardrobe = () => {
-  const {
-    wardrobe,
-    sideWalls,
-    viewport,
-    viewportSizes,
-    setViewport,
-    sections,
-  } = useMainStore((state) => ({
-    wardrobe: state.wardrobe,
-    sideWalls: state.sideWalls,
-    viewport: state.viewport,
+  const { viewportSizes } = useMainStore((state) => ({
     viewportSizes: state.viewportSizes,
-    setViewport: state.setViewport,
-    sections: state.sections,
   }));
-
-  useEffect(() => {
-    setViewport(
-      {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      },
-      [setViewport]
-    );
-
-    const handleResize = () => {
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const { px } = viewport;
-  const countOfStands = sections.count + 1;
-  const countOfSideWalls = sideWalls?.cover?.count || 0;
-
-  const wardrobeWidth =
-    sections.count * sections.width * px +
-    (viewport.thickness * px >= 2
-      ? (countOfStands + countOfSideWalls) * viewport.thickness * px
-      : (countOfStands + countOfSideWalls) * 2);
 
   return (
     <$.Wardrobe

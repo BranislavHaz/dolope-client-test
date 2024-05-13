@@ -11,7 +11,7 @@ export const WardrobeConfig = styled.div`
   justify-content: center;
   background-color: var(--bg-color-config);
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
 
   @media ${device.tablet} {
     flex-direction: row;

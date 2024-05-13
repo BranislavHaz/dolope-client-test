@@ -21,15 +21,41 @@ export async function getStaticProps() {
 }
 
 const Index = ({ products }) => {
-  const { viewport, setProductsApi, currentStep } = useMainStore((state) => ({
-    viewport: state.viewport,
-    setProductsApi: state.setProductsApi,
-    currentStep: state.currentStep,
-  }));
+  const { viewport, setProductsApi, currentStep, setViewport } = useMainStore(
+    (state) => ({
+      viewport: state.viewport,
+      setProductsApi: state.setProductsApi,
+      currentStep: state.currentStep,
+      setViewport: state.setViewport,
+    })
+  );
 
   useEffect(() => {
     setProductsApi(products);
   }, [products]);
+
+  useEffect(() => {
+    setViewport(
+      {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
+      [setViewport]
+    );
+
+    const handleResize = () => {
+      setViewport({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <>
