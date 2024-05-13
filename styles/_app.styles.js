@@ -17,6 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     --m-footer-height: 7vh;
 
     // Laptop layout
+    --l-header-height: 70px;
     --l-wardrobe-view-height: 60vh;
     --l-wardrobe-config-height: 80vh;
     --l-footer-height: 5rem;

@@ -10,6 +10,7 @@ export const Header = styled.header`
   background-color: var(--background-color);
 
   @media ${device.tablet} {
+    height: var(--l-header-height);
     position: absolute;
     left: 0;
     top: 0;
@@ -17,12 +18,15 @@ export const Header = styled.header`
 `;
 
 export const Logo = styled.div`
-  font-family: "Quicksand", sans-serif;
-  font-size: 1.7em;
-  font-weight: 500;
-`;
+  display: flex;
+  justify-content: end;
 
-export const Dot = styled.span`
-  font-size: 1em;
-  color: var(--main-color);
+  & img {
+    width: auto;
+    max-height: 30px;
+
+    @media ${device.tablet} {
+      max-height: 35px;
+    }
+  }
 `;
