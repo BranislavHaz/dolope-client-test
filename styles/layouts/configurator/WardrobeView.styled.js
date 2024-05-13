@@ -14,4 +14,15 @@ export const WardrobeView = styled.div`
   @media ${device.tablet} {
     height: var(--l-wardrobe-view-height);
   }
+
+  & img {
+    width: 90%;
+    height: auto;
+
+    @media ${device.tablet} {
+      width: 80%;
+      max-width: 600px;
+      height: auto;
+    }
+  }
 `;
