@@ -30,5 +30,11 @@ export const fetchProducts = async () => {
   );
   const slidingDoor = await resSlidingDoor.json();
 
-  return { dtd10, dtd18, glass, slidingDoor };
+  const resOtherProducts = await fetch(
+    `https://dolope-6771.rostiapp.cz/other/products`,
+    fetchSetting
+  );
+  const otherProducts = await resOtherProducts.json();
+
+  return { dtd10, dtd18, glass, slidingDoor, otherProducts };
 };

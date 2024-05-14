@@ -1,7 +1,13 @@
 import { categorizeSliddingDoorsProfiles } from "@/utils/categorizeSliddingDoorsProfiles";
 
 const createProductsApiSlice = (set, get) => ({
-  productsAPI: { dtd10: [], dtd18: [], glass: [], slidingDoor: {} },
+  productsAPI: {
+    dtd10: [],
+    dtd18: [],
+    glass: [],
+    slidingDoor: {},
+    otherProducts: [],
+  },
 
   setProductsApi: (products) => {
     set(
@@ -12,6 +18,7 @@ const createProductsApiSlice = (set, get) => ({
         state.productsAPI.slidingDoor = categorizeSliddingDoorsProfiles(
           products.slidingDoor
         );
+        state.productsAPI.otherProducts = products.otherProducts;
       },
       false,
       `productsApi/setProductsApi`

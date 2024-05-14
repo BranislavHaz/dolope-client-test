@@ -1,3 +1,5 @@
+import { getMaxSlideSize } from "../getMaxSlideSize";
+
 const countDrawersSectionsType = {
   6: 2,
   7: 3,
@@ -13,25 +15,6 @@ const countDrawersSectionsType = {
   22: 2,
   23: 3,
   24: 4,
-};
-
-const getMaxSlideSize = (state) => {
-  const corpusDepth = state.corpus.depth;
-  const manualReserve = 8;
-  const frontThickness = state.drawers.thickness;
-  const availableSpace = corpusDepth - manualReserve - frontThickness;
-  const slideSizes = state.drawers.slideSizes;
-
-  const maxSlideSize = slideSizes.reduce((maxSize, size) => {
-    // Ak je aktuálna veľkosť menšia alebo rovná availableSpace a je väčšia ako akákoľvek predchádzajúca hodnota maxSize, vráť túto hodnotu
-    if (size <= availableSpace && size > maxSize) {
-      return size;
-    } else {
-      return maxSize;
-    }
-  }, 0);
-
-  return maxSlideSize;
 };
 
 const getDecorIdCheapestDTD10 = (state) => {

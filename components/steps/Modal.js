@@ -156,14 +156,14 @@ const Modal = () => {
             {ModalContent[modal.type]}
             <$.ModalFooter>
               <Button type={"lightColor"} handleClick={handleClick}>
-                zavřít
+                Zavřít
               </Button>
               <Button
                 type={"mainColor"}
                 handleClick={submitAction}
                 $isVisible={isSubmitVisible}
               >
-                uložit
+                Uložit
               </Button>
             </$.ModalFooter>
           </$.ModalWrap>
