@@ -45,5 +45,7 @@ export const getProfilesDoorPrice = (state) => {
     wheelsPrice.top +
     wheelsPrice.bottom;
 
+  console.log(+fullProfilesPrice + " Nabykov");
+
   return +fullProfilesPrice;
 };

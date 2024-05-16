@@ -11,16 +11,24 @@ export const mergeAreas = (state) => {
   const shelfs = getAreaShelfs(state);
   const drawers = getAreaDrawers(state);
   const doors = getAreaDoors(state);
+  const tableSize = 5.796; // plocha 1 tabule
 
   const areas = {};
 
   // Funkcia na pridanie alebo aktualizáciu hodnot v objekte areas
-  const addAreas = (areaObj) => {
-    for (const decorId in areaObj) {
+  const addAreas = (material) => {
+    console.log(material);
+    for (const decorId in material) {
       if (areas.hasOwnProperty(decorId)) {
-        areas[decorId] += parseFloat(areaObj[decorId]);
+        areas[decorId] = {
+          area: areas[decorId].area + parseFloat(material[decorId].area),
+          type: material[decorId].type,
+        };
       } else {
-        areas[decorId] = parseFloat(areaObj[decorId]);
+        areas[decorId] = {
+          area: parseFloat(material[decorId].area),
+          type: material[decorId].type,
+        };
       }
     }
   };
@@ -31,6 +39,17 @@ export const mergeAreas = (state) => {
   addAreas(shelfs);
   addAreas(drawers);
   addAreas(doors);
+
+  const changeMaterialToFullBoard = (materials) => {
+    for (const decorId in materials) {
+      if (materials[decorId].type === "wood") {
+        materials[decorId].area =
+          Math.ceil(materials[decorId].area / tableSize) * tableSize;
+      }
+    }
+  };
+
+  changeMaterialToFullBoard(areas);
 
   return areas;
 };

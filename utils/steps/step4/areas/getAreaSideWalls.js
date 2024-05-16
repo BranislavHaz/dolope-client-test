@@ -9,5 +9,5 @@ export const getAreaSideWalls = (state) => {
   const stopWallArea = stopWallCount * sideWallsHeight * stopWallWidth; // v mm2
   const fullArea = ((coverWallArea + stopWallArea) / 1000000).toFixed(3); // v m2
 
-  return { [sideWallsDecorId]: Number(fullArea) };
+  return { [sideWallsDecorId]: { area: +fullArea, type: "wood" } };
 };

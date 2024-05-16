@@ -89,7 +89,7 @@ export const getAreaDrawers = (state) => {
   }
 
   return {
-    [drawersDecorId]: +fullAreaDrawers.toFixed(3),
-    [bottomDecorId]: +fullAreaBottoms.toFixed(3),
+    [drawersDecorId]: { area: +fullAreaDrawers.toFixed(3), type: "wood" },
+    [bottomDecorId]: { area: +fullAreaBottoms.toFixed(3), type: "wood" },
   };
 };

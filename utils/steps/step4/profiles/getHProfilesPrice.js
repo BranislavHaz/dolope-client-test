@@ -37,6 +37,17 @@ export const getHProfilesPrice = (availableProfiles, doors) => {
   const hProfilePriceMM =
     hProfileInColor.price_with_vat / (hProfileInColor.length * 1000);
 
+  console.log(
+    "Dĺžka H profilov v mm: " +
+      fullLengthHProfiles +
+      " || " +
+      "Rezerva v mm: " +
+      doors.horizontProfilesReserve +
+      " || " +
+      "Cena za mm profilu: " +
+      hProfilePriceMM
+  );
+
   // Vrátenie ceny za všetky H profily
   return +(
     fullLengthHProfiles *

@@ -35,5 +35,13 @@ export const getDrawerFittingsPrice = (state) => {
     }
   }
 
+  console.log(
+    "Počet zásuviek: " +
+      totaldrawersCount +
+      " || " +
+      "Cena za zásuvku: " +
+      slidePrice
+  );
+
   return +(totaldrawersCount * slidePrice).toFixed(0);
 };

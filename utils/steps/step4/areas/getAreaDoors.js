@@ -1,5 +1,6 @@
 export const getAreaDoors = (state) => {
   const doors = state.doors;
+  const glassesArr = state.productsAPI.glass;
   const areas = {};
 
   // Prechádzame všetky typy dverí
@@ -21,7 +22,22 @@ export const getAreaDoors = (state) => {
 
   // Formátujeme každú plochu na 3 desatinné miesta
   for (const decorId in areas) {
-    areas[decorId] = parseFloat(areas[decorId].toFixed(3));
+    // Zisti, či sa decorId nachádza v glass poli z API
+    const existsInGlass = glassesArr.some(
+      (glassItem) => glassItem.id == decorId
+    );
+
+    if (existsInGlass) {
+      areas[decorId] = {
+        area: parseFloat(areas[decorId].toFixed(3)),
+        type: "glass",
+      };
+    } else {
+      areas[decorId] = {
+        area: parseFloat(areas[decorId].toFixed(3)),
+        type: "wood",
+      };
+    }
   }
 
   return areas;

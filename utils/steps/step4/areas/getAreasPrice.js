@@ -25,7 +25,7 @@ export const getAreasPrice = (state) => {
     }
 
     if (price) {
-      const area = areas[decorId];
+      const area = areas[decorId].area;
       const totalCost = price * area; // Cena za m2 * počet m2
       pricesAreaObj[decorId] = +totalCost.toFixed(2);
     } else {
@@ -38,6 +38,8 @@ export const getAreasPrice = (state) => {
       .reduce((acc, curr) => acc + curr, 0)
       .toFixed(0);
   };
+
+  console.log(pricesAreaObj);
 
   const totalPriceAreas = sumPrices(pricesAreaObj);
 

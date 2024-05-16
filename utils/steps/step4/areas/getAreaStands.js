@@ -6,5 +6,5 @@ export const getAreaStands = (state) => {
   const fullAreaMM2 = standsCount * standsWidth * standsHeight;
   const fullAreaM2 = (fullAreaMM2 / 1000000).toFixed(3);
 
-  return { [standsDecorId]: Number(fullAreaM2) };
+  return { [standsDecorId]: { area: fullAreaM2, type: "wood" } };
 };

@@ -43,5 +43,5 @@ export const getAreaShelfs = (state) => {
   const fullAreaMM2 = shelfsCount * shelfsWidth * shelfsHeight;
   const fullAreaM2 = (fullAreaMM2 / 1000000).toFixed(3);
 
-  return { [shelfsDecorId]: Number(fullAreaM2) };
+  return { [shelfsDecorId]: { area: +fullAreaM2, type: "wood" } };
 };

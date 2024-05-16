@@ -16,15 +16,22 @@ const Step4 = () => {
   const profilesPrice = getProfilesDoorPrice(state);
   const drawersFittingPrice = getDrawerFittingsPrice(state);
   const marginPrice = 1.8; // marža
+  const feesDemos = 7400; // formatovanie, hranenie, balenie, dovoz
+  const feesNabykov = 200; // dovoz
+
   const fullPrice = (
-    (areasPrice + profilesPrice + drawersFittingPrice) *
+    (areasPrice +
+      profilesPrice +
+      drawersFittingPrice +
+      feesDemos +
+      feesNabykov) *
     marginPrice
   ).toFixed(0);
   const formattedPrice = Number(fullPrice).toLocaleString("cs-CZ");
 
-  console.log(areasPrice);
+  /*   console.log(areasPrice);
   console.log(profilesPrice);
-  console.log(drawersFittingPrice);
+  console.log(drawersFittingPrice); */
 
   return (
     <$.Wrap>
