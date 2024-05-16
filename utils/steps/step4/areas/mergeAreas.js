@@ -51,5 +51,8 @@ export const mergeAreas = (state) => {
 
   changeMaterialToFullBoard(areas);
 
+  console.log("AREAS");
+  console.log(areas);
+
   return areas;
 };
