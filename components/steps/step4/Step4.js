@@ -16,8 +16,8 @@ const Step4 = () => {
   const profilesPrice = getProfilesDoorPrice(state);
   const drawersFittingPrice = getDrawerFittingsPrice(state);
   const marginPrice = 1.6; // marža
-  const feesDemos = 7400; // formatovanie, hranenie, balenie, dovoz
-  const feesNabykov = 200; // dovoz
+  const feesDemos = 7400; // formatovanie, hranenie, balenie, dovoz CZK
+  const feesNabykov = 200; // dovoz CZK
 
   const fullPrice = (
     (areasPrice +
