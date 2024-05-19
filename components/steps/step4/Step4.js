@@ -1,6 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/steps/step4/Step4.styled";
 
+import ShowHideDoors from "../ui/ShowHideDoors";
 import WardrobeView from "@/layouts/configurator/WardrobeView";
 
 import { getAreasPrice } from "@/utils/steps/step4/areas/getAreasPrice";
@@ -8,8 +9,9 @@ import { getProfilesDoorPrice } from "@/utils/steps/step4/profiles/getProfilesDo
 import { getDrawerFittingsPrice } from "@/utils/steps/step4/drawers/getDrawerFittingsPrice";
 
 const Step4 = () => {
-  const { state } = useMainStore((state) => ({
+  const { state, setCurrentStepId } = useMainStore((state) => ({
     state: state,
+    setCurrentStepId: state.setCurrentStepId,
   }));
 
   const areasPrice = getAreasPrice(state);
@@ -29,14 +31,15 @@ const Step4 = () => {
   ).toFixed(0);
   const formattedPrice = Number(fullPrice).toLocaleString("cs-CZ");
 
-  /*   console.log(areasPrice);
-  console.log(profilesPrice);
-  console.log(drawersFittingPrice); */
+  const handleBack = () => {
+    setCurrentStepId(3);
+  };
 
   return (
     <$.Wrap>
       <$.WardrobeWrap>
         <WardrobeView />
+        <ShowHideDoors isLastStep={true} />
       </$.WardrobeWrap>
       <$.ContentWrap>
         <$.Title>Celková cena</$.Title>
@@ -48,6 +51,9 @@ const Step4 = () => {
         <$.ElementPricing>Fotorealistická vizualizace</$.ElementPricing>
         <$.ElementPricing>Výroba skříně</$.ElementPricing>
         <$.ElementPricing>Doprava a montáž skříně</$.ElementPricing>
+        <$.BackButton onClick={handleBack}>
+          {`<<`} Zpět na konfiguraci
+        </$.BackButton>
       </$.ContentWrap>
     </$.Wrap>
   );

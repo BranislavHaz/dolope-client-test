@@ -9,4 +9,6 @@ export const Hanger = styled.div`
   border-bottom: 0.25px solid #000;
   width: ${(props) => props.$width}px;
   height: ${(props) => props.$height}px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px inset,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
 `;

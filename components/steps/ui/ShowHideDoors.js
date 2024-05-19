@@ -3,7 +3,7 @@ import * as $ from "@/styles/components/steps/ui/ShowHideDoors.styled";
 
 import useMainStore from "@/stores/useMainStore";
 
-const ShowHideDoors = () => {
+const ShowHideDoors = ({ isLastStep = false }) => {
   const { doors, setVisibilityDoors, stepsInputs } = useMainStore((state) => ({
     doors: state.doors,
     setVisibilityDoors: state.setVisibilityDoors,
@@ -17,6 +17,7 @@ const ShowHideDoors = () => {
   return (
     <$.Wrap
       $isVisible={stepsInputs.step2.typeDoors}
+      $isLastStep={isLastStep}
       onClick={() => handleClick()}
     >
       <Image

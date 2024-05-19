@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrap = styled.div`
   width: 70px;
@@ -14,6 +14,14 @@ export const Wrap = styled.div`
   border-bottom-left-radius: 12px 12px;
   z-index: 90;
   cursor: pointer;
+
+  ${(props) =>
+    props.$isLastStep &&
+    css`
+      left: 0;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 12px 12px;
+    `}
 
   & img {
     margin-top: 5px;
