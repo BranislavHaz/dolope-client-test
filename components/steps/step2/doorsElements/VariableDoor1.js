@@ -1,4 +1,9 @@
 import useMainStore from "@/stores/useMainStore";
+import {
+  getVariableHeightsDoor,
+  getInputErrs,
+  getSpaceHeights,
+} from "@/utils/steps/step2/getDefaultStates";
 import { calcMinMaxDoorHeight } from "@/utils/steps/step2/calcDoorHeight";
 import { checkIfIsActiveDoor } from "@/utils/steps/step2/checkIfIsActiveDoor";
 import { nextStepFilterBox } from "@/utils/steps/step2/nextStepFilterBox";
@@ -6,80 +11,105 @@ import { useState } from "react";
 
 import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
 
-const VariableDoor1 = () => {
-  const { state, doors, setTypeOfDoors, removeTypeOfDoors, activeFilter } =
+const VariableDoor1 = ({ id }) => {
+  const { state, doors, setTypeOfDoors, removeTypeOfDoors, currentDoor } =
     useMainStore((state) => ({
       state: state,
       doors: state.doors,
       setTypeOfDoors: state.setTypeOfDoors,
       removeTypeOfDoors: state.removeTypeOfDoors,
-      activeFilter: state.activeFilter,
+      currentDoor: state.activeFilter.doors,
     }));
 
-  const [inputValue, setInputValue] = useState(0);
-  const [variableHeight, setVariableHeight] = useState(0);
-  const [inputErr, setInputErr] = useState(false);
+  const [variableHeight, setVariableHeight] = useState(
+    getVariableHeightsDoor(state, id)
+  );
+  const [spaceHeight, setSpaceHeight] = useState(getSpaceHeights(state, id));
+  const [inputErr, setInputErr] = useState(getInputErrs(state));
 
   const handleOnChange = (value) => {
     const valueMM = value * 10;
     const { min, max } = calcMinMaxDoorHeight(1, doors.height);
 
-    setInputValue(value);
+    setVariableHeight((variableHeight) => ({
+      ...variableHeight,
+      [currentDoor]: value,
+    }));
 
     if (valueMM === "undefined" || valueMM === "" || valueMM === 0) {
-      setInputErr(null);
+      setInputErr((inputErr) => ({ ...inputErr, [currentDoor]: null }));
     } else if (min <= valueMM && valueMM <= max) {
-      setVariableHeight(Math.round((doors.height - valueMM) / 10));
-      setInputErr(false);
+      setSpaceHeight((spaceHeight) => ({
+        ...spaceHeight,
+        [currentDoor]: +((doors.height - valueMM) / 10).toFixed(0),
+      }));
+      setInputErr((inputErr) => ({ ...inputErr, [currentDoor]: false }));
     } else {
-      setVariableHeight(0);
-      setInputErr(true);
+      setSpaceHeight((spaceHeight) => ({
+        ...spaceHeight,
+        [currentDoor]: 0,
+      }));
+      setInputErr((inputErr) => ({ ...inputErr, [currentDoor]: true }));
     }
   };
 
   const handleClick = () => {
-    const doorId = activeFilter.doors;
+    const doorId = currentDoor;
 
-    if (inputValue > 0 && !inputErr) {
-      const typeOfDoor = 6;
+    if (variableHeight[currentDoor] > 0 && !inputErr[currentDoor]) {
+      const typeOfDoor = id;
+      const currentVariableHeight = variableHeight[currentDoor] * 10;
+      const currentSpaceHeight = spaceHeight[currentDoor] * 10;
       const sections = {
         1: {
           width: doors.width,
-          height: Math.round(doors.height - inputValue * 10),
+          height: Math.round(doors.height - variableHeight[currentDoor] * 10),
         },
-        2: { width: doors.width, height: Math.round(inputValue * 10) },
+        2: {
+          width: doors.width,
+          height: Math.round(variableHeight[currentDoor] * 10),
+        },
       };
-      setTypeOfDoors({ doorId, sections, typeOfDoor });
+      setTypeOfDoors({
+        doorId,
+        variableHeight: currentVariableHeight,
+        spaceHeight: currentSpaceHeight,
+        sections,
+        typeOfDoor,
+      });
       nextStepFilterBox({ state, type: "doors" });
     } else {
       setTypeOfDoors({ doorId, isFilled: false });
     }
-    !inputValue && setInputErr(true);
+    !variableHeight[currentDoor] && setInputErr(true);
   };
 
   const handleInputClick = (e) => {
     e.stopPropagation();
-    const doorId = activeFilter.doors;
+    const doorId = currentDoor;
     removeTypeOfDoors(doorId);
   };
 
   return (
-    <$.DoorWrap $isActive={checkIfIsActiveDoor(state, 6)} onClick={handleClick}>
+    <$.DoorWrap
+      $isActive={checkIfIsActiveDoor(state, id)}
+      onClick={handleClick}
+    >
       <$.DoorType>
         <$.DoorElement $heightRatio={0.5}>
-          {variableHeight !== 0 && (
-            <$.DimensionsText>{variableHeight} cm</$.DimensionsText>
+          {spaceHeight[currentDoor] !== 0 && (
+            <$.DimensionsText>{spaceHeight[currentDoor]} cm</$.DimensionsText>
           )}
         </$.DoorElement>
         <$.DoorElement $heightRatio={0.5}>
           <$.InputNum
             placeholder="cm"
-            value={inputValue || ""}
+            value={variableHeight[currentDoor]}
             onChange={(e) => handleOnChange(e.target.value)}
             onClick={handleInputClick}
-            $isError={inputErr}
+            $isError={inputErr[currentDoor]}
           />
-          <$.LimitText $isError={inputErr}>
+          <$.LimitText $isError={inputErr[currentDoor]}>
             {calcMinMaxDoorHeight(1, doors.height).text}
           </$.LimitText>
         </$.DoorElement>

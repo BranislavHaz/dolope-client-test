@@ -96,12 +96,24 @@ const createDoorsSlice = (set, get) => ({
     );
   },
 
-  setTypeOfDoors: ({ doorId, sections, typeOfDoor, isFilled = true }) => {
+  setTypeOfDoors: ({
+    doorId,
+    variableHeight,
+    spaceHeight,
+    sections,
+    typeOfDoor,
+    isFilled = true,
+  }) => {
     set(
       (state) => {
         const newTypeDoors = { ...state.doors.typeDoors };
         isFilled
-          ? (newTypeDoors[doorId] = { typeOfDoor, sections })
+          ? (newTypeDoors[doorId] = {
+              typeOfDoor,
+              variableHeight,
+              spaceHeight,
+              sections,
+            })
           : delete newTypeDoors[doorId];
 
         state.doors.typeDoors = newTypeDoors;

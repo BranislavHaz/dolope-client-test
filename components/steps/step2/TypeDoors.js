@@ -59,10 +59,10 @@ const TypeDoors = ({ setHandleSubmit }) => {
         <FixedDoors />
         <Title>Variabilní výška dveří</Title>
         <$.TypeDoorsWrap>
-          <VariableDoor1 />
-          <VariableDoor2 />
-          <VariableDoor3 />
-          <VariableDoor4 />
+          <VariableDoor1 id={6} />
+          <VariableDoor2 id={7} />
+          <VariableDoor3 id={8} />
+          <VariableDoor4 id={9} />
         </$.TypeDoorsWrap>
       </$.Wrap>
     </>
