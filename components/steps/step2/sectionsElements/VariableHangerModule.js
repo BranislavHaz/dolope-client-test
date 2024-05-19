@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { selectSection } from "@/utils/steps/step2/selectSection";
+import {
+  getVariableHeights,
+  getInputErrs,
+} from "@/utils/steps/step2/getDefaultStates";
 import useMainStore from "@/stores/useMainStore";
 
 import SpaceModal from "@/components/modules/modal/elements/SpaceModal";
@@ -16,18 +20,20 @@ const VariableHangerModule = ({
   bottomShelf,
   id,
 }) => {
-  const { state, viewport, wardrobe, corpus, drawers } = useMainStore(
-    (state) => ({
+  const { state, viewport, wardrobe, corpus, drawers, currentSection } =
+    useMainStore((state) => ({
       state: state,
       viewport: state.viewport,
       wardrobe: state.wardrobe,
       corpus: state.corpus,
       drawers: state.drawers,
-    })
-  );
+      currentSection: state.activeFilter.sections,
+    }));
 
-  const [variableHeight, setVariableHeight] = useState(undefined);
-  const [inputErr, setInputErr] = useState(null);
+  const [variableHeight, setVariableHeight] = useState(
+    getVariableHeights(state, id)
+  );
+  const [inputErr, setInputErr] = useState(getInputErrs(state));
 
   const sectionHeightDisplay = viewport.height * 0.3; // 30vh má SectionType v TypeSections.styled
   const sectionHeightReal = corpus.height;
@@ -35,7 +41,7 @@ const VariableHangerModule = ({
   const minShelfSpace = 200; // minimálna hodnota pre priestor na policu
 
   const hangerHeightDisplay = sectionHeightDisplay / 2.5;
-  const hangerHeightReal = variableHeight * 10; // v mm
+  const hangerHeightReal = variableHeight[currentSection] * 10; // v mm
   const drawersHeightDisplay = (sectionHeightDisplay / 10) * countDrawers || 0;
   const drawersHeightReal = drawers.heightOfDrawers[countDrawers] || 0;
   const shelfsHeightDisplay = shelfThicknessDisplay * countShelfs;
@@ -76,7 +82,7 @@ const VariableHangerModule = ({
   };
 
   const generateModule = () => {
-    const heightSpace = Math.floor(calcHangerHeightSpace() * 100) / 100;
+    const heightSpace = +calcHangerHeightSpace().toFixed(1);
     const displayHeight = calcHeightSpace();
     const moduleArr = [];
 
@@ -88,7 +94,7 @@ const VariableHangerModule = ({
             <SpaceModal
               displayHeight={displayHeight}
               realHeight={heightSpace}
-              isError={inputErr}
+              isError={inputErr[currentSection]}
             />
           </React.Fragment>
         );
@@ -100,10 +106,10 @@ const VariableHangerModule = ({
         <$.Self />
         <VariableHangerModal
           displayHeight={hangerHeightDisplay}
-          realHeight={variableHeight}
+          realHeight={variableHeight[currentSection]}
           setVariableHeight={setVariableHeight}
           minMaxHeight={calcMinMaxHeight}
-          inputErr={inputErr}
+          inputErr={inputErr[currentSection]}
           setInputErr={setInputErr}
         />
       </>
@@ -117,7 +123,7 @@ const VariableHangerModule = ({
             <SpaceModal
               displayHeight={displayHeight}
               realHeight={heightSpace}
-              isError={inputErr}
+              isError={inputErr[currentSection]}
             />
           </React.Fragment>
         );
@@ -131,7 +137,7 @@ const VariableHangerModule = ({
           <SpaceModal
             displayHeight={displayHeight}
             realHeight={heightSpace}
-            isError={inputErr}
+            isError={inputErr[currentSection]}
           />
         </React.Fragment>
       );
@@ -151,8 +157,8 @@ const VariableHangerModule = ({
   };
 
   const handleClick = () => {
-    const realHeight = Number(variableHeight) * 10;
-    if (variableHeight && !inputErr) {
+    const realHeight = Number(variableHeight[currentSection]) * 10;
+    if (variableHeight[currentSection] && !inputErr[currentSection]) {
       selectSection(state, id, realHeight);
     }
   };

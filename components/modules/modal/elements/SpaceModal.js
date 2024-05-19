@@ -4,7 +4,7 @@ const SpaceModal = ({ displayHeight, realHeight, isError }) => {
   return (
     <$.Space $height={displayHeight}>
       <$.SpaceLine />
-      {isError !== null && !isError && `${realHeight} cm`}
+      {isError !== null && !isError && realHeight ? `${realHeight} cm` : ""}
     </$.Space>
   );
 };

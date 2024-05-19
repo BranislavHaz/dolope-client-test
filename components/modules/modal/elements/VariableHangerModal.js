@@ -1,3 +1,4 @@
+import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/modules/modal/Module.styled";
 
 const VariableHangerModal = ({
@@ -8,18 +9,24 @@ const VariableHangerModal = ({
   inputErr,
   setInputErr,
 }) => {
+  const { currentSection } = useMainStore((state) => ({
+    currentSection: state.activeFilter.sections,
+  }));
   const { minValue, maxValue } = minMaxHeight();
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
-    setVariableHeight(inputValue);
+    setVariableHeight((variableHeight) => ({
+      ...variableHeight,
+      [currentSection]: inputValue,
+    }));
 
     if (inputValue === "undefined" || inputValue === "") {
-      setInputErr(null);
+      setInputErr((inputErr) => ({ ...inputErr, [currentSection]: null }));
     } else if (inputValue < minValue || inputValue > maxValue) {
-      setInputErr(true);
+      setInputErr((inputErr) => ({ ...inputErr, [currentSection]: true }));
     } else {
-      setInputErr(false);
+      setInputErr((inputErr) => ({ ...inputErr, [currentSection]: false }));
     }
   };
 
