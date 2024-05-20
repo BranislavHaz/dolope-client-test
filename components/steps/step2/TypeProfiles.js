@@ -143,9 +143,9 @@ const TypeProfiles = ({ setHandleSubmit }) => {
   return (
     <>
       <$.Wrap>
-        <Title>Typ profilu</Title>
+        <Title>Typ madel posuvných dveří</Title>
         <$.TypeProfilesWrap>{generateProfiles()}</$.TypeProfilesWrap>
-        <Title>Barva profilu</Title>
+        <Title>Barva všech profilů dveří</Title>
         <$.ColorProfilesWrap>{generateColors()}</$.ColorProfilesWrap>
       </$.Wrap>
     </>

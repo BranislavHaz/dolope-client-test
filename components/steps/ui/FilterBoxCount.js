@@ -8,11 +8,27 @@ const typeObj = {
 };
 
 const FilterBoxCount = ({ type, count, active }) => {
-  const { setActiveFilter, setBeScrolled } = useMainStore((state) => ({
-    setActiveFilter: state.setActiveFilter,
-    setBeScrolled: state.setBeScrolled,
-  }));
+  const { sections, doors, setActiveFilter, setBeScrolled } = useMainStore(
+    (state) => ({
+      sections: state.sections,
+      doors: state.doors,
+      setActiveFilter: state.setActiveFilter,
+      setBeScrolled: state.setBeScrolled,
+    })
+  );
   const setTimeout = useTimeout();
+
+  const checkIsSelected = (i) => {
+    switch (type) {
+      case "sections":
+        return sections.typeOfSections[i] || false;
+      case "doors":
+        return doors.typeDoors[i] || false;
+
+      default:
+        return false;
+    }
+  };
 
   const handleClick = (id) => () => {
     setBeScrolled(true);
@@ -29,6 +45,7 @@ const FilterBoxCount = ({ type, count, active }) => {
           key={i}
           onClick={handleClick(i)}
           $isActive={active === i}
+          $isSelected={checkIsSelected(i)}
         >
           {content}
         </$.FilterElement>

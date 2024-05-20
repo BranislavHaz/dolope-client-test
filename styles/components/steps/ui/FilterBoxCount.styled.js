@@ -42,6 +42,29 @@ export const FilterElement = styled.div`
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px;
   transition: all 0.1s ease-in;
   cursor: pointer;
+  position: relative;
+
+  &::after {
+    opacity: ${(props) => (props.$isSelected ? 1 : 0)};
+    content: "✔";
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: -0.6rem;
+    right: -0.5rem;
+    font-size: 1.1rem;
+    color: green;
+    text-shadow: 0.2px 0.2px 0 rgba(255, 255, 255, 0.6),
+      -0.2px 0.2px 0 rgba(255, 255, 255, 0.6),
+      0.2px -0.2px 0 rgba(255, 255, 255, 0.6),
+      -0.2px -0.2px 0 rgba(255, 255, 255, 0.6);
+
+    ${(props) =>
+      props.$isSelected &&
+      css`
+        animation: ${activeElement} 0.15s ease-in-out;
+      `}
+  }
 
   &:hover {
     @media ${device.tablet} {

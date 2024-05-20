@@ -77,7 +77,7 @@ const VariableDoor1 = ({ id }) => {
         sections,
         typeOfDoor,
       });
-      nextStepFilterBox({ state, type: "doors" });
+      //nextStepFilterBox({ state, type: "doors" });
     } else {
       setTypeOfDoors({ doorId, isFilled: false });
     }

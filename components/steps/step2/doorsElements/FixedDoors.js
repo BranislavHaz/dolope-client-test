@@ -34,7 +34,7 @@ const FixedDoors = () => {
     const doorId = activeFilter.doors;
     const sections = getDoorSections(typeOfDoor, doors);
     setTypeOfDoors({ doorId, sections, typeOfDoor });
-    nextStepFilterBox({ state, type: "doors" });
+    //nextStepFilterBox({ state, type: "doors" });
   };
 
   return (
