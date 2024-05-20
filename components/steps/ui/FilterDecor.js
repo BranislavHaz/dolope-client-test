@@ -1,45 +1,15 @@
-import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
-import UsedDoorsDecor from "./UsedDoorsDecor";
+import Button from "./Button";
+import * as $ from "@/styles/components/steps/ui/FilterDecor.styled";
 
-import Decors from "./Decors";
-import Doors from "@/components/elements/Doors";
-import Button from "../ui/Button";
-import FilterDecor from "../ui/FilterDecor";
+const FilterDecor = ({ type }) => {
+  const { decorFilter, setDecorFilter } = useMainStore((state) => ({
+    decorFilter: state.decorFilter,
+    setDecorFilter: state.setDecorFilter,
+  }));
 
-import toast from "react-hot-toast";
-
-import * as $ from "@/styles/components/steps/step3/DecorDoors.styled";
-
-const DecorDoors = ({ setHandleSubmit }) => {
-  const { doors, stepsInputs, setIsModalActive, decorFilter, setDecorFilter } =
-    useMainStore((state) => ({
-      doors: state.doors,
-      stepsInputs: state.stepsInputs,
-      setIsModalActive: state.setIsModalActive,
-      decorFilter: state.decorFilter,
-      setDecorFilter: state.setDecorFilter,
-    }));
-
-  const handleSubmit = () => {
-    if (stepsInputs.step3.decorDoors) {
-      setIsModalActive(false);
-      toast.success("Dekory dveří byly uloženy!", {
-        className: "small-device",
-      });
-    } else {
-      toast.error("Vyberte dekor pro všechny dveře a jejich sekce!", {
-        className: "small-device",
-      });
-    }
-  };
-
-  useEffect(() => {
-    setHandleSubmit(() => () => handleSubmit());
-  }, [doors.typeDoors, stepsInputs.step3.decorDoors]);
-
-  /*   const getIsSelected = (type) => {
-    switch (type) {
+  const getIsSelected = (materialType) => {
+    switch (materialType) {
       case "wood":
         return decorFilter.doors.materialType === "wood"
           ? "darkColor"
@@ -60,7 +30,6 @@ const DecorDoors = ({ setHandleSubmit }) => {
   };
 
   const handleClick = (type) => {
-    console.log(type);
     switch (type) {
       case "wood":
         setDecorFilter({
@@ -98,13 +67,21 @@ const DecorDoors = ({ setHandleSubmit }) => {
       default:
         break;
     }
-  }; */
+  };
 
   return (
-    <>
-      <Doors type={"modal"} />
-      <FilterDecor />
-      {/*       <$.TypeDecorsWrap>
+    <$.Wrap>
+      <$.SearchWrap>
+        <$.SearchInput
+          placeholder="Vyhledejte název nebo kód dekoru"
+          /*           value={searchValue || ""}
+          onChange={(e) => setSearchValue(e.target.value)}
+          onKeyDown={handleKeyDown}*/
+          $isError={false}
+        />
+        <$.SearchErrorText>Minimálně 3 znaky</$.SearchErrorText>
+      </$.SearchWrap>
+      <$.MaterialTypeWrap>
         <Button
           type={getIsSelected("wood")}
           handleClick={() => handleClick("wood")}
@@ -123,11 +100,9 @@ const DecorDoors = ({ setHandleSubmit }) => {
         >
           Skla
         </Button>
-      </$.TypeDecorsWrap> */}
-      <UsedDoorsDecor />
-      <Decors type={"doors"} />
-    </>
+      </$.MaterialTypeWrap>
+    </$.Wrap>
   );
 };
 
-export default DecorDoors;
+export default FilterDecor;

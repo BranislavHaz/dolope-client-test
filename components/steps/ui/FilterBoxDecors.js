@@ -96,22 +96,6 @@ const FilterBoxDecors = ({ type }) => {
       </$.BoxHeader>
       {isContentOpen && (
         <>
-          {type === "doors" && (
-            <$.MaterialTypeWrap>
-              <$.MaterialType
-                $isActive={materialTypeState === "wood"}
-                onClick={() => setMaterialTypeState("wood")}
-              >
-                Dřevotříska
-              </$.MaterialType>
-              <$.MaterialType
-                $isActive={materialTypeState === "glass"}
-                onClick={() => setMaterialTypeState("glass")}
-              >
-                Zrcadla a skla
-              </$.MaterialType>
-            </$.MaterialTypeWrap>
-          )}
           <$.BoxContent>
             <$.SearchWrap>
               <$.Search
