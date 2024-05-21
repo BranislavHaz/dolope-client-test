@@ -1,27 +1,39 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const SearchWrap = styled.div`
-  width: 50%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  margin-bottom: 1rem;
   position: relative;
+
+  @media ${device.tablet} {
+    width: 50%;
+  }
+`;
+
+export const InputWrap = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
 `;
 
 export const SearchInput = styled.input.attrs({ type: "text" })`
-  width: 100%;
-  text-align: center;
+  width: 90%;
+  height: 3rem;
+  text-align: left;
+  padding-left: 1.5rem;
   border: 1px solid;
   border-color: ${(props) =>
     props.$isError ? "var(--warning-color)" : "var(--border-input-default)"};
-  border-radius: 10px;
-  line-height: 3rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px;
   box-sizing: border-box;
-  position: relative;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: none;
 
   &:focus,
   &:active {
@@ -31,18 +43,16 @@ export const SearchInput = styled.input.attrs({ type: "text" })`
 `;
 
 export const SearchIcon = styled.div`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 20%;
+  height: 3rem;
   background-color: var(--bg-button);
-  position: absolute;
-  top: 0.4rem;
-  right: 0.4rem;
-  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: all 0.35 ease-in-out;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 
   img {
     width: 2rem;

@@ -46,21 +46,23 @@ const SearchDecors = ({ type }) => {
 
   return (
     <$.SearchWrap>
-      <$.SearchInput
-        placeholder="Vyhledejte název nebo kód dekoru"
-        value={searchValue || ""}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-        $isError={isError}
-      />
-      <$.SearchIcon onClick={handleSubmit}>
-        <Image
-          src={"/icons/search-icon.svg"}
-          width={50}
-          height={50}
-          alt="Search icon"
+      <$.InputWrap>
+        <$.SearchInput
+          placeholder="Vyhledejte název nebo kód dekoru"
+          value={searchValue || ""}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          $isError={isError}
         />
-      </$.SearchIcon>
+        <$.SearchIcon onClick={handleSubmit}>
+          <Image
+            src={"/icons/search-icon.svg"}
+            width={50}
+            height={50}
+            alt="Search icon"
+          />
+        </$.SearchIcon>
+      </$.InputWrap>
       <$.SearchErrorText $isError={isError}>
         Minimálně 3 znaky
       </$.SearchErrorText>

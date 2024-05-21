@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import Decors from "./Decors";
-import SearchDecors from "../ui/SearchDecors";
+import FilterDecor from "../ui/FilterDecor";
 
 import toast from "react-hot-toast";
 
@@ -30,7 +30,7 @@ const DecorCorpus = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <SearchDecors type={"corpus"} />
+      <FilterDecor type={"corpus"} />
       <Decors type={"corpus"} />
     </>
   );

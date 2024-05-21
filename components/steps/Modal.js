@@ -22,7 +22,6 @@ import DecorDoors from "./step3/DecorDoors";
 
 // UI/UX
 import FilterBoxCount from "./ui/FilterBoxCount";
-import FilterBoxDecors from "./ui/FilterBoxDecors";
 
 const Modal = () => {
   const {
@@ -141,15 +140,6 @@ const Modal = () => {
                   count={doors.count}
                   active={activeFilter.doors}
                 />
-              )}
-              {modal.type === "decorCorpus" && (
-                <FilterBoxDecors type={"corpus"} />
-              )}
-              {modal.type === "decorSideWalls" && (
-                <FilterBoxDecors type={"sideWalls"} />
-              )}
-              {modal.type === "decorDoors" && (
-                <FilterBoxDecors type={"doors"} />
               )}
               <$.CloseModal onClick={handleClick} />
             </$.TopBar>

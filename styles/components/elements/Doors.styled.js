@@ -11,10 +11,10 @@ export const Doors = styled.div`
     props.$type === "modal" &&
     css`
       transform: scale(0.8);
-      margin: 5rem 0 1rem 0;
+      margin: 1rem 0;
 
       @media ${device.tablet} {
-        margin: 3rem 0 1rem 0;
+        margin: 1rem 0;
       }
     `}
 `;

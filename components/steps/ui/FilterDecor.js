@@ -1,64 +1,114 @@
+import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
-import Button from "./Button";
+
+import SearchDecors from "./SearchDecors";
+
 import * as $ from "@/styles/components/steps/ui/FilterDecor.styled";
 
 const FilterDecor = ({ type }) => {
-  const { decorFilter, setDecorFilter } = useMainStore((state) => ({
+  const { modal, decorFilter, setDecorFilter } = useMainStore((state) => ({
+    modal: state.modal,
     decorFilter: state.decorFilter,
     setDecorFilter: state.setDecorFilter,
   }));
 
-  const getIsSelected = (materialType) => {
-    switch (materialType) {
-      case "wood":
-        return decorFilter.doors.materialType === "wood"
-          ? "darkColor"
-          : "lightColor";
+  const [showMaterialType, setShowMaterialType] = useState(false);
+  const [showDecorType, setShowDecorType] = useState(false);
 
-      case "mirror":
-        return decorFilter.doors.materialType === "mirror"
-          ? "darkColor"
-          : "lightColor";
-
-      case "glass":
-        return decorFilter.doors.materialType === "glass"
-          ? "darkColor"
-          : "lightColor";
-      default:
-        return "lightColor";
+  useEffect(() => {
+    if (modal.type === "decorDoors") {
+      setShowMaterialType(true);
+    } else {
+      setShowMaterialType(false);
     }
+
+    if (
+      modal.type === "decorCorpus" ||
+      modal.type === "decorSideWalls" ||
+      (modal.type === "decorDoors" && decorFilter.doors.materialType === "wood")
+    ) {
+      setShowDecorType(true);
+    } else {
+      setShowDecorType(false);
+    }
+  }, [modal.type, decorFilter.doors.materialType]);
+
+  const handleClickMaterialType = (e) => {
+    setDecorFilter({
+      type,
+      search: null,
+      materialType: e.target.id,
+    });
   };
 
-  const handleClick = (materialType) => {
+  const handleClickDecorType = (e) => {
     setDecorFilter({
-      type: "doors",
+      type,
       search: null,
-      materialType,
+      decorType: e.target.id,
     });
   };
 
   return (
     <$.Wrap>
-      <$.MaterialTypeWrap>
-        <Button
-          type={getIsSelected("wood")}
-          handleClick={() => handleClick("wood")}
-        >
-          Dřevotříska
-        </Button>
-        <Button
-          type={getIsSelected("mirror")}
-          handleClick={() => handleClick("mirror")}
-        >
-          Zrcadla
-        </Button>
-        <Button
-          type={getIsSelected("glass")}
-          handleClick={() => handleClick("glass")}
-        >
-          Skla
-        </Button>
-      </$.MaterialTypeWrap>
+      <SearchDecors type={type} />
+      {showMaterialType && (
+        <$.TypeWrap>
+          <$.Button
+            id="wood"
+            onClick={handleClickMaterialType}
+            $isActive={decorFilter.doors.materialType === "wood"}
+          >
+            Dřevotříska
+          </$.Button>
+          <$.Button
+            id="mirror"
+            onClick={handleClickMaterialType}
+            $isActive={decorFilter.doors.materialType === "mirror"}
+          >
+            Zrcadla
+          </$.Button>
+          <$.Button
+            id="glass"
+            onClick={handleClickMaterialType}
+            $isActive={decorFilter.doors.materialType === "glass"}
+          >
+            Skla
+          </$.Button>
+        </$.TypeWrap>
+      )}
+      {showDecorType && (
+        <$.TypeWrap>
+          <$.Button
+            id="all"
+            onClick={handleClickDecorType}
+            $isActive={decorFilter[type].decorType === "all"}
+          >
+            Všechny
+          </$.Button>
+          <$.Button
+            id="wood"
+            onClick={handleClickDecorType}
+            $isActive={decorFilter[type].decorType === "wood"}
+          >
+            Dřevo
+          </$.Button>
+          <$.Button
+            id="color"
+            onClick={handleClickDecorType}
+            $isActive={decorFilter[type].decorType === "color"}
+          >
+            Barva
+          </$.Button>
+          <$.Button
+            id="other"
+            onClick={handleClickDecorType}
+            $isActive={decorFilter[type].decorType === "other"}
+          >
+            Ostatní
+          </$.Button>
+        </$.TypeWrap>
+      )}
     </$.Wrap>
   );
 };
