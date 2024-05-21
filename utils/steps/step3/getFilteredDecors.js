@@ -9,8 +9,8 @@ const getProductToFilter = ({ state, type }) => {
   if (type === "doors" && state.decorFilter.doors.materialType === "wood") {
     return state.productsAPI.dtd10;
   } else if (
-    type === "doors" &&
-    state.decorFilter.doors.materialType === "glass"
+    (type === "doors" && state.decorFilter.doors.materialType === "mirror") ||
+    (type === "doors" && state.decorFilter.doors.materialType === "glass")
   ) {
     return state.productsAPI.glass;
   } else {
@@ -24,10 +24,11 @@ export const getFilteredDecors = ({ state, type }) => {
   const currentFilter = state.decorFilter[type];
 
   const filteredDecors = productsToFilter.filter((decor) => {
-    if (type === "doors" && currentFilter.materialType === "glass") {
-      const matchesGlassType =
-        currentFilter.glassType === "all" ||
-        decor.category === currentFilter.glassType;
+    if (
+      (type === "doors" && currentFilter.materialType === "glass") ||
+      (type === "doors" && currentFilter.materialType === "mirror")
+    ) {
+      const matchesGlassType = decor.category === currentFilter.materialType;
 
       const isAvailable = decor.availability === true;
 

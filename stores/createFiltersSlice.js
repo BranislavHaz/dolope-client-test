@@ -15,7 +15,6 @@ const createFiltersSlice = (set, get) => ({
       search: null,
       manufacturer: "All",
       decorType: "all",
-      glassType: "all",
     },
   },
 
@@ -34,35 +33,23 @@ const createFiltersSlice = (set, get) => ({
     );
   },
 
-  setDecorFilter: ({
-    type,
-    search,
-    manufacturer,
-    decorType,
-    materialType = undefined,
-    glassType = undefined,
-  }) => {
+  setDecorFilter: ({ type, materialType, search, manufacturer, decorType }) => {
     set(
       (state) => {
-        if (!state.decorFilter[type]) return;
-
-        if (materialType !== undefined) {
-          state.decorFilter.doors.materialType = materialType;
-        }
-
-        if (glassType !== undefined) {
-          state.decorFilter.doors.glassType = glassType;
-        }
-
-        if (search !== undefined) {
-          state.decorFilter[type].search = search;
-        }
-        if (manufacturer !== undefined) {
-          state.decorFilter[type].manufacturer = manufacturer;
-        }
-        if (decorType !== undefined) {
-          state.decorFilter[type].decorType = decorType;
-        }
+        if (type === "corpus" || type === "sideWalls" || type === "doors") {
+          if (materialType) {
+            state.decorFilter[type].materialType = materialType;
+          }
+          if (search || search === null) {
+            state.decorFilter[type].search = search;
+          }
+          if (manufacturer) {
+            state.decorFilter[type].manufacturer = manufacturer;
+          }
+          if (decorType) {
+            state.decorFilter[type].decorType = decorType;
+          }
+        } else return;
       },
       false,
       "filters/setDecorFilter"
@@ -99,7 +86,6 @@ const createFiltersSlice = (set, get) => ({
             search: null,
             manufacturer: "All",
             decorType: "all",
-            glassType: "all",
           },
         }),
           (state.activeDoorSection = {

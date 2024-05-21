@@ -5,6 +5,7 @@ import UsedDoorsDecor from "./UsedDoorsDecor";
 import Decors from "./Decors";
 import Doors from "@/components/elements/Doors";
 import Button from "../ui/Button";
+import SearchDecors from "../ui/SearchDecors";
 import FilterDecor from "../ui/FilterDecor";
 
 import toast from "react-hot-toast";
@@ -102,8 +103,9 @@ const DecorDoors = ({ setHandleSubmit }) => {
 
   return (
     <>
+      <SearchDecors type={"doors"} />
       <Doors type={"modal"} />
-      <FilterDecor />
+      <FilterDecor type={"doors"} />
       {/*       <$.TypeDecorsWrap>
         <Button
           type={getIsSelected("wood")}

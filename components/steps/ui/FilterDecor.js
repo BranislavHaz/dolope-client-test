@@ -16,12 +16,12 @@ const FilterDecor = ({ type }) => {
           : "lightColor";
 
       case "mirror":
-        return decorFilter.doors.glassType === "mirror"
+        return decorFilter.doors.materialType === "mirror"
           ? "darkColor"
           : "lightColor";
 
       case "glass":
-        return decorFilter.doors.glassType === "glass"
+        return decorFilter.doors.materialType === "glass"
           ? "darkColor"
           : "lightColor";
       default:
@@ -29,58 +29,16 @@ const FilterDecor = ({ type }) => {
     }
   };
 
-  const handleClick = (type) => {
-    switch (type) {
-      case "wood":
-        setDecorFilter({
-          type: "doors",
-          materialType: "wood",
-          search: null,
-          manufacturer: "All",
-          decorType: "all",
-          glassType: "all",
-        });
-        break;
-
-      case "mirror":
-        setDecorFilter({
-          type: "doors",
-          materialType: "glass",
-          search: null,
-          manufacturer: "All",
-          decorType: "all",
-          glassType: "mirror",
-        });
-        break;
-
-      case "glass":
-        setDecorFilter({
-          type: "doors",
-          materialType: "glass",
-          search: null,
-          manufacturer: "All",
-          decorType: "all",
-          glassType: "glass",
-        });
-        break;
-
-      default:
-        break;
-    }
+  const handleClick = (materialType) => {
+    setDecorFilter({
+      type: "doors",
+      search: null,
+      materialType,
+    });
   };
 
   return (
     <$.Wrap>
-      <$.SearchWrap>
-        <$.SearchInput
-          placeholder="Vyhledejte název nebo kód dekoru"
-          /*           value={searchValue || ""}
-          onChange={(e) => setSearchValue(e.target.value)}
-          onKeyDown={handleKeyDown}*/
-          $isError={false}
-        />
-        <$.SearchErrorText>Minimálně 3 znaky</$.SearchErrorText>
-      </$.SearchWrap>
       <$.MaterialTypeWrap>
         <Button
           type={getIsSelected("wood")}

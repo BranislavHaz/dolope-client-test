@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import Decors from "./Decors";
+import SearchDecors from "../ui/SearchDecors";
 
 import toast from "react-hot-toast";
 
@@ -29,6 +30,7 @@ const DecorSideWalls = ({ setHandleSubmit }) => {
 
   return (
     <>
+      <SearchDecors type={"sideWalls"} />
       <Decors type={"sideWalls"} />
     </>
   );
