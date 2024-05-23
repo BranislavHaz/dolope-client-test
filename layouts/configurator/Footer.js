@@ -34,6 +34,7 @@ const Footer = () => {
   const handleClickBack = () => {
     if (currentStep.id > 1) {
       setCurrentStepId(currentStep.id - 1);
+      state.setIsModalActive(false);
     }
   };
 

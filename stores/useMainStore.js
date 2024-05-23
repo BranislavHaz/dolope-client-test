@@ -22,6 +22,8 @@ import createModalSlice from "./createModalSlice";
 
 import createFiltersSlice from "./createFiltersSlice";
 
+import createLightBoxSlice from "./createLightBox";
+
 const createStore = (createStoreFn) => {
   const devtoolsEnhancer = devtools(createStoreFn);
   return immer(devtoolsEnhancer);
@@ -48,6 +50,8 @@ const useMainStore = create(
 
     ...createModalSlice(...a),
     ...createFiltersSlice(...a),
+
+    ...createLightBoxSlice(...a),
   }))
 );
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useMainStore from "@/stores/useMainStore";
 
 import Title from "../ui/Title";
@@ -21,16 +21,22 @@ const TypeDoors = ({ setHandleSubmit }) => {
       setIsModalActive: state.setIsModalActive,
       setActiveFilter: state.setActiveFilter,
     }));
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
   useEffect(() => {
     const countOfSelectedDoors = Object.keys(doors.typeDoors).length;
 
     if (countOfSelectedDoors === doors.count) {
       setStepsInputs("step2", "typeDoors", true);
-      toast.success("Typy dveří byly uloženy!", { className: "larger-device" });
+      if (!isInitialRender) {
+        toast.success("Typy sekcí byly uloženy!", {
+          className: "larger-device",
+        });
+      }
     } else {
       setStepsInputs("step2", "typeDoors", false);
     }
+    setIsInitialRender(false);
   }, [doors.typeDoors]);
 
   const handleSubmit = () => {

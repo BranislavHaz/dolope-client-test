@@ -21,15 +21,15 @@ const ShowHideDoors = ({ isLastStep = false }) => {
       onClick={() => handleClick()}
     >
       <Image
-        src={"/icons/doors.svg"}
-        width={20}
-        height={20}
+        src={doors.isVisible ? "/icons/no-doors.svg" : "/icons/doors.svg"}
+        width={40}
+        height={40}
         alt={"Údaje byly vyplněny správně"}
       />
-      <$.TextBlock>
+      {/*       <$.TextBlock>
         <$.Text>{doors.isVisible ? "Skrýt" : "Zobrazit"}</$.Text>
         <$.Text>dveře</$.Text>
-      </$.TextBlock>
+      </$.TextBlock> */}
     </$.Wrap>
   );
 };

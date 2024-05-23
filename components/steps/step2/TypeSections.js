@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { checkIfIsActiveSection } from "@/utils/steps/step2/checkIfIsActiveSection";
 import useMainStore from "@/stores/useMainStore";
 
@@ -20,18 +20,22 @@ const TypeSections = ({ setHandleSubmit }) => {
     sections: state.sections,
     setStepsInputs: state.setStepsInputs,
   }));
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
   useEffect(() => {
     const countOfSelectedSections = Object.keys(sections.typeOfSections).length;
 
     if (countOfSelectedSections === sections.count) {
       setStepsInputs("step2", "typeSections", true);
-      toast.success("Typy sekcí byly uloženy!", {
-        className: "larger-device",
-      });
+      if (!isInitialRender) {
+        toast.success("Typy sekcí byly uloženy!", {
+          className: "larger-device",
+        });
+      }
     } else {
       setStepsInputs("step2", "typeSections", false);
     }
+    setIsInitialRender(false);
   }, [sections.typeOfSections]);
 
   const handleSubmit = () => {

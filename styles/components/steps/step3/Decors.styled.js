@@ -7,6 +7,8 @@ export const Wrap = styled.div`
   display: flex;
   justify-content: center;
   animation: var(--blob-animation);
+  align-self: start;
+  margin-bottom: auto;
 
   padding-top: ${(props) =>
     props.$isUsed || props.$isDoors ? 0 : "var(--filter-box-h)"};
@@ -29,6 +31,18 @@ export const DecorsWrap = styled.div`
     column-gap: 1em;
     row-gap: 1em;
   }
+
+  ${(props) =>
+    props.$isEmpty &&
+    css`
+      grid-template-columns: 1fr;
+      justify-content: stretch;
+
+      @media ${device.tablet} {
+        grid-template-columns: 1fr;
+        justify-contenstretcht
+      }
+    `}
 `;
 
 export const DecorWrap = styled(SelectElement)`
@@ -115,4 +129,13 @@ export const DecorTitle = styled.div`
   font-size: 0.8rem;
   font-weight: 200;
   text-align: center;
+`;
+
+export const EmptyResult = styled.div`
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
 `;

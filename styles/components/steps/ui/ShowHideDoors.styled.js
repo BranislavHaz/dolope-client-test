@@ -24,7 +24,7 @@ export const Wrap = styled.div`
     `}
 
   & img {
-    margin-top: 5px;
+    margin: 1rem 0;
   }
 `;
 

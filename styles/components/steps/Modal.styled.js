@@ -81,12 +81,14 @@ export const CloseModal = styled.div`
   display: none;
 
   @media ${device.tablet} {
-    width: var(--filter-box-h);
-    height: var(--filter-box-h);
+    width: 3rem;
+    height: 3rem;
     font-weight: 300;
     position: sticky;
     top: 0;
     right: 0;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    border-radius: 50%;
     z-index: 105;
     cursor: pointer;
     display: block;

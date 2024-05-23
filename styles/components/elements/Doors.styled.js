@@ -99,6 +99,7 @@ export const CurrentlyEdited = styled.div`
       font-size: ${props.$width <= 140
         ? `calc(${props.$width}px / 10)`
         : "14px"};
+      border-bottom: 3px solid var(--main-color);
     `}
 
   @media ${device.tablet} {

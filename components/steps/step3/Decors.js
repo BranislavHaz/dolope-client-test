@@ -198,9 +198,22 @@ const Decors = ({ type }) => {
     });
   };
 
+  const decors = getDecors();
+
   return (
     <$.Wrap $isUsed={type === "usedDoors"} $isDoors={type === "doors"}>
-      <$.DecorsWrap $isUsed={type === "usedDoors"}>{getDecors()}</$.DecorsWrap>
+      <$.DecorsWrap
+        $isUsed={type === "usedDoors"}
+        $isEmpty={decors.length === 0}
+      >
+        {decors.length > 0 ? (
+          decors
+        ) : (
+          <$.EmptyResult>
+            {`Podle zvolených kritérií se nic nenašlo, upravte své hledání 🥲`}
+          </$.EmptyResult>
+        )}
+      </$.DecorsWrap>
     </$.Wrap>
   );
 };
