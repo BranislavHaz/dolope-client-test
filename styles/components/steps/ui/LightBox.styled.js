@@ -12,21 +12,31 @@ export const LightBox = styled.div`
   top: 0;
   left: 0;
   overflow: hidden;
-
-  img {
-    display: block;
-    width: auto;
-    max-width: 70vw;
-    height: auto;
-    max-height: 80vh;
-    margin: 0 auto;
-  }
 `;
 
 export const LightBoxContent = styled.div`
   position: relative;
   width: 70vw;
   height: 80vh;
+  display: block;
+
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 70vw;
+    width: auto;
+    max-height: 80vh;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+`;
+
+export const ImageWrap = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 export const CloseIcon = styled.div`

@@ -1,7 +1,15 @@
+function normalizeText(text) {
+  text = text.toLowerCase();
+  text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  text = text.replace(/[^a-zA-Z0-9\s]/g, "");
+  return text;
+}
+
 export const getHandlesPrice = (availableProfiles, doors) => {
   const handleInColor = availableProfiles.handles.find(
     (profile) =>
-      profile.color === doors.color && profile.url.includes(doors.handle)
+      profile.color === doors.color &&
+      normalizeText(profile.title).includes(doors.handle)
   );
 
   // Získanie ceny madla na 1 mm

@@ -59,6 +59,9 @@ export const DoorPart = styled.div`
   border: 0.25px solid #000;
   cursor: ${(props) => (props.$type === "modal" ? "pointer" : "auto")};
   position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   @media ${device.tablet} {
     ${(props) =>

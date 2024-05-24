@@ -35,7 +35,7 @@ const LightBox = () => {
         <Image
           src={imgUrl}
           layout="fill"
-          objectFit="contain"
+          objectFit="cover"
           onClick={(e) => e.stopPropagation()}
         />
       </$.LightBoxContent>

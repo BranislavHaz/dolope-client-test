@@ -98,6 +98,9 @@ export const Price = styled.div`
 `;
 
 export const OrderButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 1rem 0;
   padding: 1rem 1.5rem;
   background-color: var(--main-color);
@@ -105,6 +108,7 @@ export const OrderButton = styled.div`
   font-weight: 500;
   border-radius: 8px;
   text-transform: uppercase;
+  text-align: center;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
 
