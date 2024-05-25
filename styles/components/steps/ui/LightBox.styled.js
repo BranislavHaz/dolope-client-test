@@ -8,7 +8,7 @@ export const LightBox = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
   left: 0;

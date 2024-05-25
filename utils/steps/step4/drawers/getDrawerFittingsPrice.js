@@ -19,9 +19,13 @@ const countDrawersSectionsType = {
 
 export const getDrawerFittingsPrice = (state) => {
   const sectionsCount = state.sections.count;
+  const drawersType = state.drawers.type;
   const slideSize = getMaxSlideSize(state);
   const slidePrice = state.productsAPI.otherProducts.find(
-    (product) => product.length === slideSize && product.category === "drawer"
+    (product) =>
+      product.length === slideSize &&
+      product.category === "drawer" &&
+      product.type === drawersType
   ).price_with_vat;
 
   let totaldrawersCount = 0;
@@ -35,13 +39,40 @@ export const getDrawerFittingsPrice = (state) => {
     }
   }
 
-  console.log(
-    "Počet zásuviek: " +
-      totaldrawersCount +
-      " || " +
-      "Cena za zásuvku: " +
-      slidePrice
-  );
-
   return +(totaldrawersCount * slidePrice).toFixed(0);
+};
+
+export const getDrawerPriceDifference = (state) => {
+  const sectionsCount = state.sections.count;
+  const slideSize = getMaxSlideSize(state);
+  const slidePriceWooden = state.productsAPI.otherProducts.find(
+    (product) =>
+      product.length === slideSize &&
+      product.category === "drawer" &&
+      product.type === "wooden"
+  ).price_with_vat;
+  const slidePriceSidewalls = state.productsAPI.otherProducts.find(
+    (product) =>
+      product.length === slideSize &&
+      product.category === "drawer" &&
+      product.type === "sidewalls"
+  ).price_with_vat;
+
+  let totaldrawersCount = 0;
+
+  for (let i = 1; i <= sectionsCount; i++) {
+    const sectionType = state.sections.typeOfSections[i].sectionType;
+
+    if (countDrawersSectionsType[sectionType]) {
+      const drawersCount = countDrawersSectionsType[sectionType];
+      totaldrawersCount += drawersCount;
+    }
+  }
+
+  const totalPriceWooden = +(totaldrawersCount * slidePriceWooden).toFixed(0);
+  const totalPriceSidewalls = +(
+    totaldrawersCount * slidePriceSidewalls
+  ).toFixed(0);
+
+  return +(totalPriceSidewalls - totalPriceWooden);
 };

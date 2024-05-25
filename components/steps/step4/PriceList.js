@@ -1,5 +1,6 @@
 import useMainStore from "@/stores/useMainStore";
 import DecorsLink from "./DecorsLink";
+import SelectElement from "./SelectElement";
 import * as $ from "@/styles/components/steps/step4/PriceList.styled";
 
 const getWardrobeSize = (state) => {
@@ -65,6 +66,37 @@ const getSectionDecor = (state) => {
   return [decor];
 };
 
+const getDrawersCount = (state) => {
+  const { typeOfSections } = state.sections;
+  const countDrawersSectionsType = {
+    6: 2,
+    7: 3,
+    8: 3,
+    9: 4,
+    10: 4,
+    11: 2,
+    12: 2,
+    13: 3,
+    14: 3,
+    15: 4,
+    16: 4,
+    22: 2,
+    23: 3,
+    24: 4,
+  };
+
+  let totalDrawersCount = 0;
+
+  for (let key in typeOfSections) {
+    const sectionType = typeOfSections[key].sectionType;
+    if (countDrawersSectionsType.hasOwnProperty(sectionType)) {
+      totalDrawersCount += countDrawersSectionsType[sectionType];
+    }
+  }
+
+  return totalDrawersCount;
+};
+
 const getDoorsSize = (state) => {
   const { width, height } = state.doors;
   const handle = state.doors.selectedProfile.handle;
@@ -119,11 +151,14 @@ const PriceList = () => {
     state: state,
   }));
 
+  const drawersCount = getDrawersCount(state);
+
   return (
     <$.Wrap>
+      <$.Title>Specifikace skříně</$.Title>
       <$.WrapType>
-        <$.TitleType>Skříň</$.TitleType>
         <$.WrapPriceListItems>
+          <$.TitleType>Skříň</$.TitleType>
           <$.Name>Rozměry skříně (šířka x výška x hloubka):</$.Name>
           <$.Description>{getWardrobeSize(state)}</$.Description>
           <$.Name>Prostor mezi stropem a vrchní policí:</$.Name>
@@ -137,8 +172,8 @@ const PriceList = () => {
         </$.WrapPriceListItems>
       </$.WrapType>
       <$.WrapType>
-        <$.TitleType>Korpus a sekce</$.TitleType>
         <$.WrapPriceListItems>
+          <$.TitleType>Korpus a sekce</$.TitleType>
           <$.Name>Rozměry korpusu (šířka x výška x hloubka):</$.Name>
           <$.Description>{getCorpusSize(state)}</$.Description>
           <$.Name>Dekor korpusu:</$.Name>
@@ -149,11 +184,21 @@ const PriceList = () => {
           <$.Description>{state.sections.count}x</$.Description>
           <$.Name>Vnitřní rozměr sekce (šířka x výška x hloubka):</$.Name>
           <$.Description>{getSectionSize(state)}</$.Description>
+          {drawersCount && (
+            <>
+              <$.Name>Celkový počet výsuvů (šuflů):</$.Name>
+              <$.Description>{drawersCount}x</$.Description>
+              <$.Name>Typ výsuvů (šuflů):</$.Name>
+              <$.Description>
+                <SelectElement />
+              </$.Description>
+            </>
+          )}
         </$.WrapPriceListItems>
       </$.WrapType>
       <$.WrapType>
-        <$.TitleType>Posuvné dveře</$.TitleType>
         <$.WrapPriceListItems>
+          <$.TitleType>Posuvné dveře</$.TitleType>
           <$.Name>Počet posuvných dveří:</$.Name>
           <$.Description>{state.doors.count}x</$.Description>
           <$.Name>Rozměry jedních dveří (šířka x výška):</$.Name>

@@ -21,6 +21,17 @@ const createDrawersSlice = (set, get) => ({
     },
     slideReserve: 10,
     slideSizes: [300, 350, 400, 450, 500, 550, 600, 650],
+    type: "wooden",
+  },
+
+  setTypeDrawers: ({ type }) => {
+    set(
+      (state) => {
+        state.drawers.type = type;
+      },
+      false,
+      "drawers/setTypeDrawers"
+    );
   },
 });
 

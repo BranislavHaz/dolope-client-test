@@ -21,14 +21,11 @@ const Preview = () => {
   const feesDemos = 7400; // formatovanie, hranenie, balenie, dovoz CZK
   const feesNabykov = 200; // dovoz CZK
 
-  const fullPrice = (
-    (areasPrice +
-      profilesPrice +
-      drawersFittingPrice +
-      feesDemos +
-      feesNabykov) *
-    marginPrice
-  ).toFixed(0);
+  const fullPrice =
+    +(
+      (areasPrice + profilesPrice + feesDemos + feesNabykov) *
+      marginPrice
+    ).toFixed(0) + drawersFittingPrice;
   const formattedPrice = Number(fullPrice).toLocaleString("cs-CZ");
 
   const handleBack = () => {

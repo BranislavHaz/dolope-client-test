@@ -33,6 +33,11 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${device.tablet} {
+    width: 30vw;
+    margin: 0 2rem;
+  }
 `;
 
 export const ContentWrap = styled.div`
@@ -47,11 +52,6 @@ export const ContentWrap = styled.div`
   border-radius: 8px;
   color: #fff;
   position: relative;
-
-  @media ${device.tablet} {
-    width: 30vw;
-    margin: 0 2rem;
-  }
 `;
 
 export const BackButton = styled.div`
