@@ -11,6 +11,7 @@ export const WrapPreview = styled.div`
 
   @media ${device.tablet} {
     flex-direction: row;
+    margin-top: var(--l-header-height);
   }
 `;
 
@@ -20,19 +21,11 @@ export const WardrobeWrap = styled.div`
 
   @media ${device.tablet} {
     width: 70vw;
-    height: calc(100vh - var(--l-header-height));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-`;
-
-export const DoorsButton = styled.div`
-  position: absolute;
-  top: 0;
-  padding: 1rem 1rem;
-  background-color: var(--main-color);
 `;
 
 export const Wrap = styled.div`
