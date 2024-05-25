@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@/utils/devices";
 
 export const LightBox = styled.div`
   display: ${(props) => (props.$isActive ? "flex" : "none")};
@@ -17,7 +18,7 @@ export const LightBox = styled.div`
 export const LightBoxContent = styled.div`
   position: relative;
   width: 70vw;
-  height: 80vh;
+  height: 70vw;
   display: block;
 
   img {
@@ -25,11 +26,23 @@ export const LightBoxContent = styled.div`
     margin: 0 auto;
     max-width: 70vw;
     width: auto;
-    max-height: 80vh;
+    max-height: 70vw;
     height: auto;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
       rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
       rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+
+  @media ${device.tablet} {
+    width: 70vw;
+    height: 80vh;
+
+    img {
+      max-width: 70vw;
+      width: auto;
+      max-height: 80vh;
+      height: auto;
+    }
   }
 `;
 

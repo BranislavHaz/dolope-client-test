@@ -35,6 +35,13 @@ export const DoorsButton = styled.div`
   background-color: var(--main-color);
 `;
 
+export const Wrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const ContentWrap = styled.div`
   width: 90%;
   margin: 0 1em;
@@ -57,13 +64,12 @@ export const ContentWrap = styled.div`
 export const BackButton = styled.div`
   width: 90%;
   height: 3rem;
+  margin-top: 1rem;
   padding: 0.5rem 2rem;
   border: 2px solid #282828;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: -4rem;
   border-radius: 8px;
   font-weight: 500;
   color: #282828;

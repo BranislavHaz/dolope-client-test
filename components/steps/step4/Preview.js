@@ -1,6 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
 
-import ShowHideDoors from "../ui/ShowHideDoors";
 import WardrobeView from "@/layouts/configurator/WardrobeView";
 
 import { getAreasPrice } from "@/utils/steps/step4/areas/getAreasPrice";
@@ -40,22 +39,23 @@ const Preview = () => {
     <$.WrapPreview>
       <$.WardrobeWrap>
         <WardrobeView />
-        <ShowHideDoors isLastStep={true} />
       </$.WardrobeWrap>
-      <$.ContentWrap>
-        <$.Title>Celková cena</$.Title>
-        <$.Price>{formattedPrice} Kč</$.Price>
-        <$.OrderButton>Nezávazně objednat</$.OrderButton>
-        <$.TitlePricing>V ceně je zahrnuto:</$.TitlePricing>
-        <$.ElementPricing>Telefonická a osobní konzultace</$.ElementPricing>
-        <$.ElementPricing>Zaměření prostoru pro skříň</$.ElementPricing>
-        <$.ElementPricing>Fotorealistická vizualizace</$.ElementPricing>
-        <$.ElementPricing>Výroba skříně</$.ElementPricing>
-        <$.ElementPricing>Doprava a montáž skříně</$.ElementPricing>
+      <$.Wrap>
+        <$.ContentWrap>
+          <$.Title>Celková cena</$.Title>
+          <$.Price>{formattedPrice} Kč</$.Price>
+          <$.OrderButton>Nezávazně objednat</$.OrderButton>
+          <$.TitlePricing>V ceně je zahrnuto:</$.TitlePricing>
+          <$.ElementPricing>Telefonická a osobní konzultace</$.ElementPricing>
+          <$.ElementPricing>Zaměření prostoru pro skříň</$.ElementPricing>
+          <$.ElementPricing>Fotorealistická vizualizace</$.ElementPricing>
+          <$.ElementPricing>Výroba skříně</$.ElementPricing>
+          <$.ElementPricing>Doprava a montáž skříně</$.ElementPricing>
+        </$.ContentWrap>
         <$.BackButton onClick={handleBack}>
           {`<<`} Zpět na konfiguraci
         </$.BackButton>
-      </$.ContentWrap>
+      </$.Wrap>
     </$.WrapPreview>
   );
 };

@@ -26,10 +26,6 @@ const ShowHideDoors = ({ isLastStep = false }) => {
         height={40}
         alt={"Údaje byly vyplněny správně"}
       />
-      {/*       <$.TextBlock>
-        <$.Text>{doors.isVisible ? "Skrýt" : "Zobrazit"}</$.Text>
-        <$.Text>dveře</$.Text>
-      </$.TextBlock> */}
     </$.Wrap>
   );
 };

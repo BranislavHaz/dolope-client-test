@@ -82,6 +82,7 @@ const Index = ({ products }) => {
       )}
       {currentStep.id === 4 && (
         <>
+          <ShowHideDoors isLastStep={true} />
           <Header />
           <Step4 />
         </>

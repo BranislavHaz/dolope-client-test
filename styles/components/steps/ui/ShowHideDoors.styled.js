@@ -27,11 +27,3 @@ export const Wrap = styled.div`
     margin: 1rem 0;
   }
 `;
-
-export const TextBlock = styled.div`
-  font-size: 12px;
-  padding: 3px 3px 7px 3px;
-  text-align: center;
-`;
-
-export const Text = styled.div``;
