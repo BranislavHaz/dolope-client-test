@@ -30,6 +30,8 @@ export const getDrawerFittingsPrice = (state) => {
 
   let totaldrawersCount = 0;
 
+  state.setSlideSize({ size: slideSize });
+
   for (let i = 1; i <= sectionsCount; i++) {
     const sectionType = state.sections.typeOfSections[i].sectionType;
 

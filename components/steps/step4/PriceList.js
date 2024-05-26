@@ -154,8 +154,7 @@ const PriceList = () => {
   const drawersCount = getDrawersCount(state);
 
   return (
-    <$.Wrap>
-      <$.Title>Specifikace skříně</$.Title>
+    <>
       <$.WrapType>
         <$.WrapPriceListItems>
           <$.TitleType>Skříň</$.TitleType>
@@ -211,7 +210,7 @@ const PriceList = () => {
           </$.Description>
         </$.WrapPriceListItems>
       </$.WrapType>
-    </$.Wrap>
+    </>
   );
 };
 

@@ -1,30 +1,11 @@
 import styled from "styled-components";
 import { device } from "@/utils/devices";
 
-export const Wrap = styled.div`
+export const WrapType = styled.div`
   width: 100%;
-  margin-top: 3rem;
-  padding-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
+  margin-top: 2rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-`;
-
-export const Title = styled.h2`
-  margin-top: 2rem;
-
-  @media ${device.tablet} {
-    margin-top: 4rem;
-  }
-`;
-
-export const WrapType = styled.div`
-  width: 90%;
-  max-width: 1024px;
-  margin-top: 2rem;
 `;
 
 export const WrapPriceListItems = styled.div`
@@ -36,7 +17,7 @@ export const WrapPriceListItems = styled.div`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   @media ${device.tablet} {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 2fr;
   }
 
   & > div:not(:nth-last-child(-n + 2)) {
@@ -47,7 +28,7 @@ export const WrapPriceListItems = styled.div`
 export const TitleType = styled.div`
   font-size: 1.2rem;
   font-weight: 500;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   text-align: center;
   background-color: var(--main-color);
   grid-column: span 2;
