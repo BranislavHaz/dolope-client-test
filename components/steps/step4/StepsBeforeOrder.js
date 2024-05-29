@@ -5,51 +5,50 @@ const StepsBeforeOrder = () => {
     <$.Wrap>
       <$.WrapSteps>
         <$.Step>
-          <$.HeadlineWrap>
-            <$.HeadlineStepNum>1.</$.HeadlineStepNum>
-            <$.HeadlineText>
+          <$.NumWrap>01</$.NumWrap>
+          <$.ContentWrap>
+            <$.TitleWrap>
               Dohodnutí termínu pro osobní konzultaci a vizualizace
-            </$.HeadlineText>
-          </$.HeadlineWrap>
-          <$.Text>
-            Během telefonického rozhovoru si společně projdeme jednotlivé
-            specifikace a rozměry vaší příští skříně, na jejímž základě
-            připravíme realistickou vizualizaci. A dohodneme termín pro osobní
-            návštěvu <strong>přímo na místě realizace</strong>.
-          </$.Text>
+            </$.TitleWrap>
+            <$.Text>
+              Během krátkého telefonického rozhovoru spolu probereme všechny
+              specifikace a rozměry vaší nové skříně. Na základě těchto
+              informací připravíme realistickou vizualizaci a domluvíme si
+              termín pro osobní návštěvu{" "}
+              <strong>přímo na místě realizace</strong>.
+            </$.Text>
+          </$.ContentWrap>
         </$.Step>
         <$.Step>
-          <$.HeadlineWrap>
-            <$.HeadlineStepNum>2.</$.HeadlineStepNum>
-            <$.HeadlineText>
-              Osobní konzultace a zaměření prostoru
-            </$.HeadlineText>
-          </$.HeadlineWrap>
-          <$.Text>
-            Při návštěvě u Vás máme{" "}
-            <strong>
-              poslední možnost revize či změny před samotnou objednávkou
-              materiálů a výroby skříně
-            </strong>
-            . Na základě vzorníků od výrobců si probereme poslední detaily.
-            Následně laserem zaměříme prostor pro skříň a složíte zálohu ve výši
-            30% z ceny.
-          </$.Text>
+          <$.NumWrap>02</$.NumWrap>
+          <$.ContentWrap>
+            <$.TitleWrap>Osobní konzultace a zaměření prostoru</$.TitleWrap>
+            <$.Text>
+              Při návštěvě u Vás doma máme{" "}
+              <strong>
+                poslední možnost provést revize či změny před samotnou
+                objednávkou materiálů a výrobou skříně
+              </strong>
+              . Společně si probereme vzorníky od našich výrobců a doladíme
+              poslední detaily. Poté laserem přesně zaměříme prostor pro skříň.
+              V tuto chvíli složíte zálohu ve výši 30 % z ceny.
+            </$.Text>
+          </$.ContentWrap>
         </$.Step>
         <$.Step>
-          <$.HeadlineWrap>
-            <$.HeadlineStepNum>3.</$.HeadlineStepNum>
-            <$.HeadlineText>Doprava a montáž skříně</$.HeadlineText>
-          </$.HeadlineWrap>
-          <$.Text>
-            Vyrobenou skříň dopravíme v dohodnutém termínu přímo k Vám,
-            přeneseme na místo realizace a samozřejmě smontujeme
-            <strong>
-              {" "}
-              - vše bez potřeby Vaší pomoci a dodatečných poplatků
-            </strong>
-            . Následně proběhne úhrada zbývajících 60% z částky za skříň.
-          </$.Text>
+          <$.NumWrap>03</$.NumWrap>
+          <$.ContentWrap>
+            <$.TitleWrap>Doprava a montáž skříně</$.TitleWrap>
+            <$.Text>
+              Vaši vyrobenou skříň dopravíme v dohodnutém termínu přímo k Vám
+              domů, přeneseme ji na místo realizace a kompletně smontujeme.{" "}
+              <strong>
+                Vše proběhne bez potřeby Vaší pomoci a bez dodatečných poplatků
+              </strong>
+              . Po montáži proběhne úhrada zbývajících 60 % z celkové částky za
+              skříň
+            </$.Text>
+          </$.ContentWrap>
         </$.Step>
       </$.WrapSteps>
     </$.Wrap>

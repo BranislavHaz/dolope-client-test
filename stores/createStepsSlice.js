@@ -8,6 +8,10 @@ const createStepsSlice = (set, get) => ({
     sections: 1,
   },
 
+  order: {
+    status: "initial",
+  },
+
   stepsInputs: {
     step1: {
       sizeWardrobe: false,
@@ -25,6 +29,16 @@ const createStepsSlice = (set, get) => ({
       decorSideWalls: false,
       decorDoors: false,
     },
+  },
+
+  setOrderStatus: (value) => {
+    set(
+      (state) => {
+        state.order.status = value;
+      },
+      false,
+      "steps/setOrderStatus"
+    );
   },
 
   setActiveFilter: (type, id) => {

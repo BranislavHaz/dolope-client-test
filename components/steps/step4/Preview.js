@@ -6,12 +6,14 @@ import PriceTab from "./PriceTab";
 import * as $ from "@/styles/components/steps/step4/Preview.styled";
 
 const Preview = ({ price }) => {
-  const { setCurrentStepId } = useMainStore((state) => ({
+  const { setCurrentStepId, setOrderStatus } = useMainStore((state) => ({
     setCurrentStepId: state.setCurrentStepId,
+    setOrderStatus: state.setOrderStatus,
   }));
 
   const handleBack = () => {
     setCurrentStepId(3);
+    setOrderStatus("initial");
   };
 
   return (

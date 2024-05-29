@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { device } from "@/utils/devices";
 
 export const Wrap = styled.div`
@@ -29,8 +29,13 @@ export const PriceWrap = styled.div`
 export const FormWrap = styled.div`
   width: 100%;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: var(--main-color);
   border-radius: 8px;
+  position: relative;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
@@ -121,5 +126,85 @@ export const SubmitButton = styled.button`
 
   &:hover {
     transform: scale(1.05);
+  }
+`;
+
+export const OrderStatus = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #282828;
+  position: relative;
+  z-index: 1;
+`;
+
+export const OrderStatusRow = styled.div`
+  text-align: center;
+  margin-bottom: 0.5rem;
+`;
+
+export const ThanksRow = styled.div`
+  margin-top: 1rem;
+  font-weight: 500;
+`;
+
+export const Emoji = styled.span`
+  font-size: 1.3rem;
+`;
+
+const envFloating = keyframes`
+  0% {
+    transform: translate(-2px, -5px);
+  }
+  100% {
+    transform: translate(0, 5px);
+  }
+`;
+
+const envDropping = keyframes`
+  0% {
+    background-position: 100px 11px, 115px 35px, 105px 60px;
+    opacity: 1;
+  }
+  50% {
+    background-position: 0px 11px, 20px 35px, 5px 60px;
+  }
+  60% {
+    background-position: -30px 11px, 0px 35px, -10px 60px;
+  }
+  75%,
+  100% {
+    background-position: -30px 11px, -30px 35px, -30px 60px;
+    opacity: 0;
+  }
+`;
+
+export const Loader = styled.div`
+  position: relative;
+  border-style: solid;
+  box-sizing: border-box;
+  border-width: 40px 60px 30px 60px;
+  border-color: #282828 #585858 #707070 #818181;
+  animation: ${envFloating} 1s ease-in infinite alternate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 62px;
+    top: -40px;
+    height: 70px;
+    width: 50px;
+    background-image: linear-gradient(#fff 45px, transparent 0),
+      linear-gradient(#fff 45px, transparent 0),
+      linear-gradient(#fff 45px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 30px 4px;
+    background-position: 0px 11px, 8px 35px, 0px 60px;
+    animation: ${envDropping} 0.75s linear infinite;
   }
 `;

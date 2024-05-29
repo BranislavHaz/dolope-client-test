@@ -1,5 +1,4 @@
-export const postOrder = (orderData) => {
-  console.log(orderData);
+export const postOrder = async (orderData) => {
   const postSetting = {
     method: "POST",
     headers: {
@@ -9,17 +8,19 @@ export const postOrder = (orderData) => {
     body: JSON.stringify(orderData),
   };
 
-  fetch(`http://localhost:8080/orders/send-order`, postSetting)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  try {
+    const response = await fetch(
+      `https://dolope-6771.rostiapp.cz/orders/send-order`,
+      postSetting
+    );
+    if (!response.ok) {
+      console.error("Request failed");
+      return false;
+    }
+    console.log("Request was successful");
+    return true;
+  } catch (error) {
+    console.error("Network error:", error);
+    return false;
+  }
 };

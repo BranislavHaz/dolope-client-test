@@ -43,7 +43,10 @@ const Step4 = () => {
           <PriceList />
         </$.WrapSection>
         <$.WrapSection>
-          <$.Title>Jaký je postup po objednávce?</$.Title>
+          <$.Title>Co se uděje po odeslání objednávky?</$.Title>
+          <$.Subtitle>
+            Proces objednávky až po realizaci ve 3. krocích
+          </$.Subtitle>
           <StepsBeforeOrder />
         </$.WrapSection>
         <$.WrapSection>
