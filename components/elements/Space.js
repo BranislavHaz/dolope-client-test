@@ -6,17 +6,29 @@ const Space = ({ heightDisplay, heightReal, children }) => {
     viewportSizes: state.viewportSizes,
   }));
 
-  const isLinesVisible = viewportSizes.section.width > 40 && heightDisplay > 30;
+  const getSizeFont = () => {
+    if (viewportSizes.section.width > 53 && heightDisplay > 20) {
+      return "large";
+    } else if (viewportSizes.section.width > 30 && heightDisplay > 20) {
+      return "medium";
+    } else if (viewportSizes.section.width > 15 && heightDisplay > 17) {
+      return "small";
+    } else {
+      return false;
+    }
+  };
+
+  console.log("heightDisplay");
+  console.log(heightDisplay);
 
   return (
     <$.Space $width={viewportSizes.section.width} $height={heightDisplay}>
       {children}
-      {isLinesVisible && (
-        <>
-          <$.Line />
-          <$.HeightText>{Math.floor(heightReal) / 10} cm</$.HeightText>
-        </>
-      )}
+
+      <$.Line />
+      <$.HeightText $fontSize={getSizeFont()}>
+        {Math.floor(heightReal) / 10} cm
+      </$.HeightText>
     </$.Space>
   );
 };

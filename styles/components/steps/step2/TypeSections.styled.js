@@ -43,7 +43,6 @@ export const SectionType = styled(SelectElement)`
   @media ${device.tablet} {
     max-width: 120px;
     width: 100%;
-    max-height: 300px;
     height: 100%;
   }
 `;

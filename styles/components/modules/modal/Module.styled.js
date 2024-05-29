@@ -13,6 +13,12 @@ export const ModuleWrap = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
+
+  @media ${device.tablet} {
+    max-width: 120px;
+    width: 100%;
+    height: 300px;
+  }
 `;
 
 export const Stand = styled.div`

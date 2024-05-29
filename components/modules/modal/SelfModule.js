@@ -14,7 +14,7 @@ const SelfModule = ({ countSelfs, id }) => {
   }));
 
   const calcSpace = () => {
-    const sectionHeightDisplay = viewport.height * 0.3; // 30vh má SectionType v TypeSections.styled
+    const sectionHeightDisplay = 300; // 300px má SectionType v TypeSections.styled
     const sectionHeightReal = corpus.height;
     const shelfThicknessDisplay = 3; // 3px je šírka police v Module.styled
     const shelfThicknessReal = wardrobe.thickness;
@@ -23,6 +23,7 @@ const SelfModule = ({ countSelfs, id }) => {
       (sectionHeightDisplay - countSelfs * shelfThicknessDisplay) / countSelfs;
     const realHeight =
       (sectionHeightReal - countSelfs * shelfThicknessReal) / countSelfs;
+
     return { displayHeight, realHeight };
   };
 

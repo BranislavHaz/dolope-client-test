@@ -4,10 +4,11 @@ import { SelectElement } from "../ui/SelectElement.styled";
 
 export const Wrap = styled.div`
   animation: var(--blob-animation);
+  width: 90%;
+  max-width: 600px;
 `;
 
 export const TypeProfilesWrap = styled.div`
-  width: 90%;
   padding-bottom: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -31,10 +32,15 @@ export const ProfileElement = styled(SelectElement)`
     `}
 `;
 
-export const ProfileElementImg = styled.div``;
+export const ProfileElementImg = styled.div`
+  img {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+  }
+`;
 
 export const ColorProfilesWrap = styled.div`
-  width: 90%;
   padding-bottom: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -59,6 +65,11 @@ export const ColorElement = styled(SelectElement)`
 `;
 
 export const ColorElementImg = styled.div`
+  img {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+  }
   ${(props) =>
     !props.$isAvailable &&
     css`
