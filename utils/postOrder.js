@@ -3,7 +3,6 @@ export const postOrder = async (orderData) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: process.env.NEXT_PUBLIC_AUTH_TOKEN,
     },
     body: JSON.stringify(orderData),
   };
