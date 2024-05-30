@@ -67,6 +67,20 @@ export const calcViewportSizes = (state) => {
   const heightDoor = Math.round((heightWardrobe - thicknessDTD) * 100) / 100;
   // End Door
 
+  // Start Modal - sections & doors
+  let modalElWidth = 0;
+
+  if (state.viewport.width > 0 && state.viewport.width < 768) {
+    modalElWidth = state.viewport.width * 0.27;
+  } else if (state.viewport.width >= 768 && state.viewport.width < 960) {
+    modalElWidth = 95;
+  } else {
+    modalElWidth = 120;
+  }
+
+  const modalElHeight = modalElWidth * 2.5;
+  // End Modal
+
   return {
     wardrobe: {
       width: widthWardrobe,
@@ -101,6 +115,10 @@ export const calcViewportSizes = (state) => {
       width: widthDoor,
       height: heightDoor,
       profileHeight: heightDoorProfile,
+    },
+    modal: {
+      elWidth: modalElWidth,
+      elHeight: modalElHeight,
     },
   };
 };

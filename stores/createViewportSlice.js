@@ -39,6 +39,10 @@ const createViewportSlice = (set, get) => ({
       height: 0,
       profileHeight: 0,
     },
+    modal: {
+      elWidth: 0,
+      elHeight: 0,
+    },
   },
 
   updateViewportPX: (nameOfAction) => {

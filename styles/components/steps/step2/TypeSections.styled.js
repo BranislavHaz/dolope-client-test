@@ -14,6 +14,14 @@ export const Wrap = styled.div`
   }
 `;
 
+export const SectionType = styled(SelectElement)`
+  ${(props) =>
+    props.$isActive &&
+    css`
+      box-shadow: var(--select-active-shadow);
+    `}
+`;
+
 export const TypeSectionsWrap = styled.div`
   width: 95%;
   padding-bottom: 1em;
@@ -27,22 +35,10 @@ export const TypeSectionsWrap = styled.div`
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
-`;
 
-export const SectionType = styled(SelectElement)`
-  width: 27vw;
-  height: auto;
-  cursor: pointer;
-
-  ${(props) =>
-    props.$isActive &&
-    css`
-      box-shadow: var(--select-active-shadow);
-    `}
-
-  @media ${device.tablet} {
-    max-width: 120px;
-    width: 100%;
-    height: 100%;
+  ${SectionType} {
+    width: ${(props) => props.$sectionWidth}px;
+    height: auto;
+    cursor: pointer;
   }
 `;

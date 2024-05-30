@@ -23,7 +23,7 @@ const DrawerModule = ({
     })
   );
 
-  const sectionHeightDisplay = viewport.height * 0.3; // 30vh má SectionType v TypeSections.styled
+  const sectionHeightDisplay = state.viewportSizes.modal.elHeight;
   const sectionHeightReal = corpus.height;
   const drawersHeightDisplay = (sectionHeightDisplay / 10) * countDrawers;
   const drawersHeightReal = drawers.heightOfDrawers[countDrawers];

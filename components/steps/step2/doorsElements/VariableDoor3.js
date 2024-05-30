@@ -95,10 +95,18 @@ const VariableDoor3 = ({ id }) => {
     removeTypeOfDoors(doorId);
   };
 
+  const doorWidth = state.viewportSizes.modal.elWidth;
+  const doorHeight = state.viewportSizes.modal.elHeight;
+
   return (
-    <$.DoorWrap $isActive={checkIfIsActiveDoor(state, 8)} onClick={handleClick}>
+    <$.DoorWrap
+      $width={doorWidth}
+      $height={doorHeight}
+      $isActive={checkIfIsActiveDoor(state, 8)}
+      onClick={handleClick}
+    >
       <$.DoorType>
-        <$.DoorElement $heightRatio={0.4}>
+        <$.DoorElement $height={doorHeight * 0.4}>
           <$.InputNum
             placeholder="cm"
             value={variableHeight[currentDoor]}
@@ -110,12 +118,12 @@ const VariableDoor3 = ({ id }) => {
             {calcMinMaxDoorHeight(3, doors.height).text}
           </$.LimitText>
         </$.DoorElement>
-        <$.DoorElement $heightRatio={0.2}>
+        <$.DoorElement $height={doorHeight * 0.2}>
           {spaceHeight[currentDoor] !== 0 && (
             <$.DimensionsText>{spaceHeight[currentDoor]} cm</$.DimensionsText>
           )}
         </$.DoorElement>
-        <$.DoorElement $heightRatio={0.4}>
+        <$.DoorElement $height={doorHeight * 0.4}>
           <$.InputNum
             placeholder="cm"
             value={variableHeight[currentDoor]}

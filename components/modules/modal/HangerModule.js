@@ -31,11 +31,11 @@ const HangerModule = ({
     getHangers();
   }, []);
 
-  const sectionHeightDisplay = viewport.height * 0.3; // 30vh má SectionType v TypeSections.styled
+  const sectionHeightDisplay = state.viewportSizes.modal.elHeight;
   const sectionHeightReal = corpus.height;
 
   const [heightHanger, setHeightHanger] = useState({
-    display: (1000 * sectionHeightDisplay) / sectionHeightReal,
+    display: sectionHeightDisplay / 3,
     real: 1000,
   });
 

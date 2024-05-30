@@ -28,17 +28,11 @@ export const TypeDoorsWrap = styled.div`
 `;
 
 export const DoorWrap = styled(SelectElement)`
-  width: 27vw;
-  height: 60vw;
+  width: ${(props) => props.$width}px;
+  height: ${(props) => props.$height}px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media ${device.tablet} {
-    max-width: 120px;
-    width: 100%;
-    height: 300px;
-  }
 
   ${(props) =>
     props.$isActive &&
@@ -63,7 +57,8 @@ export const DoorType = styled.div`
 
 export const DoorElement = styled.div`
   width: 100%;
-  height: ${(props) => Math.ceil((100 * props.$heightRatio * 100) / 100)}%;
+  //height: ${(props) => Math.ceil((100 * props.$heightRatio * 100) / 100)}%;
+  height: ${(props) => props.$height}px;
   display: flex;
   flex-direction: column;
   justify-content: center;

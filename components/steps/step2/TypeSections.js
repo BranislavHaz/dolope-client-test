@@ -60,7 +60,7 @@ const TypeSections = ({ setHandleSubmit }) => {
     <>
       <$.Wrap>
         <Title>Police</Title>
-        <$.TypeSectionsWrap>
+        <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
           <$.SectionType $isActive={checkIfIsActiveSection(state, 1)}>
             <SelfModule countSelfs={3} id={1} />
           </$.SectionType>
@@ -78,7 +78,7 @@ const TypeSections = ({ setHandleSubmit }) => {
           </$.SectionType>
         </$.TypeSectionsWrap>
         <Title>Zásuvky</Title>
-        <$.TypeSectionsWrap>
+        <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
           <$.SectionType $isActive={checkIfIsActiveSection(state, 6)}>
             <DrawerModule
               countDrawers={2}
@@ -180,7 +180,7 @@ const TypeSections = ({ setHandleSubmit }) => {
           </$.SectionType>
         </$.TypeSectionsWrap>
         <Title>Závěsná tyč</Title>
-        <$.TypeSectionsWrap>
+        <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
           <$.SectionType $isActive={checkIfIsActiveSection(state, 17)}>
             <VariableHangerModule
               countShelfs={3}
