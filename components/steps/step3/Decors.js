@@ -167,6 +167,7 @@ const Decors = ({ type }) => {
                 layout="fill"
                 objectPosition="center"
                 alt={decor.id}
+                loading="lazy"
               />
             </$.DecorImage>
             <$.DecorTitle>{`${
@@ -195,6 +196,7 @@ const Decors = ({ type }) => {
               layout="fill"
               objectPosition="center"
               alt={`Dekor - ${decor.id_manufacturer}`}
+              loading="lazy"
             />
           </$.DecorImage>
           <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label}`}</$.DecorTitle>
