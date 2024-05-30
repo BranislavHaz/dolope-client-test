@@ -15,6 +15,7 @@ export const Wrap = styled.div`
 `;
 
 export const SectionType = styled(SelectElement)`
+  display: ${(props) => (props.$isAllowed ? "block" : "none")};
   ${(props) =>
     props.$isActive &&
     css`

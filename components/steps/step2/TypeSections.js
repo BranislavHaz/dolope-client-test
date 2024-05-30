@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { checkIfIsActiveSection } from "@/utils/steps/step2/checkIfIsActiveSection";
+import { isAllowedSection } from "@/utils/steps/step2/isAllowedSection";
 import useMainStore from "@/stores/useMainStore";
 
 import Title from "../ui/Title";
@@ -56,30 +57,53 @@ const TypeSections = ({ setHandleSubmit }) => {
     setHandleSubmit(() => () => handleSubmit());
   }, [sections.typeOfSections]);
 
+  const checkIsAllowedSection = (typeSection) => {
+    const corpusHeight = state.corpus.height;
+    return isAllowedSection({ corpusHeight, typeSection });
+  };
+
   return (
     <>
       <$.Wrap>
         <Title>Police</Title>
         <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 1)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 1)}
+            $isAllowed={checkIsAllowedSection(1)}
+          >
             <SelfModule countSelfs={3} id={1} />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 2)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 2)}
+            $isAllowed={checkIsAllowedSection(2)}
+          >
             <SelfModule countSelfs={4} id={2} />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 3)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 3)}
+            $isAllowed={checkIsAllowedSection(3)}
+          >
             <SelfModule countSelfs={5} id={3} />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 4)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 4)}
+            $isAllowed={checkIsAllowedSection(4)}
+          >
             <SelfModule countSelfs={6} id={4} />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 5)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 5)}
+            $isAllowed={checkIsAllowedSection(5)}
+          >
             <SelfModule countSelfs={7} id={5} />
           </$.SectionType>
         </$.TypeSectionsWrap>
         <Title>Zásuvky</Title>
         <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 6)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 6)}
+            $isAllowed={checkIsAllowedSection(6)}
+          >
             <DrawerModule
               countDrawers={2}
               countShelfs={7}
@@ -88,7 +112,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={6}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 7)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 7)}
+            $isAllowed={checkIsAllowedSection(7)}
+          >
             <DrawerModule
               countDrawers={3}
               countShelfs={6}
@@ -97,7 +124,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={7}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 8)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 8)}
+            $isAllowed={checkIsAllowedSection(8)}
+          >
             <DrawerModule
               countDrawers={3}
               countShelfs={7}
@@ -106,7 +136,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={8}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 9)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 9)}
+            $isAllowed={checkIsAllowedSection(9)}
+          >
             <DrawerModule
               countDrawers={4}
               countShelfs={5}
@@ -115,7 +148,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={9}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 10)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 10)}
+            $isAllowed={checkIsAllowedSection(10)}
+          >
             <DrawerModule
               countDrawers={4}
               countShelfs={6}
@@ -124,7 +160,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={10}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 11)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 11)}
+            $isAllowed={checkIsAllowedSection(11)}
+          >
             <VariableDrawerModule
               countDrawers={2}
               countShelfs={5}
@@ -133,7 +172,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={11}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 12)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 12)}
+            $isAllowed={checkIsAllowedSection(12)}
+          >
             <VariableDrawerModule
               countDrawers={2}
               countShelfs={6}
@@ -142,7 +184,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={12}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 13)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 13)}
+            $isAllowed={checkIsAllowedSection(13)}
+          >
             <VariableDrawerModule
               countDrawers={3}
               countShelfs={4}
@@ -151,7 +196,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={13}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 14)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 14)}
+            $isAllowed={checkIsAllowedSection(14)}
+          >
             <VariableDrawerModule
               countDrawers={3}
               countShelfs={5}
@@ -160,7 +208,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={14}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 15)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 15)}
+            $isAllowed={checkIsAllowedSection(15)}
+          >
             <VariableDrawerModule
               countDrawers={4}
               countShelfs={4}
@@ -169,7 +220,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={15}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 16)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 16)}
+            $isAllowed={checkIsAllowedSection(16)}
+          >
             <VariableDrawerModule
               countDrawers={4}
               countShelfs={5}
@@ -181,7 +235,10 @@ const TypeSections = ({ setHandleSubmit }) => {
         </$.TypeSectionsWrap>
         <Title>Závěsná tyč</Title>
         <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 17)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 17)}
+            $isAllowed={checkIsAllowedSection(17)}
+          >
             <VariableHangerModule
               countShelfs={3}
               countSpaces={1}
@@ -191,7 +248,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={17}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 18)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 18)}
+            $isAllowed={checkIsAllowedSection(18)}
+          >
             <VariableHangerModule
               countShelfs={4}
               countSpaces={2}
@@ -201,7 +261,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={18}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 19)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 19)}
+            $isAllowed={checkIsAllowedSection(19)}
+          >
             <VariableHangerModule
               countShelfs={5}
               countSpaces={3}
@@ -211,7 +274,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={19}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 20)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 20)}
+            $isAllowed={checkIsAllowedSection(20)}
+          >
             <VariableHangerModule
               countShelfs={4}
               countSpaces={3}
@@ -221,7 +287,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={20}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 21)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 21)}
+            $isAllowed={checkIsAllowedSection(21)}
+          >
             <VariableHangerModule
               countShelfs={5}
               countSpaces={4}
@@ -231,7 +300,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={21}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 22)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 22)}
+            $isAllowed={checkIsAllowedSection(22)}
+          >
             <VariableHangerModule
               countShelfs={4}
               countSpaces={1}
@@ -241,7 +313,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={22}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 23)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 23)}
+            $isAllowed={checkIsAllowedSection(23)}
+          >
             <HangerModule
               countSelf={3}
               countSpaces={0}
@@ -251,7 +326,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={23}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 24)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 24)}
+            $isAllowed={checkIsAllowedSection(24)}
+          >
             <HangerModule
               countSelf={3}
               countSpaces={0}
@@ -261,7 +339,10 @@ const TypeSections = ({ setHandleSubmit }) => {
               id={24}
             />
           </$.SectionType>
-          <$.SectionType $isActive={checkIfIsActiveSection(state, 25)}>
+          <$.SectionType
+            $isActive={checkIfIsActiveSection(state, 25)}
+            $isAllowed={checkIsAllowedSection(25)}
+          >
             <HangerModule
               countSelf={3}
               countSpaces={0}
