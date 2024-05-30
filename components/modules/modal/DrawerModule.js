@@ -54,7 +54,7 @@ const DrawerModule = ({
 
     for (let i = 1; i <= countSpaces; i++) {
       moduleArr.push(
-        <React.Fragment key={i}>
+        <React.Fragment key={`space-${i}`}>
           <$.Self />
           <SpaceModal
             displayHeight={displayHeight}
@@ -65,11 +65,11 @@ const DrawerModule = ({
     }
 
     moduleArr.push(
-      <>
+      <React.Fragment key="drawers">
         <$.Self />
         <DrawersModal countDrawers={countDrawers} />
         <$.Self />
-      </>
+      </React.Fragment>
     );
 
     bottomShelf &&

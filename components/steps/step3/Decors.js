@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import useTimeout from "@/hooks/useTimeout";
@@ -42,12 +42,15 @@ const Decors = ({ type }) => {
     productsAPI: state.productsAPI,
   }));
 
+  const [isScrollEnd, setIsScrollEnd] = useState(false);
+  const set = useTimeout();
+
   useEffect(() => {
+    setIsScrollEnd(false);
     setBeScrolled(true);
     set(() => setBeScrolled(false), 700);
+    !modal.beScrolled && setIsScrollEnd(true);
   }, [modal.type]);
-
-  const set = useTimeout();
 
   const filteredDecors =
     type === "usedDoors"
@@ -163,6 +166,7 @@ const Decors = ({ type }) => {
                 src={`/images/glass/${decor.id}.jpeg`}
                 layout="fill"
                 objectPosition="center"
+                alt={decor.id}
               />
             </$.DecorImage>
             <$.DecorTitle>{`${
@@ -190,6 +194,7 @@ const Decors = ({ type }) => {
               src={`/images/decors/${decor.id_manufacturer}.jpeg`}
               layout="fill"
               objectPosition="center"
+              alt={`Dekor - ${decor.id_manufacturer}`}
             />
           </$.DecorImage>
           <$.DecorTitle>{`${decor.name} (${decor.id_manufacturer}) - ${decor.label}`}</$.DecorTitle>
@@ -201,7 +206,11 @@ const Decors = ({ type }) => {
   const decors = getDecors();
 
   return (
-    <$.Wrap $isUsed={type === "usedDoors"} $isDoors={type === "doors"}>
+    <$.Wrap
+      $isUsed={type === "usedDoors"}
+      $isDoors={type === "doors"}
+      $isScrollEnd={isScrollEnd}
+    >
       <$.DecorsWrap
         $isUsed={type === "usedDoors"}
         $isEmpty={decors.length === 0}

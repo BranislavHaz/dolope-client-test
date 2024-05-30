@@ -18,9 +18,6 @@ const Space = ({ heightDisplay, heightReal, children }) => {
     }
   };
 
-  console.log("heightDisplay");
-  console.log(heightDisplay);
-
   return (
     <$.Space $width={viewportSizes.section.width} $height={heightDisplay}>
       {children}

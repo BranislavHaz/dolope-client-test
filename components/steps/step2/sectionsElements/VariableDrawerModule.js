@@ -77,7 +77,7 @@ const VariableDrawerModule = ({
 
     for (let i = 1; i <= countSpaces; i++) {
       moduleArr.push(
-        <React.Fragment key={i}>
+        <React.Fragment key={`space-${i}`}>
           <$.Self />
           <SpaceModal
             displayHeight={displayHeight}
@@ -89,24 +89,27 @@ const VariableDrawerModule = ({
     }
 
     moduleArr.push(
-      <>
+      <React.Fragment key="drawers">
         <$.Self />
         <DrawersModal countDrawers={countDrawers} />
         <$.Self />
-      </>
+      </React.Fragment>
     );
 
-    bottomShelf &&
+    if (bottomShelf) {
       moduleArr.push(
-        <VariableSpaceModal
-          displayHeight={bottomShelfHeightDisplay}
-          realHeight={variableHeight[currentSection]}
-          setVariableHeight={setVariableHeight}
-          minMaxHeight={calcMinMaxHeight}
-          inputErr={inputErr[currentSection]}
-          setInputErr={setInputErr}
-        />
+        <React.Fragment key="bottomShelf">
+          <VariableSpaceModal
+            displayHeight={bottomShelfHeightDisplay}
+            realHeight={variableHeight[currentSection]}
+            setVariableHeight={setVariableHeight}
+            minMaxHeight={calcMinMaxHeight}
+            inputErr={inputErr[currentSection]}
+            setInputErr={setInputErr}
+          />
+        </React.Fragment>
       );
+    }
 
     return <$.ModuleWrap>{moduleArr}</$.ModuleWrap>;
   };

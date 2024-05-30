@@ -6,12 +6,12 @@ export const Wrap = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  animation: var(--blob-animation);
   align-self: start;
   margin-bottom: auto;
+  transition: all 0.25s ease-in-out;
+  opacity: ${(props) => (props.$isScrollEnd ? 1 : 0)};
 
-  padding-top: ${(props) =>
-    props.$isUsed || props.$isDoors ? 0 : "var(--filter-box-h)"};
+  padding-top: ${(props) => (props.$isUsed || props.$isDoors ? 0 : "1rem")};
 
   @media ${device.tablet} {
     padding-top: 0;

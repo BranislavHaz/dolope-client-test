@@ -96,7 +96,7 @@ export const CurrentlyEdited = styled.div`
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 4px 2px;
+      padding: 6px 2px 4px 2px;
       text-transform: uppercase;
       font-weight: 300;
       font-size: ${props.$width <= 140

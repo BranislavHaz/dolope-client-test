@@ -89,7 +89,7 @@ const VariableHangerModule = ({
     if (positionSelf === "top") {
       for (let i = 1; i <= countSpaces; i++) {
         moduleArr.push(
-          <React.Fragment key={i}>
+          <React.Fragment key={`top-space-${i}`}>
             <$.Self />
             <SpaceModal
               displayHeight={displayHeight}
@@ -102,7 +102,7 @@ const VariableHangerModule = ({
     }
 
     moduleArr.push(
-      <>
+      <React.Fragment key="hanger">
         <$.Self />
         <VariableHangerModal
           displayHeight={hangerHeightDisplay}
@@ -112,13 +112,13 @@ const VariableHangerModule = ({
           inputErr={inputErr[currentSection]}
           setInputErr={setInputErr}
         />
-      </>
+      </React.Fragment>
     );
 
     if (positionSelf === "bottom") {
       for (let i = 1; i <= countSpaces; i++) {
         moduleArr.push(
-          <React.Fragment key={i}>
+          <React.Fragment key={`bottom-space-${i}`}>
             <$.Self />
             <SpaceModal
               displayHeight={displayHeight}
@@ -132,7 +132,7 @@ const VariableHangerModule = ({
 
     if (bottomShelf) {
       moduleArr.push(
-        <React.Fragment>
+        <React.Fragment key="bottomShelf">
           <$.Self />
           <SpaceModal
             displayHeight={displayHeight}
@@ -145,7 +145,7 @@ const VariableHangerModule = ({
 
     if (countDrawers) {
       moduleArr.push(
-        <React.Fragment>
+        <React.Fragment key="drawers">
           <$.Self />
           <DrawersModal countDrawers={countDrawers} />
           <$.Self />

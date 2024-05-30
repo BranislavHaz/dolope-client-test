@@ -75,6 +75,7 @@ const TypeProfiles = ({ setHandleSubmit }) => {
               src={`./images/profiles/${profileName}-profile.jpg`}
               width={100}
               height={100}
+              alt={`Profil - ${profileName}`}
             />
           </$.ProfileElementImg>
           <div>{profile.name}</div>
@@ -95,6 +96,7 @@ const TypeProfiles = ({ setHandleSubmit }) => {
             src={`./images/profiles/${color}-profile.png`}
             width={100}
             height={100}
+            alt={`Profil - ${color}`}
           />
         </$.ColorElementImg>
         <div>{colorMapping[color]}</div>
