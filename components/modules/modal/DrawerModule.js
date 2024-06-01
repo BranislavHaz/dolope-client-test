@@ -10,7 +10,7 @@ const DrawerModule = ({
   countDrawers,
   countShelfs,
   countSpaces,
-  bottomShelf,
+  bottomSpace,
   id,
 }) => {
   const { state, viewport, wardrobe, corpus, drawers } = useMainStore(
@@ -27,20 +27,20 @@ const DrawerModule = ({
   const sectionHeightReal = corpus.height;
   const drawersHeightDisplay = (sectionHeightDisplay / 10) * countDrawers;
   const drawersHeightReal = drawers.heightOfDrawers[countDrawers];
-  const bottomShelfHeightDisplay = (sectionHeightDisplay / 10) * 2;
+  const bottomSpaceHeightDisplay = (sectionHeightDisplay / 10) * 2;
   const shelfThicknessDisplay = 3; // 3px je šírka police v Module.styled
 
   const calcSpace = () => {
     const realHeight =
       (sectionHeightReal -
-        (bottomShelf && 400) -
+        (bottomSpace && 400) -
         wardrobe.thickness * countShelfs -
         drawersHeightReal) /
       countSpaces; // 400mm je fixná výška spodnej police
     const displayHeight =
       (sectionHeightDisplay -
         drawersHeightDisplay -
-        (bottomShelf && bottomShelfHeightDisplay) -
+        (bottomSpace && bottomSpaceHeightDisplay) -
         shelfThicknessDisplay * countShelfs) /
       countSpaces;
 
@@ -72,9 +72,9 @@ const DrawerModule = ({
       </React.Fragment>
     );
 
-    bottomShelf &&
+    bottomSpace &&
       moduleArr.push(
-        <SpaceModal displayHeight={bottomShelfHeightDisplay} realHeight={40} />
+        <SpaceModal displayHeight={bottomSpaceHeightDisplay} realHeight={40} />
       );
 
     return <$.ModuleWrap>{moduleArr}</$.ModuleWrap>;

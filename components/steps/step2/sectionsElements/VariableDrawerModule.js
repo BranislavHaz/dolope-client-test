@@ -15,7 +15,7 @@ const VariableDrawerModule = ({
   countDrawers,
   countShelfs,
   countSpaces,
-  bottomShelf,
+  bottomSpace,
   id,
 }) => {
   const { state, viewport, wardrobe, corpus, drawers, currentSection } =
@@ -34,11 +34,11 @@ const VariableDrawerModule = ({
   const [inputErr, setInputErr] = useState(getInputErrs(state));
   const minShelfSpace = 200; // minimálna hodnota pre priestor na policu
 
-  const sectionHeightDisplay = viewport.height * 0.3; // 30vh má SectionType v TypeSections.styled
+  const sectionHeightDisplay = state.viewportSizes.modal.elHeight;
   const sectionHeightReal = corpus.height;
   const drawersHeightDisplay = (sectionHeightDisplay / 10) * countDrawers;
   const drawersHeightReal = drawers.heightOfDrawers[countDrawers];
-  const bottomShelfHeightDisplay = (sectionHeightDisplay / 10) * 2.5;
+  const bottomSpaceHeightDisplay = (sectionHeightDisplay / 10) * 2.5;
   const shelfThicknessDisplay = 3; // 3px je šírka police v Module.styled
 
   const calcHeightSpace = () => {
@@ -67,7 +67,7 @@ const VariableDrawerModule = ({
   const displayHeight =
     (sectionHeightDisplay -
       drawersHeightDisplay -
-      (bottomShelf && bottomShelfHeightDisplay) -
+      (bottomSpace && bottomSpaceHeightDisplay) -
       shelfThicknessDisplay * countShelfs) /
     countSpaces;
 
@@ -96,11 +96,11 @@ const VariableDrawerModule = ({
       </React.Fragment>
     );
 
-    if (bottomShelf) {
+    if (bottomSpace) {
       moduleArr.push(
-        <React.Fragment key="bottomShelf">
+        <React.Fragment key="bottomSpace">
           <VariableSpaceModal
-            displayHeight={bottomShelfHeightDisplay}
+            displayHeight={bottomSpaceHeightDisplay}
             realHeight={variableHeight[currentSection]}
             setVariableHeight={setVariableHeight}
             minMaxHeight={calcMinMaxHeight}

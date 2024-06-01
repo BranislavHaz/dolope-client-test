@@ -29,6 +29,20 @@ import Module22 from "@/components/modules/Module22";
 import Module23 from "@/components/modules/Module23";
 import Module24 from "@/components/modules/Module24";
 import Module25 from "@/components/modules/Module25";
+import Module26 from "@/components/modules/Module26";
+import Module27 from "@/components/modules/Module27";
+import Module28 from "@/components/modules/Module28";
+import Module29 from "@/components/modules/Module29";
+import Module30 from "@/components/modules/Module30";
+import Module31 from "@/components/modules/Module31";
+import Module32 from "@/components/modules/Module32";
+import Module33 from "@/components/modules/Module33";
+import Module34 from "@/components/modules/Module34";
+import Module35 from "@/components/modules/Module35";
+import Module36 from "@/components/modules/Module36";
+import Module37 from "@/components/modules/Module37";
+import Module38 from "@/components/modules/Module38";
+import Module39 from "@/components/modules/Module39";
 
 const modulesMap = {
   0: ModuleEmpty,
@@ -57,6 +71,20 @@ const modulesMap = {
   23: Module23,
   24: Module24,
   25: Module25,
+  26: Module26,
+  27: Module27,
+  28: Module28,
+  29: Module29,
+  30: Module30,
+  31: Module31,
+  32: Module32,
+  33: Module33,
+  34: Module34,
+  35: Module35,
+  36: Module36,
+  37: Module37,
+  38: Module38,
+  39: Module39,
 };
 
 const Corpus = () => {
