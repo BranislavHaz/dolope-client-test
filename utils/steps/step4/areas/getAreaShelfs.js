@@ -24,6 +24,20 @@ const countShelfsSectionsType = {
   23: 3,
   24: 3,
   25: 3,
+  26: 3,
+  27: 4,
+  28: 4,
+  29: 4,
+  30: 4,
+  31: 3,
+  32: 3,
+  33: 4,
+  34: 4,
+  35: 4,
+  36: 5,
+  37: 5,
+  38: 3,
+  39: 4,
 };
 
 export const getAreaShelfs = (state) => {
