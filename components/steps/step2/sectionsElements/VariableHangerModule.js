@@ -134,7 +134,7 @@ const VariableHangerModule = ({
 
     if (bottomSpace && positionSelf === "top") {
       moduleArr.push(
-        <React.Fragment key="bottomSpace">
+        <React.Fragment key="bottomSpace1">
           <$.Self />
           <SpaceModal
             displayHeight={displayHeight}
@@ -147,7 +147,7 @@ const VariableHangerModule = ({
 
     if (countDrawers) {
       moduleArr.push(
-        <React.Fragment key="drawers">
+        <React.Fragment key="drawers1">
           <$.Self />
           <DrawersModal countDrawers={countDrawers} />
           <$.Self />
@@ -157,7 +157,7 @@ const VariableHangerModule = ({
 
     if (bottomSpace && positionSelf === "bottom") {
       moduleArr.push(
-        <React.Fragment key="bottomSpace">
+        <React.Fragment key="bottomSpace2">
           <SpaceModal
             displayHeight={displayHeight}
             realHeight={heightSpace}
@@ -168,7 +168,7 @@ const VariableHangerModule = ({
     }
 
     if (bottomShelf) {
-      moduleArr.push(<$.Self key="drawers" />);
+      moduleArr.push(<$.Self key="drawers2" />);
     }
 
     return <$.ModuleWrap>{moduleArr}</$.ModuleWrap>;
