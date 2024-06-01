@@ -11,8 +11,6 @@ export const getUniqueDecors = ({ state }) => {
 
   const allUniqueDecors = [...new Set(allDecors)];
 
-  console.log(allUniqueDecors);
-
   /*   return state.productsAPI.dtd10.filter((decor) =>
     allUniqueDecors.includes(decor.id)
   ); */
@@ -22,5 +20,4 @@ export const getUniqueDecors = ({ state }) => {
   );
 
   return all;
-  console.log(all);
 };

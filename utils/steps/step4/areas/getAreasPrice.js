@@ -39,8 +39,6 @@ export const getAreasPrice = (state) => {
       .toFixed(0);
   };
 
-  console.log(pricesAreaObj);
-
   const totalPriceAreas = sumPrices(pricesAreaObj);
 
   return +totalPriceAreas;

@@ -17,7 +17,6 @@ export const mergeAreas = (state) => {
 
   // Funkcia na pridanie alebo aktualizáciu hodnot v objekte areas
   const addAreas = (material) => {
-    console.log(material);
     for (const decorId in material) {
       if (areas.hasOwnProperty(decorId)) {
         areas[decorId] = {
@@ -50,9 +49,6 @@ export const mergeAreas = (state) => {
   };
 
   changeMaterialToFullBoard(areas);
-
-  console.log("AREAS");
-  console.log(areas);
 
   return areas;
 };
