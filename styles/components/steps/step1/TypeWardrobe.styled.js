@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { device } from "@/utils/devices";
+import { device } from "@/utils/configurator/devices";
 import { SelectElement } from "../ui/SelectElement.styled";
 
 export const FullWrap = styled.div`

@@ -1,6 +1,6 @@
 import * as $ from "@/styles/layouts/configurator/WardrobeConfig.styled";
 
-import Steps from "@/components/steps/Steps";
+import Steps from "@/components/configurator/steps/Steps";
 
 const WardrobeConfig = () => {
   return (

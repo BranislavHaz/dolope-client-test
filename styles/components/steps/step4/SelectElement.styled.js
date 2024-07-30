@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { device } from "@/utils/devices";
+import { device } from "@/utils/configurator/devices";
 
 export const Wrap = styled.div`
   display: flex;

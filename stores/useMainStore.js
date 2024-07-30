@@ -2,27 +2,27 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-import createViewportSlice from "./createViewportSlice";
-import createWardrobeSlice from "./createWardrobeSlice";
-import createCorpusSlice from "./createCorpusSlice";
-import createRailsSlice from "./createRailsSlice";
-import createSideWallsSlice from "./createSideWallsSlice";
-import createSectionsSlice from "./createSectionsSlice";
-import createHangersSlice from "./createHangersSlice";
-import createDrawersSlice from "./createDrawersSlice";
-import createDoorsSlice from "./createDoorsSlice";
+import createViewportSlice from "./configurator/createViewportSlice";
+import createWardrobeSlice from "./configurator/createWardrobeSlice";
+import createCorpusSlice from "./configurator/createCorpusSlice";
+import createRailsSlice from "./configurator/createRailsSlice";
+import createSideWallsSlice from "./configurator/createSideWallsSlice";
+import createSectionsSlice from "./configurator/createSectionsSlice";
+import createHangersSlice from "./configurator/createHangersSlice";
+import createDrawersSlice from "./configurator/createDrawersSlice";
+import createDoorsSlice from "./configurator/createDoorsSlice";
 
-import createAreaPartsSlice from "./createAreaPartsSlice";
+import createAreaPartsSlice from "./configurator/createAreaPartsSlice";
 
-import createProductsApiSlice from "./createProductsApiSlice";
+import createProductsApiSlice from "./configurator/createProductsApiSlice";
 
-import createStepsSlice from "./createStepsSlice";
+import createStepsSlice from "./configurator/createStepsSlice";
 
-import createModalSlice from "./createModalSlice";
+import createModalSlice from "./configurator/createModalSlice";
 
-import createFiltersSlice from "./createFiltersSlice";
+import createFiltersSlice from "./configurator/createFiltersSlice";
 
-import createLightBoxSlice from "./createLightBox";
+import createLightBoxSlice from "./configurator/createLightBox";
 
 const createStore = (createStoreFn) => {
   const devtoolsEnhancer = devtools(createStoreFn);

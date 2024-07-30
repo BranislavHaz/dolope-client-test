@@ -1,7 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
-import { chceckFilledSteps } from "@/utils/steps/checkFilledSteps";
+import { chceckFilledSteps } from "@/utils/configurator/steps/checkFilledSteps";
 
-import Button from "@/components/steps/ui/Button";
+import Button from "@/components/configurator/steps/ui/Button";
 
 import * as $ from "@/styles/layouts/configurator/Footer.styled";
 

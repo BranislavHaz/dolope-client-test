@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-import { device } from "@/utils/devices";
+import { device } from "@/utils/configurator/devices";
 
 export const FilterBoxWrap = styled.div`
   width: 100%;

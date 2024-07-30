@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "@/utils/devices";
+import { device } from "@/utils/configurator/devices";
 
 const Button = styled.div`
   visibility: ${(props) => (props.$isVisible ? "visible" : "hidden")};

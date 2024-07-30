@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "@/utils/devices";
+import { device } from "@/utils/configurator/devices";
 
 export const FlashMessageWrap = styled.div`
   width: 100%;

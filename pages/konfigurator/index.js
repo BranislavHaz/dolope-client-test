@@ -2,18 +2,18 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 
-import Modal from "@/components/steps/Modal";
-import ShowHideDoors from "@/components/steps/ui/ShowHideDoors";
+import Modal from "@/components/configurator/steps/Modal";
+import ShowHideDoors from "@/components/configurator/steps/ui/ShowHideDoors";
 import Header from "@/layouts/configurator/Header";
 import WardrobeView from "@/layouts/configurator/WardrobeView";
 import WardrobeConfig from "@/layouts/configurator/WardrobeConfig";
-import Step4 from "@/components/steps/step4/Step4";
+import Step4 from "@/components/configurator/steps/step4/Step4";
 import Footer from "@/layouts/configurator/Footer";
 
 import useMainStore from "@/stores/useMainStore";
-import { fetchProducts } from "@/utils/fetchProducts";
+import { fetchProducts } from "@/utils/configurator/fetchProducts";
 
-import * as $ from "@/styles/pages/konfigurator/index.styled";
+import * as $ from "@/styles/pages/configurator/index.styled";
 
 export async function getStaticProps() {
   const products = await fetchProducts();

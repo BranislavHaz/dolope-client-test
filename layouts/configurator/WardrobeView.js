@@ -2,7 +2,7 @@ import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/layouts/configurator/WardrobeView.styled";
 
-import Wardrobe from "@/components/elements/Wardrobe";
+import Wardrobe from "@/components/configurator/elements/Wardrobe";
 
 const WardrobeView = () => {
   const { currentStep } = useMainStore((state) => ({

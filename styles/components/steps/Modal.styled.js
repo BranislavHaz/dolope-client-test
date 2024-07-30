@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "@/utils/devices";
+import { device } from "@/utils/configurator/devices";
 
 export const FullModalWrap = styled.div`
   position: absolute;
