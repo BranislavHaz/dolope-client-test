@@ -1,6 +1,6 @@
 import React from "react";
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/elements/Corpus.styled";
+import * as $ from "@/styles/configurator/components/elements/Corpus.styled";
 
 import Stand from "@/components/configurator/elements/Stand";
 import ModuleEmpty from "@/components/configurator/modules/ModuleEmpty";
@@ -57,6 +57,20 @@ const modulesMap = {
   23: Module23,
   24: Module24,
   25: Module25,
+  26: Module26,
+  27: Module27,
+  28: Module28,
+  29: Module29,
+  30: Module30,
+  31: Module31,
+  32: Module32,
+  33: Module33,
+  34: Module34,
+  35: Module35,
+  36: Module36,
+  37: Module37,
+  38: Module38,
+  39: Module39,
 };
 
 const Corpus = () => {

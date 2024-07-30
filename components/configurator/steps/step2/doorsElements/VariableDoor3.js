@@ -128,7 +128,6 @@ const VariableDoor3 = ({ id }) => {
             placeholder="cm"
             value={variableHeight[currentDoor]}
             onChange={(e) => handleOnChange(e.target.value)}
-            onBlur={(e) => handleOnBlur(e.target.value)}
             onClick={handleInputClick}
             $isError={inputErr[currentDoor]}
           />

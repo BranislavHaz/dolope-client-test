@@ -20,14 +20,6 @@ export const getHandlesPrice = (availableProfiles, doors) => {
   const handlePrice =
     doors.height <= 2800 ? handlePriceMM * 2800 : handlePriceMM * 5600;
 
-  console.log(
-    "Celkový počet madiel: " +
-      2 * doors.count +
-      " || " +
-      "Cena za madlo: " +
-      handlePrice
-  );
-
   // Vrátenie ceny pre všetky madlá (2 madlá na 1 dverách)
   return +(2 * doors.count * handlePrice).toFixed(0);
 };

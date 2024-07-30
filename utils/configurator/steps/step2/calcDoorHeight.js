@@ -3,8 +3,8 @@ export const calcDoorElementHeight = (factor, height) => {
 };
 
 export const calcMinMaxDoorHeight = (type, fullHeight) => {
-  const minHeight = 200;
-  const minHeightCM = 20;
+  const minHeight = 150;
+  const minHeightCM = 15;
 
   switch (type) {
     case 1:

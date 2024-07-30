@@ -17,6 +17,7 @@ const WardrobeView = () => {
           width={300}
           height={300}
           alt="Skříně - popis"
+          priority
         />
       )}
       {currentStep.id !== 1 && <Wardrobe />}

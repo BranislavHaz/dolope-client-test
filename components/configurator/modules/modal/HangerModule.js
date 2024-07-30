@@ -14,7 +14,7 @@ const HangerModule = ({
   countDrawers,
   countHangers = 1,
   positionSelf,
-  bottomShelf,
+  bottomSpace,
   id,
 }) => {
   const { state, viewport, wardrobe, corpus, drawers } = useMainStore(
@@ -39,8 +39,8 @@ const HangerModule = ({
     real: 1000,
   });
 
-  const bottomShelfHeightDisplay = heightHanger.display * 0.3;
-  const bottomShelfHeightReal = 300; // fixna výška spodnej police
+  const bottomSpaceHeightDisplay = heightHanger.display * 0.3;
+  const bottomSpaceHeightReal = 300; // fixna výška spodnej police
   const drawersHeightDisplay = (sectionHeightDisplay / 10) * countDrawers;
   const drawersHeightReal = drawers.heightOfDrawers[countDrawers];
   const shelfThicknessDisplay = 3; // 3px je šírka police v Module.styled
@@ -59,9 +59,9 @@ const HangerModule = ({
       substractRealArr.push(countDrawers * drawersHeightReal);
     }
 
-    if (bottomShelf) {
-      substractDisplayArr.push(bottomShelfHeightDisplay);
-      substractRealArr.push(bottomShelfHeightReal);
+    if (bottomSpace) {
+      substractDisplayArr.push(bottomSpaceHeightDisplay);
+      substractRealArr.push(bottomSpaceHeightReal);
     }
 
     let displayHeight = sectionHeightDisplay;
@@ -192,13 +192,13 @@ const HangerModule = ({
         </React.Fragment>
       );
 
-    bottomShelf &&
+    bottomSpace &&
       moduleArr.push(
         <React.Fragment key="bottom-shelf">
           <SpaceModal
             key="space-modal"
-            displayHeight={bottomShelfHeightDisplay}
-            realHeight={bottomShelfHeightReal / 10}
+            displayHeight={bottomSpaceHeightDisplay}
+            realHeight={bottomSpaceHeightReal / 10}
           />
         </React.Fragment>
       );

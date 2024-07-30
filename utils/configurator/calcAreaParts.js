@@ -20,8 +20,6 @@ export const calcAreaParts = (state) => {
   ];
 
   for (let i = 1; i < partsArr.length; i++) {
-    Object.keys(partsArr[i]).forEach((key) => {
-      //console.log(key, partsArr[i][key]);
-    });
+    Object.keys(partsArr[i]).forEach((key) => {});
   }
 };

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/components/modules/modal/Module.styled";
 
@@ -13,6 +14,17 @@ const VariableHangerModal = ({
     currentSection: state.activeFilter.sections,
   }));
   const { minValue, maxValue } = minMaxHeight();
+  const [isVariable, setIsVariable] = useState(true);
+
+  useEffect(() => {
+    if (maxValue < minValue + 5) {
+      setIsVariable(false);
+      setVariableHeight((variableHeight) => ({
+        ...variableHeight,
+        [currentSection]: minValue,
+      }));
+    }
+  }, [minValue, maxValue]);
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
@@ -31,18 +43,28 @@ const VariableHangerModal = ({
   };
 
   return (
-    <$.VariableHanger $height={displayHeight} $isVariable={true}>
-      <$.SpaceLine />
-      <$.InputNum
-        placeholder="cm"
-        value={realHeight || ""}
-        onChange={(e) => handleChange(e)}
-        $isError={inputErr}
-      />
-      <$.LimitText $isError={inputErr}>
-        {minValue}-{maxValue} cm
-      </$.LimitText>
-    </$.VariableHanger>
+    <>
+      {isVariable && (
+        <$.VariableHanger $height={displayHeight} $isVariable={true}>
+          <$.SpaceLine />
+          <$.InputNum
+            placeholder="cm"
+            value={realHeight || ""}
+            onChange={(e) => handleChange(e)}
+            $isError={inputErr}
+          />
+          <$.LimitText $isError={inputErr}>
+            {minValue}-{maxValue} cm
+          </$.LimitText>
+        </$.VariableHanger>
+      )}
+      {!isVariable && (
+        <$.Hanger $height={displayHeight}>
+          <$.SpaceLine />
+          {minValue} cm
+        </$.Hanger>
+      )}
+    </>
   );
 };
 

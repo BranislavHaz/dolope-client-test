@@ -41,7 +41,7 @@ const VariableDoor2 = ({ id }) => {
     } else if (min <= valueMM && valueMM <= max) {
       setSpaceHeight((spaceHeight) => ({
         ...spaceHeight,
-        [currentDoor]: +((doors.height - valueMM) / 10).toFixed(0) / 2,
+        [currentDoor]: +((doors.height - valueMM) / 10 / 2).toFixed(0),
       }));
       setInputErr((inputErr) => ({ ...inputErr, [currentDoor]: false }));
     } else {

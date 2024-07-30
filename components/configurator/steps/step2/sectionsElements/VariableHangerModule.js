@@ -17,7 +17,8 @@ const VariableHangerModule = ({
   countSpaces,
   countDrawers,
   positionSelf,
-  bottomShelf,
+  bottomSpace,
+  bottomShelf = false,
   id,
 }) => {
   const { state, viewport, wardrobe, corpus, drawers, currentSection } =
@@ -39,6 +40,7 @@ const VariableHangerModule = ({
   const sectionHeightReal = corpus.height;
   const shelfThicknessDisplay = 3; // 3px je šírka police v Module.styled
   const minShelfSpace = 200; // minimálna hodnota pre priestor na policu
+  const minHangerSpace = 500; // minimálna hodnota pre priestor na vešiak
 
   const hangerHeightDisplay = sectionHeightDisplay / 2.5;
   const hangerHeightReal = variableHeight[currentSection] * 10; // v mm
@@ -46,10 +48,10 @@ const VariableHangerModule = ({
   const drawersHeightReal = drawers.heightOfDrawers[countDrawers] || 0;
   const shelfsHeightDisplay = shelfThicknessDisplay * countShelfs;
   const shelfsHeightReal = countShelfs * wardrobe.thickness;
-  const spacesCount = countSpaces + (bottomShelf ? 1 : 0);
+  const spacesCount = countSpaces + (bottomSpace ? 1 : 0);
 
   const calcMinMaxHeight = () => {
-    const minValue = minShelfSpace / 10;
+    const minValue = minHangerSpace / 10;
     const maxValue = Math.floor(
       (sectionHeightReal -
         drawersHeightReal -
@@ -130,9 +132,9 @@ const VariableHangerModule = ({
       }
     }
 
-    if (bottomShelf) {
+    if (bottomSpace && positionSelf === "top") {
       moduleArr.push(
-        <React.Fragment key="bottomShelf">
+        <React.Fragment key="bottomSpace1">
           <$.Self />
           <SpaceModal
             displayHeight={displayHeight}
@@ -145,12 +147,28 @@ const VariableHangerModule = ({
 
     if (countDrawers) {
       moduleArr.push(
-        <React.Fragment key="drawers">
+        <React.Fragment key="drawers1">
           <$.Self />
           <DrawersModal countDrawers={countDrawers} />
           <$.Self />
         </React.Fragment>
       );
+    }
+
+    if (bottomSpace && positionSelf === "bottom") {
+      moduleArr.push(
+        <React.Fragment key="bottomSpace2">
+          <SpaceModal
+            displayHeight={displayHeight}
+            realHeight={heightSpace}
+            isError={inputErr[currentSection]}
+          />
+        </React.Fragment>
+      );
+    }
+
+    if (bottomShelf) {
+      moduleArr.push(<$.Self key="drawers2" />);
     }
 
     return <$.ModuleWrap>{moduleArr}</$.ModuleWrap>;

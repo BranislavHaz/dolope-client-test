@@ -29,22 +29,6 @@ export const getHorizontProfilesPrice = (availableProfiles, doors) => {
     doors.horizontProfilesReserve *
     bottomHorizontProfilePriceMM;
 
-  console.log(
-    "Vrchný profil dverí (celková dĺžka s rezervou): " +
-      topHorizontProfilePrice / topHorizontProfilePriceMM +
-      " || " +
-      "Vrchny profil cena za mm: " +
-      topHorizontProfilePriceMM
-  );
-
-  console.log(
-    "Spodný profil dverí (celková dĺžka s rezervou): " +
-      bottomHorizontProfilePrice / bottomHorizontProfilePriceMM +
-      " || " +
-      "Spodný profil cena za mm: " +
-      bottomHorizontProfilePriceMM
-  );
-
   // Vrátenie cien profilov
   return {
     top: +topHorizontProfilePrice.toFixed(0),

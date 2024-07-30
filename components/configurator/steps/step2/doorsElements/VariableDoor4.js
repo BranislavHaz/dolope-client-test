@@ -41,7 +41,7 @@ const VariableDoor4 = ({ id }) => {
     } else if (min <= valueMM && valueMM <= max) {
       setSpaceHeight((spaceHeight) => ({
         ...spaceHeight,
-        [currentDoor]: +((doors.height - valueMM * 2) / 10).toFixed(0) / 3,
+        [currentDoor]: +((doors.height - valueMM * 2) / 10 / 3).toFixed(0),
       }));
       setInputErr((inputErr) => ({ ...inputErr, [currentDoor]: false }));
     } else {
@@ -59,7 +59,7 @@ const VariableDoor4 = ({ id }) => {
     if (variableHeight[currentDoor] > 0 && !inputErr[currentDoor]) {
       const typeOfDoor = id;
       const currentVariableHeight = variableHeight[currentDoor] * 10;
-      const currentSpaceHeight = spaceHeight[currentDoor] * 10;
+      const currentSpaceHeight = (spaceHeight[currentDoor] * 10).toFixed(0);
       const fixedHeight = Math.round(
         (doors.height - variableHeight[currentDoor] * 2 * 10) / 3
       );

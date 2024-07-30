@@ -15,6 +15,16 @@ const countDrawersSectionsType = {
   22: 2,
   23: 3,
   24: 4,
+  27: 1,
+  28: 2,
+  29: 3,
+  30: 1,
+  33: 1,
+  34: 1,
+  35: 2,
+  36: 1,
+  37: 1,
+  39: 3,
 };
 
 const getDecorIdCheapestDTD10 = (state) => {
