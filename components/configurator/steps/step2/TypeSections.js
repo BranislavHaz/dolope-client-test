@@ -13,7 +13,7 @@ import VariableHangerModule from "./sectionsElements/VariableHangerModule";
 
 import toast from "react-hot-toast";
 
-import * as $ from "@/styles/components/steps/step2/TypeSections.styled";
+import * as $ from "@/styles/configurator/components/steps/step2/TypeSections.styled";
 
 const TypeSections = ({ setHandleSubmit }) => {
   const { state, sections, setStepsInputs } = useMainStore((state) => ({

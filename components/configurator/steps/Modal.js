@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/steps/Modal.styled";
+import * as $ from "@/styles/configurator/components/steps/Modal.styled";
 
 import Button from "./ui/Button";
 

@@ -1,7 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 import DecorsLink from "./DecorsLink";
 import SelectElement from "./SelectElement";
-import * as $ from "@/styles/components/steps/step4/PriceList.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/PriceList.styled";
 
 const getWardrobeSize = (state) => {
   const { wardrobe } = state;

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/steps/step1/TypeWardrobe.styled";
+import * as $ from "@/styles/configurator/components/steps/step1/TypeWardrobe.styled";
 
 import Title from "../ui/Title";
 

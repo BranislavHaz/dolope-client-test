@@ -1,4 +1,4 @@
-import * as $ from "@/styles/components/steps/step4/ConfettiAnimation.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/ConfettiAnimation.styled";
 
 const ConfettiAnimation = () => {
   const confettiColors = [

@@ -3,7 +3,7 @@ import useMainStore from "@/stores/useMainStore";
 
 import { getDrawerPriceDifference } from "@/utils/configurator/steps/step4/drawers/getDrawerFittingsPrice";
 
-import * as $ from "@/styles/components/steps/step4/SelectElement.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/SelectElement.styled";
 
 const SelectElement = () => {
   const { state, drawers, setTypeDrawers } = useMainStore((state) => ({

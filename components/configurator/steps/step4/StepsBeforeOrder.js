@@ -1,4 +1,4 @@
-import * as $ from "@/styles/components/steps/step4/StepsBeforeOrder.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/StepsBeforeOrder.styled";
 
 const StepsBeforeOrder = () => {
   return (

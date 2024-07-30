@@ -1,7 +1,7 @@
 import React from "react";
 import { selectSection } from "@/utils/configurator/steps/step2/selectSection";
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/modules/modal/Module.styled";
+import * as $ from "@/styles/configurator/components/modules/modal/Module.styled";
 
 import SpaceModal from "./elements/SpaceModal";
 

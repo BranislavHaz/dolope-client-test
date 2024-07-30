@@ -1,7 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 import { getDecorUrl } from "@/utils/configurator/getDecorUrl";
 
-import * as $ from "@/styles/components/elements/Side.styled";
+import * as $ from "@/styles/configurator/components/elements/Side.styled";
 
 const Side = ({ location }) => {
   const { state, wardrobe, viewport, viewportSizes } = useMainStore(

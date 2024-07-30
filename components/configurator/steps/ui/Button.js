@@ -1,4 +1,4 @@
-import * as $ from "@/styles/components/steps/ui/Button.styled";
+import * as $ from "@/styles/configurator/components/steps/ui/Button.styled";
 
 const Button = ({
   type,

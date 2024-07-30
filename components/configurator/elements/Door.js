@@ -1,7 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 import { getDecorUrl } from "@/utils/configurator/getDecorUrl";
 
-import * as $ from "@/styles/components/elements/Doors.styled";
+import * as $ from "@/styles/configurator/components/elements/Doors.styled";
 
 import Handle from "./Handle";
 import HProfile from "./HProfile";

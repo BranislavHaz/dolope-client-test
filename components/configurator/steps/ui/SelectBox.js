@@ -1,6 +1,6 @@
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/steps/ui/SelectBox.styled";
+import * as $ from "@/styles/configurator/components/steps/ui/SelectBox.styled";
 
 const selectBoxType = {
   sizeWardrobe: {

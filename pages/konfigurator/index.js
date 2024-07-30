@@ -13,7 +13,7 @@ import Footer from "@/layouts/configurator/Footer";
 import useMainStore from "@/stores/useMainStore";
 import { fetchProducts } from "@/utils/configurator/fetchProducts";
 
-import * as $ from "@/styles/pages/configurator/index.styled";
+import * as $ from "@/styles/configurator/pages/configurator/index.styled";
 
 export async function getStaticProps() {
   const products = await fetchProducts();

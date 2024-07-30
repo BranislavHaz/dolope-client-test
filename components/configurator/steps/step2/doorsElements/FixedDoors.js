@@ -2,7 +2,7 @@ import useMainStore from "@/stores/useMainStore";
 import { calcDoorElementHeight } from "@/utils/configurator/steps/step2/calcDoorHeight";
 import { checkIfIsActiveDoor } from "@/utils/configurator/steps/step2/checkIfIsActiveDoor";
 import { nextStepFilterBox } from "@/utils/configurator/steps/step2/nextStepFilterBox";
-import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
+import * as $ from "@/styles/configurator/components/steps/step2/TypeDoors.styled";
 
 const getDoorSections = (countOfSections, doors) => {
   let sectionsObj = {};

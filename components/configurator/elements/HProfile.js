@@ -1,5 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/elements/HProfile.styled";
+import * as $ from "@/styles/configurator/components/elements/HProfile.styled";
 
 const HProfile = () => {
   const { viewport, doors, viewportSizes } = useMainStore((state) => ({

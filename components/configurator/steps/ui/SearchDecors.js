@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/steps/ui/SearchDecors.styled";
+import * as $ from "@/styles/configurator/components/steps/ui/SearchDecors.styled";
 
 const SearchDecors = ({ type }) => {
   const { decorFilter, setDecorFilter } = useMainStore((state) => ({

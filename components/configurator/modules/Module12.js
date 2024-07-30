@@ -1,5 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/modules/Module.styled";
+import * as $ from "@/styles/configurator/components/modules/Module.styled";
 
 import Shelf from "../elements/Shelf";
 import Space from "../elements/Space";

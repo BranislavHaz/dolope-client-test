@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/modules/modal/Module.styled";
+import * as $ from "@/styles/configurator/components/modules/modal/Module.styled";
 
 const VariableSpaceModal = ({
   displayHeight,

@@ -10,7 +10,7 @@ import { getAreasPrice } from "@/utils/configurator/steps/step4/areas/getAreasPr
 import { getProfilesDoorPrice } from "@/utils/configurator/steps/step4/profiles/getProfilesDoorPrice";
 import { getDrawerFittingsPrice } from "@/utils/configurator/steps/step4/drawers/getDrawerFittingsPrice";
 
-import * as $ from "@/styles/components/steps/step4/Step4.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/Step4.styled";
 
 const Step4 = () => {
   const { state, setCurrentStepId } = useMainStore((state) => ({

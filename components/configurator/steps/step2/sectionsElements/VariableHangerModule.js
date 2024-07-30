@@ -10,7 +10,7 @@ import SpaceModal from "@/components/configurator/modules/modal/elements/SpaceMo
 import VariableHangerModal from "@/components/configurator/modules/modal/elements/VariableHangerModal";
 import DrawersModal from "@/components/configurator/modules/modal/elements/DrawersModal";
 
-import * as $ from "@/styles/components/modules/modal/Module.styled";
+import * as $ from "@/styles/configurator/components/modules/modal/Module.styled";
 
 const VariableHangerModule = ({
   countShelfs,

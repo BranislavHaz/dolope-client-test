@@ -1,5 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/elements/Space.styled";
+import * as $ from "@/styles/configurator/components/elements/Space.styled";
 
 const Space = ({ heightDisplay, heightReal, children }) => {
   const { viewportSizes } = useMainStore((state) => ({

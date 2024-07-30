@@ -1,4 +1,4 @@
-import * as $ from "@/styles/components/modules/modal/Module.styled";
+import * as $ from "@/styles/configurator/components/modules/modal/Module.styled";
 
 const SpaceModal = ({ displayHeight, realHeight, isError }) => {
   return (

@@ -11,7 +11,7 @@ import VariableDoor4 from "./doorsElements/VariableDoor4";
 
 import toast from "react-hot-toast";
 
-import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
+import * as $ from "@/styles/configurator/components/steps/step2/TypeDoors.styled";
 
 const TypeDoors = ({ setHandleSubmit }) => {
   const { doors, setStepsInputs, setIsModalActive, setActiveFilter } =

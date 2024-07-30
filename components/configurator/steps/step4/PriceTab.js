@@ -1,4 +1,4 @@
-import * as $ from "@/styles/components/steps/step4/PriceTab.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/PriceTab.styled";
 
 const handleScroll = (id) => {
   const element = document.getElementById(id);

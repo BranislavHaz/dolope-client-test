@@ -1,6 +1,6 @@
 import useMainStore from "@/stores/useMainStore";
 import useTimeout from "@/hooks/useTimeout";
-import * as $ from "@/styles/components/steps/ui/FilterBoxCount.styled";
+import * as $ from "@/styles/configurator/components/steps/ui/FilterBoxCount.styled";
 
 const typeObj = {
   sections: { title: "sekce" },

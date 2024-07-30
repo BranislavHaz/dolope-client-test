@@ -1,7 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 import { getDecorUrl } from "@/utils/configurator/getDecorUrl";
 
-import * as $ from "@/styles/components/elements/Shelf.styled";
+import * as $ from "@/styles/configurator/components/elements/Shelf.styled";
 
 const Shelf = () => {
   const { state, viewportSizes } = useMainStore((state) => ({

@@ -1,5 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/elements/Doors.styled";
+import * as $ from "@/styles/configurator/components/elements/Doors.styled";
 
 import Door from "./Door";
 

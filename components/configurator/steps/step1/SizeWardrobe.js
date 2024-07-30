@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/steps/step1/SizeWardrobe.styled";
+import * as $ from "@/styles/configurator/components/steps/step1/SizeWardrobe.styled";
 
 import Title from "../ui/Title";
 import Button from "../ui/Button";

@@ -6,7 +6,7 @@ import SpaceModal from "./elements/SpaceModal";
 import HangerModal from "./elements/HangerModal";
 import DrawersModal from "./elements/DrawersModal";
 
-import * as $ from "@/styles/components/modules/modal/Module.styled";
+import * as $ from "@/styles/configurator/components/modules/modal/Module.styled";
 
 const HangerModule = ({
   countSelf,

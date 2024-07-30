@@ -1,6 +1,6 @@
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/steps/ui/FlashMessage.styled";
+import * as $ from "@/styles/configurator/components/steps/ui/FlashMessage.styled";
 
 const FlashMessage = ({ type, children }) => {
   const { flashMessage, setFlashMessage } = useMainStore((state) => ({

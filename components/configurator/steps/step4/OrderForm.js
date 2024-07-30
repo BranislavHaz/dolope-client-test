@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { postOrder } from "@/utils/configurator/postOrder";
 import * as Yup from "yup";
 import PriceTab from "./PriceTab";
-import * as $ from "@/styles/components/steps/step4/OrderForm.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/OrderForm.styled";
 import useMainStore from "@/stores/useMainStore";
 
 import ConfettiAnimation from "./ConfettiAnimation";

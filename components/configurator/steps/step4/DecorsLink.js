@@ -1,7 +1,7 @@
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/steps/step4/DecorsLink.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/DecorsLink.styled";
 
 const getImgUrl = (decor) => {
   if (decor.manufacturer === "Kronospan" || decor.manufacturer === "Egger") {

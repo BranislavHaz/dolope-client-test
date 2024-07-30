@@ -7,7 +7,7 @@ import { getUniqueDecors } from "@/utils/configurator/steps/step3/getUniqueDecor
 
 import toast from "react-hot-toast";
 
-import * as $ from "@/styles/components/steps/step3/Decors.styled";
+import * as $ from "@/styles/configurator/components/steps/step3/Decors.styled";
 
 const Decors = ({ type }) => {
   const {

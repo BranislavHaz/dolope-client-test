@@ -1,6 +1,6 @@
 import useMainStore from "@/stores/useMainStore";
 import { getUniqueDecors } from "@/utils/configurator/steps/step3/getUniqueDecors";
-import * as $ from "@/styles/components/steps/step3/UsedDoorsDecor.styled";
+import * as $ from "@/styles/configurator/components/steps/step3/UsedDoorsDecor.styled";
 
 import Decors from "./Decors";
 

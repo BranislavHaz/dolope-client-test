@@ -1,5 +1,5 @@
 import Image from "next/image";
-import * as $ from "@/styles/components/steps/ui/ShowHideDoors.styled";
+import * as $ from "@/styles/configurator/components/steps/ui/ShowHideDoors.styled";
 
 import useMainStore from "@/stores/useMainStore";
 

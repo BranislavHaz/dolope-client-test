@@ -1,7 +1,7 @@
 import useMainStore from "@/stores/useMainStore";
 import { getDecorUrl } from "@/utils/configurator/getDecorUrl";
 
-import * as $ from "@/styles/components/elements/Stand.styled";
+import * as $ from "@/styles/configurator/components/elements/Stand.styled";
 
 const Stand = () => {
   const { state, corpus, viewport, viewportSizes } = useMainStore((state) => ({

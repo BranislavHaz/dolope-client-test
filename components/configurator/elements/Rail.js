@@ -1,5 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/elements/Rail.styled";
+import * as $ from "@/styles/configurator/components/elements/Rail.styled";
 
 const Rail = ({ type }) => {
   const { viewport, wardrobe, rails, sections, doors, viewportSizes } =

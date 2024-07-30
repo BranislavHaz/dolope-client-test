@@ -9,7 +9,7 @@ import SpaceModal from "@/components/configurator/modules/modal/elements/SpaceMo
 import VariableSpaceModal from "@/components/configurator/modules/modal/elements/VariableSpaceModal";
 import DrawersModal from "@/components/configurator/modules/modal/elements/DrawersModal";
 
-import * as $ from "@/styles/components/modules/modal/Module.styled";
+import * as $ from "@/styles/configurator/components/modules/modal/Module.styled";
 
 const VariableDrawerModule = ({
   countDrawers,

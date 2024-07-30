@@ -3,7 +3,7 @@ import useMainStore from "@/stores/useMainStore";
 import WardrobeView from "@/layouts/configurator/WardrobeView";
 import PriceTab from "./PriceTab";
 
-import * as $ from "@/styles/components/steps/step4/Preview.styled";
+import * as $ from "@/styles/configurator/components/steps/step4/Preview.styled";
 
 const Preview = ({ price }) => {
   const { setCurrentStepId, setOrderStatus } = useMainStore((state) => ({

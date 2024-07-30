@@ -1,5 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/elements/Wardrobe.styled";
+import * as $ from "@/styles/configurator/components/elements/Wardrobe.styled";
 
 import Doors from "@/components/configurator/elements/Doors";
 import Corpus from "@/components/configurator/elements/Corpus";

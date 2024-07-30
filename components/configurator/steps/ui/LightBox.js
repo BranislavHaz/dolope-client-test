@@ -1,7 +1,7 @@
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/steps/ui/LightBox.styled";
+import * as $ from "@/styles/configurator/components/steps/ui/LightBox.styled";
 
 const LightBox = () => {
   const { isActive, imgUrl, setIsLightBoxActive, setIsLightBoxImageUrl } =

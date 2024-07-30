@@ -11,7 +11,7 @@ import {
   generateOptionsOfDoors,
 } from "@/utils/configurator/steps/step1/generateOptions";
 
-import * as $ from "@/styles/components/steps/step1/CountSections.styled";
+import * as $ from "@/styles/configurator/components/steps/step1/CountSections.styled";
 
 const CountSections = ({ setHandleSubmit }) => {
   const { state } = useMainStore((state) => ({

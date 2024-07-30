@@ -9,7 +9,7 @@ import { checkIfIsActiveDoor } from "@/utils/configurator/steps/step2/checkIfIsA
 import { nextStepFilterBox } from "@/utils/configurator/steps/step2/nextStepFilterBox";
 import { useState } from "react";
 
-import * as $ from "@/styles/components/steps/step2/TypeDoors.styled";
+import * as $ from "@/styles/configurator/components/steps/step2/TypeDoors.styled";
 
 const VariableDoor1 = ({ id }) => {
   const { state, doors, setTypeOfDoors, removeTypeOfDoors, currentDoor } =

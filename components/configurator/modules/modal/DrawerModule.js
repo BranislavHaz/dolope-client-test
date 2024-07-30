@@ -4,7 +4,7 @@ import useMainStore from "@/stores/useMainStore";
 import SpaceModal from "./elements/SpaceModal";
 import DrawersModal from "./elements/DrawersModal";
 
-import * as $ from "@/styles/components/modules/modal/Module.styled";
+import * as $ from "@/styles/configurator/components/modules/modal/Module.styled";
 
 const DrawerModule = ({
   countDrawers,

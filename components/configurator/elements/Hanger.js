@@ -1,5 +1,5 @@
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/components/elements/Hanger.styled";
+import * as $ from "@/styles/configurator/components/elements/Hanger.styled";
 
 const Hanger = () => {
   const { sections, hangers, viewport } = useMainStore((state) => ({

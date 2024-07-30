@@ -1,6 +1,6 @@
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/elements/Handle.styled";
+import * as $ from "@/styles/configurator/components/elements/Handle.styled";
 
 const Handle = () => {
   const { doors, viewportSizes } = useMainStore((state) => ({

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { blobIn } from "./pages/configurator/animations.styled";
+import { blobIn } from "./configurator/pages/configurator/animations.styled";
 
 export const GlobalStyles = createGlobalStyle`
 :root {

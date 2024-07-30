@@ -3,7 +3,7 @@ import useMainStore from "@/stores/useMainStore";
 
 import SearchDecors from "./SearchDecors";
 
-import * as $ from "@/styles/components/steps/ui/FilterDecor.styled";
+import * as $ from "@/styles/configurator/components/steps/ui/FilterDecor.styled";
 
 const FilterDecor = ({ type }) => {
   const { modal, decorFilter, setDecorFilter } = useMainStore((state) => ({

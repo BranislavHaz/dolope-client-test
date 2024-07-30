@@ -2,7 +2,7 @@ import React from "react";
 import { getDecorUrl } from "@/utils/configurator/getDecorUrl";
 import useMainStore from "@/stores/useMainStore";
 
-import * as $ from "@/styles/components/elements/Drawers.styled";
+import * as $ from "@/styles/configurator/components/elements/Drawers.styled";
 
 const Drawers = ({ numOfDrawers }) => {
   const { state, sections, drawers, viewportSizes } = useMainStore((state) => ({

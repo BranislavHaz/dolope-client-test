@@ -6,7 +6,7 @@ import Title from "../ui/Title";
 
 import toast from "react-hot-toast";
 
-import * as $ from "@/styles/components/steps/step2/TypeProfiles.styled";
+import * as $ from "@/styles/configurator/components/steps/step2/TypeProfiles.styled";
 
 const colorMapping = {
   silver: "stříbrná",
