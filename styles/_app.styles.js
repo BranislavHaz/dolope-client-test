@@ -79,7 +79,7 @@ body {
     background-color: #fff;
 }
 
-div, p, h1, h2, h3, h4, h5, span {
+div, p, h1, h2, h3, h4, h5, span, ul, li {
     margin: 0;
     padding: 0;
 }

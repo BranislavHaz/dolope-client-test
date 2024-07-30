@@ -24,6 +24,8 @@ import createFiltersSlice from "./configurator/createFiltersSlice";
 
 import createLightBoxSlice from "./configurator/createLightBox";
 
+import createMobileMenuSlice from "./web/createMobileMenuSlice";
+
 const createStore = (createStoreFn) => {
   const devtoolsEnhancer = devtools(createStoreFn);
   return immer(devtoolsEnhancer);
@@ -52,6 +54,8 @@ const useMainStore = create(
     ...createFiltersSlice(...a),
 
     ...createLightBoxSlice(...a),
+
+    ...createMobileMenuSlice(...a),
   }))
 );
 

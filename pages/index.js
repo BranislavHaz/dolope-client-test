@@ -1,5 +1,6 @@
 import Head from "next/head";
-import * as $ from "@/styles/web/index.styled";
+import MobileMenu from "@/layouts/web/MobileMenu";
+import Header from "@/layouts/web/Header";
 
 const Home = () => {
   return (
@@ -10,7 +11,8 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <$.Main>Hello</$.Main>
+      <MobileMenu />
+      <Header />
     </>
   );
 };
