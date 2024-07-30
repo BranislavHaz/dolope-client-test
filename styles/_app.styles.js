@@ -75,6 +75,10 @@ body {
     font-family: var(--font-family);
 }
 
+body {
+    background-color: #fff;
+}
+
 div, p, h1, h2, h3, h4, h5, span {
     margin: 0;
     padding: 0;
