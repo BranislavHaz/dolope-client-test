@@ -80,11 +80,6 @@ div, p, h1, h2, h3, h4, h5, span {
     padding: 0;
 }
 
-body {
-    background-color: var(--bg-color-view);
-    font-size: 16px;
-}
-
 a {
     color: inherit;
     text-decoration: none;
@@ -92,12 +87,12 @@ a {
 
 * {
     box-sizing: border-box;
-      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 `;

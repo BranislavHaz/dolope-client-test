@@ -1,6 +1,6 @@
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/layouts/configurator/WardrobeView.styled";
+import * as $ from "@/styles/configurator/layouts/WardrobeView.styled";
 
 import Wardrobe from "@/components/configurator/elements/Wardrobe";
 

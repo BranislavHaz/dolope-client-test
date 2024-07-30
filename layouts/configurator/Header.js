@@ -1,5 +1,5 @@
 import Image from "next/image";
-import * as $ from "@/styles/layouts/configurator/Header.styled";
+import * as $ from "@/styles/configurator/layouts/Header.styled";
 
 const Header = () => {
   return (

@@ -29,6 +29,20 @@ import Module22 from "@/components/configurator/modules/Module22";
 import Module23 from "@/components/configurator/modules/Module23";
 import Module24 from "@/components/configurator/modules/Module24";
 import Module25 from "@/components/configurator/modules/Module25";
+import Module26 from "@/components/configurator/modules/Module26";
+import Module27 from "@/components/configurator/modules/Module27";
+import Module28 from "@/components/configurator/modules/Module28";
+import Module29 from "@/components/configurator/modules/Module29";
+import Module30 from "@/components/configurator/modules/Module30";
+import Module31 from "@/components/configurator/modules/Module31";
+import Module32 from "@/components/configurator/modules/Module32";
+import Module33 from "@/components/configurator/modules/Module33";
+import Module34 from "@/components/configurator/modules/Module34";
+import Module35 from "@/components/configurator/modules/Module35";
+import Module36 from "@/components/configurator/modules/Module36";
+import Module37 from "@/components/configurator/modules/Module37";
+import Module38 from "@/components/configurator/modules/Module38";
+import Module39 from "@/components/configurator/modules/Module39";
 
 const modulesMap = {
   0: ModuleEmpty,

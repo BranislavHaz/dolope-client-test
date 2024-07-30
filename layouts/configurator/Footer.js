@@ -3,7 +3,7 @@ import { chceckFilledSteps } from "@/utils/configurator/steps/checkFilledSteps";
 
 import Button from "@/components/configurator/steps/ui/Button";
 
-import * as $ from "@/styles/layouts/configurator/Footer.styled";
+import * as $ from "@/styles/configurator/layouts/Footer.styled";
 
 const Footer = () => {
   const { state, currentStep, stepsInputs, setCurrentStepId } = useMainStore(

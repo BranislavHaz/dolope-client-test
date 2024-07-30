@@ -1,4 +1,4 @@
-import * as $ from "@/styles/layouts/configurator/WardrobeConfig.styled";
+import * as $ from "@/styles/configurator/layouts/WardrobeConfig.styled";
 
 import Steps from "@/components/configurator/steps/Steps";
 
