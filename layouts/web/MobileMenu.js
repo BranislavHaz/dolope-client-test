@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/web/layouts/MobileMenu.styled";
@@ -14,16 +13,6 @@ const MobileMenu = () => {
   const closeMobileNavHandle = () => {
     setIsMobileMenuActive(false);
   };
-
-  useEffect(() => {
-    if (isMobileMenuActive) {
-      const items = document.querySelectorAll("li");
-      items.forEach((item, index) => {
-        item.style.animation = `${$.fadeInUp} 0.5s ease forwards`;
-        item.style.animationDelay = `${index * 0.2}s`;
-      });
-    }
-  }, [isMobileMenuActive]);
 
   return (
     <$.MobileMenu $isActive={isMobileMenuActive}>
@@ -55,7 +44,7 @@ const MobileMenu = () => {
             Email: <a href="mailto:info@example.com">info@example.com</a>
           </p>
         </$.ContactInfo>
-        <$.ActionButton>Get in Touch</$.ActionButton>
+        <$.ActionButton>Konfigurace skříně</$.ActionButton>
       </$.MobileMenuContent>
     </$.MobileMenu>
   );

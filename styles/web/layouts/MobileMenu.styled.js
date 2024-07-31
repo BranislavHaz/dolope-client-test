@@ -17,7 +17,7 @@ export const MobileMenu = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 10;
   background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,9 @@ export const CloseMenuButton = styled.div`
 
 export const MobileMenuContent = styled.div`
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 1.1rem;
   text-align: center;
 
@@ -53,41 +56,23 @@ export const MobileMenuContent = styled.div`
   }
 
   li {
+    width: 100%;
     margin: 0.5rem 0;
+    padding-bottom: 0.5rem;
     opacity: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     animation: ${fadeInUp} 0.5s ease forwards;
-
-    &:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-    &:nth-child(2) {
-      animation-delay: 0.5s;
-    }
-    &:nth-child(3) {
-      animation-delay: 1s;
-    }
   }
 
   li a {
     text-decoration: none;
     color: #333;
-    font-weight: bold;
+    font-size: 1.3rem;
+    font-weight: 500;
     position: relative;
-    padding-left: 1.5rem;
+    margin-top: 1rem;
     display: inline-block;
     transition: color 0.3s ease;
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--main-color);
-    }
 
     &:hover {
       color: var(--main-color);
@@ -96,7 +81,7 @@ export const MobileMenuContent = styled.div`
 `;
 
 export const ContactInfo = styled.div`
-  margin-top: 2rem;
+  margin: 3rem 0;
   text-align: center;
 
   p {
@@ -117,13 +102,13 @@ export const ContactInfo = styled.div`
 `;
 
 export const ActionButton = styled.button`
-  margin-top: 1.5rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.8rem 1rem;
   background-color: var(--main-color);
-  color: white;
+  color: #000;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 

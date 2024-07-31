@@ -6,7 +6,8 @@ export const Header = styled.header`
   height: 60px;
   display: flex;
   justify-content: center;
-  background-color: #fff;
+  background-color: transparent;
+  position: sticky;
 `;
 
 // Desktop styles
@@ -15,6 +16,7 @@ export const HeaderContentDesktop = styled.div`
   width: 90%;
   max-width: 1200px;
   height: 100%;
+  margin: 1rem 0;
   display: none;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +37,7 @@ export const Logo = styled.div`
   }
 
   &:hover img {
-    transform: rotate(4deg) scale(1.1);
+    transform: rotate(1deg) scale(1.04);
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.05));
   }
 `;
@@ -52,6 +54,7 @@ export const Nav = styled.nav`
     padding: 0.6rem;
     position: relative;
     transition: transform 0.3s ease;
+    font-weight: 500;
   }
 
   li::after {
@@ -78,42 +81,20 @@ export const Nav = styled.nav`
 `;
 
 export const Button = styled.div`
-  padding: 0.6rem 1rem;
+  padding: 0.8rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, #f1b90d, #f3c61a, #cf980b);
-  background-size: 200% 200%;
-  border-radius: 5px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-
-  img {
-    margin-right: 0.3rem;
-    transition: transform 0.3s ease;
-  }
+  border-radius: 30px;
+  border: 2px solid #000;
+  transition: all 0.3s ease;
+  font-weight: 500;
 
   &:hover {
     cursor: pointer;
-    animation: gradientAnimation 3s ease infinite;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px, rgba(0, 0, 0, 0.2) 0px 2px 4px;
-    transform: translateY(-2px);
-
-    img {
-      transform: scale(1.2);
-    }
-  }
-
-  @keyframes gradientAnimation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: #fff;
   }
 `;
 

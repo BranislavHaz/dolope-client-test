@@ -1,6 +1,7 @@
 import Head from "next/head";
 import MobileMenu from "@/layouts/web/MobileMenu";
 import Header from "@/layouts/web/Header";
+import Hero from "@/layouts/web/Hero";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       </Head>
       <MobileMenu />
       <Header />
+      <Hero />
     </>
   );
 };

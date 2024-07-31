@@ -76,7 +76,8 @@ body {
 }
 
 body {
-    background-color: #fff;
+   font-size: 16px;
+    background-color: var(--bg-color-view);
 }
 
 div, p, h1, h2, h3, h4, h5, span, ul, li {
@@ -93,10 +94,10 @@ a {
     box-sizing: border-box;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     -webkit-tap-highlight-color: transparent;
-    -webkit-user-select: none;
+/*     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none; */
 }
 `;

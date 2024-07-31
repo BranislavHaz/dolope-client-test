@@ -37,15 +37,7 @@ const Header = () => {
             </li>
           </ul>
         </$.Nav>
-        <$.Button>
-          <Image
-            src={"/icons/config.svg"}
-            width={15}
-            height={15}
-            alt="Konfigurátor ikona"
-          />
-          konfigurace skříně
-        </$.Button>
+        <$.Button>Konfigurace skříně</$.Button>
       </$.HeaderContentDesktop>
       <$.HeaderContentMobile>
         <$.Logo>
