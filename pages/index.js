@@ -2,6 +2,8 @@ import Head from "next/head";
 import MobileMenu from "@/layouts/web/MobileMenu";
 import Header from "@/layouts/web/Header";
 import Hero from "@/layouts/web/Hero";
+import Benefits from "@/layouts/web/Benefits";
+import SplitContent from "@/layouts/web/SplitContent";
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
       <MobileMenu />
       <Header />
       <Hero />
+      <Benefits />
+      <SplitContent />
     </>
   );
 };
