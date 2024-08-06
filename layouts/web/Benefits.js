@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Section from "@/components/web/Section";
 import * as $ from "@/styles/web/layouts/Benefits.styled";
 
 const Benefits = () => {
   return (
-    <$.Benefits>
+    <Section>
       <$.BenefitsContent>
         <$.Benefit>
           <$.Icon>
@@ -54,7 +55,7 @@ const Benefits = () => {
           </$.Description>
         </$.Benefit>
       </$.BenefitsContent>
-    </$.Benefits>
+    </Section>
   );
 };
 

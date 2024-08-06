@@ -1,31 +1,16 @@
 import styled from "styled-components";
 import { device } from "@/utils/configurator/devices";
 
-export const Benefits = styled.div`
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  background-color: #fff;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-  @media ${device.laptop} {
-    padding: 4rem;
-  }
-`;
-
 export const BenefitsContent = styled.div`
-  width: 80%;
-  max-width: 1200px;
   display: flex;
   flex-direction: column;
   position: relative;
 
   @media ${device.laptop} {
-    width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    column-gap: 4rem;
+    row-gap: 2rem;
   }
 `;
 
@@ -43,6 +28,8 @@ export const Benefit = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
+    font-size: 24px;
+    line-height: 1.6rem;
   }
 `;
 
@@ -87,8 +74,8 @@ export const Circle = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 900;
   letter-spacing: -1px;
 
   @media ${device.laptop} {
@@ -98,12 +85,10 @@ export const Title = styled.div`
 
 export const Description = styled.div`
   margin-top: 0.5rem;
-  font-size: 0.9rem;
-  letter-spacing: -0.5px;
+  font-size: 1rem;
   grid-column: span 2;
 
   @media ${device.laptop} {
     margin-top: 1rem;
-    font-size: 1rem;
   }
 `;

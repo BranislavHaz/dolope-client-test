@@ -3,7 +3,8 @@ import MobileMenu from "@/layouts/web/MobileMenu";
 import Header from "@/layouts/web/Header";
 import Hero from "@/layouts/web/Hero";
 import Benefits from "@/layouts/web/Benefits";
-import SplitContent from "@/layouts/web/SplitContent";
+import OrderSection from "@/layouts/web/OrderSection";
+import VisualizationSection from "@/layouts/web/VisualizationSection";
 
 const Home = () => {
   return (
@@ -18,7 +19,8 @@ const Home = () => {
       <Header />
       <Hero />
       <Benefits />
-      <SplitContent />
+      <OrderSection />
+      <VisualizationSection />
     </>
   );
 };
