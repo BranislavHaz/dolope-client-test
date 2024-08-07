@@ -5,6 +5,7 @@ import Hero from "@/layouts/web/Hero";
 import Benefits from "@/layouts/web/Benefits";
 import OrderSection from "@/layouts/web/OrderSection";
 import VisualizationSection from "@/layouts/web/VisualizationSection";
+import FAQ from "@/components/web/FAQ";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <Benefits />
       <OrderSection />
       <VisualizationSection />
+      <FAQ />
     </>
   );
 };

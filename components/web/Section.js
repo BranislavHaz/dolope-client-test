@@ -1,9 +1,15 @@
 import * as $ from "@/styles/web/components/Section.styled";
 
-const Section = ({ children, label, title }) => {
+const Section = ({
+  children,
+  label,
+  title,
+  theme = "light",
+  padding = "classic",
+}) => {
   return (
     <$.SectionWrap>
-      <$.Section>
+      <$.Section $theme={theme} $padding={padding}>
         <>
           {label && <$.Label>{label}</$.Label>}
           {title && <$.Title>{title}</$.Title>}

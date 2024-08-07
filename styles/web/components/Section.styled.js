@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { device } from "@/utils/configurator/devices";
 
 export const SectionWrap = styled.div`
@@ -17,9 +17,28 @@ export const Section = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border-radius: 24px;
+
+  ${(props) =>
+    props.$theme === "light"
+      ? css`
+          background-color: #fff;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          border-radius: 24px;
+        `
+      : css`
+          background-color: transparent;
+          box-shadow: none;
+          border-radius: 0;
+        `}
+
+  ${(props) =>
+    props.$padding === "classic"
+      ? css`
+          padding: 3rem 3rem;
+        `
+      : css`
+          padding: 3rem 0;
+        `}
 `;
 
 export const Label = styled.div`

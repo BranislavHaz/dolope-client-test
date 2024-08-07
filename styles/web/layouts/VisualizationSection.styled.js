@@ -10,6 +10,8 @@ export const Wrap = styled.div`
 `;
 
 export const Text = styled.div`
+  width: 100%;
+
   @media ${device.laptop} {
     width: 80%;
   }
