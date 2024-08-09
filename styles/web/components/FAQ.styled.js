@@ -16,13 +16,16 @@ export const Wrap = styled.div`
 
 export const WrapElement = styled.div`
   position: relative;
-  margin-bottom: 1rem;
   border-bottom: 1px solid #9d9d9d;
   cursor: pointer;
   transition: all 0.3s ease;
 
   @media ${device.laptop} {
     width: 80%;
+  }
+
+  &:last-of-type {
+    border-bottom: 0;
   }
 
   .answer {
@@ -35,9 +38,10 @@ export const WrapElement = styled.div`
 `;
 
 export const Question = styled.div`
-  padding: 1rem 2rem 1rem 0;
+  padding: 1.5rem 2rem 1.5rem 0;
   font-size: 1.1rem;
   font-weight: 500;
+  position: relative;
 `;
 
 export const Answer = styled.div`
@@ -46,12 +50,15 @@ export const Answer = styled.div`
 `;
 
 export const Close = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+
   &::after {
     content: "+";
+    display: inline-block;
     font-size: 1.5rem;
-    position: absolute;
-    top: 1rem;
-    right: 0;
     transition: transform 0.3s ease;
     transform: rotate(${(props) => (props.$isActive ? "135deg" : "0deg")});
   }

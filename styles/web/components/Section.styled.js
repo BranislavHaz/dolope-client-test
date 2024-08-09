@@ -17,6 +17,7 @@ export const Section = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   ${(props) =>
     props.$theme === "light"

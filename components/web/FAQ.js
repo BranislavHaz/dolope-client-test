@@ -84,8 +84,10 @@ const FAQ = () => {
             $isActive={activeElement === item.id}
             onClick={() => handleClick(item.id)}
           >
-            <$.Close $isActive={activeElement === item.id} />
-            <$.Question>{item.question}</$.Question>
+            <$.Question>
+              {item.question}
+              <$.Close $isActive={activeElement === item.id} />
+            </$.Question>
             <$.Answer className="answer">{item.answer}</$.Answer>
           </$.WrapElement>
         ))}
