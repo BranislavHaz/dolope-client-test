@@ -7,6 +7,7 @@ import OrderSection from "@/layouts/web/OrderSection";
 import VisualizationSection from "@/layouts/web/VisualizationSection";
 import FAQ from "@/components/web/FAQ";
 import Team from "@/components/web/Team";
+import Contact from "@/components/web/Contact";
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
       <VisualizationSection />
       <FAQ />
       <Team />
+      <Contact />
     </>
   );
 };
