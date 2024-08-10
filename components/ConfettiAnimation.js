@@ -1,6 +1,6 @@
-import * as $ from "@/styles/configurator/components/steps/step4/ConfettiAnimation.styled";
+import * as $ from "@/styles/ConfettiAnimation.styled";
 
-const ConfettiAnimation = () => {
+const ConfettiAnimation = ({ isDisplay = true }) => {
   const confettiColors = [
     "#FFC700",
     "#FF0000",
@@ -25,7 +25,11 @@ const ConfettiAnimation = () => {
     );
   });
 
-  return <$.ConfettiWrapper>{confettiElements}</$.ConfettiWrapper>;
+  return (
+    <$.ConfettiWrapper $isDisplay={isDisplay}>
+      {confettiElements}
+    </$.ConfettiWrapper>
+  );
 };
 
 export default ConfettiAnimation;

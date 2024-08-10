@@ -5,6 +5,7 @@ import * as $ from "@/styles/web/layouts/VisualizationSection.styled";
 const VisualizationSection = () => {
   return (
     <Section
+      id={"visualization"}
       label={"Vizualizace"}
       title={"Fotorealistická vizualizace vestavěné skříně ZDARMA."}
     >

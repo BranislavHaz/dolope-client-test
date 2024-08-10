@@ -72,6 +72,7 @@ const FAQ = () => {
 
   return (
     <Section
+      id={"faq"}
       label="FAQ"
       title="Otázky, na které se nás často ptáte"
       theme="dark"

@@ -6,7 +6,7 @@ import PriceTab from "./PriceTab";
 import * as $ from "@/styles/configurator/components/steps/step4/OrderForm.styled";
 import useMainStore from "@/stores/useMainStore";
 
-import ConfettiAnimation from "./ConfettiAnimation";
+import ConfettiAnimation from "@/components/ConfettiAnimation";
 
 import { getDataFromState } from "@/utils/configurator/getDataFromState";
 

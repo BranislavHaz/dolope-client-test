@@ -1,13 +1,48 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { postContactForm } from "@/utils/web/postContactForm";
+import Spinner from "./Spinner";
+import ConfettiAnimation from "../ConfettiAnimation";
 import * as Yup from "yup";
 import * as $ from "@/styles/web/components/ContactForm.styled";
 
-const ContactForm = () => {
+const FileInput = ({ onFilesAdded }) => {
   const fileInputRef = useRef(null);
+
+  const handleFileChange = (event) => {
+    if (event.target.files.length > 0) {
+      const newFiles = Array.from(event.target.files);
+      onFilesAdded(newFiles);
+    }
+    event.target.value = ""; // Reset input value
+  };
+
+  return (
+    <div>
+      <$.UploadButton
+        type="button"
+        onClick={() => fileInputRef.current.click()}
+      >
+        Vyberte soubory
+      </$.UploadButton>
+      <input
+        type="file"
+        ref={fileInputRef}
+        style={{ display: "none" }}
+        onChange={handleFileChange}
+        multiple
+        accept=".jpg, .jpeg, .png, .pdf"
+      />
+    </div>
+  );
+};
+
+const ContactForm = () => {
   const [isDragActive, setDragActive] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [fileLimitError, setFileLimitError] = useState("");
+  const [contactStatus, setContactStatus] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const SUPPORTED_FORMATS = [
     "image/jpg",
@@ -19,11 +54,11 @@ const ContactForm = () => {
   const MAX_SIZE_MB = 15;
 
   const validationSchema = Yup.object({
-    jmeno: Yup.string().required("Povinné pole"),
+    fullName: Yup.string().required("Povinné pole"),
     email: Yup.string().email("Neplatný e-mail").required("Povinné pole"),
-    zprava: Yup.string().required("Povinné pole"),
-    telefon: Yup.string(),
-    priloha: Yup.array()
+    message: Yup.string().required("Povinné pole"),
+    phone: Yup.string(),
+    attachments: Yup.array()
       .of(
         Yup.mixed()
           .test("fileFormat", "Nepovolený formát souboru", (file) =>
@@ -38,8 +73,21 @@ const ContactForm = () => {
       .max(MAX_FILES, `Maximálně ${MAX_FILES} soubory`),
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
+  const handleSubmit = async (values, { setSubmitting }) => {
+    setIsSubmitting(true);
+    const formData = new FormData();
+    formData.append("fullName", values.fullName);
+    formData.append("email", values.email);
+    formData.append("phone", values.phone);
+    formData.append("message", values.message);
+
+    for (let i = 0; i < values.attachments.length; i++) {
+      formData.append("attachments", values.attachments[i]);
+    }
+
+    // Poslanie formulára cez FormData
+    await postContactForm(formData, setContactStatus);
+    setIsSubmitting(false);
     setSubmitting(false);
   };
 
@@ -73,44 +121,51 @@ const ContactForm = () => {
     } else {
       setFileLimitError("");
       const updatedFiles = [...uploadedFiles, ...newFiles].slice(0, MAX_FILES);
-      setFieldValue("priloha", updatedFiles);
+      setFieldValue("attachments", updatedFiles);
       setUploadedFiles(updatedFiles);
       e.dataTransfer.clearData();
     }
   };
 
-  const handleFileClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleFileChange = (event, setFieldValue) => {
-    const newFiles = Array.from(event.currentTarget.files);
-    if (uploadedFiles.length + newFiles.length > MAX_FILES) {
-      setFileLimitError(`Můžete nahrát pouze ${MAX_FILES} soubory.`);
-    } else {
-      setFileLimitError("");
-      const updatedFiles = [...uploadedFiles, ...newFiles].slice(0, MAX_FILES);
-      setFieldValue("priloha", updatedFiles);
-      setUploadedFiles(updatedFiles);
-    }
-  };
+  const handleFilesAdded = useCallback(
+    (newFiles, setFieldValue) => {
+      if (uploadedFiles.length + newFiles.length > MAX_FILES) {
+        setFileLimitError(`Můžete nahrát pouze ${MAX_FILES} soubory.`);
+      } else {
+        setFileLimitError("");
+        const updatedFiles = [...uploadedFiles, ...newFiles].slice(
+          0,
+          MAX_FILES
+        );
+        setUploadedFiles(updatedFiles);
+        setFieldValue("attachments", updatedFiles);
+      }
+    },
+    [uploadedFiles]
+  );
 
   const handleFileRemove = (index, setFieldValue) => {
     const updatedFiles = uploadedFiles.filter((_, i) => i !== index);
     setUploadedFiles(updatedFiles);
-    setFieldValue("priloha", updatedFiles);
+    setFieldValue("attachments", updatedFiles);
     setFileLimitError(""); // Clear error message when a file is removed
   };
 
   return (
-    <$.FormWrapper>
+    <$.FormWrapper $isSend={contactStatus}>
+      <Spinner isSubmitting={isSubmitting} />
+      <ConfettiAnimation isDisplay={contactStatus} />
+      <$.TextIsSendWrap>
+        <$.TextIsSend>Vaše zpráva byla úspěšně odeslána! 🎉</$.TextIsSend>
+        <$.TextIsSend>Budeme Vás kontaktovat do 24 hodin.</$.TextIsSend>
+      </$.TextIsSendWrap>
       <Formik
         initialValues={{
-          jmeno: "",
+          fullName: "",
           email: "",
-          zprava: "",
-          telefon: "",
-          priloha: [],
+          message: "",
+          phone: "",
+          attachments: [],
         }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
@@ -118,26 +173,26 @@ const ContactForm = () => {
         {({ isSubmitting, setFieldValue }) => (
           <Form>
             <$.FormField>
-              <label>Jméno</label>
-              <Field type="text" name="jmeno" />
-              <ErrorMessage name="jmeno" component={$.ErrorText} />
+              <label>Jméno *</label>
+              <Field type="text" name="fullName" />
+              <ErrorMessage name="fullName" component={$.ErrorText} />
             </$.FormField>
 
             <$.FormField>
-              <label>E-mail</label>
+              <label>E-mail *</label>
               <Field type="email" name="email" />
               <ErrorMessage name="email" component={$.ErrorText} />
             </$.FormField>
 
             <$.FormField>
               <label>Telefonní číslo</label>
-              <Field type="text" name="telefon" />
+              <Field type="text" name="phone" />
             </$.FormField>
 
             <$.FormField>
-              <label>Zpráva</label>
-              <Field as="textarea" name="zprava" />
-              <ErrorMessage name="zprava" component={$.ErrorText} />
+              <label>Zpráva *</label>
+              <Field as="textarea" name="message" />
+              <ErrorMessage name="message" component={$.ErrorText} />
             </$.FormField>
 
             <$.FormField>
@@ -147,26 +202,18 @@ const ContactForm = () => {
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, setFieldValue)}
-                onClick={handleFileClick}
-                isDragActive={isDragActive}
+                $isActive={isDragActive}
               >
                 <$.UploadMessage>Sem přetáhněte soubory nebo</$.UploadMessage>
-                <$.UploadButton type="button" onClick={handleFileClick}>
-                  Vyberte soubory
-                </$.UploadButton>
-                <input
-                  type="file"
-                  name="priloha"
-                  ref={fileInputRef}
-                  style={{ display: "none" }}
-                  onChange={(event) => handleFileChange(event, setFieldValue)}
-                  multiple
-                  accept=".jpg, .jpeg, .png, .pdf"
+                <FileInput
+                  onFilesAdded={(files) =>
+                    handleFilesAdded(files, setFieldValue)
+                  }
                 />
-                <$.UploadMessage>
+                <$.UploadDescription>
                   Povoleny jsou formáty .jpg, .jpeg, .png, .pdf v celkové
                   velikosti max. 15 MB
-                </$.UploadMessage>
+                </$.UploadDescription>
               </$.FileDropArea>
 
               {fileLimitError && <$.ErrorText>{fileLimitError}</$.ErrorText>}
@@ -187,7 +234,7 @@ const ContactForm = () => {
                 </$.UploadedFilesList>
               )}
 
-              <ErrorMessage name="priloha" component={$.ErrorText} />
+              <ErrorMessage name="attachments" component={$.ErrorText} />
             </$.FormField>
 
             <$.SubmitButton type="submit" disabled={isSubmitting}>

@@ -68,6 +68,10 @@ export const GlobalStyles = createGlobalStyle`
 
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
 html,
 body {
     padding: 0;

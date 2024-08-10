@@ -8,6 +8,7 @@ import VisualizationSection from "@/layouts/web/VisualizationSection";
 import FAQ from "@/components/web/FAQ";
 import Team from "@/components/web/Team";
 import Contact from "@/components/web/Contact";
+import Footer from "@/layouts/web/Footer";
 
 const Home = () => {
   return (
@@ -27,6 +28,7 @@ const Home = () => {
       <FAQ />
       <Team />
       <Contact />
+      <Footer />
     </>
   );
 };

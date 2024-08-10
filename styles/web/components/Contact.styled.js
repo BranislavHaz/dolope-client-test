@@ -7,10 +7,12 @@ export const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 
   @media ${device.laptop} {
     display: grid;
     grid-template-columns: 2fr 3fr;
+    gap: 0;
     column-gap: 2rem;
     align-items: start;
   }
@@ -23,12 +25,6 @@ export const ContactSection = styled.div`
   color: #000;
   border-radius: 24px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-  @media ${device.laptop} {
-    position: sticky;
-    top: 0;
-    left: 0;
-  }
 `;
 
 export const CompanyName = styled.h2``;

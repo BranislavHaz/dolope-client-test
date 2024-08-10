@@ -27,13 +27,19 @@ const Header = () => {
         <$.Nav>
           <ul>
             <li>
-              <a href="#">Co nás pohání</a>
+              <a href="#order">Postup objednávky</a>
             </li>
             <li>
-              <a href="#">Co děláme jinak</a>
+              <a href="#visualization">Vizualizace</a>
             </li>
             <li>
-              <a href="#">Zkontaktujte se s námi</a>
+              <a href="#faq">Časté dotazy</a>
+            </li>
+            <li>
+              <a href="#team">My</a>
+            </li>
+            <li>
+              <a href="#contact">Kontakt</a>
             </li>
           </ul>
         </$.Nav>

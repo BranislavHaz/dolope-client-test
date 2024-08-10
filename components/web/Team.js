@@ -49,7 +49,7 @@ const Team = () => {
   }, []);
 
   return (
-    <Section label={"O nás"} title={"Kdo jsme a proč to děláme?"}>
+    <Section id={"team"} label={"O nás"} title={"Kdo jsme a proč to děláme?"}>
       <$.TextWrap>
         <$.TextBlock>
           Jsme rodinná firma s dlouholetými zkušenostmi nejen v truhlářství, ale

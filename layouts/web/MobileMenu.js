@@ -26,14 +26,20 @@ const MobileMenu = () => {
       </$.CloseMenuButton>
       <$.MobileMenuContent>
         <ul>
-          <li>
-            <a href="#">Co nás pohání</a>
+          <li onClick={closeMobileNavHandle}>
+            <a href="#order">Postup objednávky</a>
           </li>
-          <li>
-            <a href="#">Co děláme jinak</a>
+          <li onClick={closeMobileNavHandle}>
+            <a href="#visualization">Vizualizace</a>
           </li>
-          <li>
-            <a href="#">Zkontaktujte se s námi</a>
+          <li onClick={closeMobileNavHandle}>
+            <a href="#faq">Časté dotazy</a>
+          </li>
+          <li onClick={closeMobileNavHandle}>
+            <a href="#team">Proč to děláme</a>
+          </li>
+          <li onClick={closeMobileNavHandle}>
+            <a href="#contact">Kontakt</a>
           </li>
         </ul>
         <$.ContactInfo>

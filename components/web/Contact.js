@@ -5,6 +5,7 @@ import * as $ from "@/styles/web/components/Contact.styled";
 const Contact = () => {
   return (
     <Section
+      id={"contact"}
       label="Kontakt"
       title="Chcete se nás na něco zeptat?"
       theme="dark"
@@ -26,10 +27,12 @@ const Contact = () => {
           </$.CompanyInfo>
           <$.CompanyInfo>
             <$.CompanyData>
-              <$.Bold>tel: </$.Bold>+420 999 666 585
+              <$.Bold>tel: </$.Bold>
+              <a href="tel: +420 999 666 585">+420 999 666 585</a>
             </$.CompanyData>
             <$.CompanyData>
-              <$.Bold>e-mail: </$.Bold>kontakt@dolope.cz
+              <$.Bold>e-mail: </$.Bold>
+              <a href="mailto: kontakt@dolope.cz">kontakt@dolope.cz</a>
             </$.CompanyData>
             <$.CompanyData>
               <$.Bold>adresa: </$.Bold>Dubková 69, Lazy pod Makytou 020 55, SK

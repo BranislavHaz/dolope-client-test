@@ -5,6 +5,7 @@ import * as $ from "@/styles/web/layouts/OrderSection.styled";
 const OrderSection = () => {
   return (
     <Section
+      id={"order"}
       label={"objednávka"}
       title={
         "Přístup k objednávce je zaměřen na zákazníka - mluví za nás činy, ne slova."

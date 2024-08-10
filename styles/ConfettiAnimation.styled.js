@@ -31,6 +31,7 @@ export const ConfettiWrapper = styled.div`
   height: 100%;
   overflow: hidden;
   opacity: 0.7;
+  display: ${({ $isDisplay }) => ($isDisplay ? "block" : "none")};
 `;
 
 // Hlavný kontajner s pozadím konfetov
