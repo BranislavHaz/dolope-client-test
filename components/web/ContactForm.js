@@ -87,6 +87,13 @@ const ContactForm = () => {
 
     // Poslanie formulára cez FormData
     await postContactForm(formData, setContactStatus);
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "submitContactForm",
+      form_name: "Contact Form",
+    });
+
     setIsSubmitting(false);
     setSubmitting(false);
   };
