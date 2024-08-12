@@ -2,6 +2,9 @@ import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/web/layouts/MobileMenu.styled";
 
+import skLocales from "@/public/locales/sk/homepage.json";
+import czLocales from "@/public/locales/cz/homepage.json";
+
 const MobileMenu = () => {
   const { isMobileMenuActive, setIsMobileMenuActive } = useMainStore(
     (state) => ({
@@ -13,6 +16,9 @@ const MobileMenu = () => {
   const closeMobileNavHandle = () => {
     setIsMobileMenuActive(false);
   };
+
+  const language = process.env.LANGUAGE;
+  const t = language === "sk" ? skLocales : czLocales;
 
   return (
     <$.MobileMenu $isActive={isMobileMenuActive}>
@@ -27,7 +33,7 @@ const MobileMenu = () => {
       <$.MobileMenuContent>
         <ul>
           <li onClick={closeMobileNavHandle}>
-            <a href="#order">Postup objednávky</a>
+            <a href="#order">{t.mobile_menu_order_process}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
             <a href="#visualization">Vizualizace</a>
