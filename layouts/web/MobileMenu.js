@@ -2,10 +2,7 @@ import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/web/layouts/MobileMenu.styled";
 
-import skLocales from "@/public/locales/sk/homepage.json";
-import czLocales from "@/public/locales/cz/homepage.json";
-
-const MobileMenu = () => {
+const MobileMenu = ({ translations: t }) => {
   const { isMobileMenuActive, setIsMobileMenuActive } = useMainStore(
     (state) => ({
       isMobileMenuActive: state.isMobileMenuActive,
@@ -16,9 +13,6 @@ const MobileMenu = () => {
   const closeMobileNavHandle = () => {
     setIsMobileMenuActive(false);
   };
-
-  const language = process.env.LANGUAGE;
-  const t = language === "sk" ? skLocales : czLocales;
 
   return (
     <$.MobileMenu $isActive={isMobileMenuActive}>
@@ -33,30 +27,30 @@ const MobileMenu = () => {
       <$.MobileMenuContent>
         <ul>
           <li onClick={closeMobileNavHandle}>
-            <a href="#order">{t.mobile_menu_order_process}</a>
+            <a href="#order">{t.menu_order}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
-            <a href="#visualization">Vizualizace</a>
+            <a href="#visualization">{t.menu_visualization}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
-            <a href="#faq">Časté dotazy</a>
+            <a href="#faq">{t.menu_faq}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
-            <a href="#team">Proč to děláme</a>
+            <a href="#team">{t.menu_team}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
-            <a href="#contact">Kontakt</a>
+            <a href="#contact">{t.menu_contact}</a>
           </li>
         </ul>
         <$.ContactInfo>
           <p>
-            Tel: <a href="tel:+420123456789">+420 123 456 789</a>
+            Tel: <a href={`tel:${t.phone}`}>{t.phone}</a>
           </p>
           <p>
-            Email: <a href="mailto:info@example.com">info@example.com</a>
+            Email: <a href={`mailto:${t.email}`}>{t.email}</a>
           </p>
         </$.ContactInfo>
-        <$.ActionButton>Konfigurace skříně</$.ActionButton>
+        <$.ActionButton>{t.menu_action_button}</$.ActionButton>
       </$.MobileMenuContent>
     </$.MobileMenu>
   );

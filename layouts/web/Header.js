@@ -2,7 +2,7 @@ import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/web/layouts/Header.styled";
 
-const Header = () => {
+const Header = ({ translations: t }) => {
   const { setIsMobileMenuActive } = useMainStore((state) => ({
     setIsMobileMenuActive: state.setIsMobileMenuActive,
   }));
@@ -27,23 +27,23 @@ const Header = () => {
         <$.Nav>
           <ul>
             <li>
-              <a href="#order">Postup objednávky</a>
+              <a href="#order">{t.menu_order}</a>
             </li>
             <li>
-              <a href="#visualization">Vizualizace</a>
+              <a href="#visualization">{t.menu_visualization}</a>
             </li>
             <li>
-              <a href="#faq">Časté dotazy</a>
+              <a href="#faq">{t.menu_faq}</a>
             </li>
             <li>
-              <a href="#team">My</a>
+              <a href="#team">{t.menu_team}</a>
             </li>
             <li>
-              <a href="#contact">Kontakt</a>
+              <a href="#contact">{t.menu_contact}</a>
             </li>
           </ul>
         </$.Nav>
-        <$.Button>Konfigurace skříně</$.Button>
+        <$.Button>{t.menu_action_button}</$.Button>
       </$.HeaderContentDesktop>
       <$.HeaderContentMobile>
         <$.Logo>
