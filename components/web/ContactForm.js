@@ -6,38 +6,7 @@ import ConfettiAnimation from "../ConfettiAnimation";
 import * as Yup from "yup";
 import * as $ from "@/styles/web/components/ContactForm.styled";
 
-const FileInput = ({ onFilesAdded }) => {
-  const fileInputRef = useRef(null);
-
-  const handleFileChange = (event) => {
-    if (event.target.files.length > 0) {
-      const newFiles = Array.from(event.target.files);
-      onFilesAdded(newFiles);
-    }
-    event.target.value = ""; // Reset input value
-  };
-
-  return (
-    <div>
-      <$.UploadButton
-        type="button"
-        onClick={() => fileInputRef.current.click()}
-      >
-        Vyberte soubory
-      </$.UploadButton>
-      <input
-        type="file"
-        ref={fileInputRef}
-        style={{ display: "none" }}
-        onChange={handleFileChange}
-        multiple
-        accept=".jpg, .jpeg, .png, .pdf"
-      />
-    </div>
-  );
-};
-
-const ContactForm = () => {
+const ContactForm = ({ translations: t }) => {
   const [isDragActive, setDragActive] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [fileLimitError, setFileLimitError] = useState("");
@@ -53,24 +22,57 @@ const ContactForm = () => {
   const MAX_FILES = 3;
   const MAX_SIZE_MB = 15;
 
+  const FileInput = ({ onFilesAdded }) => {
+    const fileInputRef = useRef(null);
+
+    const handleFileChange = (event) => {
+      if (event.target.files.length > 0) {
+        const newFiles = Array.from(event.target.files);
+        onFilesAdded(newFiles);
+      }
+      event.target.value = ""; // Reset input value
+    };
+
+    return (
+      <div>
+        <$.UploadButton
+          type="button"
+          onClick={() => fileInputRef.current.click()}
+        >
+          {t.form.upload_button}
+        </$.UploadButton>
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+          multiple
+          accept=".jpg, .jpeg, .png, .pdf"
+        />
+      </div>
+    );
+  };
+
   const validationSchema = Yup.object({
-    fullName: Yup.string().required("Povinné pole"),
-    email: Yup.string().email("Neplatný e-mail").required("Povinné pole"),
-    message: Yup.string().required("Povinné pole"),
+    fullName: Yup.string().required(t.form.errors.required),
+    email: Yup.string()
+      .email(t.form.errors.wrong_email)
+      .required(t.form.errors.required),
+    message: Yup.string().required(t.form.errors.required),
     phone: Yup.string(),
     attachments: Yup.array()
       .of(
         Yup.mixed()
-          .test("fileFormat", "Nepovolený formát souboru", (file) =>
+          .test("fileFormat", t.form.errors.wrong_format, (file) =>
             SUPPORTED_FORMATS.includes(file?.type)
           )
           .test(
             "fileSize",
-            "Soubor je příliš velký",
+            t.form.errors.big_file,
             (file) => file?.size <= MAX_SIZE_MB * 1024 * 1024
           )
       )
-      .max(MAX_FILES, `Maximálně ${MAX_FILES} soubory`),
+      .max(MAX_FILES, `${t.form.errors.max_files}: ${MAX_FILES}.`),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -124,7 +126,7 @@ const ContactForm = () => {
 
     const newFiles = Array.from(e.dataTransfer.files);
     if (uploadedFiles.length + newFiles.length > MAX_FILES) {
-      setFileLimitError(`Můžete nahrát pouze ${MAX_FILES} soubory.`);
+      setFileLimitError(`${t.form.errors.max_files}: ${MAX_FILES}.`);
     } else {
       setFileLimitError("");
       const updatedFiles = [...uploadedFiles, ...newFiles].slice(0, MAX_FILES);
@@ -137,7 +139,7 @@ const ContactForm = () => {
   const handleFilesAdded = useCallback(
     (newFiles, setFieldValue) => {
       if (uploadedFiles.length + newFiles.length > MAX_FILES) {
-        setFileLimitError(`Můžete nahrát pouze ${MAX_FILES} soubory.`);
+        setFileLimitError(`${t.form.errors.max_files}: ${MAX_FILES}.`);
       } else {
         setFileLimitError("");
         const updatedFiles = [...uploadedFiles, ...newFiles].slice(
@@ -163,8 +165,8 @@ const ContactForm = () => {
       <Spinner isSubmitting={isSubmitting} />
       <ConfettiAnimation isDisplay={contactStatus} />
       <$.TextIsSendWrap>
-        <$.TextIsSend>Vaše zpráva byla úspěšně odeslána! 🎉</$.TextIsSend>
-        <$.TextIsSend>Budeme Vás kontaktovat do 24 hodin.</$.TextIsSend>
+        <$.TextIsSend>{t.form.success.title}</$.TextIsSend>
+        <$.TextIsSend>{t.form.success.description}</$.TextIsSend>
       </$.TextIsSendWrap>
       <Formik
         initialValues={{
@@ -180,30 +182,30 @@ const ContactForm = () => {
         {({ isSubmitting, setFieldValue }) => (
           <Form>
             <$.FormField>
-              <label>Jméno *</label>
+              <label>{`${t.form.name} *`}</label>
               <Field type="text" name="fullName" />
               <ErrorMessage name="fullName" component={$.ErrorText} />
             </$.FormField>
 
             <$.FormField>
-              <label>E-mail *</label>
+              <label>{`${t.form.email} *`}</label>
               <Field type="email" name="email" />
               <ErrorMessage name="email" component={$.ErrorText} />
             </$.FormField>
 
             <$.FormField>
-              <label>Telefonní číslo</label>
+              <label>{t.form.phone}</label>
               <Field type="text" name="phone" />
             </$.FormField>
 
             <$.FormField>
-              <label>Zpráva *</label>
+              <label>{`${t.form.message} *`}</label>
               <Field as="textarea" name="message" />
               <ErrorMessage name="message" component={$.ErrorText} />
             </$.FormField>
 
             <$.FormField>
-              <label>Příloha</label>
+              <label>{t.form.attachment}</label>
               <$.FileDropArea
                 onDragEnter={handleDragEnter}
                 onDragOver={handleDragOver}
@@ -211,15 +213,14 @@ const ContactForm = () => {
                 onDrop={(e) => handleDrop(e, setFieldValue)}
                 $isActive={isDragActive}
               >
-                <$.UploadMessage>Sem přetáhněte soubory nebo</$.UploadMessage>
+                <$.UploadMessage>{t.form.upload_message}</$.UploadMessage>
                 <FileInput
                   onFilesAdded={(files) =>
                     handleFilesAdded(files, setFieldValue)
                   }
                 />
                 <$.UploadDescription>
-                  Povoleny jsou formáty .jpg, .jpeg, .png, .pdf v celkové
-                  velikosti max. 15 MB
+                  {t.form.upload_description}
                 </$.UploadDescription>
               </$.FileDropArea>
 
@@ -245,7 +246,7 @@ const ContactForm = () => {
             </$.FormField>
 
             <$.SubmitButton type="submit" disabled={isSubmitting}>
-              Odeslat
+              {t.form.submit_button}
             </$.SubmitButton>
           </Form>
         )}

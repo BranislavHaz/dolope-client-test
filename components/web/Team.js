@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-const Team = () => {
+const Team = ({ translations: t }) => {
   const slideRefs = [useRef(null), useRef(null), useRef(null)]; // Vytvárame pole refov pre každý slide
   const [teamTypes, setTeamTypes] = useState(["formal", "formal", "formal"]); // Pole pre stav každého obrázku
 
@@ -49,29 +49,11 @@ const Team = () => {
   }, []);
 
   return (
-    <Section id={"team"} label={"O nás"} title={"Kdo jsme a proč to děláme?"}>
+    <Section id={"team"} label={t.label} title={t.title}>
       <$.TextWrap>
-        <$.TextBlock>
-          Jsme rodinná firma s dlouholetými zkušenostmi nejen v truhlářství, ale
-          i v dalších oborech. Naše cesta začala v dílně našeho otce, kde jsme
-          se od mládí učili základy řemesla. I když nás život zavedl do jiných
-          profesí, truhlářství jsme nikdy neopustili. Spojili jsme naše znalosti
-          z programování, marketingu a techniky s tím, co jsme se naučili od
-          otce, a tak vzniklo Dolope.
-        </$.TextBlock>
-        <$.TextBlock>
-          Náš tým je mladý a kreativní, přičemž každý z nás přináší do firmy
-          svůj jedinečný pohled. Výsledkem je automatizovaná výroba a
-          konfigurátor, kde si můžete jednoduše navrhnout vlastní skříň a
-          okamžitě zjistit její cenu. Technické znalosti nám umožňují maximálně
-          využít materiály a nabídnout vám skvělé ceny za vysokou kvalitu.
-        </$.TextBlock>
-        <$.TextBlock>
-          Navíc se spoléháme na kreativní vkus, který do firmy přináší moderní
-          designy a trendy. Naše práce je postavena na transparentnosti a
-          čestnosti, což je základ naší komunikace se zákazníky. Chceme, aby
-          proces objednávky byl co nejjednodušší a nejpřehlednější.
-        </$.TextBlock>
+        <$.TextBlock>{t.descriptions["1"]}</$.TextBlock>
+        <$.TextBlock>{t.descriptions["2"]}</$.TextBlock>
+        <$.TextBlock>{t.descriptions["3"]}</$.TextBlock>
       </$.TextWrap>
       <$.Wrap>
         <Swiper
@@ -97,15 +79,11 @@ const Team = () => {
                 src={`/images/web/team/timo-${teamTypes[0]}.jpg`}
                 layout="fill"
                 objectFit="contain"
-                alt="Dolope tým - Formální Timo"
+                alt={t.timotej.alt_img}
               />
               <$.NameBlock className="name-block">
                 <$.TitleName>Timotej</$.TitleName>
-                <$.Description>
-                  Technické myšlení a zkušenosti z výroby zajišťují, že každá
-                  skříň je pečlivě zpracovaným mistrovským dílem, které dokonale
-                  zapadne do vašeho domova.
-                </$.Description>
+                <$.Description>{t.timotej.description}</$.Description>
               </$.NameBlock>
             </$.Slide>
           </SwiperSlide>
@@ -115,15 +93,11 @@ const Team = () => {
                 src={`/images/web/team/brano-${teamTypes[1]}.jpg`}
                 layout="fill"
                 objectFit="contain"
-                alt="Dolope tým - Formální Braňo"
+                alt={t.brano.alt_img}
               />
               <$.NameBlock className="name-block">
                 <$.TitleName>Braňo</$.TitleName>
-                <$.Description>
-                  Analytické myšlení, zkušenosti s automatizací a důraz na
-                  detaily zaručují efektivní a bezproblémový průběh vaší
-                  objednávky.
-                </$.Description>
+                <$.Description>{t.brano.description}</$.Description>
               </$.NameBlock>
             </$.Slide>
           </SwiperSlide>
@@ -133,15 +107,11 @@ const Team = () => {
                 src={`/images/web/team/kikus-${teamTypes[2]}.jpg`}
                 layout="fill"
                 objectFit="contain"
-                alt="Dolope tým - Formální Kikuš"
+                alt={t.kikus.alt_img}
               />
               <$.NameBlock className="name-block">
                 <$.TitleName>Kikuš</$.TitleName>
-                <$.Description>
-                  S kreativním okem, citem pro detail a jedinečným vkusem pro
-                  kombinace materiálů promění vaši skříň v estetický skvost,
-                  který překvapí a potěší.
-                </$.Description>
+                <$.Description>{t.kikus.description}</$.Description>
               </$.NameBlock>
             </$.Slide>
           </SwiperSlide>

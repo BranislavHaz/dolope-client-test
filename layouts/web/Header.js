@@ -20,30 +20,30 @@ const Header = ({ translations: t }) => {
               src={"/logos/dolope-logo.svg"}
               width={150}
               height={30}
-              alt="Dolope - logo"
+              alt={t.alt_img_logo}
             />
           </a>
         </$.Logo>
         <$.Nav>
           <ul>
             <li>
-              <a href="#order">{t.menu_order}</a>
+              <a href="#order">{t.order}</a>
             </li>
             <li>
-              <a href="#visualization">{t.menu_visualization}</a>
+              <a href="#visualization">{t.visualization}</a>
             </li>
             <li>
-              <a href="#faq">{t.menu_faq}</a>
+              <a href="#faq">{t.faq}</a>
             </li>
             <li>
-              <a href="#team">{t.menu_team}</a>
+              <a href="#team">{t.team}</a>
             </li>
             <li>
-              <a href="#contact">{t.menu_contact}</a>
+              <a href="#contact">{t.contact}</a>
             </li>
           </ul>
         </$.Nav>
-        <$.Button>{t.menu_action_button}</$.Button>
+        <$.Button>{t.action_button}</$.Button>
       </$.HeaderContentDesktop>
       <$.HeaderContentMobile>
         <$.Logo>
@@ -62,7 +62,7 @@ const Header = ({ translations: t }) => {
               src={"/icons/burger-menu.svg"}
               width={40}
               height={40}
-              alt="Dolope - menu"
+              alt={t.alt_img_burger}
             />
           </$.Logo>
         </$.BurgerMenu>

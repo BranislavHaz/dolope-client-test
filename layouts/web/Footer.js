@@ -1,7 +1,7 @@
 import Image from "next/image";
 import * as $ from "@/styles/web/layouts/Footer.styled";
 
-const Footer = () => {
+const Footer = ({ translations: t }) => {
   return (
     <$.FooterWrap>
       <$.Footer>
@@ -10,12 +10,12 @@ const Footer = () => {
             src={`/logos/dolope-logo.svg`}
             layout="fill"
             objectFit="contain"
-            alt="Dolope logo"
+            alt={t.alt_img_logo}
           />
         </$.FooterLogo>
-        <$.FooterText>Vyrobeno s láskou 💛 k řemeslu.</$.FooterText>
+        <$.FooterText>{t.text}</$.FooterText>
         <$.FooterLink>
-          <a href="#">Ochrana osobních údajů</a>
+          <a href="#">{t.gdpr}</a>
         </$.FooterLink>
       </$.Footer>
     </$.FooterWrap>

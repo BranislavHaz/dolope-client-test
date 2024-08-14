@@ -2,12 +2,12 @@ import Section from "./Section";
 import ContactForm from "./ContactForm";
 import * as $ from "@/styles/web/components/Contact.styled";
 
-const Contact = () => {
+const Contact = ({ translations: t }) => {
   return (
     <Section
       id={"contact"}
-      label="Kontakt"
-      title="Chcete se nás na něco zeptat?"
+      label={t.label}
+      title={t.title}
       theme="dark"
       padding="no-padding"
     >
@@ -28,11 +28,11 @@ const Contact = () => {
           <$.CompanyInfo>
             <$.CompanyData>
               <$.Bold>tel: </$.Bold>
-              <a href="tel: +420 999 666 585">+420 999 666 585</a>
+              <a href={`tel:${t.phone}`}>{t.phone}</a>
             </$.CompanyData>
             <$.CompanyData>
               <$.Bold>e-mail: </$.Bold>
-              <a href="mailto: kontakt@dolope.cz">kontakt@dolope.cz</a>
+              <a href={`mailto:${t.email}`}>{t.email}</a>
             </$.CompanyData>
             <$.CompanyData>
               <$.Bold>adresa: </$.Bold>Dubková 69, Lazy pod Makytou 020 55, SK
@@ -40,7 +40,7 @@ const Contact = () => {
           </$.CompanyInfo>
         </$.ContactSection>
         <$.ContactFormSection>
-          <ContactForm />
+          <ContactForm translations={t} />
         </$.ContactFormSection>
       </$.Wrap>
     </Section>

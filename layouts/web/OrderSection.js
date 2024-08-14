@@ -2,22 +2,16 @@ import Image from "next/image";
 import Section from "@/components/web/Section";
 import * as $ from "@/styles/web/layouts/OrderSection.styled";
 
-const OrderSection = () => {
+const OrderSection = ({ translations: t }) => {
   return (
-    <Section
-      id={"order"}
-      label={"objednávka"}
-      title={
-        "Přístup k objednávce je zaměřen na zákazníka - mluví za nás činy, ne slova."
-      }
-    >
+    <Section id={"order"} label={t.label} title={t.title}>
       <$.Content>
         <$.Image>
           <Image
             src={`/images/web/postup-objednavky.jpg`}
             layout="fill"
             objectFit="contain"
-            alt="Dolope - obrázek konfiguráora"
+            alt={t.alt_img}
             className={"device active"}
           />
         </$.Image>
@@ -25,35 +19,23 @@ const OrderSection = () => {
           <$.TextBlock>
             <$.Title>
               <$.OrderNum>1.</$.OrderNum>
-              Nezávazná objednávka
+              {t.steps["1"].title}
             </$.Title>
-            <$.Text>
-              Po nakonfigurování skříně a odeslání nezávazné objednávky, Vás
-              budeme kontaktovat do 24. hodin pro sjednání osobní schůzky.
-            </$.Text>
+            <$.Text>{t.steps["1"].description}</$.Text>
           </$.TextBlock>
           <$.TextBlock>
             <$.Title>
               <$.OrderNum>2.</$.OrderNum>
-              Osobní setkání
+              {t.steps["2"].title}
             </$.Title>
-            <$.Text>
-              Navštívíme Vás osobně, kde si společně projdeme dekory, možnosti
-              kování a madel. Laserem odměříme prostor pro skříň a složí se 50%
-              záloha. Ihned po úhradě poputuje skříň do výroby.
-            </$.Text>
+            <$.Text>{t.steps["2"].description}</$.Text>
           </$.TextBlock>
           <$.TextBlock>
             <$.Title>
               <$.OrderNum>3.</$.OrderNum>
-              Výroba a dodání
+              {t.steps["3"].title}
             </$.Title>
-            <$.Text>
-              Dříve samotnou finalizací výroby, Vás budeme kontaktovat pro
-              sjednání termínu a času montáže skříně. Skříň v dohodnutém termínu
-              dovezeme, smontujeme a předáme novému majiteli 🙂 následně se
-              doplatí zvýšná 50% částka.
-            </$.Text>
+            <$.Text>{t.steps["3"].description}</$.Text>
           </$.TextBlock>
         </$.TextWrap>
       </$.Content>

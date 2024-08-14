@@ -2,7 +2,7 @@ import Image from "next/image";
 import Section from "@/components/web/Section";
 import * as $ from "@/styles/web/layouts/Benefits.styled";
 
-const Benefits = () => {
+const Benefits = ({ translations: t }) => {
   return (
     <Section>
       <$.BenefitsContent>
@@ -12,15 +12,12 @@ const Benefits = () => {
               src={"/icons/web/delivery.svg"}
               width={60}
               height={60}
-              alt="Dolope - dodaní ikona"
+              alt={t.delivery.alt_img}
             />
             <$.Circle />
           </$.Icon>
-          <$.Title>Dodání a montáž v průměru 14&nbsp;dní</$.Title>
-          <$.Description>
-            Náš průměrný čas doručení a montáže skříně je 14 pracovních dnů od
-            potvrzení objednávky.
-          </$.Description>
+          <$.Title>{t.delivery.title}</$.Title>
+          <$.Description>{t.delivery.description}</$.Description>
         </$.Benefit>
         <$.Benefit>
           <$.Icon>
@@ -28,15 +25,12 @@ const Benefits = () => {
               src={"/icons/web/design.svg"}
               width={60}
               height={60}
-              alt="Dolope - dizajnovaní ikona"
+              alt={t.consultation.alt_img}
             />
             <$.Circle />
           </$.Icon>
-          <$.Title>Bezplatná konzultace a poradenství</$.Title>
-          <$.Description>
-            Odborné konzultace ohledně výběru dekorů, materiálů a rozmístění
-            spolu s vizualizací je u nás zdarma.
-          </$.Description>
+          <$.Title>{t.consultation.title}</$.Title>
+          <$.Description>{t.consultation.description}</$.Description>
         </$.Benefit>
         <$.Benefit>
           <$.Icon>
@@ -44,15 +38,12 @@ const Benefits = () => {
               src={"/icons/web/price.svg"}
               width={60}
               height={60}
-              alt="Dolope - cena ikona"
+              alt={t.price.alt_img}
             />
             <$.Circle />
           </$.Icon>
-          <$.Title>Cena bez skrytých poplatků</$.Title>
-          <$.Description>
-            Cena, kterou od nás obdržíte je konečná, bez skrytých poplatků za
-            dopravu, montáž či jiných služeb.
-          </$.Description>
+          <$.Title>{t.price.title}</$.Title>
+          <$.Description>{t.price.description}</$.Description>
         </$.Benefit>
       </$.BenefitsContent>
     </Section>

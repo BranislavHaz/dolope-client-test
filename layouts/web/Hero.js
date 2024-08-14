@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import * as $ from "@/styles/web/layouts/Hero.styled";
 
-const Hero = () => {
+const Hero = ({ translations: t }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const images = [
     "/images/web/device-img1.png",
@@ -27,7 +27,7 @@ const Hero = () => {
             src={"/images/web/hero-img.png"}
             layout="fill"
             objectFit="contain"
-            alt="Dolope - obrázek konfiguráora"
+            alt={t.alt_img_frame}
             className={"device active"}
           />
           {images.map((src, index) => (
@@ -36,26 +36,19 @@ const Hero = () => {
               src={src}
               layout="fill"
               objectFit="contain"
-              alt={`Image ${index}`}
+              alt={`${t.alt_img_configurator} #${index}`}
               className={`image ${index === activeIndex ? "active" : ""}`}
             />
           ))}
         </$.HeroImgDevice>
         <$.TextContent>
           <$.Label>
-            <$.LabelText>#1 Nejpřehlednější konfigurátor</$.LabelText>
+            <$.LabelText>{t.label}</$.LabelText>
           </$.Label>
-          <$.Title>
-            Vytvořte si design své skříně <$.Underline>online</$.Underline>
-          </$.Title>
-          <$.Description>
-            Nadesignujte si vlastní vestavěnou skříň na míru. Celý proces vám
-            nezabere více než 3 minuty a okamžitě získáte{" "}
-            <$.Underline>konečnou cenu bez skrytých poplatků</$.Underline>{" "}
-            včetně dopravy a montáže.
-          </$.Description>
+          <$.Title>{t.title}</$.Title>
+          <$.Description>{t.description}</$.Description>
           <$.ActionButton>
-            <$.ButtonText>Vytvořit svou skříň</$.ButtonText>
+            <$.ButtonText>{t.action_button}</$.ButtonText>
           </$.ActionButton>
         </$.TextContent>
       </$.HeroContent>

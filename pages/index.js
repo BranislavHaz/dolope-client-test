@@ -10,6 +10,9 @@ import Team from "@/components/web/Team";
 import Contact from "@/components/web/Contact";
 import Footer from "@/layouts/web/Footer";
 
+import skLocale from "@/pages/index/locales/sk.json";
+import czLocale from "@/pages/index/locales/cz.json";
+
 const Home = ({ translations: t }) => {
   return (
     <>
@@ -19,16 +22,16 @@ const Home = ({ translations: t }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MobileMenu translations={t.content} />
-      <Header translations={t.content} />
-      <Hero />
-      <Benefits />
-      <OrderSection />
-      <VisualizationSection />
-      <FAQ />
-      <Team />
-      <Contact />
-      <Footer />
+      <MobileMenu translations={t.content.menu} />
+      <Header translations={t.content.menu} />
+      <Hero translations={t.content.hero} />
+      <Benefits translations={t.content.benefits} />
+      <OrderSection translations={t.content.order} />
+      <VisualizationSection translations={t.content.visualization} />
+      <FAQ translations={t.content.faq} />
+      <Team translations={t.content.team} />
+      <Contact translations={t.content.contact} />
+      <Footer translations={t.content.footer} />
     </>
   );
 };
@@ -42,13 +45,7 @@ const fetchSetting = {
 
 export async function getStaticProps() {
   const language = process.env.NEXT_PUBLIC_LANGUAGE;
-  const slug = "index";
-
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/pages/page?language=${language}&slug=${slug}`,
-    fetchSetting
-  );
-  const translations = await res.json();
+  const translations = language === "cz" ? czLocale : skLocale;
 
   return {
     props: {
