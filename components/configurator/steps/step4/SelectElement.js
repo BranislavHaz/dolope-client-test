@@ -5,7 +5,7 @@ import { getDrawerPriceDifference } from "@/utils/configurator/steps/step4/drawe
 
 import * as $ from "@/styles/configurator/components/steps/step4/SelectElement.styled";
 
-const SelectElement = () => {
+const SelectElement = ({ translations: t }) => {
   const { state, drawers, setTypeDrawers } = useMainStore((state) => ({
     state: state,
     drawers: state.drawers,
@@ -19,10 +19,10 @@ const SelectElement = () => {
 
   const getDrawersPrice = (type) => {
     if (type === "wooden") {
-      return `v ceně`;
+      return `${t.price_included}`;
     } else {
       const price = getDrawerPriceDifference(state);
-      return `+${price} Kč`;
+      return `+${price} ${t.currency}`;
     }
   };
 
@@ -35,15 +35,14 @@ const SelectElement = () => {
         <$.ImageWrap>
           <Image
             src={"/images/configurator/full-wood-drawer.jpg"}
+            alt={t.full_wood.alt_img}
             width={100}
             height={100}
             objectFit="contain"
           />
           <$.Price>{getDrawersPrice("wooden")}</$.Price>
         </$.ImageWrap>
-        <$.TextWrap>
-          Celodřevěná zásuvka s tlumením a skrytým výsuvem
-        </$.TextWrap>
+        <$.TextWrap>{t.full_wood.title}</$.TextWrap>
       </$.Wrap>
       <$.Wrap
         $isActive={drawers.type === "sidewalls"}
@@ -52,15 +51,14 @@ const SelectElement = () => {
         <$.ImageWrap>
           <Image
             src={"/images/configurator/side-panel-drawer.jpg"}
+            alt={t.plastic_side_walls.alt_img}
             width={100}
             height={100}
             objectFit="contain"
           />
           <$.Price>{getDrawersPrice("sidewalls")}</$.Price>
         </$.ImageWrap>
-        <$.TextWrap>
-          Zásuvka s dutými bočnicemi s tlumením a skrytým výsuvem
-        </$.TextWrap>
+        <$.TextWrap>{t.plastic_side_walls.title}</$.TextWrap>
       </$.Wrap>
     </>
   );

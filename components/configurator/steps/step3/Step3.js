@@ -2,7 +2,7 @@ import useMainStore from "@/stores/useMainStore";
 import Title from "../ui/Title";
 import SelectBox from "../ui/SelectBox";
 
-const Step3 = () => {
+const Step3 = ({ translations: t }) => {
   const { corpus, sideWalls, productsAPI, stepsInputs, modal } = useMainStore(
     (state) => ({
       corpus: state.corpus,
@@ -22,13 +22,14 @@ const Step3 = () => {
 
   return (
     <>
-      <Title>Dekory a barvy</Title>
+      <Title>{t.step3.title}</Title>
       <SelectBox
         type={"decorCorpus"}
         text={getDecorName(corpus.decorId)}
         isAccept={stepsInputs.step3.decorCorpus}
         isActive={modal.isActive && modal.type === "decorCorpus"}
         id={1}
+        translations={t.select_box}
       />
       <SelectBox
         type={"decorSideWalls"}
@@ -36,12 +37,14 @@ const Step3 = () => {
         isAccept={stepsInputs.step3.decorSideWalls}
         isActive={modal.isActive && modal.type === "decorSideWalls"}
         id={2}
+        translations={t.select_box}
       />
       <SelectBox
         type={"decorDoors"}
         isAccept={stepsInputs.step3.decorDoors}
         isActive={modal.isActive && modal.type === "decorDoors"}
         id={3}
+        translations={t.select_box}
       />
     </>
   );

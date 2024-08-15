@@ -10,12 +10,12 @@ import ConfettiAnimation from "@/components/ConfettiAnimation";
 
 import { getDataFromState } from "@/utils/configurator/getDataFromState";
 
-const OrderForm = ({ price }) => {
+const OrderForm = ({ price, translations: t }) => {
   const { state } = useMainStore((state) => ({
     state: state,
   }));
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const defaultErrorMessage = "* vyžadováno";
+  const defaultErrorMessage = t.order.form.error_messages.default;
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -32,7 +32,7 @@ const OrderForm = ({ price }) => {
       mail: Yup.string()
         .matches(
           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-          "Nesprávný formát e-mailové adresy."
+          t.order.form.error_messages.email
         )
         .required(defaultErrorMessage),
       phone: Yup.string().required(defaultErrorMessage),
@@ -46,7 +46,7 @@ const OrderForm = ({ price }) => {
         ...values,
         state: getDataFromState(state),
         price: Number(price.replace(/\s+/g, "")),
-        currency: "CZK",
+        currency: t.order.currency,
       };
       const statusOrder = await postOrder(orderData);
 
@@ -66,7 +66,7 @@ const OrderForm = ({ price }) => {
   return (
     <$.Wrap>
       <$.PriceWrap>
-        <PriceTab price={price} type={"bottom"} />
+        <PriceTab price={price} type={"bottom"} translations={t.price_tab} />
       </$.PriceWrap>
       <$.FormWrap id="order-form">
         {state.order.status === "initial" && !isSubmitting && (
@@ -75,7 +75,7 @@ const OrderForm = ({ price }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.name}
               >
-                <label htmlFor="name">Jméno:</label>
+                <label htmlFor="name">{t.order.form.first_name}</label>
                 <input
                   type="text"
                   id="name"
@@ -92,7 +92,7 @@ const OrderForm = ({ price }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.surname}
               >
-                <label htmlFor="surname">Příjmení:</label>
+                <label htmlFor="surname">{t.order.form.last_name}</label>
                 <input
                   type="text"
                   id="surname"
@@ -111,7 +111,7 @@ const OrderForm = ({ price }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.mail}
               >
-                <label htmlFor="mail">E-mail:</label>
+                <label htmlFor="mail">{t.order.form.email}</label>
                 <input
                   type="email"
                   id="mail"
@@ -128,7 +128,7 @@ const OrderForm = ({ price }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.phone}
               >
-                <label htmlFor="phone">Tel. číslo:</label>
+                <label htmlFor="phone">{t.order.form.phone}</label>
                 <input
                   type="tel"
                   id="phone"
@@ -147,7 +147,7 @@ const OrderForm = ({ price }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.city}
               >
-                <label htmlFor="city">Město / obec:</label>
+                <label htmlFor="city">{t.order.form.city}</label>
                 <input
                   type="text"
                   id="city"
@@ -164,7 +164,7 @@ const OrderForm = ({ price }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.zip}
               >
-                <label htmlFor="zip">PSČ:</label>
+                <label htmlFor="zip">{t.order.form.city}</label>
                 <input type="text" id="zip" {...formik.getFieldProps("zip")} />
                 {formik.submitCount > 0 && formik.errors.zip ? (
                   <$.InputMessage $isError={true}>
@@ -176,45 +176,47 @@ const OrderForm = ({ price }) => {
               </$.InputWrap>
             </$.Row>
             <$.InputWrap>
-              <label htmlFor="info">Doplňkové informace:</label>
+              <label htmlFor="info">{t.order.form.message}</label>
               <textarea rows={4} id="info" {...formik.getFieldProps("info")} />
             </$.InputWrap>
-            <$.SubmitButton type="submit">Odeslat objednávku</$.SubmitButton>
+            <$.SubmitButton type="submit">
+              {t.order.form.submit_button}
+            </$.SubmitButton>
           </form>
         )}
         {state.order.status === "success" && !isSubmitting && (
           <$.OrderStatus>
             <ConfettiAnimation />
             <$.OrderStatusRow>
-              Objednávka byla odeslána<$.Emoji>🎉</$.Emoji>
+              {t.order.status.success.title}{" "}
+              <$.Emoji>{t.order.status.success.emoji}</$.Emoji>
             </$.OrderStatusRow>
             <$.OrderStatusRow>
-              Dnes nebo zítra Vám budeme volat a domluvíme si termín pro osobní
-              schůzku.
+              {t.order.status.success.subtitle}
             </$.OrderStatusRow>
-            <$.ThanksRow>DĚKUJEME</$.ThanksRow>
+            <$.ThanksRow>{t.order.status.success.thanks}</$.ThanksRow>
           </$.OrderStatus>
         )}
         {state.order.status === "failed" && !isSubmitting && (
           <form onSubmit={formik.handleSubmit}>
             <$.OrderStatus>
-              Ojoj, něco se nepodařilo. Zkuste to prosím ještě jednou{" "}
-              <$.Emoji>🥲</$.Emoji>
-              <$.SubmitButton type="submit">Odeslat objednávku</$.SubmitButton>
+              {t.order.status.warn.title}{" "}
+              <$.Emoji>{t.order.status.warn.emoji}</$.Emoji>
+              <$.SubmitButton type="submit">
+                {t.order.form.submit_button}
+              </$.SubmitButton>
             </$.OrderStatus>
           </form>
         )}
         {state.order.status === "error" && !isSubmitting && (
           <$.OrderStatus>
             <$.OrderStatusRow>
-              Tak tohle nebude náhoda, vypadá to na systémovou chybu. Omlouváme
-              se <$.Emoji>🫣</$.Emoji>
+              {t.order.status.error.title}{" "}
+              <$.Emoji>{t.order.status.error.emoji}</$.Emoji>
             </$.OrderStatusRow>
-            <$.OrderStatusRow>
-              Zavolejte nám prosím, objednávku uděláme společně.
-            </$.OrderStatusRow>
+            <$.OrderStatusRow>{t.order.status.error.subtitle}</$.OrderStatusRow>
             <$.SubmitButton>
-              <a href="tel:+421 914 196 273">+421 914 196 273</a>
+              <a href={`tel:${t.order.phone}`}>{t.order.phone}</a>
             </$.SubmitButton>
           </$.OrderStatus>
         )}

@@ -146,7 +146,7 @@ const getDoorsDecor = (state) => {
   return decorsArr;
 };
 
-const PriceList = () => {
+const PriceList = ({ translations: t }) => {
   const { state } = useMainStore((state) => ({
     state: state,
   }));
@@ -157,14 +157,14 @@ const PriceList = () => {
     <>
       <$.WrapType>
         <$.WrapPriceListItems>
-          <$.TitleType>Skříň</$.TitleType>
-          <$.Name>Rozměry skříně (šířka x výška x hloubka):</$.Name>
+          <$.TitleType>{t.wardrobe.title}</$.TitleType>
+          <$.Name>{t.wardrobe.sizes}</$.Name>
           <$.Description>{getWardrobeSize(state)}</$.Description>
-          <$.Name>Prostor mezi stropem a vrchní policí:</$.Name>
+          <$.Name>{t.wardrobe.top_self}</$.Name>
           <$.Description>{getTopShelfSize(state)}</$.Description>
-          <$.Name>Umístění skříně:</$.Name>
+          <$.Name>{t.wardrobe.type_wardrobe}</$.Name>
           <$.Description>{getTypeWardrobe(state)}</$.Description>
-          <$.Name>Dekor vnější části skříně (dorazové lišty, bočnice):</$.Name>
+          <$.Name>{t.wardrobe.side_walls_decor}</$.Name>
           <$.Description>
             {<DecorsLink decors={getSideWallsDecor(state)} />}
           </$.Description>
@@ -172,24 +172,24 @@ const PriceList = () => {
       </$.WrapType>
       <$.WrapType>
         <$.WrapPriceListItems>
-          <$.TitleType>Korpus a sekce</$.TitleType>
-          <$.Name>Rozměry korpusu (šířka x výška x hloubka):</$.Name>
+          <$.TitleType>{t.corpus.title}</$.TitleType>
+          <$.Name>{t.corpus.sizes}</$.Name>
           <$.Description>{getCorpusSize(state)}</$.Description>
-          <$.Name>Dekor korpusu:</$.Name>
+          <$.Name>{t.corpus.decor}</$.Name>
           <$.Description>
             <DecorsLink decors={getSectionDecor(state)} />
           </$.Description>
-          <$.Name>Počet sekcí v korpusu:</$.Name>
+          <$.Name>{t.corpus.sections_count}</$.Name>
           <$.Description>{state.sections.count}x</$.Description>
-          <$.Name>Vnitřní rozměr sekce (šířka x výška x hloubka):</$.Name>
+          <$.Name>{t.corpus.internal_sizes}</$.Name>
           <$.Description>{getSectionSize(state)}</$.Description>
           {drawersCount ? (
             <>
-              <$.Name>Celkový počet výsuvů (šuflů):</$.Name>
+              <$.Name>{t.corpus.drawers_count}</$.Name>
               <$.Description>{drawersCount}x</$.Description>
-              <$.Name>Typ výsuvů (šuflů):</$.Name>
+              <$.Name>{t.corpus.drawers_type}</$.Name>
               <$.Description>
-                <SelectElement />
+                <SelectElement translations={t.corpus.select_element} />
               </$.Description>
             </>
           ) : null}
@@ -197,14 +197,14 @@ const PriceList = () => {
       </$.WrapType>
       <$.WrapType>
         <$.WrapPriceListItems>
-          <$.TitleType>Posuvné dveře</$.TitleType>
-          <$.Name>Počet posuvných dveří:</$.Name>
+          <$.TitleType>{t.doors.title}</$.TitleType>
+          <$.Name>{t.doors.doors_count}</$.Name>
           <$.Description>{state.doors.count}x</$.Description>
-          <$.Name>Rozměry jedních dveří (šířka x výška):</$.Name>
+          <$.Name>{t.doors.sizes}</$.Name>
           <$.Description>{getDoorsSize(state)}</$.Description>
-          <$.Name>Barva madel, vodicích a dělících profilů:</$.Name>
+          <$.Name>{t.doors.profiles_color}</$.Name>
           <$.Description>{getProfilesColor(state)}</$.Description>
-          <$.Name>Dekory posuvných dveří:</$.Name>
+          <$.Name>{t.doors.decors}</$.Name>
           <$.Description>
             <DecorsLink decors={getDoorsDecor(state)} />
           </$.Description>

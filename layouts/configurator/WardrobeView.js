@@ -4,7 +4,7 @@ import * as $ from "@/styles/configurator/layouts/WardrobeView.styled";
 
 import Wardrobe from "@/components/configurator/elements/Wardrobe";
 
-const WardrobeView = () => {
+const WardrobeView = ({ translations: t }) => {
   const { currentStep } = useMainStore((state) => ({
     currentStep: state.currentStep,
   }));
@@ -16,7 +16,7 @@ const WardrobeView = () => {
           src={"/images/configurator/dolope-skrine-popis.png"}
           width={300}
           height={300}
-          alt="Skříně - popis"
+          alt={t.alt_img}
           priority
         />
       )}

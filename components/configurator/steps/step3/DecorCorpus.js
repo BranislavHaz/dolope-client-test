@@ -5,7 +5,7 @@ import FilterDecor from "../ui/FilterDecor";
 
 import toast from "react-hot-toast";
 
-const DecorCorpus = ({ setHandleSubmit }) => {
+const DecorCorpus = ({ setHandleSubmit, translations: t }) => {
   const { corpus, setIsModalActive } = useMainStore((state) => ({
     corpus: state.corpus,
     setIsModalActive: state.setIsModalActive,
@@ -14,11 +14,11 @@ const DecorCorpus = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (corpus.decorId) {
       setIsModalActive(false);
-      toast.success("Dekor vnitřní části skříně byl uložen!", {
+      toast.success(t.decor_corpus.toast.success, {
         className: "small-device",
       });
     } else {
-      toast.error("Vyberte dekor vnitřní části skříně!", {
+      toast.error(t.decor_corpus.toast.error, {
         className: "small-device",
       });
     }
@@ -30,8 +30,8 @@ const DecorCorpus = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <FilterDecor type={"corpus"} />
-      <Decors type={"corpus"} />
+      <FilterDecor type={"corpus"} translations={t.decors.filter_decor} />
+      <Decors type={"corpus"} translations={t.decors} />
     </>
   );
 };

@@ -4,7 +4,7 @@ import * as $ from "@/styles/configurator/components/steps/step3/UsedDoorsDecor.
 
 import Decors from "./Decors";
 
-const UsedDoorsDecor = () => {
+const UsedDoorsDecor = ({ translations: t }) => {
   const { state } = useMainStore((state) => ({
     state: state,
   }));
@@ -13,8 +13,8 @@ const UsedDoorsDecor = () => {
 
   return (
     <$.Wrap $isVisible={uniqueDecors.length > 0}>
-      <$.Title>Již použité dekory</$.Title>
-      <Decors type={"usedDoors"} />
+      <$.Title>{t.used_decors.title}</$.Title>
+      <Decors type={"usedDoors"} translations={t} />
     </$.Wrap>
   );
 };

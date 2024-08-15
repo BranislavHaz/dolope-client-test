@@ -7,23 +7,23 @@ const handleScroll = (id) => {
   }
 };
 
-const PriceTab = ({ price, type }) => {
+const PriceTab = ({ price, type, translations: t }) => {
   return (
     <>
       <$.ContentWrap>
-        <$.Title>Celková cena</$.Title>
-        <$.Price>{price} Kč</$.Price>
+        <$.Title>{t.title}</$.Title>
+        <$.Price>{`${price} ${t.currency}`}</$.Price>
         {type === "top" && (
           <$.OrderButton onClick={() => handleScroll("order-form")}>
-            Nezávazně objednat ▼
+            {t.order_button}
           </$.OrderButton>
         )}
-        <$.TitlePricing>V ceně je zahrnuto:</$.TitlePricing>
-        <$.ElementPricing>Telefonická a osobní konzultace</$.ElementPricing>
-        <$.ElementPricing>Zaměření prostoru pro skříň</$.ElementPricing>
-        <$.ElementPricing>Fotorealistická vizualizace</$.ElementPricing>
-        <$.ElementPricing>Výroba skříně</$.ElementPricing>
-        <$.ElementPricing>Doprava a montáž skříně</$.ElementPricing>
+        <$.TitlePricing>{t.title_pricing}</$.TitlePricing>
+        <$.ElementPricing>{t.including_price[0]}</$.ElementPricing>
+        <$.ElementPricing>{t.including_price[1]}</$.ElementPricing>
+        <$.ElementPricing>{t.including_price[2]}</$.ElementPricing>
+        <$.ElementPricing>{t.including_price[3]}</$.ElementPricing>
+        <$.ElementPricing>{t.including_price[4]}</$.ElementPricing>
       </$.ContentWrap>
     </>
   );

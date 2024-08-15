@@ -2,7 +2,7 @@ import useMainStore from "@/stores/useMainStore";
 import Title from "../ui/Title";
 import SelectBox from "../ui/SelectBox";
 
-const Step2 = () => {
+const Step2 = ({ translations: t }) => {
   const { doors, stepsInputs, modal } = useMainStore((state) => ({
     doors: state.doors,
     stepsInputs: state.stepsInputs,
@@ -19,10 +19,10 @@ const Step2 = () => {
     };
 
     const colorMapping = {
-      silver: "stříbrná",
-      black: "černá matná",
-      white: "bílá lesklá",
-      champagne: "šampaň",
+      silver: t.step2.colors.silver,
+      black: t.step2.colors.black,
+      white: t.step2.colors.white,
+      champagne: t.step2.colors.champagne,
     };
 
     if (
@@ -38,18 +38,20 @@ const Step2 = () => {
 
   return (
     <>
-      <Title>Výběr typů</Title>
+      <Title>{t.step2.title}</Title>
       <SelectBox
         type={"typeSections"}
         isAccept={stepsInputs.step2.typeSections}
         isActive={modal.isActive && modal.type === "typeSections"}
         id={1}
+        translations={t.select_box}
       />
       <SelectBox
         type={"typeDoors"}
         isAccept={stepsInputs.step2.typeDoors}
         isActive={modal.isActive && modal.type === "typeDoors"}
         id={2}
+        translations={t.select_box}
       />
       <SelectBox
         type={"typeProfiles"}
@@ -57,6 +59,7 @@ const Step2 = () => {
         isAccept={stepsInputs.step2.typeProfiles}
         isActive={modal.isActive && modal.type === "typeProfiles"}
         id={3}
+        translations={t.select_box}
       />
     </>
   );

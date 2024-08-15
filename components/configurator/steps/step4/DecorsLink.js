@@ -30,7 +30,12 @@ const DecorsLink = ({ decors }) => {
       {decors.map((decor) => (
         <$.Wrap onClick={() => handleClick(decor)} key={decor.id}>
           <$.ImageWrap>
-            <Image src={getImgUrl(decor)} width={50} height={50} />
+            <Image
+              src={getImgUrl(decor)}
+              alt={decor.id_manufacturer}
+              width={50}
+              height={50}
+            />
           </$.ImageWrap>
           <$.TextWrap>
             {decor.manufacturer} - {decor.name_cz || decor.name} (

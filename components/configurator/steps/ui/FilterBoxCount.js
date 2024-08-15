@@ -2,12 +2,7 @@ import useMainStore from "@/stores/useMainStore";
 import useTimeout from "@/hooks/useTimeout";
 import * as $ from "@/styles/configurator/components/steps/ui/FilterBoxCount.styled";
 
-const typeObj = {
-  sections: { title: "sekce" },
-  doors: { title: "dveře" },
-};
-
-const FilterBoxCount = ({ type, count, active }) => {
+const FilterBoxCount = ({ type, count, active, translations: t }) => {
   const { sections, doors, setActiveFilter, setBeScrolled } = useMainStore(
     (state) => ({
       sections: state.sections,
@@ -17,6 +12,11 @@ const FilterBoxCount = ({ type, count, active }) => {
     })
   );
   const setTimeout = useTimeout();
+
+  const typeObj = {
+    sections: { title: t.sections },
+    doors: { title: t.doors },
+  };
 
   const checkIsSelected = (i) => {
     switch (type) {

@@ -8,7 +8,7 @@ import Title from "../ui/Title";
 
 import toast from "react-hot-toast";
 
-const TypeWardrobe = ({ setHandleSubmit }) => {
+const TypeWardrobe = ({ setHandleSubmit, translations: t }) => {
   const { wardrobe, setWardrobeType, setStepsInputs, setIsModalActive } =
     useMainStore((state) => ({
       wardrobe: state.wardrobe,
@@ -20,11 +20,11 @@ const TypeWardrobe = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (wardrobe.type) {
       setIsModalActive(false);
-      toast.success("Typ skříně byl uložen!", {
+      toast.success(t.toast.success, {
         className: "small-device",
       });
     } else {
-      toast.error("Vyberte typ skříně!", { className: "small-device" });
+      toast.error(t.toast.error, { className: "small-device" });
     }
   };
 
@@ -35,25 +35,25 @@ const TypeWardrobe = ({ setHandleSubmit }) => {
   const handleClick = (e) => {
     setWardrobeType(Number(e.currentTarget.id));
     setStepsInputs("step1", "typeWardrobe", true);
-    toast.success("Typ skříně byl uložen!", { className: "larger-device" });
+    toast.success(t.toast.success, { className: "larger-device" });
   };
 
   return (
     <$.FullWrap>
       <$.Wrap>
-        <Title>Typ skříně</Title>
+        <Title>{t.title}</Title>
         <$.TypesWrap>
           <$.TypeImage
             id={1}
             onClick={handleClick}
             $isActive={wardrobe.type === 1}
           >
-            <$.Subtitle>Mezi stěnami</$.Subtitle>
+            <$.Subtitle>{t.content.between_walls.title}</$.Subtitle>
             <Image
               src={"/images/mezi-stenami.svg"}
               width={250}
               height={175}
-              alt={"Mezi stěnami"}
+              alt={t.content.between_walls.alt_img}
             />
           </$.TypeImage>
           <$.TypeImage
@@ -61,12 +61,12 @@ const TypeWardrobe = ({ setHandleSubmit }) => {
             onClick={handleClick}
             $isActive={wardrobe.type === 4}
           >
-            <$.Subtitle>V prostoru</$.Subtitle>
+            <$.Subtitle>{t.content.in_space.title}</$.Subtitle>
             <Image
               src={"/images/v-prostoru.svg"}
               width={250}
               height={175}
-              alt={"V prostoru"}
+              alt={t.content.in_space.alt_img}
             />
           </$.TypeImage>
           <$.TypeImage
@@ -74,12 +74,12 @@ const TypeWardrobe = ({ setHandleSubmit }) => {
             onClick={handleClick}
             $isActive={wardrobe.type === 2}
           >
-            <$.Subtitle>Stěna vlevo</$.Subtitle>
+            <$.Subtitle>{t.content.left_wall.title}</$.Subtitle>
             <Image
               src={"/images/stena-vlevo.svg"}
               width={250}
               height={175}
-              alt={"Stena vlevo"}
+              alt={t.content.left_wall.alt_img}
             />
           </$.TypeImage>
           <$.TypeImage
@@ -87,12 +87,12 @@ const TypeWardrobe = ({ setHandleSubmit }) => {
             onClick={handleClick}
             $isActive={wardrobe.type === 3}
           >
-            <$.Subtitle>Stěna vpravo</$.Subtitle>
+            <$.Subtitle>{t.content.right_wall.title}</$.Subtitle>
             <Image
               src={"/images/stena-vpravo.svg"}
               width={250}
               height={175}
-              alt={"Stěna vpravo"}
+              alt={t.content.right_wall.alt_img}
             />
           </$.TypeImage>
         </$.TypesWrap>

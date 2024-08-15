@@ -12,10 +12,9 @@ import { getDrawerFittingsPrice } from "@/utils/configurator/steps/step4/drawers
 
 import * as $ from "@/styles/configurator/components/steps/step4/Step4.styled";
 
-const Step4 = () => {
-  const { state, setCurrentStepId } = useMainStore((state) => ({
+const Step4 = ({ translations: t }) => {
+  const { state } = useMainStore((state) => ({
     state: state,
-    setCurrentStepId: state.setCurrentStepId,
   }));
 
   const areasPrice = getAreasPrice(state);
@@ -30,28 +29,26 @@ const Step4 = () => {
       (areasPrice + profilesPrice + feesDemos + feesNabykov) *
       marginPrice
     ).toFixed(0) + drawersFittingPrice;
-  const formattedPrice = Number(fullPrice).toLocaleString("cs-CZ");
+  const formattedPrice = Number(fullPrice).toLocaleString(t.locale_string);
 
   return (
     <$.Wrap>
-      <LightBox />
-      <Preview price={formattedPrice} />
+      <LightBox translations={t.light_box} />
+      <Preview price={formattedPrice} translations={t} />
       <$.WrapContent>
         <$.WrapSection>
-          <$.Title>Specifikace skříně</$.Title>
-          <$.Subtitle>Na základě zadaných hodnot</$.Subtitle>
-          <PriceList />
+          <$.Title>{t.wardrobe_specification.title}</$.Title>
+          <$.Subtitle>{t.wardrobe_specification.subtitle}</$.Subtitle>
+          <PriceList translations={t.wardrobe_specification.price_list} />
         </$.WrapSection>
         <$.WrapSection>
-          <$.Title>Co se uděje po odeslání objednávky?</$.Title>
-          <$.Subtitle>
-            Proces objednávky až po realizaci ve 3. krocích
-          </$.Subtitle>
-          <StepsBeforeOrder />
+          <$.Title>{t.before_order.title}</$.Title>
+          <$.Subtitle>{t.before_order.subtitle}</$.Subtitle>
+          <StepsBeforeOrder translations={t.before_order} />
         </$.WrapSection>
         <$.WrapSection>
-          <$.Title>Nezávazná objednávka</$.Title>
-          <OrderForm price={formattedPrice} />
+          <$.Title>{t.order.title}</$.Title>
+          <OrderForm price={formattedPrice} translations={t} />
         </$.WrapSection>
       </$.WrapContent>
     </$.Wrap>

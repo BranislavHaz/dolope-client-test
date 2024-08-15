@@ -45,7 +45,7 @@ const getCountSectionsText = (state) => {
   }
 };
 
-const Step1 = () => {
+const Step1 = ({ translations: t }) => {
   const { state, wardrobe, corpus, stepsInputs, modal } = useMainStore(
     (state) => ({
       state: state,
@@ -58,13 +58,14 @@ const Step1 = () => {
 
   return (
     <>
-      <Title>Základní specifikace</Title>
+      <Title>{t.step1.title}</Title>
       <SelectBox
         type={"sizeWardrobe"}
         isAccept={stepsInputs.step1.sizeWardrobe}
         isActive={modal.isActive && modal.type === "sizeWardrobe"}
         text={getSizeWardrobeText(wardrobe, corpus, stepsInputs)}
         id={1}
+        translations={t.select_box}
       />
       <SelectBox
         type={"typeWardrobe"}
@@ -72,6 +73,7 @@ const Step1 = () => {
         isActive={modal.isActive && modal.type === "typeWardrobe"}
         text={getTypeWardrobeText(wardrobe)}
         id={2}
+        translations={t.select_box}
       />
       <SelectBox
         type={"countSections"}
@@ -82,6 +84,7 @@ const Step1 = () => {
         isInactive={!isBasicDataFilled(state)}
         text={getCountSectionsText(state)}
         id={3}
+        translations={t.select_box}
       />
     </>
   );

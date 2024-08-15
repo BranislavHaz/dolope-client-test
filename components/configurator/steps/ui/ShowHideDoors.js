@@ -3,7 +3,7 @@ import * as $ from "@/styles/configurator/components/steps/ui/ShowHideDoors.styl
 
 import useMainStore from "@/stores/useMainStore";
 
-const ShowHideDoors = ({ isLastStep = false }) => {
+const ShowHideDoors = ({ isLastStep = false, translations: t }) => {
   const { doors, setVisibilityDoors, stepsInputs } = useMainStore((state) => ({
     doors: state.doors,
     setVisibilityDoors: state.setVisibilityDoors,
@@ -24,7 +24,7 @@ const ShowHideDoors = ({ isLastStep = false }) => {
         src={doors.isVisible ? "/icons/no-doors.svg" : "/icons/doors.svg"}
         width={40}
         height={40}
-        alt={"Údaje byly vyplněny správně"}
+        alt={doors.isVisible ? t.hide_doors.alt_img : t.show_doors.alt_img}
       />
     </$.Wrap>
   );

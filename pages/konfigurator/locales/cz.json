@@ -1,0 +1,321 @@
+{
+  "title": "Nakonfigurujte si vlastnu skriňu",
+  "meta_description": "Navrhněte si svou vysněnou vestavěnou skříň na míru! V našem online konfigurátoru snadno zadáte rozměry, vyberete sekce, typ dvířek i dekory. Okamžitě získáte přesnou cenu bez skrytých poplatků. Vytvořte si domov podle svých představ – jednoduše, rychle a přesně na míru!",
+  "steps": {
+    "select_box": {
+      "titles": {
+        "size_wardrobe": "Rozměry skříně",
+        "type_wardrobe": "Typ skříně",
+        "count_sections": "Počet sekcí a dveří",
+        "type_sections": "Typ sekcí",
+        "type_doors": "Typ dveří",
+        "type_profiles": "Typ profilů",
+        "decor_corpus": "Dekor vnitřní části",
+        "decor_side_walls": "Dekor vnější části",
+        "decor_doors": "Dekor dveří"
+      }
+    },
+    "step1": {
+      "title": "Základní specifikace"
+    },
+    "step2": {
+      "title": "Výběr typů",
+      "colors": {
+        "silver": "stříbrná",
+        "black": "černá matná",
+        "white": "bílá lesklá",
+        "champagne": "šampaň"
+      }
+    },
+    "step3": {
+      "title": "Dekory a barvy"
+    },
+    "step4": {
+      "locale_string": "cs-CZ",
+      "light_box": {
+        "alt_img": "Dekor vybraného materiálu."
+      },
+      "preview": {
+        "wardrobe_view": {
+          "alt_img": "Obrázek korpusu vestavěné skříně s vysvětlivkami pro zadání rozměrů otvoru pro skříň."
+        },
+        "back_button": "Zpět na konfiguraci"
+      },
+      "wardrobe_specification": {
+        "title": "Specifikace skříně",
+        "subtitle": "Na základě zadaných hodnot",
+        "price_list": {
+          "wardrobe": {
+            "title": "Skříň",
+            "sizes": "Rozměry skříně (šířka x výška x hloubka):",
+            "top_self": "Prostor mezi stropem a vrchní policí:",
+            "type_wardrobe": "Umístění skříně:",
+            "side_walls_decor": "Dekor vnější části skříně (dorazové lišty, bočnice):"
+          },
+          "corpus": {
+            "title": "Korpus a sekce",
+            "sizes": "Rozměry korpusu (šířka x výška x hloubka):",
+            "decor": "Dekor korpusu:",
+            "sections_count": "Počet sekcí v korpusu:",
+            "internal_sizes": "Vnitřní rozměr sekce (šířka x výška x hloubka):",
+            "drawers_count": "Celkový počet výsuvů (šuflů):",
+            "drawers_type": "Typ výsuvů (šuflů):",
+            "select_element": {
+              "currency": "Kč",
+              "price_included": "v ceně",
+              "full_wood": {
+                "title": "Celodřevěná zásuvka s tlumením a skrytým výsuvem",
+                "alt_img": "Celodřevěná zásuvka s tlumením a skrytým výsuvem"
+              },
+              "plastic_side_walls": {
+                "title": "Zásuvka s dutými bočnicemi s tlumením a skrytým výsuvem",
+                "alt_img": "Zásuvka s dutými bočnicemi s tlumením a skrytým výsuvem"
+              }
+            }
+          },
+          "doors": {
+            "title": "Posuvné dveře",
+            "doors_count": "Počet posuvných dveří:",
+            "sizes": "Rozměry jedních dveří (šířka x výška):",
+            "profiles_color": "Barva madel, vodicích a dělících profilů:",
+            "decors": "Dekory posuvných dveří:"
+          }
+        }
+      },
+      "before_order": {
+        "title": "Co se uděje po odeslání objednávky?",
+        "subtitle": "Proces objednávky až po realizaci ve 3. krocích",
+        "content": {
+          "1": {
+            "title": "Dohodnutí termínu pro osobní konzultaci a vizualizace",
+            "description": "Během krátkého telefonického rozhovoru spolu probereme všechny specifikace a rozměry vaší nové skříně. Na základě těchto informací připravíme realistickou vizualizaci a domluvíme si termín pro osobní návštěvu přímo na místě realizace."
+          },
+          "2": {
+            "title": "Osobní konzultace a zaměření prostoru",
+            "description": "Při návštěvě u Vás doma máme poslední možnost provést revize či změny před samotnou objednávkou materiálů a výrobou skříně. Společně si probereme vzorníky od našich výrobců a doladíme poslední detaily. Poté laserem přesně zaměříme prostor pro skříň. V tuto chvíli složíte zálohu ve výši 50 % z ceny."
+          },
+          "3": {
+            "title": "Doprava a montáž skříně",
+            "description": "Vaši vyrobenou skříň dopravíme v dohodnutém termínu přímo k Vám domů, přeneseme ji na místo realizace a kompletně smontujeme. Vše proběhne bez potřeby Vaší pomoci a bez dodatečných poplatků . Po montáži proběhne úhrada zbývajících 60 % z celkové částky za skříň"
+          }
+        }
+      },
+      "order": {
+        "title": "Nezávazná objednávka",
+        "phone": "+420 606 255 605",
+        "currency": "CZK",
+        "form": {
+          "first_name": "Jméno:",
+          "last_name": "Příjmení:",
+          "email": "E-mail:",
+          "phone": "Tel. číslo:",
+          "city": "Město / obec:",
+          "zip": "PSČ:",
+          "message": "Doplňkové informace:",
+          "submit_button": "Odeslat objednávku",
+          "error_messages": {
+            "default": "* vyžadováno",
+            "email": "Nesprávný formát e-mailové adresy."
+          }
+        },
+        "status": {
+          "success": {
+            "title": "Objednávka byla odeslána",
+            "subtitle": "Dnes nebo zítra Vám budeme volat a domluvíme si termín pro osobní schůzku.",
+            "emoji": "🎉",
+            "thanks": "DĚKUJEME"
+          },
+          "warn": {
+            "title": "Ojoj, něco se nepodařilo. Zkuste to prosím ještě jednou",
+            "emoji": "🥲"
+          },
+          "error": {
+            "title": "Tak tohle nebude náhoda, vypadá to na systémovou chybu. Omlouváme se",
+            "subtitle": "Zavolejte nám prosím, objednávku uděláme společně.",
+            "emoji": "🫣"
+          }
+        }
+      },
+      "price_tab": {
+        "title": "Celková cena",
+        "currency": "Kč",
+        "order_button": "Nezávazně objednat ▼",
+        "title_pricing": "V ceně je zahrnuto:",
+        "including_price": [
+          "Telefonická a osobní konzultace",
+          "Zaměření prostoru pro skříň",
+          "Fotorealistická vizualizace",
+          "Výroba skříně",
+          "Doprava a montáž skříně"
+        ]
+      }
+    }
+  },
+  "show_hide_doors": {
+    "show_doors": {
+      "alt_img": "Obrázek, který znázorňuje zobrazení dveří vestavěné skříně."
+    },
+    "hide_doors": {
+      "alt_img": "Obrázek, který znázorňuje skrytí dveří vestavěné skříně."
+    }
+  },
+  "header": {
+    "alt_img": "Logo firmy Dolope, která vyrábí vestavěné skříně na míru, dle požadavků klientů."
+  },
+  "wardrobe_view": {
+    "alt_img": "Obrázek korpusu vestavěné skříně s vysvětlivkami pro zadání rozměrů otvoru pro skříň."
+  },
+  "modal": {
+    "close_button": "Zavřít",
+    "save_button": "Uložit",
+    "top_bar": { "filter_box": { "sections": "sekce", "doors": "dveře" } },
+    "size_wardrobe": {
+      "title": "Rozměry skříně",
+      "content": {
+        "width": {
+          "placeholder": "Šířka skříně",
+          "description": "Maximální povolené rozmezí: 150-560 cm"
+        },
+        "height": {
+          "placeholder": "Výška skříně",
+          "description": "Maximální povolené rozmezí: 100-277 cm"
+        },
+        "depth": {
+          "placeholder": "Hloubka skříně",
+          "description": "Maximální povolené rozmezí: 28-100 cm"
+        },
+        "top_self": {
+          "placeholder": "Výška vrchní police",
+          "description": "Maximální povolené rozmezí: 15-40 cm"
+        }
+      },
+      "toast": {
+        "success": "Rozměry skříně byly uloženy!",
+        "error": "Zkontrolujte všechny vyplněné údaje!"
+      }
+    },
+    "type_wardrobe": {
+      "title": "Typ skříně",
+      "content": {
+        "between_walls": {
+          "title": "Mezi stěnami",
+          "alt_img": "Obrázek skříně, která se nachází mezi stěnami."
+        },
+        "in_space": {
+          "title": "V prostoru",
+          "alt_img": "Obrázek skříně, která se nachází v prostoru bez stěn."
+        },
+        "left_wall": {
+          "title": "Stěna vlevo",
+          "alt_img": "Obrázek skříně, která má vlevo zeď a vpravo volný prostor."
+        },
+        "right_wall": {
+          "title": "Stěna vpravo",
+          "alt_img": "Obrázek skříně, která má vpravo zeď a vlevo volný prostor."
+        }
+      },
+      "toast": {
+        "success": "Typ skříně byl uložen!",
+        "error": "Vyberte typ skříně!"
+      }
+    },
+    "count_sections": {
+      "title": "Počet sekcí (šířka)",
+      "count_doors": {
+        "title": "Počet posuvných dveří (šířka)"
+      },
+      "toast": {
+        "success": "Počet sekcí a dveří byly uloženy!",
+        "errors": {
+          "doors": "Vyberte počet dveří!",
+          "sections_doors": "Vyberte počet sekcí a dveří!"
+        }
+      }
+    },
+    "type_sections": {
+      "shelfs": { "title": "Police" },
+      "drawers": { "title": "Zásuvky" },
+      "hangers": { "title": "Závěsná tyč" },
+      "toast": {
+        "success": "Typy sekcí byly uloženy!",
+        "error": "Vyberte typ pro všechny sekce!"
+      }
+    },
+    "type_doors": {
+      "fixed_height": { "title": "Fixní výška dveří" },
+      "variable_height": { "title": "Variabilní výška dveří" },
+      "toast": {
+        "success": "Typy sekcí byly uloženy!",
+        "error": "Vyberte typ pro všechny dveře!"
+      }
+    },
+    "type_profiles": {
+      "handles": {
+        "title": "Typ madel posuvných dveří",
+        "alt_img": "Typ madla pro posuvné dveře"
+      },
+      "colors": {
+        "title": "Barva všech profilů dveří",
+        "alt_img": "Barva profilů posuvných dveří",
+        "color": {
+          "silver": "stříbrná",
+          "black": "černá matná",
+          "white": "bílá lesklá",
+          "champagne": "šampaň"
+        }
+      },
+      "toast": {
+        "success": "Typ a barva profilů byly uloženy!",
+        "error": "Vyberte typ a barvu profilů!"
+      }
+    },
+    "decor_corpus": {
+      "toast": {
+        "success": "Dekor vnitřní části skříně byl uložen!",
+        "error": "Vyberte dekor vnitřní části skříně!"
+      }
+    },
+    "decor_side_walls": {
+      "toast": {
+        "success": "Dekor vnější části skříně byl uložen!",
+        "error": "Vyberte dekor vnější části skříně!"
+      }
+    },
+    "decor_doors": {
+      "toast": {
+        "success": "Dekory dveří byly uloženy!",
+        "error": "Vyberte dekor pro všechny dveře a jejich sekce!"
+      }
+    },
+    "decors": {
+      "currency_area": "Kč/m2",
+      "empty_result": "Podle zvolených kritérií se nic nenašlo, upravte své hledání 🥲HA",
+      "toast": {
+        "corpus": { "success": "Dekor vnitřní části skříně byl uložen!" },
+        "side_walls": { "success": "Dekor vnější části skříně byl uložen!" },
+        "doors": { "success": "Dekory dveří byly uloženy!" }
+      },
+      "filter_decor": {
+        "material_type": {
+          "wood": "Dřevotříska",
+          "mirror": "Zrcadla",
+          "glass": "Barevná skla"
+        },
+        "decor_type": {
+          "all": "Všechny",
+          "wood": "Dřevo",
+          "color": "Barva",
+          "other": "Ostatní"
+        }
+      },
+      "used_decors": {
+        "title": "Již použité dekory"
+      }
+    }
+  },
+  "footer": {
+    "back_button": "Zpět",
+    "next_button": "Pokračovat",
+    "show_price_button": "Zobrazit cenu"
+  }
+}

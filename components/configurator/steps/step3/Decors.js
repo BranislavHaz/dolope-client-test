@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 import * as $ from "@/styles/configurator/components/steps/step3/Decors.styled";
 
-const Decors = ({ type }) => {
+const Decors = ({ type, translations: t }) => {
   const {
     state,
     corpus,
@@ -61,14 +61,14 @@ const Decors = ({ type }) => {
     if (type === "corpus") {
       setCorpusDecorId(decorId);
       setStepsInputs("step3", "decorCorpus", true);
-      toast.success("Dekor vnitřní části skříně byl uložen!", {
+      toast.success(t.toast.corpus.success, {
         className: "larger-device",
       });
     }
     if (type === "sideWalls") {
       setSideWallsDecorId(decorId);
       setStepsInputs("step3", "decorSideWalls", true);
-      toast.success("Dekor vnější části skříně byl uložen!", {
+      toast.success(t.toast.side_walls.success, {
         className: "larger-device",
       });
     }
@@ -102,7 +102,7 @@ const Decors = ({ type }) => {
 
       if (isAllDoorsDecorFilled) {
         setStepsInputs("step3", "decorDoors", true);
-        toast.success("Dekory dveří byly uloženy!", {
+        toast.success(t.toast.doors.success, {
           className: "larger-device",
         });
       } else {
@@ -188,7 +188,7 @@ const Decors = ({ type }) => {
           }
         >
           <$.PriceLabelWrap $priceLevel={categoryLabel}>
-            {decor.price_with_vat} Kč/m2
+            {`${decor.price_with_vat} ${t.currency_area}`}
           </$.PriceLabelWrap>
           <$.DecorImage>
             <Image
@@ -220,9 +220,7 @@ const Decors = ({ type }) => {
         {decors.length > 0 ? (
           decors
         ) : (
-          <$.EmptyResult>
-            {`Podle zvolených kritérií se nic nenašlo, upravte své hledání 🥲`}
-          </$.EmptyResult>
+          <$.EmptyResult>{t.empty_result}</$.EmptyResult>
         )}
       </$.DecorsWrap>
     </$.Wrap>

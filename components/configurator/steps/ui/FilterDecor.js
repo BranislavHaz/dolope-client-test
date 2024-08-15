@@ -5,7 +5,7 @@ import SearchDecors from "./SearchDecors";
 
 import * as $ from "@/styles/configurator/components/steps/ui/FilterDecor.styled";
 
-const FilterDecor = ({ type }) => {
+const FilterDecor = ({ type, translations: t }) => {
   const { modal, decorFilter, setDecorFilter } = useMainStore((state) => ({
     modal: state.modal,
     decorFilter: state.decorFilter,
@@ -59,21 +59,21 @@ const FilterDecor = ({ type }) => {
             onClick={handleClickMaterialType}
             $isActive={decorFilter.doors.materialType === "wood"}
           >
-            Dřevotříska
+            {t.material_type.wood}
           </$.Button>
           <$.Button
             id="mirror"
             onClick={handleClickMaterialType}
             $isActive={decorFilter.doors.materialType === "mirror"}
           >
-            Zrcadla
+            {t.material_type.mirror}
           </$.Button>
           <$.Button
             id="glass"
             onClick={handleClickMaterialType}
             $isActive={decorFilter.doors.materialType === "glass"}
           >
-            Skla
+            {t.material_type.glass}
           </$.Button>
         </$.TypeWrap>
       )}
@@ -84,28 +84,28 @@ const FilterDecor = ({ type }) => {
             onClick={handleClickDecorType}
             $isActive={decorFilter[type].decorType === "all"}
           >
-            Všechny
+            {t.decor_type.all}
           </$.Button>
           <$.Button
             id="wood"
             onClick={handleClickDecorType}
             $isActive={decorFilter[type].decorType === "wood"}
           >
-            Dřevo
+            {t.decor_type.wood}
           </$.Button>
           <$.Button
             id="color"
             onClick={handleClickDecorType}
             $isActive={decorFilter[type].decorType === "color"}
           >
-            Barva
+            {t.decor_type.color}
           </$.Button>
           <$.Button
             id="other"
             onClick={handleClickDecorType}
             $isActive={decorFilter[type].decorType === "other"}
           >
-            Ostatní
+            {t.decor_type.other}
           </$.Button>
         </$.TypeWrap>
       )}

@@ -23,7 +23,7 @@ import DecorDoors from "./step3/DecorDoors";
 // UI/UX
 import FilterBoxCount from "./ui/FilterBoxCount";
 
-const Modal = () => {
+const Modal = ({ translations: t }) => {
   const {
     viewport,
     modal,
@@ -101,15 +101,51 @@ const Modal = () => {
   };
 
   const ModalContent = {
-    sizeWardrobe: <SizeWardrobe setHandleSubmit={setSubmitAction} />,
-    typeWardrobe: <TypeWardrobe setHandleSubmit={setSubmitAction} />,
-    countSections: <CountSections setHandleSubmit={setSubmitAction} />,
-    typeSections: <TypeSections setHandleSubmit={setSubmitAction} />,
-    typeDoors: <TypeDoors setHandleSubmit={setSubmitAction} />,
-    typeProfiles: <TypeProfiles setHandleSubmit={setSubmitAction} />,
-    decorCorpus: <DecorCorpus setHandleSubmit={setSubmitAction} />,
-    decorSideWalls: <DecorSideWalls setHandleSubmit={setSubmitAction} />,
-    decorDoors: <DecorDoors setHandleSubmit={setSubmitAction} />,
+    sizeWardrobe: (
+      <SizeWardrobe
+        setHandleSubmit={setSubmitAction}
+        translations={t.size_wardrobe}
+      />
+    ),
+    typeWardrobe: (
+      <TypeWardrobe
+        setHandleSubmit={setSubmitAction}
+        translations={t.type_wardrobe}
+      />
+    ),
+    countSections: (
+      <CountSections
+        setHandleSubmit={setSubmitAction}
+        translations={t.count_sections}
+      />
+    ),
+    typeSections: (
+      <TypeSections
+        setHandleSubmit={setSubmitAction}
+        translations={t.type_sections}
+      />
+    ),
+    typeDoors: (
+      <TypeDoors
+        setHandleSubmit={setSubmitAction}
+        translations={t.type_doors}
+      />
+    ),
+    typeProfiles: (
+      <TypeProfiles
+        setHandleSubmit={setSubmitAction}
+        translations={t.type_profiles}
+      />
+    ),
+    decorCorpus: (
+      <DecorCorpus setHandleSubmit={setSubmitAction} translations={t} />
+    ),
+    decorSideWalls: (
+      <DecorSideWalls setHandleSubmit={setSubmitAction} translations={t} />
+    ),
+    decorDoors: (
+      <DecorDoors setHandleSubmit={setSubmitAction} translations={t} />
+    ),
   };
 
   return (
@@ -132,6 +168,7 @@ const Modal = () => {
                   type={"sections"}
                   count={sections.count}
                   active={activeFilter.sections}
+                  translations={t.top_bar.filter_box}
                 />
               )}
               {modal.type === "typeDoors" && (
@@ -139,6 +176,7 @@ const Modal = () => {
                   type={"doors"}
                   count={doors.count}
                   active={activeFilter.doors}
+                  translations={t.top_bar.filter_box}
                 />
               )}
               <$.CloseModal onClick={handleClick} />
@@ -146,14 +184,14 @@ const Modal = () => {
             {ModalContent[modal.type]}
             <$.ModalFooter>
               <Button type={"lightColor"} handleClick={handleClick}>
-                Zavřít
+                {t.close_button}
               </Button>
               <Button
                 type={"mainColor"}
                 handleClick={submitAction}
                 $isVisible={isSubmitVisible}
               >
-                Uložit
+                {t.save_button}
               </Button>
             </$.ModalFooter>
           </$.ModalWrap>

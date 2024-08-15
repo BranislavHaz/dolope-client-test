@@ -8,7 +8,7 @@ import Button from "../ui/Button";
 
 import toast from "react-hot-toast";
 
-const SizeWardrobe = ({ setHandleSubmit }) => {
+const SizeWardrobe = ({ setHandleSubmit, translations: t }) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [depth, setDepth] = useState(0);
@@ -48,19 +48,19 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
 
       type === "mobile" && state.setIsModalActive(false);
       type === "mobile"
-        ? toast.success("Rozměry skříně byly uloženy!", {
+        ? toast.success(t.toast.success, {
             className: "small-device",
           })
-        : toast.success("Rozměry skříně byly uloženy!", {
+        : toast.success(t.toast.success, {
             className: "larger-device",
           });
     } else {
       state.setStepsInputs("step1", "sizeWardrobe", false);
       type === "mobile"
-        ? toast.error("Zkontrolujte všechny vyplněné údaje!", {
+        ? toast.error(t.toast.error, {
             className: "small-device",
           })
-        : toast.error("Zkontrolujte všechny vyplněné údaje!", {
+        : toast.error(t.toast.error, {
             className: "larger-device",
           });
     }
@@ -87,50 +87,50 @@ const SizeWardrobe = ({ setHandleSubmit }) => {
   return (
     <>
       <$.FormWrap onKeyDown={handleKeyDown}>
-        <Title>Rozměry skříně</Title>
+        <Title>{t.title}</Title>
         <$.InputWrapper $isCorrect={isCorrect.width !== false}>
           <input
             type="number"
-            placeholder="Šířka skříně"
+            placeholder={t.content.width.placeholder}
             value={width === 0 ? "" : width}
             onChange={(e) => setWidth(e.target.value)}
           />
         </$.InputWrapper>
         <$.Details $isCorrect={isCorrect.width !== false}>
-          Maximální povolené rozmezí: 150-560 cm
+          {t.content.width.description}
         </$.Details>
         <$.InputWrapper $isCorrect={isCorrect.height !== false}>
           <input
             type="number"
-            placeholder="Výška skříně"
+            placeholder={t.content.height.placeholder}
             value={height === 0 ? "" : height}
             onChange={(e) => setHeight(e.target.value)}
           />
         </$.InputWrapper>
         <$.Details $isCorrect={isCorrect.height !== false}>
-          Maximální povolené rozmezí: 100-277 cm
+          {t.content.height.description}
         </$.Details>
         <$.InputWrapper $isCorrect={isCorrect.depth !== false}>
           <input
             type="number"
-            placeholder="Hloubka skříně"
+            placeholder={t.content.depth.placeholder}
             value={depth === 0 ? "" : depth}
             onChange={(e) => setDepth(e.target.value)}
           />
         </$.InputWrapper>
         <$.Details $isCorrect={isCorrect.depth !== false}>
-          Maximální povolené rozmezí: 28-100 cm
+          {t.content.depth.description}
         </$.Details>
         <$.InputWrapper $isCorrect={isCorrect.topSelf !== false}>
           <input
             type="number"
-            placeholder="Výška vrchní police"
+            placeholder={t.content.top_self.placeholder}
             value={topSelf === 0 ? "" : topSelf}
             onChange={(e) => setTopSelf(e.target.value)}
           />
         </$.InputWrapper>
         <$.Details $isCorrect={isCorrect.topSelf !== false}>
-          Maximální povolené rozmezí: 15-40 cm
+          {t.content.top_self.description}
         </$.Details>
         <$.SubmitWrap>
           <Button handleClick={submitAction} type={"darkColor"}>

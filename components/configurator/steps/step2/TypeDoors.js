@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 
 import * as $ from "@/styles/configurator/components/steps/step2/TypeDoors.styled";
 
-const TypeDoors = ({ setHandleSubmit }) => {
+const TypeDoors = ({ setHandleSubmit, translations: t }) => {
   const { doors, setStepsInputs, setIsModalActive, setActiveFilter } =
     useMainStore((state) => ({
       doors: state.doors,
@@ -29,7 +29,7 @@ const TypeDoors = ({ setHandleSubmit }) => {
     if (countOfSelectedDoors === doors.count) {
       setStepsInputs("step2", "typeDoors", true);
       if (!isInitialRender) {
-        toast.success("Typy sekcí byly uloženy!", {
+        toast.success(t.toast.success, {
           className: "larger-device",
         });
       }
@@ -43,12 +43,12 @@ const TypeDoors = ({ setHandleSubmit }) => {
     if (Object.keys(doors.typeDoors).length === doors.count) {
       setIsModalActive(false);
       setActiveFilter("doors", 1);
-      toast.success("Typy dveří byly uloženy!", { className: "small-device" });
+      toast.success(t.toast.success, { className: "small-device" });
     } else {
-      toast.error("Vyberte typ pro všechny dveře!", {
+      toast.error(t.toast.error, {
         className: "small-device",
       });
-      toast.error("Vyberte typ pro všechny dveře!", {
+      toast.error(t.toast.error, {
         className: "larger-device",
       });
     }
@@ -61,9 +61,9 @@ const TypeDoors = ({ setHandleSubmit }) => {
   return (
     <>
       <$.Wrap>
-        <Title>Fixní výška dveří</Title>
+        <Title>{t.fixed_height.title}</Title>
         <FixedDoors />
-        <Title>Variabilní výška dveří</Title>
+        <Title>{t.variable_height.title}</Title>
         <$.TypeDoorsWrap>
           <VariableDoor1 id={6} />
           <VariableDoor2 id={7} />

@@ -19,8 +19,6 @@ const Home = ({ translations: t }) => {
       <Head>
         <title>{`Dolope | ${t.title}`}</title>
         <meta name="description" content={t.meta_description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <MobileMenu translations={t.content.menu} />
       <Header translations={t.content.menu} />
@@ -34,13 +32,6 @@ const Home = ({ translations: t }) => {
       <Footer translations={t.content.footer} />
     </>
   );
-};
-
-const fetchSetting = {
-  method: "GET",
-  headers: {
-    authorization: process.env.AUTH_TOKEN,
-  },
 };
 
 export async function getStaticProps() {

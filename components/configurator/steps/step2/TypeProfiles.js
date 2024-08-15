@@ -8,14 +8,7 @@ import toast from "react-hot-toast";
 
 import * as $ from "@/styles/configurator/components/steps/step2/TypeProfiles.styled";
 
-const colorMapping = {
-  silver: "stříbrná",
-  black: "černá matná",
-  white: "bílá lesklá",
-  champagne: "šampaň",
-};
-
-const TypeProfiles = ({ setHandleSubmit }) => {
+const TypeProfiles = ({ setHandleSubmit, translations: t }) => {
   const {
     doors,
     setSelectedProfile,
@@ -75,13 +68,20 @@ const TypeProfiles = ({ setHandleSubmit }) => {
               src={`./images/profiles/${profileName}-profile.jpg`}
               width={100}
               height={100}
-              alt={`Profil - ${profileName}`}
+              alt={`${t.handles.alt_img} - ${profileName}`}
             />
           </$.ProfileElementImg>
           <div>{profile.name}</div>
         </$.ProfileElement>
       );
     });
+  };
+
+  const colorMapping = {
+    silver: t.colors.color.silver,
+    black: t.colors.color.black,
+    white: t.colors.color.white,
+    champagne: t.colors.color.champagne,
   };
 
   const generateColors = () => {
@@ -96,7 +96,7 @@ const TypeProfiles = ({ setHandleSubmit }) => {
             src={`./images/profiles/${color}-profile.png`}
             width={100}
             height={100}
-            alt={`Profil - ${color}`}
+            alt={`${t.colors.alt_img} - ${color}`}
           />
         </$.ColorElementImg>
         <div>{colorMapping[color]}</div>
@@ -119,7 +119,7 @@ const TypeProfiles = ({ setHandleSubmit }) => {
     if (availableColors.includes(color) && activeProfile !== "unfilled") {
       setStepsInputs("step2", "typeProfiles", true);
       setSelectedProfile({ ...activeProfileObj, color });
-      toast.success("Typ a barva profilů byly uloženy!", {
+      toast.success(t.toast.success, {
         className: "larger-device",
       });
     }
@@ -128,11 +128,11 @@ const TypeProfiles = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (stepsInputs.step2.typeProfiles) {
       setIsModalActive(false);
-      toast.success("Typ a barva profilů byly uloženy!", {
+      toast.success(t.toast.success, {
         className: "small-device",
       });
     } else {
-      toast.error("Vyberte typ a barvu profilů!", {
+      toast.error(t.toast.error, {
         className: "small-device",
       });
     }
@@ -145,9 +145,9 @@ const TypeProfiles = ({ setHandleSubmit }) => {
   return (
     <>
       <$.Wrap>
-        <Title>Typ madel posuvných dveří</Title>
+        <Title>{t.handles.title}</Title>
         <$.TypeProfilesWrap>{generateProfiles()}</$.TypeProfilesWrap>
-        <Title>Barva všech profilů dveří</Title>
+        <Title>{t.colors.title}</Title>
         <$.ColorProfilesWrap>{generateColors()}</$.ColorProfilesWrap>
       </$.Wrap>
     </>

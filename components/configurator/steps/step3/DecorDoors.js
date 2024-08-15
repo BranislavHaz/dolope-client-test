@@ -8,24 +8,21 @@ import FilterDecor from "../ui/FilterDecor";
 
 import toast from "react-hot-toast";
 
-const DecorDoors = ({ setHandleSubmit }) => {
-  const { doors, stepsInputs, setIsModalActive, decorFilter, setDecorFilter } =
-    useMainStore((state) => ({
-      doors: state.doors,
-      stepsInputs: state.stepsInputs,
-      setIsModalActive: state.setIsModalActive,
-      decorFilter: state.decorFilter,
-      setDecorFilter: state.setDecorFilter,
-    }));
+const DecorDoors = ({ setHandleSubmit, translations: t }) => {
+  const { doors, stepsInputs, setIsModalActive } = useMainStore((state) => ({
+    doors: state.doors,
+    stepsInputs: state.stepsInputs,
+    setIsModalActive: state.setIsModalActive,
+  }));
 
   const handleSubmit = () => {
     if (stepsInputs.step3.decorDoors) {
       setIsModalActive(false);
-      toast.success("Dekory dveří byly uloženy!", {
+      toast.success(t.decor_doors.toast.success, {
         className: "small-device",
       });
     } else {
-      toast.error("Vyberte dekor pro všechny dveře a jejich sekce!", {
+      toast.error(t.decor_doors.toast.error, {
         className: "small-device",
       });
     }
@@ -38,9 +35,9 @@ const DecorDoors = ({ setHandleSubmit }) => {
   return (
     <>
       <Doors type={"modal"} />
-      <UsedDoorsDecor />
-      <FilterDecor type={"doors"} />
-      <Decors type={"doors"} />
+      <UsedDoorsDecor translations={t.decors} />
+      <FilterDecor type={"doors"} translations={t.decors.filter_decor} />
+      <Decors type={"doors"} translations={t.decors} />
     </>
   );
 };

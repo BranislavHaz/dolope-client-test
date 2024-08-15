@@ -5,7 +5,7 @@ import Button from "@/components/configurator/steps/ui/Button";
 
 import * as $ from "@/styles/configurator/layouts/Footer.styled";
 
-const Footer = () => {
+const Footer = ({ translations: t }) => {
   const { state, currentStep, stepsInputs, setCurrentStepId } = useMainStore(
     (state) => ({
       state: state,
@@ -47,11 +47,11 @@ const Footer = () => {
         handleClick={handleClickBack}
         isVisible={currentStep.id !== 1}
       >
-        Zpět
+        {t.back_button}
       </Button>
       {isNextButtonActive && (
         <Button type={"mainColor"} handleClick={handleClickNext}>
-          {currentStep.id !== 3 ? "Pokračovat" : "Zobrazit cenu"}
+          {currentStep.id !== 3 ? t.next_button : t.show_price_button}
         </Button>
       )}
     </$.Footer>

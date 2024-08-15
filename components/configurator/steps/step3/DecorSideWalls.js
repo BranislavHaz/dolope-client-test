@@ -5,7 +5,7 @@ import FilterDecor from "../ui/FilterDecor";
 
 import toast from "react-hot-toast";
 
-const DecorSideWalls = ({ setHandleSubmit }) => {
+const DecorSideWalls = ({ setHandleSubmit, translations: t }) => {
   const { sideWalls, setIsModalActive } = useMainStore((state) => ({
     sideWalls: state.sideWalls,
     setIsModalActive: state.setIsModalActive,
@@ -14,11 +14,11 @@ const DecorSideWalls = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (sideWalls.decorId) {
       setIsModalActive(false);
-      toast.success("Dekor vnější části skříně byl uložen!", {
+      toast.success(t.decor_side_walls.toast.success, {
         className: "small-device",
       });
     } else {
-      toast.error("Vyberte dekor vnější části skříně!", {
+      toast.error(t.decor_side_walls.toast.error, {
         className: "small-device",
       });
     }
@@ -30,8 +30,8 @@ const DecorSideWalls = ({ setHandleSubmit }) => {
 
   return (
     <>
-      <FilterDecor type={"sideWalls"} />
-      <Decors type={"sideWalls"} />
+      <FilterDecor type={"sideWalls"} translations={t.decors.filter_decor} />
+      <Decors type={"sideWalls"} translations={t.decors} />
     </>
   );
 };

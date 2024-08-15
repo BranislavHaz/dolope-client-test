@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import useMainStore from "@/stores/useMainStore";
 
-import FlashMessage from "../ui/FlashMessage";
 import Title from "../ui/Title";
 
 import toast from "react-hot-toast";
@@ -13,7 +12,7 @@ import {
 
 import * as $ from "@/styles/configurator/components/steps/step1/CountSections.styled";
 
-const CountSections = ({ setHandleSubmit }) => {
+const CountSections = ({ setHandleSubmit, translations: t }) => {
   const { state } = useMainStore((state) => ({
     state: state,
   }));
@@ -32,7 +31,7 @@ const CountSections = ({ setHandleSubmit }) => {
       state.setStepsInputs("step1", "countDoors", true);
       state.setStepsInputs("step2", "typeDoors", false);
       state.setVisibilityDoors(false);
-      toast.success("Počet sekcí a dveří byly uloženy!", {
+      toast.success(t.toast.success, {
         className: "larger-device",
       });
     }
@@ -41,15 +40,15 @@ const CountSections = ({ setHandleSubmit }) => {
   const handleSubmit = () => {
     if (state.sections.count && state.doors.count) {
       state.setIsModalActive(false);
-      toast.success("Počet sekcí a dveří byly uloženy!", {
+      toast.success(t.toast.success, {
         className: "small-device",
       });
     } else {
       state.sections.count
-        ? toast.error("Vyberte počet dveří!", {
+        ? toast.error(t.toast.errors.doors, {
             className: "small-device",
           })
-        : toast.error("Vyberte počet sekcí a dveří!", {
+        : toast.error(t.toast.errors.sections_doors, {
             className: "small-device",
           });
     }
@@ -62,12 +61,12 @@ const CountSections = ({ setHandleSubmit }) => {
   return (
     <$.Wrap>
       <$.CountSectionsWrap>
-        <Title>Počet sekcí (šířka)</Title>
+        <Title>{t.title}</Title>
         <$.SelectWrap>
           {generateOptionsOfSections(state, handleClick)}
         </$.SelectWrap>
         <$.CountDoorWrap $isInactive={state.sections.count === 0}>
-          <Title>Počet posuvných dveří (šířka)</Title>
+          <Title>{t.count_doors.title}</Title>
           <$.SelectWrap>
             {generateOptionsOfDoors(state, state.sections.count, handleClick)}
           </$.SelectWrap>

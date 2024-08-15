@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 
 import * as $ from "@/styles/configurator/components/steps/step2/TypeSections.styled";
 
-const TypeSections = ({ setHandleSubmit }) => {
+const TypeSections = ({ setHandleSubmit, translations: t }) => {
   const { state, sections, setStepsInputs } = useMainStore((state) => ({
     state: state,
     sections: state.sections,
@@ -29,7 +29,7 @@ const TypeSections = ({ setHandleSubmit }) => {
     if (countOfSelectedSections === sections.count) {
       setStepsInputs("step2", "typeSections", true);
       if (!isInitialRender) {
-        toast.success("Typy sekcí byly uloženy!", {
+        toast.success(t.toast.success, {
           className: "larger-device",
         });
       }
@@ -43,11 +43,11 @@ const TypeSections = ({ setHandleSubmit }) => {
     if (Object.keys(sections.typeOfSections).length === sections.count) {
       state.setIsModalActive(false);
       state.setActiveFilter("sections", 1);
-      toast.success("Typy sekcí byly uloženy!", {
+      toast.success(t.toast.success, {
         className: "small-device",
       });
     } else {
-      toast.error("Vyberte typ pro všechny sekce!", {
+      toast.error(t.toast.error, {
         className: "small-device",
       });
     }
@@ -65,7 +65,7 @@ const TypeSections = ({ setHandleSubmit }) => {
   return (
     <>
       <$.Wrap>
-        <Title>Police</Title>
+        <Title>{t.shelfs.title}</Title>
         <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
           <$.SectionType
             $isActive={checkIfIsActiveSection(state, 26)}
@@ -104,7 +104,7 @@ const TypeSections = ({ setHandleSubmit }) => {
             <SelfModule countSelfs={7} id={5} />
           </$.SectionType>
         </$.TypeSectionsWrap>
-        <Title>Zásuvky</Title>
+        <Title>{t.drawers.title}</Title>
         <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
           <$.SectionType
             $isActive={checkIfIsActiveSection(state, 27)}
@@ -311,7 +311,7 @@ const TypeSections = ({ setHandleSubmit }) => {
             />
           </$.SectionType>
         </$.TypeSectionsWrap>
-        <Title>Závěsná tyč</Title>
+        <Title>{t.hangers.title}</Title>
         <$.TypeSectionsWrap $sectionWidth={state.viewportSizes.modal.elWidth}>
           <$.SectionType
             $isActive={checkIfIsActiveSection(state, 31)}

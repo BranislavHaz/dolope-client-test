@@ -3,7 +3,7 @@ import useMainStore from "@/stores/useMainStore";
 
 import * as $ from "@/styles/configurator/components/steps/ui/LightBox.styled";
 
-const LightBox = () => {
+const LightBox = ({ translations: t }) => {
   const { isActive, imgUrl, setIsLightBoxActive, setIsLightBoxImageUrl } =
     useMainStore((state) => ({
       isActive: state.lightBox.isActive,
@@ -34,6 +34,7 @@ const LightBox = () => {
       <$.LightBoxContent>
         <Image
           src={imgUrl}
+          alt={t.alt_img}
           layout="fill"
           objectFit="cover"
           onClick={(e) => e.stopPropagation()}

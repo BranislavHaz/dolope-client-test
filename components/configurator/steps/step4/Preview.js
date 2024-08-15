@@ -5,7 +5,7 @@ import PriceTab from "./PriceTab";
 
 import * as $ from "@/styles/configurator/components/steps/step4/Preview.styled";
 
-const Preview = ({ price }) => {
+const Preview = ({ price, translations: t }) => {
   const { setCurrentStepId, setOrderStatus } = useMainStore((state) => ({
     setCurrentStepId: state.setCurrentStepId,
     setOrderStatus: state.setOrderStatus,
@@ -19,12 +19,12 @@ const Preview = ({ price }) => {
   return (
     <$.WrapPreview>
       <$.WardrobeWrap>
-        <WardrobeView />
+        <WardrobeView translations={t.preview.wardrobe_view} />
       </$.WardrobeWrap>
       <$.Wrap>
-        <PriceTab price={price} type={"top"} />
+        <PriceTab price={price} type={"top"} translations={t.price_tab} />
         <$.BackButton onClick={handleBack}>
-          {`<<`} Zpět na konfiguraci
+          {`<< ${t.preview.back_button}`}
         </$.BackButton>
       </$.Wrap>
     </$.WrapPreview>
