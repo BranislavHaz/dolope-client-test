@@ -1,4 +1,6 @@
 import { getMaxSlideSize } from "../getMaxSlideSize";
+import { getCurrencyPriceColumn } from "@/utils/configurator/getCurrencyPriceColumn";
+const currencyPriceColumn = getCurrencyPriceColumn();
 
 const countDrawersSectionsType = {
   6: 2,
@@ -31,7 +33,7 @@ const getDecorIdCheapestDTD10 = (state) => {
   const decors = state.productsAPI.dtd10;
 
   const cheapest = decors.reduce((min, decor) => {
-    if (Number(decor.price_with_vat) < Number(min.price_with_vat)) {
+    if (Number(decor[currencyPriceColumn]) < Number(min[currencyPriceColumn])) {
       return decor;
     }
     return min;

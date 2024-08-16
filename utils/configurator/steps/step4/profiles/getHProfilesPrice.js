@@ -23,7 +23,11 @@ const getFullLengthHProfiles = (typeDoors, doorWidth) => {
   return fullLength;
 };
 
-export const getHProfilesPrice = (availableProfiles, doors) => {
+export const getHProfilesPrice = (
+  availableProfiles,
+  doors,
+  currencyPriceColumn
+) => {
   const fullLengthHProfiles = getFullLengthHProfiles(
     doors.typeDoors,
     doors.width
@@ -35,12 +39,10 @@ export const getHProfilesPrice = (availableProfiles, doors) => {
 
   // Cena za mm H profilu
   const hProfilePriceMM =
-    hProfileInColor.price_with_vat / (hProfileInColor.length * 1000);
+    hProfileInColor[currencyPriceColumn] / (hProfileInColor.length * 1000);
 
   // Vrátenie ceny za všetky H profily
-  return +(
-    fullLengthHProfiles *
-    doors.horizontProfilesReserve *
-    hProfilePriceMM
+  return Number(
+    fullLengthHProfiles * doors.horizontProfilesReserve * hProfilePriceMM
   ).toFixed(0);
 };

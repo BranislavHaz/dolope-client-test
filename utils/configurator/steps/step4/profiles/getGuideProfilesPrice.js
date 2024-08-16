@@ -1,4 +1,8 @@
-export const getGuideProfilesPrice = (availableProfiles, doors) => {
+export const getGuideProfilesPrice = (
+  availableProfiles,
+  doors,
+  currencyPriceColumn
+) => {
   // Vrchný vodiaci profil
   const topGuideProfilesInColor = availableProfiles.topGuideProfiles.filter(
     (profile) => profile.color === doors.color
@@ -20,7 +24,7 @@ export const getGuideProfilesPrice = (availableProfiles, doors) => {
 
   // Vrátenie cien profilov
   return {
-    top: +topGuideProfile.price_with_vat.toFixed(0),
-    bottom: +bottomGuideProfile.price_with_vat.toFixed(0),
+    top: Number(topGuideProfile[currencyPriceColumn]).toFixed(0),
+    bottom: Number(bottomGuideProfile[currencyPriceColumn]).toFixed(0),
   };
 };

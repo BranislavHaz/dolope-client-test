@@ -1,3 +1,6 @@
+import { getCurrencyPriceColumn } from "../../getCurrencyPriceColumn";
+const currencyPriceColumn = getCurrencyPriceColumn();
+
 const normalizeString = (str) => {
   return str
     .normalize("NFD")
@@ -63,7 +66,8 @@ export const getFilteredDecors = ({ state, type }) => {
   });
 
   const sortedFilteredDecors = filteredDecors.sort(
-    (a, b) => parseFloat(a.price_with_vat) - parseFloat(b.price_with_vat)
+    (a, b) =>
+      parseFloat(a[currencyPriceColumn]) - parseFloat(b[currencyPriceColumn])
   );
 
   return sortedFilteredDecors;

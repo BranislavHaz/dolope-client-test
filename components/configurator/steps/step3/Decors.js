@@ -4,6 +4,7 @@ import useMainStore from "@/stores/useMainStore";
 import useTimeout from "@/hooks/useTimeout";
 import { getFilteredDecors } from "@/utils/configurator/steps/step3/getFilteredDecors";
 import { getUniqueDecors } from "@/utils/configurator/steps/step3/getUniqueDecors";
+import { getCurrencyPriceColumn } from "@/utils/configurator/getCurrencyPriceColumn";
 
 import toast from "react-hot-toast";
 
@@ -42,6 +43,7 @@ const Decors = ({ type, translations: t }) => {
     productsAPI: state.productsAPI,
   }));
 
+  const currencyPriceColumn = getCurrencyPriceColumn();
   const [isScrollEnd, setIsScrollEnd] = useState(false);
   const set = useTimeout();
 
@@ -129,8 +131,10 @@ const Decors = ({ type, translations: t }) => {
   const getDecors = () => {
     const prices =
       type !== "usedDoors"
-        ? filteredDecors.map((item) => parseFloat(item.price_with_vat))
-        : productsAPI.dtd10.map((item) => parseFloat(item.price_with_vat));
+        ? filteredDecors.map((item) => parseFloat(item[currencyPriceColumn]))
+        : productsAPI.dtd10.map((item) =>
+            parseFloat(item[currencyPriceColumn])
+          );
     const minPrice = Math.min(...prices);
     const maxPrice = Math.max(...prices);
 
@@ -139,7 +143,7 @@ const Decors = ({ type, translations: t }) => {
     const expensiveThreshold = maxPrice - range / 3;
 
     return filteredDecors.map((decor) => {
-      const price = parseFloat(decor.price_with_vat);
+      const price = parseFloat(decor[currencyPriceColumn]);
       let categoryLabel;
       if (price <= cheapThreshold) {
         categoryLabel = 1;
@@ -159,7 +163,7 @@ const Decors = ({ type, translations: t }) => {
             }
           >
             <$.PriceLabelWrap $priceLevel={3}>
-              {decor.price_with_vat} Kč/m2
+              {decor[currencyPriceColumn]} Kč/m2
             </$.PriceLabelWrap>
             <$.DecorImage>
               <Image
@@ -188,7 +192,7 @@ const Decors = ({ type, translations: t }) => {
           }
         >
           <$.PriceLabelWrap $priceLevel={categoryLabel}>
-            {`${decor.price_with_vat} ${t.currency_area}`}
+            {`${decor[currencyPriceColumn]} ${t.currency_area}`}
           </$.PriceLabelWrap>
           <$.DecorImage>
             <Image

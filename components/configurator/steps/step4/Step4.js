@@ -6,6 +6,7 @@ import OrderForm from "./OrderForm";
 
 import useMainStore from "@/stores/useMainStore";
 
+import { getCurrencyPriceColumn } from "@/utils/configurator/getCurrencyPriceColumn";
 import { getAreasPrice } from "@/utils/configurator/steps/step4/areas/getAreasPrice";
 import { getProfilesDoorPrice } from "@/utils/configurator/steps/step4/profiles/getProfilesDoorPrice";
 import { getDrawerFittingsPrice } from "@/utils/configurator/steps/step4/drawers/getDrawerFittingsPrice";
@@ -17,9 +18,13 @@ const Step4 = ({ translations: t }) => {
     state: state,
   }));
 
-  const areasPrice = getAreasPrice(state);
-  const profilesPrice = getProfilesDoorPrice(state);
-  const drawersFittingPrice = getDrawerFittingsPrice(state);
+  const currencyPriceColumn = getCurrencyPriceColumn();
+  const areasPrice = getAreasPrice(state, currencyPriceColumn);
+  const profilesPrice = getProfilesDoorPrice(state, currencyPriceColumn);
+  const drawersFittingPrice = getDrawerFittingsPrice(
+    state,
+    currencyPriceColumn
+  );
   const marginPrice = 1.6; // marža
   const feesDemos = 7400; // formatovanie, hranenie, balenie, dovoz CZK
   const feesNabykov = 200; // dovoz CZK

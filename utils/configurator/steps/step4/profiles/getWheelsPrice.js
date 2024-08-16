@@ -1,10 +1,15 @@
-export const getWheelsPrice = (availableProfiles, doors) => {
+export const getWheelsPrice = (
+  availableProfiles,
+  doors,
+  currencyPriceColumn
+) => {
   // Pre kolieska sú rovnaké ceny asymetrických aj symetrických typov
-  const topWheelsPrice = availableProfiles.topWheels[0].price_with_vat;
-  const bottomWheelsPrice = availableProfiles.bottomWheels[0].price_with_vat;
+  const topWheelsPrice = availableProfiles.topWheels[0][currencyPriceColumn];
+  const bottomWheelsPrice =
+    availableProfiles.bottomWheels[0][currencyPriceColumn];
 
   return {
-    top: +(doors.count * topWheelsPrice).toFixed(0),
-    bottom: +(doors.count * bottomWheelsPrice).toFixed(0),
+    top: Number(doors.count * topWheelsPrice).toFixed(0),
+    bottom: Number(doors.count * bottomWheelsPrice).toFixed(0),
   };
 };

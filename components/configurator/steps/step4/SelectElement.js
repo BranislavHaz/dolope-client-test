@@ -1,6 +1,7 @@
 import Image from "next/image";
 import useMainStore from "@/stores/useMainStore";
 
+import { getCurrencyPriceColumn } from "@/utils/configurator/getCurrencyPriceColumn";
 import { getDrawerPriceDifference } from "@/utils/configurator/steps/step4/drawers/getDrawerFittingsPrice";
 
 import * as $ from "@/styles/configurator/components/steps/step4/SelectElement.styled";
@@ -17,11 +18,13 @@ const SelectElement = ({ translations: t }) => {
     }
   };
 
+  const currencyPriceColumn = getCurrencyPriceColumn();
+
   const getDrawersPrice = (type) => {
     if (type === "wooden") {
       return `${t.price_included}`;
     } else {
-      const price = getDrawerPriceDifference(state);
+      const price = getDrawerPriceDifference(state, currencyPriceColumn);
       return `+${price} ${t.currency}`;
     }
   };

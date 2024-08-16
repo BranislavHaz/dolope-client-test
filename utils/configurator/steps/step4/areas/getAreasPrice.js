@@ -1,6 +1,6 @@
 import { mergeAreas } from "./mergeAreas";
 
-export const getAreasPrice = (state) => {
+export const getAreasPrice = (state, currencyPriceColumn) => {
   const areas = mergeAreas(state);
   const { dtd18, dtd10, glass } = state.productsAPI;
   const pricesAreaObj = {};
@@ -8,7 +8,7 @@ export const getAreasPrice = (state) => {
   // Funkcia na hľadanie ceny dekoru
   const findPrice = (decorId, dtdArray) => {
     const item = dtdArray.find((entry) => entry.id === decorId);
-    return item ? parseFloat(item.price_with_vat) : null;
+    return item ? parseFloat(item[currencyPriceColumn]) : null;
   };
 
   // Prechádzame cez všetky dekory v objekte areas

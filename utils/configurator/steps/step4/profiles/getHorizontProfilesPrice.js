@@ -1,11 +1,15 @@
-export const getHorizontProfilesPrice = (availableProfiles, doors) => {
+export const getHorizontProfilesPrice = (
+  availableProfiles,
+  doors,
+  currencyPriceColumn
+) => {
   // Vrchný profil dverí
   const topHorizontProfileInColor = availableProfiles.topHorizontProfiles.find(
     (profile) => profile.color === doors.color
   );
 
   const topHorizontProfilePriceMM =
-    topHorizontProfileInColor.price_with_vat /
+    topHorizontProfileInColor[currencyPriceColumn] /
     (topHorizontProfileInColor.length * 1000);
 
   const topHorizontProfilePrice =
@@ -20,7 +24,7 @@ export const getHorizontProfilesPrice = (availableProfiles, doors) => {
       (profile) => profile.color === doors.color
     );
   const bottomHorizontProfilePriceMM =
-    bottomHorizontProfileInColor.price_with_vat /
+    bottomHorizontProfileInColor[currencyPriceColumn] /
     (bottomHorizontProfileInColor.length * 1000);
 
   const bottomHorizontProfilePrice =
@@ -31,7 +35,7 @@ export const getHorizontProfilesPrice = (availableProfiles, doors) => {
 
   // Vrátenie cien profilov
   return {
-    top: +topHorizontProfilePrice.toFixed(0),
-    bottom: +bottomHorizontProfilePrice.toFixed(0),
+    top: Number(topHorizontProfilePrice).toFixed(0),
+    bottom: Number(bottomHorizontProfilePrice).toFixed(0),
   };
 };

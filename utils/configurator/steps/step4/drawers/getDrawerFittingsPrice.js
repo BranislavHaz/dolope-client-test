@@ -17,7 +17,7 @@ const countDrawersSectionsType = {
   24: 4,
 };
 
-export const getDrawerFittingsPrice = (state) => {
+export const getDrawerFittingsPrice = (state, currencyPriceColumn) => {
   const sectionsCount = state.sections.count;
   const drawersType = state.drawers.type;
   const slideSize = getMaxSlideSize(state);
@@ -26,7 +26,7 @@ export const getDrawerFittingsPrice = (state) => {
       product.length === slideSize &&
       product.category === "drawer" &&
       product.type === drawersType
-  ).price_with_vat;
+  )[currencyPriceColumn];
 
   let totaldrawersCount = 0;
 
@@ -44,7 +44,7 @@ export const getDrawerFittingsPrice = (state) => {
   return +(totaldrawersCount * slidePrice).toFixed(0);
 };
 
-export const getDrawerPriceDifference = (state) => {
+export const getDrawerPriceDifference = (state, currencyPriceColumn) => {
   const sectionsCount = state.sections.count;
   const slideSize = getMaxSlideSize(state);
   const slidePriceWooden = state.productsAPI.otherProducts.find(
@@ -52,13 +52,13 @@ export const getDrawerPriceDifference = (state) => {
       product.length === slideSize &&
       product.category === "drawer" &&
       product.type === "wooden"
-  ).price_with_vat;
+  )[currencyPriceColumn];
   const slidePriceSidewalls = state.productsAPI.otherProducts.find(
     (product) =>
       product.length === slideSize &&
       product.category === "drawer" &&
       product.type === "sidewalls"
-  ).price_with_vat;
+  )[currencyPriceColumn];
 
   let totaldrawersCount = 0;
 
