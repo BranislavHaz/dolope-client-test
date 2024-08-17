@@ -1,7 +1,7 @@
 const sendCustomEvent = (formData) => {
   const consents = window.CookieConsent.consent;
 
-  if (/*window.dataLayer && consents.statistics && consents.marketing*/ true) {
+  if (window.dataLayer && consents.statistics && consents.marketing) {
     // Získanie údajov z formData
     const fullName = formData.get("fullName") || "";
     const [firstName, lastName] = fullName.split(" ");
