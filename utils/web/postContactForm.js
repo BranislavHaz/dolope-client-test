@@ -1,3 +1,25 @@
+const sendCustomEvent = (formData) => {
+  const consents = window.CookieConsent.consent;
+
+  if (window.dataLayer && consents.statistics && consents.marketing) {
+    // Bezpečné rozdelenie fullName
+    const fullName = formData.fullName || "";
+    const [firstName, lastName] = fullName.split(" ");
+
+    const { email, phone } = formData;
+
+    window.dataLayer.push({
+      event: "generate_lead",
+      userData: {
+        firstName,
+        lastName,
+        email,
+        phone,
+      },
+    });
+  }
+};
+
 export const postContactForm = async (formData, setContactStatus) => {
   const postSetting = {
     method: "POST",
@@ -15,6 +37,7 @@ export const postContactForm = async (formData, setContactStatus) => {
     }
     console.log("Request was successful");
     setContactStatus(true); // Nastavenie contactStatus na true
+    sendCustomEvent(formData);
     return true;
   } catch (error) {
     console.error("Network error:", error);
