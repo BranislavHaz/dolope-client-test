@@ -74,6 +74,9 @@ export const FormField = styled.div`
     min-height: 100px;
     resize: vertical;
   }
+
+  &:last-of-type {
+  }
 `;
 
 export const ErrorText = styled.div`
@@ -93,6 +96,12 @@ export const ErrorText = styled.div`
       opacity: 1;
     }
   }
+`;
+
+export const SubmitButtonWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const SubmitButton = styled.button`
@@ -115,29 +124,6 @@ export const SubmitButton = styled.button`
     background-color: #ccc;
     cursor: not-allowed;
   }
-`;
-
-export const FileDropArea = styled.div`
-  border: 2px dashed #ddd;
-  border-radius: 4px;
-  padding: 2rem;
-  text-align: center;
-  cursor: pointer;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-  background-color: ${(props) => (props.$isActive ? "#f0f0f0" : "transparent")};
-  border-color: ${(props) => (props.$isActive ? "var(--main-color)" : "#ddd")};
-`;
-
-export const UploadMessage = styled.p`
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  color: #666;
-`;
-
-export const UploadDescription = styled.p`
-  margin: 1rem 0;
-  font-size: 0.9rem;
-  color: #666;
 `;
 
 export const UploadButton = styled.button`

@@ -1,21 +1,23 @@
 const sendCustomEvent = (formData) => {
   const consents = window.CookieConsent.consent;
 
-  if (window.dataLayer && consents.statistics && consents.marketing) {
-    // Bezpečné rozdelenie fullName
-    const fullName = formData.fullName || "";
+  if (/*window.dataLayer && consents.statistics && consents.marketing*/ true) {
+    // Získanie údajov z formData
+    const fullName = formData.get("fullName") || "";
     const [firstName, lastName] = fullName.split(" ");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
 
-    const { email, phone } = formData;
+    const userData = {
+      firstName: firstName || undefined,
+      lastName: lastName || undefined,
+      email,
+      phone: phone || undefined,
+    };
 
     window.dataLayer.push({
       event: "generate_lead",
-      userData: {
-        firstName,
-        lastName,
-        email,
-        phone,
-      },
+      userData,
     });
   }
 };
