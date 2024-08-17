@@ -43,7 +43,6 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap"
             rel="stylesheet"
           />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
@@ -52,7 +51,7 @@ export default class MyDocument extends Document {
               src="https://gtm.dolope.cz/ns.html?id=GTM-P7QZ2VKM"
               height="0"
               width="0"
-              style="display:none;visibility:hidden"
+              style={{ display: "none", visibility: "hidden" }}
             ></iframe>
           </noscript>
           <Main />
