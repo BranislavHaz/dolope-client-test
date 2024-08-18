@@ -56,7 +56,7 @@ export const postOrder = async (orderData) => {
       return false;
     }
     const data = await response.json(); // Extrahovanie JSON dát z odpovede
-    const orderId = data.contactId; // Získanie orderId z odpovede
+    const orderId = data.orderId; // Získanie orderId z odpovede
     console.log("Request was successful");
     sendPurchaseEvent(orderData, orderId);
     return true;
