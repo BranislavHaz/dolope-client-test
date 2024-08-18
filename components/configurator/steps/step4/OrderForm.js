@@ -18,18 +18,18 @@ const OrderForm = ({ price, translations: t }) => {
   const defaultErrorMessage = t.order.form.error_messages.default;
   const formik = useFormik({
     initialValues: {
-      name: "",
-      surname: "",
-      mail: "",
+      firstName: "",
+      lastName: "",
+      email: "",
       phone: "",
       city: "",
       zip: "",
       info: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required(defaultErrorMessage),
-      surname: Yup.string().required(defaultErrorMessage),
-      mail: Yup.string()
+      firstName: Yup.string().required(defaultErrorMessage),
+      lastName: Yup.string().required(defaultErrorMessage),
+      email: Yup.string()
         .matches(
           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
           t.order.form.error_messages.email
@@ -73,34 +73,34 @@ const OrderForm = ({ price, translations: t }) => {
           <form onSubmit={formik.handleSubmit}>
             <$.Row>
               <$.InputWrap
-                $isError={formik.submitCount > 0 && formik.errors.name}
+                $isError={formik.submitCount > 0 && formik.errors.firstName}
               >
-                <label htmlFor="name">{t.order.form.first_name}</label>
+                <label htmlFor="firstName">{t.order.form.first_name}</label>
                 <input
                   type="text"
-                  id="name"
-                  {...formik.getFieldProps("name")}
+                  id="firstName"
+                  {...formik.getFieldProps("firstName")}
                 />
-                {formik.submitCount > 0 && formik.errors.name ? (
+                {formik.submitCount > 0 && formik.errors.firstName ? (
                   <$.InputMessage $isError={true}>
-                    {formik.errors.name}
+                    {formik.errors.firstName}
                   </$.InputMessage>
                 ) : (
                   <$.InputMessage>{defaultErrorMessage}</$.InputMessage>
                 )}
               </$.InputWrap>
               <$.InputWrap
-                $isError={formik.submitCount > 0 && formik.errors.surname}
+                $isError={formik.submitCount > 0 && formik.errors.lastName}
               >
-                <label htmlFor="surname">{t.order.form.last_name}</label>
+                <label htmlFor="lastName">{t.order.form.last_name}</label>
                 <input
                   type="text"
-                  id="surname"
-                  {...formik.getFieldProps("surname")}
+                  id="lastName"
+                  {...formik.getFieldProps("lastName")}
                 />
-                {formik.submitCount > 0 && formik.errors.surname ? (
+                {formik.submitCount > 0 && formik.errors.lastName ? (
                   <$.InputMessage $isError={true}>
-                    {formik.errors.surname}
+                    {formik.errors.lastName}
                   </$.InputMessage>
                 ) : (
                   <$.InputMessage>{defaultErrorMessage}</$.InputMessage>
@@ -109,17 +109,17 @@ const OrderForm = ({ price, translations: t }) => {
             </$.Row>
             <$.Row>
               <$.InputWrap
-                $isError={formik.submitCount > 0 && formik.errors.mail}
+                $isError={formik.submitCount > 0 && formik.errors.email}
               >
-                <label htmlFor="mail">{t.order.form.email}</label>
+                <label htmlFor="email">{t.order.form.email}</label>
                 <input
                   type="email"
-                  id="mail"
-                  {...formik.getFieldProps("mail")}
+                  id="email"
+                  {...formik.getFieldProps("email")}
                 />
                 {formik.submitCount > 0 && formik.errors.mail ? (
                   <$.InputMessage $isError={true}>
-                    {formik.errors.mail}
+                    {formik.errors.email}
                   </$.InputMessage>
                 ) : (
                   <$.InputMessage>{defaultErrorMessage}</$.InputMessage>

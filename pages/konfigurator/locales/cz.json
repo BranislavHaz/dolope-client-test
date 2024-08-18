@@ -317,5 +317,8 @@
     "back_button": "Zpět",
     "next_button": "Pokračovat",
     "show_price_button": "Zobrazit cenu"
+  },
+  "custom_event": {
+    "item_name": "Vestavěná skříň na míru"
   }
 }
