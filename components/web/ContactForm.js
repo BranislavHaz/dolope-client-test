@@ -22,7 +22,8 @@ const ContactForm = ({ translations: t }) => {
   const MAX_SIZE_MB = 15;
 
   const validationSchema = Yup.object({
-    fullName: Yup.string().required(t.form.errors.required),
+    firstName: Yup.string().required(t.form.errors.required),
+    lastName: Yup.string().required(t.form.errors.required),
     email: Yup.string()
       .email(t.form.errors.wrong_email)
       .required(t.form.errors.required),
@@ -46,7 +47,8 @@ const ContactForm = ({ translations: t }) => {
   const handleSubmit = async (values, { setSubmitting }) => {
     setIsSubmitting(true);
     const formData = new FormData();
-    formData.append("fullName", values.fullName);
+    formData.append("firstName", values.firstName);
+    formData.append("lastName", values.lastName);
     formData.append("email", values.email);
     formData.append("phone", values.phone);
     formData.append("message", values.message);
@@ -144,7 +146,8 @@ const ContactForm = ({ translations: t }) => {
       </$.TextIsSendWrap>
       <Formik
         initialValues={{
-          fullName: "",
+          firstName: "",
+          lastName: "",
           email: "",
           message: "",
           phone: "",
@@ -156,9 +159,15 @@ const ContactForm = ({ translations: t }) => {
         {({ isSubmitting, setFieldValue }) => (
           <Form>
             <$.FormField>
-              <label>{`${t.form.name} *`}</label>
-              <Field type="text" name="fullName" />
-              <ErrorMessage name="fullName" component={$.ErrorText} />
+              <label>{`${t.form.first_name} *`}</label>
+              <Field type="text" name="firstName" />
+              <ErrorMessage name="firstName" component={$.ErrorText} />
+            </$.FormField>
+
+            <$.FormField>
+              <label>{`${t.form.last_name} *`}</label>
+              <Field type="text" name="lastName" />
+              <ErrorMessage name="lastName" component={$.ErrorText} />
             </$.FormField>
 
             <$.FormField>

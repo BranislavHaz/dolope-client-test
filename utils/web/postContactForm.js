@@ -1,18 +1,19 @@
-const sendCustomEvent = (formData) => {
+const sendCustomEvent = (formData, contactId) => {
   const consents = window.CookieConsent.consent;
 
   if (window.dataLayer && consents.statistics && consents.marketing) {
     // Získanie údajov z formData
-    const fullName = formData.get("fullName") || "";
-    const [firstName, lastName] = fullName.split(" ");
+    const firstName = formData.get("firstName");
+    const lastName = formData.get("lastName");
     const email = formData.get("email");
     const phone = formData.get("phone");
 
     const userData = {
-      firstName: firstName || undefined,
-      lastName: lastName || undefined,
+      firstName,
+      lastName,
       email,
       phone: phone || undefined,
+      contactId,
     };
 
     window.dataLayer.push({
@@ -37,9 +38,11 @@ export const postContactForm = async (formData, setContactStatus) => {
       console.error("Request failed");
       return false;
     }
+    const data = await response.json(); // Extrahovanie JSON dát z odpovede
+    const contactId = data.contactId; // Získanie contactId z odpovede
     console.log("Request was successful");
     setContactStatus(true); // Nastavenie contactStatus na true
-    sendCustomEvent(formData);
+    sendCustomEvent(formData, contactId); // Pridanie contactId ako parameter
     return true;
   } catch (error) {
     console.error("Network error:", error);
