@@ -164,7 +164,7 @@ const OrderForm = ({ price, translations: t }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.zip}
               >
-                <label htmlFor="zip">{t.order.form.city}</label>
+                <label htmlFor="zip">{t.order.form.zip}</label>
                 <input type="text" id="zip" {...formik.getFieldProps("zip")} />
                 {formik.submitCount > 0 && formik.errors.zip ? (
                   <$.InputMessage $isError={true}>
