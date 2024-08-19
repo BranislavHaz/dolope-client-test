@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/web/layouts/MobileMenu.styled";
 
@@ -50,7 +51,9 @@ const MobileMenu = ({ translations: t }) => {
             Email: <a href={`mailto:${t.email}`}>{t.email}</a>
           </p>
         </$.ContactInfo>
-        <$.ActionButton>{t.action_button}</$.ActionButton>
+        <Link href="/konfigurator">
+          <$.ActionButton>{t.action_button}</$.ActionButton>
+        </Link>
       </$.MobileMenuContent>
     </$.MobileMenu>
   );

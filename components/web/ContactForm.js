@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState, useRef } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { postContactForm } from "@/utils/web/postContactForm";
@@ -42,6 +43,7 @@ const ContactForm = ({ translations: t }) => {
           )
       )
       .max(MAX_FILES, `${t.form.errors.max_files}: ${MAX_FILES}.`),
+    consent: Yup.bool().oneOf([true], t.form.errors.consent_required), // Validation for consent checkbox
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -152,11 +154,12 @@ const ContactForm = ({ translations: t }) => {
           message: "",
           phone: "",
           attachments: [],
+          consent: false, // Initial value for consent
         }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting, setFieldValue }) => (
+        {({ isSubmitting, setFieldValue, errors, touched }) => (
           <Form>
             <$.FormField>
               <label>{`${t.form.first_name} *`}</label>
@@ -213,6 +216,22 @@ const ContactForm = ({ translations: t }) => {
 
               <ErrorMessage name="attachments" component={$.ErrorText} />
             </$.FormField>
+
+            <$.FormField $isError={errors.consent && touched.consent}>
+              <label>
+                <$.ConsentWrap>
+                  <Field type="checkbox" name="consent" />
+                  <$.ConsentText>
+                    {t.form.consent_text}{" "}
+                    <Link href="/gdpr" target="_blank">
+                      {t.form.consent_text_link}
+                    </Link>
+                    . *
+                  </$.ConsentText>
+                </$.ConsentWrap>
+              </label>
+            </$.FormField>
+
             <$.SubmitButton type="submit" disabled={isSubmitting}>
               {t.form.submit_button}
             </$.SubmitButton>

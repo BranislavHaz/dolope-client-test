@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import * as $ from "@/styles/web/layouts/Footer.styled";
 
 const Footer = ({ translations: t }) => {
@@ -15,7 +16,9 @@ const Footer = ({ translations: t }) => {
         </$.FooterLogo>
         <$.FooterText>{t.text}</$.FooterText>
         <$.FooterLink>
-          <a href="#">{t.gdpr}</a>
+          <Link href="/gdpr" target="_blank">
+            {t.gdpr}
+          </Link>
         </$.FooterLink>
       </$.Footer>
     </$.FooterWrap>

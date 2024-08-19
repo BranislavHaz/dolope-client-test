@@ -16,6 +16,7 @@ const OrderForm = ({ price, translations: t }) => {
   }));
   const [isSubmitting, setIsSubmitting] = useState(false);
   const defaultErrorMessage = t.order.form.error_messages.default;
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -25,6 +26,7 @@ const OrderForm = ({ price, translations: t }) => {
       city: "",
       zip: "",
       info: "",
+      consent: false, // Initial value for consent
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required(defaultErrorMessage),
@@ -39,6 +41,10 @@ const OrderForm = ({ price, translations: t }) => {
       city: Yup.string().required(defaultErrorMessage),
       zip: Yup.string().required(defaultErrorMessage),
       info: Yup.string(),
+      consent: Yup.bool().oneOf(
+        [true],
+        "Musíte súhlasiť so zásadami spracovania osobných údajov."
+      ), // Validation for consent checkbox
     }),
     onSubmit: async (values) => {
       setIsSubmitting(true);
@@ -75,7 +81,7 @@ const OrderForm = ({ price, translations: t }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.firstName}
               >
-                <label htmlFor="firstName">{t.order.form.first_name}</label>
+                <label htmlFor="firstName">{`${t.order.form.first_name} *`}</label>
                 <input
                   type="text"
                   id="firstName"
@@ -92,7 +98,7 @@ const OrderForm = ({ price, translations: t }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.lastName}
               >
-                <label htmlFor="lastName">{t.order.form.last_name}</label>
+                <label htmlFor="lastName">{`${t.order.form.last_name} *`}</label>
                 <input
                   type="text"
                   id="lastName"
@@ -111,13 +117,13 @@ const OrderForm = ({ price, translations: t }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.email}
               >
-                <label htmlFor="email">{t.order.form.email}</label>
+                <label htmlFor="email">{`${t.order.form.email} *`}</label>
                 <input
                   type="email"
                   id="email"
                   {...formik.getFieldProps("email")}
                 />
-                {formik.submitCount > 0 && formik.errors.mail ? (
+                {formik.submitCount > 0 && formik.errors.email ? (
                   <$.InputMessage $isError={true}>
                     {formik.errors.email}
                   </$.InputMessage>
@@ -128,7 +134,7 @@ const OrderForm = ({ price, translations: t }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.phone}
               >
-                <label htmlFor="phone">{t.order.form.phone}</label>
+                <label htmlFor="phone">{`${t.order.form.phone} *`}</label>
                 <input
                   type="tel"
                   id="phone"
@@ -147,7 +153,7 @@ const OrderForm = ({ price, translations: t }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.city}
               >
-                <label htmlFor="city">{t.order.form.city}</label>
+                <label htmlFor="city">{`${t.order.form.city} *`}</label>
                 <input
                   type="text"
                   id="city"
@@ -164,7 +170,7 @@ const OrderForm = ({ price, translations: t }) => {
               <$.InputWrap
                 $isError={formik.submitCount > 0 && formik.errors.zip}
               >
-                <label htmlFor="zip">{t.order.form.zip}</label>
+                <label htmlFor="zip">{`${t.order.form.zip} *`}</label>
                 <input type="text" id="zip" {...formik.getFieldProps("zip")} />
                 {formik.submitCount > 0 && formik.errors.zip ? (
                   <$.InputMessage $isError={true}>
@@ -179,7 +185,34 @@ const OrderForm = ({ price, translations: t }) => {
               <label htmlFor="info">{t.order.form.message}</label>
               <textarea rows={4} id="info" {...formik.getFieldProps("info")} />
             </$.InputWrap>
-            <$.SubmitButton type="submit">
+
+            {/* Checkbox for consent */}
+            <$.InputWrap
+              $isInconfirmed={
+                formik.submitCount > 0 &&
+                formik.errors.consent &&
+                formik.touched.consent
+              }
+            >
+              <label>
+                <$.ConsentWrap>
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    {...formik.getFieldProps("consent")}
+                  />
+                  <$.ConsentText>
+                    {`${t.order.form.consent_text} `}
+                    <a href="/gdpr" target="_blank">
+                      {t.order.form.consent_text_link}
+                    </a>
+                    . *
+                  </$.ConsentText>
+                </$.ConsentWrap>
+              </label>
+            </$.InputWrap>
+
+            <$.SubmitButton type="submit" disabled={isSubmitting}>
               {t.order.form.submit_button}
             </$.SubmitButton>
           </form>

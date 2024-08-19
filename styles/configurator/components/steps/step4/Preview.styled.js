@@ -55,10 +55,6 @@ export const BackButton = styled.div`
   cursor: pointer;
   transition: all 0.25s ease-in-out;
 
-  @media ${device.tablet} {
-    width: 20vw;
-  }
-
   &:hover {
     transform: translateX(-0.2rem) scale(1.02);
   }

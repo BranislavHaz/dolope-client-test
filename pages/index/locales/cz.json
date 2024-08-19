@@ -147,6 +147,8 @@
         "upload_button": "Vyberte soubory",
         "upload_description": "Povoleny jsou formáty .jpg, .jpeg, .png, .pdf v celkové velikosti max. 15 MB",
         "submit_button": "Odeslat",
+        "consent_text": "Prohlašuji, že jsem se seznámil/a se",
+        "consent_text_link": "Zásadami zpracování osobních údajů",
         "errors": {
           "required": "Povinné pole",
           "wrong_email": "Neplatný e-mail",

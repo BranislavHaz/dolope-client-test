@@ -101,12 +101,53 @@ export const InputWrap = styled.div`
     padding: 0.5rem 0.8rem;
     resize: none;
   }
+
+  & label {
+    color: ${(props) => (props.$isInconfirmed ? "#ff6347" : "#333")};
+  }
+
+  input[type="checkbox"] {
+    accent-color: #282828;
+    width: 35px;
+    height: 35px;
+    font-size: 2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+
+    @media ${device.laptop} {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: #000;
+  }
 `;
 
 export const InputMessage = styled.div`
   width: 100%;
   color: ${(props) => (props.$isError ? "var(--font-color-error)" : "#282828")};
   text-align: end;
+  font-size: 0.9rem;
+`;
+
+export const ConsentWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+`;
+
+export const ConsentText = styled.div`
   font-size: 0.9rem;
 `;
 

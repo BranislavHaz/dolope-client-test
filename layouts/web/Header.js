@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import useMainStore from "@/stores/useMainStore";
 import * as $ from "@/styles/web/layouts/Header.styled";
 
@@ -43,7 +44,9 @@ const Header = ({ translations: t }) => {
             </li>
           </ul>
         </$.Nav>
-        <$.Button>{t.action_button}</$.Button>
+        <Link href="/konfigurator">
+          <$.Button>{t.action_button}</$.Button>
+        </Link>
       </$.HeaderContentDesktop>
       <$.HeaderContentMobile>
         <$.Logo>

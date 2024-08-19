@@ -12,12 +12,16 @@ export const SectionWrap = styled.div`
 export const Section = styled.div`
   width: 90%;
   max-width: 1200px;
-  padding: 3rem 3rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
+  @media ${device.laptop} {
+    padding: 3rem;
+  }
 
   ${(props) =>
     props.$theme === "light"
@@ -35,10 +39,18 @@ export const Section = styled.div`
   ${(props) =>
     props.$padding === "classic"
       ? css`
-          padding: 3rem 3rem;
+          padding: 2rem;
+
+          @media ${device.laptop} {
+            padding: 3rem;
+          }
         `
       : css`
-          padding: 3rem 0;
+          padding: 2rem 0;
+
+          @media ${device.laptop} {
+            padding: 3rem 0;
+          }
         `}
 `;
 

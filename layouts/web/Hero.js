@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import * as $ from "@/styles/web/layouts/Hero.styled";
 
@@ -47,9 +48,11 @@ const Hero = ({ translations: t }) => {
           </$.Label>
           <$.Title>{t.title}</$.Title>
           <$.Description>{t.description}</$.Description>
-          <$.ActionButton>
-            <$.ButtonText>{t.action_button}</$.ButtonText>
-          </$.ActionButton>
+          <Link href="/konfigurator">
+            <$.ActionButton>
+              <$.ButtonText>{t.action_button}</$.ButtonText>
+            </$.ActionButton>
+          </Link>
         </$.TextContent>
       </$.HeroContent>
     </$.Hero>

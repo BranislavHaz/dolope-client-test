@@ -39,7 +39,11 @@ export const FormWrapper = styled.div`
           }
         `
       : css`
-          padding: 2rem;
+          padding: 0;
+
+          @media ${device.laptop} {
+            padding: 2rem;
+          }
 
           ${TextIsSendWrap} {
             display: none;
@@ -54,7 +58,7 @@ export const FormField = styled.div`
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
-    color: #333;
+    color: ${(props) => (props.$isError ? "#ff6347" : "#333")};
   }
   input[type="text"],
   input[type="email"],
@@ -75,7 +79,30 @@ export const FormField = styled.div`
     resize: vertical;
   }
 
-  &:last-of-type {
+  input[type="checkbox"] {
+    accent-color: var(--main-color);
+    width: 35px;
+    height: 35px;
+    font-size: 2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+
+    @media ${device.laptop} {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--main-color);
   }
 `;
 
@@ -129,9 +156,9 @@ export const SubmitButton = styled.button`
 export const UploadButton = styled.button`
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  background-color: var(--main-color);
-  color: #fff;
-  border: none;
+  background-color: transparent;
+  color: #000;
+  border: 2px solid #000;
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
@@ -169,4 +196,14 @@ export const RemoveFileButton = styled.button`
   &:hover {
     color: #e60000;
   }
+`;
+
+export const ConsentWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+`;
+
+export const ConsentText = styled.div`
+  font-size: 0.9rem;
 `;
