@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "cp .htaccess out/.htaccess",
     "start": "next start",
     "lint": "next lint",
     "install": "next build",
+    "postinstall": "cp .htaccess out/.htaccess",
     "dev:watch": "nodemon"
   },
   "dependencies": {
