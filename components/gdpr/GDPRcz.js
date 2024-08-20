@@ -27,7 +27,7 @@ const GDPRcz = () => {
             </li>
             <li>
               <$.Strong>Telefon: </$.Strong>
-              <a href="+420 666 256 252">+420 666 256 252</a>
+              <a href="+420 773 658 399">+420 773 658 399</a>
             </li>
           </$.NoBulletList>
           <$.SectionRow>

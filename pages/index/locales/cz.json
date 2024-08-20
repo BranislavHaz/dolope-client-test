@@ -10,7 +10,7 @@
       "contact": "Kontakt",
       "action_button": "Konfigurace skříne",
       "email": "info@dolope.cz",
-      "phone": "+420 666 226 266",
+      "phone": "+420 773 658 399",
       "alt_img_logo": "Logo firmy Dolope, která vyrábí vestavěné skříně na míru, dle požadavků klientů.",
       "alt_img_burger": "Ikona mobilního menu."
     },
@@ -134,7 +134,7 @@
     "contact": {
       "label": "kontakt",
       "title": "Chcete se nás na něco zeptat?",
-      "phone": "+420 666 226 266",
+      "phone": "+420 773 658 399",
       "email": "info@dolope.cz",
       "form": {
         "first_name": "Jméno",
