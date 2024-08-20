@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "@/utils/configurator/devices";
+import { device } from "@/constants/sizeDevices";
 
 export const Content = styled.div`
   display: grid;
@@ -7,7 +7,8 @@ export const Content = styled.div`
   position: relative;
 
   @media ${device.laptop} {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.8fr 1fr;
+    column-gap: 2rem;
   }
 `;
 
@@ -15,8 +16,11 @@ export const Image = styled.div`
   width: auto;
   height: 100%;
   position: relative;
+  display: none;
 
   @media ${device.laptop} {
+    display: block;
+    opacity: 0.9;
   }
 `;
 

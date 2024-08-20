@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "@/utils/configurator/devices";
+import { device } from "@/constants/sizeDevices";
 
 export const TitleStep = styled.h2`
   margin: 1em 0;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "@/utils/configurator/devices";
+import { device } from "@/constants/sizeDevices";
 
 export const WrapType = styled.div`
   width: 100%;

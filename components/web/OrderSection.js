@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Section from "@/components/web/Section";
-import * as $ from "@/styles/web/layouts/OrderSection.styled";
+import * as $ from "@/styles/web/components/OrderSection.styled";
 
 const OrderSection = ({ translations: t }) => {
   return (
@@ -8,7 +8,7 @@ const OrderSection = ({ translations: t }) => {
       <$.Content>
         <$.Image>
           <Image
-            src={`/images/web/postup-objednavky.jpg`}
+            src={`/images/web/order-progress.jpg`}
             layout="fill"
             objectFit="contain"
             alt={t.alt_img}

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { device } from "@/utils/configurator/devices";
+import { device } from "@/constants/sizeDevices";
 
 export const Doors = styled.div`
   display: ${(props) => (props.$isVisible ? "flex" : "none")};

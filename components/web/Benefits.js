@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Section from "@/components/web/Section";
-import * as $ from "@/styles/web/layouts/Benefits.styled";
+import * as $ from "@/styles/web/components/Benefits.styled";
 
 const Benefits = ({ translations: t }) => {
   return (

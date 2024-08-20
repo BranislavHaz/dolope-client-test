@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Section from "@/components/web/Section";
-import * as $ from "@/styles/web/layouts/VisualizationSection.styled";
+import * as $ from "@/styles/web/components/VisualizationSection.styled";
 
 const VisualizationSection = ({ translations: t }) => {
   return (

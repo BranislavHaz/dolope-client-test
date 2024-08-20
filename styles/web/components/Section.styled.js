@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { device } from "@/utils/configurator/devices";
+import { device } from "@/constants/sizeDevices";
 
 export const SectionWrap = styled.div`
   width: 100%;

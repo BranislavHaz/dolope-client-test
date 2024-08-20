@@ -2,12 +2,7 @@ import Head from "next/head";
 import MobileMenu from "@/layouts/web/MobileMenu";
 import Header from "@/layouts/web/Header";
 import Hero from "@/layouts/web/Hero";
-import Benefits from "@/layouts/web/Benefits";
-import OrderSection from "@/layouts/web/OrderSection";
-import VisualizationSection from "@/layouts/web/VisualizationSection";
-import FAQ from "@/components/web/FAQ";
-import Team from "@/components/web/Team";
-import Contact from "@/components/web/Contact";
+import Main from "@/layouts/web/Main";
 import Footer from "@/layouts/web/Footer";
 
 import skLocale from "@/pages/index/locales/sk.json";
@@ -23,12 +18,7 @@ const Home = ({ translations: t }) => {
       <MobileMenu translations={t.content.menu} />
       <Header translations={t.content.menu} />
       <Hero translations={t.content.hero} />
-      <Benefits translations={t.content.benefits} />
-      <OrderSection translations={t.content.order} />
-      <VisualizationSection translations={t.content.visualization} />
-      <FAQ translations={t.content.faq} />
-      <Team translations={t.content.team} />
-      <Contact translations={t.content.contact} />
+      <Main translations={t.content} />
       <Footer translations={t.content.footer} />
     </>
   );

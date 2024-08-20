@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { device } from "@/utils/configurator/devices";
+import { device } from "@/constants/sizeDevices";
 
 export const TextIsSendWrap = styled.div`
   text-align: center;
@@ -164,7 +164,6 @@ export const UploadButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   &:hover {
-    background-color: #333;
     transform: scale(1.05);
   }
 `;

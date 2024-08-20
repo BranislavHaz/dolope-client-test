@@ -68,6 +68,11 @@ export const GlobalStyles = createGlobalStyle`
 
   }
 
+  ::selection {
+    background-color: var(--main-color);
+    color: #282828;
+}
+
   html {
     scroll-behavior: smooth;
   }
