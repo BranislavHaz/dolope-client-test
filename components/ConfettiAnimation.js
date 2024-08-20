@@ -18,8 +18,8 @@ const ConfettiAnimation = ({ isDisplay = true }) => {
     return (
       <$.ConfettiPiece
         key={index}
-        color={color}
-        duration={duration}
+        $color={color}
+        $duration={duration}
         style={{ left: `${leftPosition}%` }}
       />
     );

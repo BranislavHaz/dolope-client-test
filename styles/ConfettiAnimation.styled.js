@@ -19,8 +19,8 @@ export const ConfettiPiece = styled.div`
   left: 50%;
   width: 10px;
   height: 10px;
-  background-color: ${({ color }) => color};
-  animation: ${fall} ${({ duration }) => duration}s linear infinite;
+  background-color: ${({ $color }) => $color};
+  animation: ${fall} ${({ $duration }) => $duration}s linear infinite;
   transform: translateX(-50%);
 `;
 
