@@ -13,8 +13,8 @@ import Footer from "@/layouts/configurator/Footer";
 import useMainStore from "@/stores/useMainStore";
 import { fetchProducts } from "@/utils/configurator/fetchProducts";
 
-import skLocale from "@/pages/konfigurator/locales/sk.json";
-import czLocale from "@/pages/konfigurator/locales/cz.json";
+import skLocale from "@/locales/konfigurator/sk.json";
+import czLocale from "@/locales/konfigurator/cz.json";
 
 import * as $ from "@/styles/configurator/pages/configurator/index.styled";
 

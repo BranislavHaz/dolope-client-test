@@ -1,5 +1,5 @@
-import skLocale from "@/pages/konfigurator/locales/sk.json";
-import czLocale from "@/pages/konfigurator/locales/cz.json";
+import skLocale from "@/locales/konfigurator/sk.json";
+import czLocale from "@/locales/konfigurator/cz.json";
 
 const language = process.env.NEXT_PUBLIC_LANGUAGE;
 const translations = language === "cz" ? czLocale : skLocale;

@@ -5,8 +5,8 @@ import Hero from "@/layouts/web/Hero";
 import Main from "@/layouts/web/Main";
 import Footer from "@/layouts/web/Footer";
 
-import skLocale from "@/pages/index/locales/sk.json";
-import czLocale from "@/pages/index/locales/cz.json";
+import skLocale from "@/locales/index/sk.json";
+import czLocale from "@/locales/index/cz.json";
 
 const Home = ({ translations: t }) => {
   return (
