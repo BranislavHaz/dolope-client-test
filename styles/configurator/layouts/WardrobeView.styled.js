@@ -16,8 +16,8 @@ export const WardrobeView = styled.div`
   }
 
   & img {
-    width: 90%;
-    height: auto;
+    width: auto;
+    height: var(--m-wardrobe-view-height);
 
     @media ${device.tablet} {
       width: 80%;
