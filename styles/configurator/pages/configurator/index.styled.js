@@ -1,5 +1,11 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { device } from "@/constants/sizeDevices";
+
+export const HideCookiebotWidget = createGlobalStyle`
+  #CookiebotWidget {
+    display: none;
+  }
+`;
 
 export const Main = styled.main`
   width: 100%;

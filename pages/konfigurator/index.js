@@ -61,6 +61,7 @@ const Index = ({ products, translations: t }) => {
         <title>{`Dolope | ${t.title}`}</title>
         <meta name="description" content={t.meta_description} />
       </Head>
+      <$.HideCookiebotWidget />
       <Modal translations={t.modal} />
       {currentStep.id !== 4 && (
         <$.WrapContent>
