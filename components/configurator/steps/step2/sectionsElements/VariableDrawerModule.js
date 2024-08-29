@@ -123,6 +123,7 @@ const VariableDrawerModule = ({
 
   return (
     <$.Wrap onClick={() => handleClick()}>
+      {process.env.NODE_ENV === "development" && <$.ModuleId>{id}</$.ModuleId>}
       <$.Stand />
       {generateModule()}
       <$.Stand />

@@ -82,6 +82,7 @@ const DrawerModule = ({
 
   return (
     <$.Wrap onClick={() => selectSection(state, id)}>
+      {process.env.NODE_ENV === "development" && <$.ModuleId>{id}</$.ModuleId>}
       <$.Stand />
       {generateModule()}
       <$.Stand />

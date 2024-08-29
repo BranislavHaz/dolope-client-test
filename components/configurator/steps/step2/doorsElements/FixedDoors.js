@@ -48,6 +48,7 @@ const FixedDoors = () => {
         $isActive={checkIfIsActiveDoor(state, 1)}
         onClick={() => handleClick(1)}
       >
+        {process.env.NODE_ENV === "development" && <$.DoorId>1</$.DoorId>}
         <$.DoorType>
           <$.DoorElement $height={doorHeight}>
             <$.DimensionsText>
@@ -62,6 +63,7 @@ const FixedDoors = () => {
         $isActive={checkIfIsActiveDoor(state, 2)}
         onClick={() => handleClick(2)}
       >
+        {process.env.NODE_ENV === "development" && <$.DoorId>2</$.DoorId>}
         <$.DoorType>
           <$.DoorElement $height={doorHeight * 0.5}>
             <$.DimensionsText>
@@ -81,6 +83,7 @@ const FixedDoors = () => {
         $isActive={checkIfIsActiveDoor(state, 3)}
         onClick={() => handleClick(3)}
       >
+        {process.env.NODE_ENV === "development" && <$.DoorId>3</$.DoorId>}
         <$.DoorType>
           <$.DoorElement $height={(doorHeight * 1) / 3}>
             <$.DimensionsText>
@@ -105,6 +108,7 @@ const FixedDoors = () => {
         $isActive={checkIfIsActiveDoor(state, 4)}
         onClick={() => handleClick(4)}
       >
+        {process.env.NODE_ENV === "development" && <$.DoorId>4</$.DoorId>}
         <$.DoorType>
           <$.DoorElement $height={doorHeight * 0.25}>
             <$.DimensionsText>
@@ -134,6 +138,7 @@ const FixedDoors = () => {
         $isActive={checkIfIsActiveDoor(state, 5)}
         onClick={() => handleClick(5)}
       >
+        {process.env.NODE_ENV === "development" && <$.DoorId>5</$.DoorId>}
         <$.DoorType>
           <$.DoorElement $height={(doorHeight * 1) / 5}>
             <$.DimensionsText>

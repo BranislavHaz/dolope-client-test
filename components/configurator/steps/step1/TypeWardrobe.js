@@ -48,6 +48,7 @@ const TypeWardrobe = ({ setHandleSubmit, translations: t }) => {
             onClick={handleClick}
             $isActive={wardrobe.type === 1}
           >
+            {process.env.NODE_ENV === "development" && <$.TypeId>{1}</$.TypeId>}
             <$.Subtitle>{t.content.between_walls.title}</$.Subtitle>
             <Image
               src={"/images/mezi-stenami.svg"}
@@ -61,6 +62,7 @@ const TypeWardrobe = ({ setHandleSubmit, translations: t }) => {
             onClick={handleClick}
             $isActive={wardrobe.type === 4}
           >
+            {process.env.NODE_ENV === "development" && <$.TypeId>{4}</$.TypeId>}
             <$.Subtitle>{t.content.in_space.title}</$.Subtitle>
             <Image
               src={"/images/v-prostoru.svg"}
@@ -74,6 +76,7 @@ const TypeWardrobe = ({ setHandleSubmit, translations: t }) => {
             onClick={handleClick}
             $isActive={wardrobe.type === 2}
           >
+            {process.env.NODE_ENV === "development" && <$.TypeId>{2}</$.TypeId>}
             <$.Subtitle>{t.content.left_wall.title}</$.Subtitle>
             <Image
               src={"/images/stena-vlevo.svg"}
@@ -87,6 +90,7 @@ const TypeWardrobe = ({ setHandleSubmit, translations: t }) => {
             onClick={handleClick}
             $isActive={wardrobe.type === 3}
           >
+            {process.env.NODE_ENV === "development" && <$.TypeId>{3}</$.TypeId>}
             <$.Subtitle>{t.content.right_wall.title}</$.Subtitle>
             <Image
               src={"/images/stena-vpravo.svg"}

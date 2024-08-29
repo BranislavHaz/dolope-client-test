@@ -38,6 +38,7 @@ export const TypesWrap = styled.div`
 `;
 
 export const TypeImage = styled(SelectElement)`
+  position: relative;
   max-width: 100%;
   padding: 0.8em !important;
   ${(props) =>
@@ -50,6 +51,20 @@ export const TypeImage = styled(SelectElement)`
     width: 100%;
     height: auto;
   }
+`;
+
+export const TypeId = styled.div`
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  color: #000;
+  border-radius: 50%;
 `;
 
 export const Subtitle = styled.h3`

@@ -100,6 +100,7 @@ const VariableDoor1 = ({ id }) => {
       $isActive={checkIfIsActiveDoor(state, id)}
       onClick={handleClick}
     >
+      {process.env.NODE_ENV === "development" && <$.DoorId>{id}</$.DoorId>}
       <$.DoorType>
         <$.DoorElement $height={doorHeight * 0.5}>
           {spaceHeight[currentDoor] !== 0 && (

@@ -6,6 +6,21 @@ export const Wrap = styled.div`
   grid-template-columns: 3px auto 3px;
   grid-template-rows: 1fr;
   height: 100%;
+  position: relative;
+`;
+
+export const ModuleId = styled.div`
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  color: #000;
+  border-radius: 50%;
 `;
 
 export const ModuleWrap = styled.div`

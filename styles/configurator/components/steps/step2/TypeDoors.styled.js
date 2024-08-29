@@ -33,12 +33,27 @@ export const DoorWrap = styled(SelectElement)`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   ${(props) =>
     props.$isActive &&
     css`
       box-shadow: var(--main-color) 0px 0px 0px 3px;
     `}
+`;
+
+export const DoorId = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--main-color);
+  color: #000;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const DoorType = styled.div`
