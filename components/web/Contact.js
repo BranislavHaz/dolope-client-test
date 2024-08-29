@@ -21,9 +21,6 @@ const Contact = ({ translations: t }) => {
             <$.CompanyData>
               <$.Bold>DIČ: </$.Bold>2121814695
             </$.CompanyData>
-            <$.CompanyData>
-              <$.Bold>IČ DPH: </$.Bold>SK2121814695
-            </$.CompanyData>
           </$.CompanyInfo>
           <$.CompanyInfo>
             <$.CompanyData>
