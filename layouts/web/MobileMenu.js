@@ -1,7 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
 import useMainStore from "@/stores/useMainStore";
-import * as $ from "@/styles/web/layouts/MobileMenu.styled";
+import Button from "@/components/Button";
+import * as $ from "@/styles/layouts/web/MobileMenu.styled";
 
 const MobileMenu = ({ translations: t }) => {
   const { isMobileMenuActive, setIsMobileMenuActive } = useMainStore(
@@ -17,30 +16,22 @@ const MobileMenu = ({ translations: t }) => {
 
   return (
     <$.MobileMenu $isActive={isMobileMenuActive}>
-      <$.CloseMenuButton onClick={closeMobileNavHandle}>
-        <Image
-          src={"/icons/close-menu.svg"}
-          width={40}
-          height={40}
-          alt={t.alt_img_burger}
-        />
-      </$.CloseMenuButton>
       <$.MobileMenuContent>
         <ul>
           <li onClick={closeMobileNavHandle}>
-            <a href="#order">{t.order}</a>
+            <a href="/#order">{t.order}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
-            <a href="#visualization">{t.visualization}</a>
+            <a href="/#visualization">{t.visualization}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
-            <a href="#faq">{t.faq}</a>
+            <a href="/#faq">{t.faq}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
-            <a href="#team">{t.team}</a>
+            <a href="/#team">{t.team}</a>
           </li>
           <li onClick={closeMobileNavHandle}>
-            <a href="#contact">{t.contact}</a>
+            <a href="/#contact">{t.contact}</a>
           </li>
         </ul>
         <$.ContactInfo>
@@ -51,9 +42,10 @@ const MobileMenu = ({ translations: t }) => {
             Email: <a href={`mailto:${t.email}`}>{t.email}</a>
           </p>
         </$.ContactInfo>
-        <Link href="/konfigurator">
-          <$.ActionButton>{t.action_button}</$.ActionButton>
-        </Link>
+
+        <Button primary xl href="/konfigurator">
+          {t.action_button}
+        </Button>
       </$.MobileMenuContent>
     </$.MobileMenu>
   );
