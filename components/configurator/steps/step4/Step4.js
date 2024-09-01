@@ -1,4 +1,4 @@
-import LightBox from "../ui/LightBox";
+import LightBox from "@/components/LightBox";
 import Preview from "./Preview";
 import PriceList from "./PriceList";
 import StepsBeforeOrder from "./StepsBeforeOrder";

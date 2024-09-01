@@ -20,7 +20,7 @@ const ConfettiAnimation = ({ isDisplay = true }) => {
         key={index}
         $color={color}
         $duration={duration}
-        style={{ left: `${leftPosition}%` }}
+        $leftPosition={leftPosition}
       />
     );
   });

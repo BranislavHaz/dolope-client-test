@@ -16,7 +16,7 @@ export const fall = keyframes`
 export const ConfettiPiece = styled.div`
   position: absolute;
   top: 0;
-  left: 50%;
+  left: ${({ $leftPosition }) => $leftPosition}%;
   width: 10px;
   height: 10px;
   background-color: ${({ $color }) => $color};
