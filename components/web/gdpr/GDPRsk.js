@@ -1,6 +1,6 @@
-import * as $ from "@/styles/gdpr/GDPR.styled";
+import * as $ from "@/styles/web/gdpr/GDPR.styled";
 
-const GDPRcz = () => {
+const GDPRsk = () => {
   return (
     <$.Wrap>
       <$.Content>
@@ -27,7 +27,7 @@ const GDPRcz = () => {
             </li>
             <li>
               <$.Strong>Telefon: </$.Strong>
-              <a href="+420 773 658 399">+420 773 658 399</a>
+              <a href="+420 666 256 252">+420 666 256 252</a>
             </li>
           </$.NoBulletList>
           <$.SectionRow>
@@ -246,8 +246,8 @@ const GDPRcz = () => {
             Zpracování osobních údajů pro účely plnění smluvního vztahu, účetní
             a daňové účely a plnění ostatních právních povinností jsou zákonnými
             či smluvními požadavky. Hodláte-li prostřednictvím našich webových
-            stránek učinit nezávaznou objednávku, máte povinnost máte povinnost
-            se seznámit o zásadách zpracování osobních údajů.
+            stránek učinit nezávaznou objednávku, máte povinnost nám pro tyto
+            účely své osobní údaje poskytnout.
           </$.SectionRow>
         </$.Section>
 
@@ -428,7 +428,7 @@ const GDPRcz = () => {
             Dále máte právo podat stížnost u dozorového orgánu, kterým je Úřad
             pro ochranu osobních údajů, se sídlem Pplk. Sochora 27, 170 00 Praha
             7, tel.: <a href="tel:234 665 111">234 665 111</a>, web:{" "}
-            <a href="https://uoou.gov.cz/">https://uoou.gov.cz/</a>.
+            <a href="www.uoou.cz">www.uoou.cz</a>.
           </$.SectionRow>
         </$.Section>
 
@@ -521,4 +521,4 @@ const GDPRcz = () => {
   );
 };
 
-export default GDPRcz;
+export default GDPRsk;
