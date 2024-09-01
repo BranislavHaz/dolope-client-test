@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Img from "@/components/Img";
 import Content from "@/layouts/web/Content";
 import skLayout from "@/locales/layouts/web/sk.json";
@@ -64,9 +65,9 @@ const NotFound = ({ translationsLayout, imgSrc, buttonText }) => {
             }}
           />
         </ImageWrap>
-        <a href="/">
+        <Link href="/">
           <Button>{buttonText}</Button>
-        </a>
+        </Link>
       </Wrap>
     </Content>
   );
