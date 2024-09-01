@@ -20,10 +20,12 @@
     "next": "13.4.19",
     "next-sitemap": "^4.2.3",
     "react": "18.2.0",
+    "react-confetti-explosion": "^2.1.2",
     "react-dom": "18.2.0",
+    "react-feather": "^2.0.10",
     "react-hot-toast": "^2.4.1",
     "styled-components": "^6.0.7",
-    "swiper": "^11.1.9",
+    "swiper": "^11.1.11",
     "yup": "^1.4.0",
     "zustand": "^4.4.1"
   },
