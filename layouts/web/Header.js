@@ -14,14 +14,20 @@ const Header = ({ translations: t }) => {
     })
   );
 
+  useEffect(() => {
+    if (isMobileMenuActive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMobileMenuActive]);
+
   const showMobileNavHandle = () => {
     setIsMobileMenuActive(true);
-    document.body.style.overflow = "hidden";
   };
 
   const closeMobileNavHandle = () => {
     setIsMobileMenuActive(false);
-    document.body.style.overflow = "auto";
   };
 
   const [isSticky, setIsSticky] = useState(false);
