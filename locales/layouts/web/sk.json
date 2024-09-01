@@ -1,0 +1,19 @@
+{
+  "header": {
+    "order": "Postup objednávky",
+    "visualization": "Vizualizace",
+    "faq": "Časté dotazy",
+    "team": "Proč to deláme",
+    "contact": "Kontakt",
+    "action_button": "Konfigurace skříne",
+    "email": "info@dolope.cz",
+    "phone": "+420 773 658 399",
+    "alt_img_logo": "Logo firmy Dolope, která vyrábí vestavěné skříně na míru, dle požadavků klientů.",
+    "alt_img_burger": "Ikona mobilního menu."
+  },
+  "footer": {
+    "alt_img_logo": "Logo firmy Dolope, která vyrábí vestavěné skříně na míru, dle požadavků klientů.",
+    "text": "Vyrobeno s láskou 💛 k řemeslu.",
+    "gdpr": "Ochrana osobních údajů"
+  }
+}

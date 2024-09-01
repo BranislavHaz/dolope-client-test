@@ -1,0 +1,137 @@
+{
+  "title": "Vestavěné skříně na míru",
+  "meta_description": "Vestavěné skříně na míru, které vám zajistí elegantní úložný prostor přesně podle vašich představ. Profesionální návrh, precizní montáž a spokojenost zaručena.",
+  "content": {
+    "hero": {
+      "label": "#1 Nejpřehlednější konfigurátor",
+      "title": "Vytvořte si design své skříně online",
+      "description": "Nadesignujte si vlastní vestavěnou skříň na míru. Celý proces vám nezabere více než 3 minuty a okamžitě získáte konečnou cenu bez skrytých poplatků včetně dopravy a montáže.",
+      "action_button": "Vytvořit svou skříň",
+      "alt_img_frame": "Obrázek rámu mobilního zařízení.",
+      "alt_img_configurator": "Obrázek konfigurátoru firmy Dolope."
+    },
+    "order": {
+      "label": "objednávka",
+      "title": "Přístup k objednávce je zaměřen na zákazníka - mluví za nás činy, ne slova.",
+      "alt_img": "Obrázek majitele firmy, který komunikuje s klientem a pomáhá mu při výběru skříně na míru.",
+      "steps": {
+        "1": {
+          "title": "Nezávazná objednávka",
+          "description": "Po nakonfigurování skříně a odeslání nezávazné objednávky, Vás budeme kontaktovat do 24. hodin pro sjednání osobní schůzky."
+        },
+        "2": {
+          "title": "Osobní setkání",
+          "description": "Navštívíme Vás osobně, kde si společně projdeme dekory, možnosti kování a madel. Laserem odměříme prostor pro skříň a složí se 50% záloha. Ihned po úhradě poputuje skříň do výroby."
+        },
+        "3": {
+          "title": "Výroba a dodání",
+          "description": "Dříve samotnou finalizací výroby, Vás budeme kontaktovat pro sjednání termínu a času montáže skříně. Skříň v dohodnutém termínu dovezeme, smontujeme a předáme novému majiteli 🙂 následně se doplatí zvýšná 50% částka."
+        }
+      }
+    },
+    "visualization": {
+      "label": "vizualizace",
+      "title": "Fotorealistická vizualizace vestavěné skříně ZDARMA.",
+      "description": "Nebyli bychom to my, kdyby Vám nenabídneme to, co byste jinde hledali nadarmo. Každému našemu zákazníkovi nabízíme fotorealistickou vizualizaci Vaší budoucí skříně. Přece jen, když něco vidíte, umíte si lépe představit zda zvolené dekory jsou „to pravé ořechové“ pro Váš prostor.",
+      "alt_imgs": {
+        "1": "Obrázek skici vestavěné skříně.",
+        "2": "Obrázek fotorealistické vizualizace vestavěné skříně bez posuvných dveří.",
+        "3": "Obrázek fotorealistické vizualizace vestavěné skříně na míru."
+      }
+    },
+    "faq": {
+      "label": "faq",
+      "title": "Otázky, na které se nás často ptáte",
+      "items": {
+        "1": {
+          "question": "Je možné vyrobit typ skříně, která se nenachází v konfigurátoru?",
+          "answer": "Samozřejmě, je možné vyrobit i typ skříně, která není v konfigurátoru. Kontaktujte nás pro více informací."
+        },
+        "2": {
+          "question": "Kolik trvá skříň vyrobit a smontovat?",
+          "answer": "Doba dodání je závislá na mnoha faktorech, jako je dostupnost vybraných dekorů, kování, madel, množství zakázek. Avšak naším průměrem je 14 pracovních dnů od závazného objednání."
+        },
+        "3": {
+          "question": "Je toho v nabídce strašně mnoho, jak se rozhodnout pro konkrétní dekor, kování nebo madla?",
+          "answer": "Jsme si vědomi naší bohaté nabídky a nechceme to měnit, nakolik se snažíme poskytnout co nejširší sortiment. Pro pomoc při výběru nás kontaktujte. Co bude v našich silách probereme po telefonu nebo mailu, finální a tedy konečný výběr potvrdíte až při osobním setkání na kterém Vám představíme dekory a kování fyzicky. Rozumíme, že je lepší věc jednou ohmatat, než 3krát vidět na internetu 🙂"
+        },
+        "4": {
+          "question": "Z jakých materiálů je vyroben vnitřek skříně?",
+          "answer": "Vnitřek skříně vyrábíme z laminované dřevotřísky renomovaných značek Egger nebo Kronospan. Tloušťka materiálu je 18 mm a hrany jednotlivých dílců jsou hraněny kvalitní 2 mm ABS (plastovou) páskou, která se vyznačuje vysokou odolností i ve vlhčích prostorách."
+        },
+        "5": {
+          "question": "Z jakých materiálů jsou vyrobeny posuvné dveře?",
+          "answer": "Dveře vyrábíme buď se zrcadlem, které je podlepeno bezpečnostní fólií (při rozbití zrcadla nepopadají střepy na zem, ale vytvoří se pavučina), barevnými skly značky Lacobel, nebo laminovaných desek značky Egger a Kronospan. Tloušťka zrcadla a barevných skel je 4 mm a dřevotřísky 10 mm. Přešli jsme na 10 mm tloušťku materiálu i přesto, že je dostupných méně dekorů. Avšak díky své menší váze oproti 18 mm tloušťce, poskytují tišší bohyb, lepší manipulaci, ale zároveň nám umožnují vyrábět mnohem širší dveře, což je jistě elegantnější a na oko krásnější než úzké a těžké dveře."
+        },
+        "6": {
+          "question": "Jaké jsou minimální a maximální rozměry skříně?",
+          "answer": "Po dlouhém hledání jsme zasmluvněni se společností, která nám umí dodat madla v celkové délce až 5,6 metru a horizontální profily ve stejné délce. Proto si myslím, že limitem je jen samotná konstrukce, stabilita a bezpečnost. Co se týká nejmenších rozměrů, tam také limity nevidíme, jde spíše o otázku praktičnosti a vizuálu."
+        },
+        "7": {
+          "question": "Děláte i atypické skříně do šikminy nebo rohu?",
+          "answer": "Skříně do šikmin momentálně z kapacitních důvodů neděláme, nicméně rohové skříně pro nás nejsou problémem."
+        },
+        "8": {
+          "question": "Je možné si objednat jen posuvné dveře/vnitřek skříně?",
+          "answer": "Samozřejmě. Není pro nás problém zhotovit buď samostatné posuvné dveře, nebo naopak vnitřek skříně. Pro více info nás kontaktujte."
+        },
+        "9": {
+          "question": "Vyrábíte i jiný typ nábytku než skříně?",
+          "answer": "V současnosti jsme fokusováni výhradně jen na skříně a úložný nábytek. V budoucnosti jsme této otázce otevření, avšak momentálně by to zpomalilo naši efektivitu, čímž by se prodloužily dodací lhůty. I kvůli vám se proto nechceme rozšiřovat v tomto stylu."
+        }
+      }
+    },
+    "team": {
+      "label": "o nás",
+      "title": "Kdo jsme a proč to děláme?",
+      "descriptions": {
+        "1": "Jsme rodinná firma s dlouholetými zkušenostmi nejen v truhlářství, ale i v dalších oborech. Naše cesta začala v dílně našeho otce, kde jsme se od mládí učili základy řemesla. I když nás život zavedl do jiných profesí, truhlářství jsme nikdy neopustili. Spojili jsme naše znalosti z programování, marketingu a techniky s tím, co jsme se naučili od otce, a tak vzniklo Dolope.",
+        "2": "Náš tým je mladý a kreativní, přičemž každý z nás přináší do firmy svůj jedinečný pohled. Výsledkem je automatizovaná výroba a konfigurátor, kde si můžete jednoduše navrhnout vlastní skříň a okamžitě zjistit její cenu. Technické znalosti nám umožňují maximálně využít materiály a nabídnout vám skvělé ceny za vysokou kvalitu.",
+        "3": "Navíc se spoléháme na kreativní vkus, který do firmy přináší moderní designy a trendy. Naše práce je postavena na transparentnosti a čestnosti, což je základ naší komunikace se zákazníky. Chceme, aby proces objednávky byl co nejjednodušší a nejpřehlednější."
+      },
+      "timotej": {
+        "alt_img": "Timoteja, který zastává analytické technické a výrobní procesy firmy Dolope.",
+        "description": "Technické myšlení a zkušenosti z výroby zajišťují, že každá skříň je pečlivě zpracovaným mistrovským dílem, které dokonale zapadne do vašeho domova."
+      },
+      "brano": {
+        "alt_img": "Obrázek Branislava, který zastává analytické a automatizační procesy firmy Dolope.",
+        "description": "Analytické myšlení, zkušenosti s automatizací a důraz na detaily zaručují efektivní a bezproblémový průběh vaší objednávky."
+      },
+      "kikus": {
+        "alt_img": "Obrázek Kikuš, která zastává kreativní procesy firmy Dolope.",
+        "description": "S kreativním okem, citem pro detail a jedinečným vkusem pro kombinace materiálů promění vaši skříň v estetický skvost, který překvapí a potěší."
+      }
+    },
+    "contact": {
+      "label": "kontakt",
+      "title": "Chcete se nás na něco zeptat?",
+      "phone": "+420 773 658 399",
+      "email": "info@dolope.cz",
+      "form": {
+        "first_name": "Jméno",
+        "last_name": "Příjmení",
+        "email": "E-mail",
+        "phone": "Telefonní číslo",
+        "message": "Zpráva",
+        "attachment": "Příloha",
+        "upload_message": "Sem přetáhněte soubory nebo",
+        "upload_button": "Vyberte soubory",
+        "upload_description": "Povoleny jsou formáty .jpg, .jpeg, .png, .pdf v celkové velikosti max. 15 MB",
+        "submit_button": "Odeslat",
+        "consent_text": "Prohlašuji, že jsem se seznámil/a se",
+        "consent_text_link": "Zásadami zpracování osobních údajů",
+        "errors": {
+          "required": "Povinné pole",
+          "wrong_email": "Neplatný e-mail",
+          "wrong_format": "Nepovolený formát souboru",
+          "big_file": "Soubor je příliš velký",
+          "max_files": "Maximální počet souborů"
+        },
+        "success": {
+          "title": "Vaše zpráva byla úspěšně odeslána! 🎉",
+          "description": "Budeme Vás kontaktovat do 24 hodin."
+        }
+      }
+    }
+  }
+}
