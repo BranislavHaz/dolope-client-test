@@ -50,9 +50,9 @@ const Hero = () => {
               <Button primary xl href="/konfigurator">
                 Plánovač <Edit />
               </Button>
-              <Button outline xl>
+              {/*               <Button outline xl>
                 Videonávod <Film />
-              </Button>
+              </Button> */}
             </$.Buttons>
           </$.Block>
 
