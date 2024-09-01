@@ -18,7 +18,20 @@ import czLocale from "@/locales/konfigurator/cz.json";
 
 import * as $ from "@/styles/configurator/pages/configurator/index.styled";
 
-const Index = ({ products, translations: t }) => {
+export async function getStaticProps() {
+  const products = await fetchProducts();
+  const language = process.env.NEXT_PUBLIC_LANGUAGE;
+  const translations = language === "cz" ? czLocale : skLocale;
+
+  return {
+    props: {
+      products,
+      translations,
+    },
+  };
+}
+
+const Konfigurator = ({ products, translations: t }) => {
   const { viewport, setProductsApi, currentStep, setViewport } = useMainStore(
     (state) => ({
       viewport: state.viewport,
@@ -88,17 +101,4 @@ const Index = ({ products, translations: t }) => {
   );
 };
 
-export async function getStaticProps() {
-  const products = await fetchProducts();
-  const language = process.env.NEXT_PUBLIC_LANGUAGE;
-  const translations = language === "cz" ? czLocale : skLocale;
-
-  return {
-    props: {
-      products,
-      translations,
-    },
-  };
-}
-
-export default Index;
+export default Konfigurator;
