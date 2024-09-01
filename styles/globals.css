@@ -1,0 +1,64 @@
+:root {
+  --primary-color: #f1b90d;
+  --primary-color-hover: #d8a712;
+  --secundary-color: #000000;
+  --secundary-color-hover: #1f1e1e;
+  --light-text-color: #ffffff;
+  --dark-text-color: #000000;
+
+  --max-width-container-base: 95vw;
+  --max-width-container-desktop: 1200px;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: var(--dark-text-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  font-size: 16px;
+}
+
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+span,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #f1b90d, #f39c12, #f1b90d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
