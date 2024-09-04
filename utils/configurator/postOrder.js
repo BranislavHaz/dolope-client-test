@@ -5,35 +5,50 @@ const language = process.env.NEXT_PUBLIC_LANGUAGE;
 const translations = language === "cz" ? czLocale : skLocale;
 
 const sendPurchaseEvent = (orderData, orderId) => {
-  const consents = window.CookieConsent.consent;
+  // Získanie údajov o súhlase z CookieScriptConsent
+  const consentData = JSON.parse(localStorage.getItem("CookieScriptConsent"));
 
-  if (window.dataLayer && consents.statistics && consents.marketing) {
-    dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-    dataLayer.push({
-      event: "purchase",
-      ecommerce: {
-        transaction_id: orderId,
-        value: orderData.price,
-        currency: orderData.currency,
-        items: [
-          {
-            item_id: "0001",
-            item_name: translations.custom_event.item_name,
-            item_brand: "Dolope",
-            price: orderData.price,
-            quantity: 1,
-          },
-        ],
-      },
-      userData: {
-        firstName: orderData.firstName,
-        lastName: orderData.lastName,
-        email: orderData.email,
-        phone: orderData.phone,
-        city: orderData.city,
-        zip: orderData.zip,
-      },
-    });
+  // Skontrolujeme, či sú povolené kategórie "performance" a "targeting"
+  if (consentData && window.dataLayer) {
+    const hasPerformanceConsent =
+      consentData.categories.includes("performance");
+    const hasTargetingConsent = consentData.categories.includes("targeting");
+
+    // Ak používateľ súhlasil so štatistikami a marketingom (performance a targeting)
+    if (hasPerformanceConsent && hasTargetingConsent) {
+      dataLayer.push({ ecommerce: null }); // Vymazanie predchádzajúceho ecommerce objektu
+      dataLayer.push({
+        event: "purchase",
+        ecommerce: {
+          transaction_id: orderId,
+          value: orderData.price,
+          currency: orderData.currency,
+          items: [
+            {
+              item_id: "0001",
+              item_name: translations.custom_event.item_name,
+              item_brand: "Dolope",
+              price: orderData.price,
+              quantity: 1,
+            },
+          ],
+        },
+        userData: {
+          firstName: orderData.firstName,
+          lastName: orderData.lastName,
+          email: orderData.email,
+          phone: orderData.phone,
+          city: orderData.city,
+          zip: orderData.zip,
+        },
+      });
+    } else {
+      console.log(
+        "Necessary consents not provided for performance or targeting."
+      );
+    }
+  } else {
+    console.log("No consent data available or dataLayer not present.");
   }
 };
 

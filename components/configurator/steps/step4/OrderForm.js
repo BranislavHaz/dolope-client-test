@@ -55,6 +55,7 @@ const OrderForm = ({ price, translations: t }) => {
         currency: t.order.currency,
       };
       const statusOrder = await postOrder(orderData);
+      console.log(statusOrder);
 
       if (state.order.status === "initial" && statusOrder) {
         state.setOrderStatus("success");

@@ -1,25 +1,41 @@
 const sendCustomEvent = (formData, contactId) => {
-  const consents = window.CookieConsent.consent;
+  // Získanie údajov o súhlase z CookieScriptConsent
+  const consentData = JSON.parse(localStorage.getItem("CookieScriptConsent"));
 
-  if (window.dataLayer && consents.statistics && consents.marketing) {
-    // Získanie údajov z formData
-    const firstName = formData.get("firstName");
-    const lastName = formData.get("lastName");
-    const email = formData.get("email");
-    const phone = formData.get("phone");
+  // Skontrolujeme, či sú povolené kategórie "performance" a "targeting"
+  if (consentData && window.dataLayer) {
+    const hasPerformanceConsent =
+      consentData.categories.includes("performance");
+    const hasTargetingConsent = consentData.categories.includes("targeting");
 
-    const userData = {
-      firstName,
-      lastName,
-      email,
-      phone: phone || undefined,
-      contactId,
-    };
+    // Ak používateľ súhlasil so štatistikami a marketingom (performance a targeting)
+    if (hasPerformanceConsent && hasTargetingConsent) {
+      // Získanie údajov z formData
+      const firstName = formData.get("firstName");
+      const lastName = formData.get("lastName");
+      const email = formData.get("email");
+      const phone = formData.get("phone");
 
-    window.dataLayer.push({
-      event: "generate_lead",
-      userData,
-    });
+      const userData = {
+        firstName,
+        lastName,
+        email,
+        phone: phone || undefined,
+        contactId,
+      };
+
+      // Push udalosti do dataLayer
+      window.dataLayer.push({
+        event: "generate_lead",
+        userData,
+      });
+    } else {
+      console.log(
+        "Necessary consents not provided for performance or targeting."
+      );
+    }
+  } else {
+    console.log("No consent data available or dataLayer not present.");
   }
 };
 
