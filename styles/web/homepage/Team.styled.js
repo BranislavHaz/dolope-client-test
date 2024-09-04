@@ -14,7 +14,6 @@ export const Wrap = styled.div`
 export const WrapSwiper = styled.div`
   .swiper {
     width: 100%;
-    overflow: visible;
   }
 
   .swiper-slide {
@@ -25,6 +24,7 @@ export const WrapSwiper = styled.div`
 
     @media ${device.laptop} {
       width: 350px;
+      height: auto;
     }
   }
 
@@ -32,6 +32,7 @@ export const WrapSwiper = styled.div`
     display: block;
     position: relative !important;
     width: 100%;
+    max-height: 350px;
   }
 
   .swiper-slide:not(.swiper-slide-active) .name-block {
